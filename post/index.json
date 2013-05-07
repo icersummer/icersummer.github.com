@@ -10,9 +10,9 @@
         "tags": ["Markdown", "open source", "naming"],
         "date": "2013-04-25"
     }, {
-		"title": "博客建立记录"
-		"path": "2013-05-07-the-way-to-build-the-blog.md"
-		"tags": ["process", "simple"]
+		"title": "博客建立记录",
+		"path": "2013-05-07-the-way-to-build-the-blog.md",
+		"tags": ["process", "simple"],
 		"date": "2013-05-07"
 	}
 ]
