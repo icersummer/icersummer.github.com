@@ -29,5 +29,10 @@
 		"path":"2013-05-14-read-git-article-123",
 		"tags":["Git", "reading", "阅读"],
 		"date": "2013-05-14"
+	}, {
+		"title": "Java, Difference in == and equals ",
+		"path":"2013-05-15-java-difference-in-equal-sign-and-equals-method",
+		"tags":["Java", "compare", "equals"],
+		"date": "2013-05-15"
 	}
 ]
