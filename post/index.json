@@ -34,5 +34,20 @@
 		"path":"2013-05-15-java-difference-in-equal-sign-and-equals-method",
 		"tags":["Java", "compare", "equals"],
 		"date": "2013-05-15"
+	}, {
+		"title": "回归Eclipse",
+		"path":"2013-05-30-back-to-Eclipse-and-install-EGit",
+		"tags":["eclipse", "EGit", "SSTS"],
+		"date": "2013-05-30"
+	}, {
+		"title": "Eclipse Color Themes plugin",
+		"path":"2013-05-30-Eclipse-color-themes",
+		"tags":["eclipse", "plugin"],
+		"date": "2013-05-30"
+	}, {
+		"title": "Go-agent GFW",
+		"path":"2013-05-30-go-agent-gfw",
+		"tags":["goagent", "gfw"],
+		"date": "2013-05-30"
 	}
 ]
