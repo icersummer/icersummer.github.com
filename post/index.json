@@ -54,5 +54,10 @@
 		"path":"2013-06-01-Git-Tips",
 		"tags":["git", "tips","collection"],
 		"date":"2013-06-01"
-	}
+	}, {
+		"title" : "Template Test",
+		"path":"blog-template-new",
+		"tags":["git", "tips","collection"],
+		"date":"2013-06-01"	
+	} 
 ]
