@@ -59,5 +59,15 @@
 		"path":"blog-template-new",
 		"tags":["git", "tips","collection"],
 		"date":"2013-06-01"	
+	} ,{
+		"title" : "how-to-setup-go-agent",
+		"path":"2013-06-12-how-to-setup-go-agent",
+		"tags":["goagent", "gfw"],
+		"date":"2013-06-12"	
+	} ,{
+		"title" : "what is Raspberry Pi",
+		"path":"2013-06-12-what-is-raspberry-pi",
+		"tags":["computer", "programming","integral"],
+		"date":"2013-06-12"	
 	} 
 ]
