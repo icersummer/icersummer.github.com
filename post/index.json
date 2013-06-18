@@ -69,5 +69,10 @@
 		"path":"2013-06-12-what-is-raspberry-pi",
 		"tags":["computer", "programming","integral"],
 		"date":"2013-06-12"	
-	} 
+	} ,{
+		"title": "Markdown常用语法、格式简介 - 03",
+		"path":"2013-06-18-how-to-use-markdown-03",
+		"tags":["markdown"],
+		"date":"2013-06-18"
+	}
 ]
