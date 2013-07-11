@@ -38,4 +38,9 @@ $ps -e | grep ssh
 
 ssh-server配置文件位于/etc/ssh/sshd_config文件，可以修改ssh的服务端口，默认是22,；修改后重启ssh服务： $sudo /etc/init.d/ssh restart
 
+7. 遗留问题
+
+只能通过IP+Port的方式访问，如何才能通过hostname访问呢？
+
+
 EOF.
