@@ -22,7 +22,7 @@ $sudo apt-get insall openssh-client
 
 $ps -e | grep ssh
 
-如果没有看到ssh，则手动启动 $sudo /etc/init.d/ssh start
+如果没有看到ssh，则手动启动 $sudo /etc/init.d/ssh start (or $sudo service ssh start)
 
 4. Putty依旧不能访问
 
