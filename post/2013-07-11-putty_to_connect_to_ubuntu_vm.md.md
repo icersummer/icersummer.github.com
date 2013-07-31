@@ -79,6 +79,89 @@ Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
 Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)
 ```
 
+9. 安装Hadoop
+
+9.1 [下载地址, http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-2.0.5-alpha/]
+
+9.2 Setting up a Single Node Cluster, follow <B>Running Hadoop on Ubuntu Linux (Single-Node Cluster)</B> [http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/]
+
+>  The main goal of this tutorial is to get a simple Hadoop installation up and running so that you can play around with the software and learn more about it.
+
+9.3 添加Hadoop专用user
+```
+vincent@ubuntu:~$ sudo addgroup hadoop
+[sudo] password for vincent: 
+Adding group `hadoop' (GID 1001) ...
+Done.
+vincent@ubuntu:~$ sudo adduser --ingroup hadoop hduser
+Adding user `hduser' ...
+Adding new user `hduser' (1001) with group `hadoop' ...
+Creating home directory `/home/hduser' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+Sorry, passwords do not match
+passwd: Authentication token manipulation error
+passwd: password unchanged
+Try again? [y/N] y
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for hduser
+Enter the new value, or press ENTER for the default
+        Full Name []: hadoop user
+        Room Number []: 
+        Work Phone []: 
+        Home Phone []: 
+        Other []: 
+Is the information correct? [Y/n] y
+```
+
+9.4 需要设置SSH远程自动登录，需要其他机器直接访问Hadoop node，configure it to allow SSH public key authentication. 参考[Ubuntu Guide, http://ubuntuguide.org/wiki/Ubuntu_Raring]
+
+- (这个时候，考虑，是不是之前使用user vincent配置了Java环境变量是不是不对、应该配置为全局变量？ 后面再看。)
+```
+hduser@ubuntu:~$ ssh-keygen -t rsa -P ""
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/hduser/.ssh/id_rsa): 
+Created directory '/home/hduser/.ssh'.
+Your identification has been saved in /home/hduser/.ssh/id_rsa.
+Your public key has been saved in /home/hduser/.ssh/id_rsa.pub.
+The key fingerprint is:
+9f:28:f3:80:ae:6c:64:d6:78:74:74:67:fa:21:91:f3 hduser@ubuntu
+The key's randomart image is:
++--[ RSA 2048]----+
+|         .       |
+|      . = o      |
+|     . . B       |
+|    . . o E      |
+|   + .  So .     |
+|  = o.   o..     |
+| + .. + . o      |
+| ...   =         |
+| .o..   .        |
++-----------------+
+hduser@ubuntu:~$ ll
+hduser@ubuntu:~$ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
+
+#测试是否可以无密码登录
+hduser@ubuntu:~/.ssh$ ssh localhost 
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is 47:6b:7b:a6:e4:80:38:96:f9:9c:a3:58:48:f4:51:82.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'localhost' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+Last login: Wed Jul 31 01:38:45 2013 from gjia2d.ptcnet.ptc.com
+hduser@ubuntu:~$ 
+
+```
+
+TODO：
+
+- 当前时间显示是PDT时区(Wed Jul 31 01:46:14 PDT 2013)，如何配置显示东八区时间？
 
 补充资料：
 
