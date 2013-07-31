@@ -62,5 +62,26 @@ java version "1.7.0_25"
 Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
 Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)
 ```
+配置JDK variables
+```
+vincent@ubuntu:~$ vi .bashrc
+
+# export my own variables
+JAVA_HOME=/home/vincent/jdk1.7.0_25
+export JAVA_HOME
+PATH=$PATH:$JAVA_HOME/bin
+export PATH
+
+vincent@ubuntu:~$ source .bashrc
+vincent@ubuntu:~$ java -version
+java version "1.7.0_25"
+Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
+Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)
+```
+
+
+补充资料：
+
+- Ubuntu Environment Variables [https://help.ubuntu.com/community/EnvironmentVariables]
 
 EOF.
