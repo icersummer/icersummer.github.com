@@ -120,6 +120,7 @@ Is the information correct? [Y/n] y
 9.4 需要设置SSH远程自动登录，需要其他机器直接访问Hadoop node，configure it to allow SSH public key authentication. 参考[Ubuntu Guide, http://ubuntuguide.org/wiki/Ubuntu_Raring]
 
 - (这个时候，考虑，是不是之前使用user vincent配置了Java环境变量是不是不对、应该配置为全局变量？ 后面再看。)
+
 ```
 hduser@ubuntu:~$ ssh-keygen -t rsa -P ""
 Generating public/private rsa key pair.
@@ -144,7 +145,7 @@ The key's randomart image is:
 hduser@ubuntu:~$ ll
 hduser@ubuntu:~$ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
 
-#测试是否可以无密码登录
+//测试是否可以无密码登录
 hduser@ubuntu:~/.ssh$ ssh localhost 
 The authenticity of host 'localhost (127.0.0.1)' can't be established.
 ECDSA key fingerprint is 47:6b:7b:a6:e4:80:38:96:f9:9c:a3:58:48:f4:51:82.
