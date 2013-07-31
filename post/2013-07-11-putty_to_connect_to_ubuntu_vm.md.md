@@ -42,5 +42,25 @@ ssh-server配置文件位于/etc/ssh/sshd_config文件，可以修改ssh的服�
 
 只能通过IP+Port的方式访问，如何才能通过hostname访问呢？
 
+8. JDK下载，通过curl
+
+8.1 安装 curl：$sudo apt-get curl
+
+8.2 how to download Oracle JDK without browser: [https://gist.github.com/hgomez/4697585]
+
+8.3 使用SecureCRT所带SFTP上传JDK至Ubuntu，版本jdk-7u25-linux-i586.tar.gz
+```
+vincent@ubuntu:~$ tar -xf jdk-7u25-linux-i586.tar.gz 
+vincent@ubuntu:~$ ls
+Desktop    examples.desktop            Music     Templates
+Documents  jdk1.7.0_25                 Pictures  Videos
+Downloads  jdk-7u25-linux-i586.tar.gz  Public
+vincent@ubuntu:~$ cd jdk1.7.0_25/
+vincent@ubuntu:~/jdk1.7.0_25$ cd bin
+vincent@ubuntu:~/jdk1.7.0_25/bin$ ./java -version
+java version "1.7.0_25"
+Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
+Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)
+```
 
 EOF.
