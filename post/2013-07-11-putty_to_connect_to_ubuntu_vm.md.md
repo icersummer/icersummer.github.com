@@ -182,7 +182,31 @@ hduser ALL=(ALL) ALL
 
 - 添加Hadoop相关变量设置到hduser的$HOME/.bashrc
 
+```
+// vj, add Hadoop Variables
+hduser@ubuntu:~$ vi .bashrc
 
+HADOOP_HOME=/home/hduser/hadoop-2.0.5-alpha
+export HADOOP_HOME
+JAVA_HOME=/home/vincent/jdk1.7.0_25
+export JAVA_HOME
+
+//Some convenient aliases and functions for running Hadoop-related commands
+unalias fs &> /dev/null
+alias fs="hadoop fs"
+unalias hls &> /dev/null
+alias hls="fs -ls"
+
+PATH=$PATH:$HADOOP_HOME/bin
+export PATH
+
+hduser@ubuntu:~$ hadoop version
+Hadoop 2.0.5-alpha
+Subversion http://svn.apache.org/repos/asf/hadoop/common -r 1488459
+Compiled by jenkins on 2013-06-01T04:05Z
+From source with checksum c8f4bd45ac25c31b815f311b32ef17
+This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar
+```
 
 TODO：
 
@@ -191,5 +215,11 @@ TODO：
 补充资料：
 
 - Ubuntu Environment Variables [https://help.ubuntu.com/community/EnvironmentVariables]
+
+- # What's Hadoop Distributed File System (HDFS)
+
+> The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It has many similarities with existing distributed file systems. However, the differences from other distributed file systems are significant. HDFS is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets. HDFS relaxes a few POSIX requirements to enable streaming access to file system data. HDFS was originally built as infrastructure for the Apache Nutch web search engine project. HDFS is part of the Apache Hadoop project, which is part of the Apache Lucene project.
+
+> <I><B>The Hadoop Distributed File System: Architecture and Design</B> - (hadoop.apache.org/hdfs/docs/…)[http://hadoop.apache.org/hdfs/docs/current/hdfs_design.html]</I>
 
 EOF.
