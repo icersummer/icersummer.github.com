@@ -208,6 +208,8 @@ From source with checksum c8f4bd45ac25c31b815f311b32ef17
 This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar
 ```
 
+- 配置并运行起Hadoop，请看[下一篇 - Single-Node setup of Hadoop](./2013-08-01-single-node-setup-of-hadoop.md)
+
 TODO：
 
 - 当前时间显示是PDT时区(Wed Jul 31 01:46:14 PDT 2013)，如何配置显示东八区时间？
