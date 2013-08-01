@@ -214,12 +214,12 @@ TODO：
 
 补充资料：
 
-- Ubuntu Environment Variables [https://help.ubuntu.com/community/EnvironmentVariables]
+- Ubuntu Environment Variables (link, https://help.ubuntu.com/community/EnvironmentVariables)
 
-- # What's Hadoop Distributed File System (HDFS)
+- ### What's Hadoop Distributed File System (HDFS)
 
 > The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It has many similarities with existing distributed file systems. However, the differences from other distributed file systems are significant. HDFS is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets. HDFS relaxes a few POSIX requirements to enable streaming access to file system data. HDFS was originally built as infrastructure for the Apache Nutch web search engine project. HDFS is part of the Apache Hadoop project, which is part of the Apache Lucene project.
 
-> <I><B>The Hadoop Distributed File System: Architecture and Design</B> - (hadoop.apache.org/hdfs/docs/…)[http://hadoop.apache.org/hdfs/docs/current/hdfs_design.html]</I>
+> <I><B>The Hadoop Distributed File System: Architecture and Design</B> - [hadoop.apache.org/hdfs/docs/…](http://hadoop.apache.org/hdfs/docs/current/hdfs_design.html)</I>
 
 EOF.
