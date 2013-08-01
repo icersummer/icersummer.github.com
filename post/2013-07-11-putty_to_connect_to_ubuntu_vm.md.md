@@ -157,8 +157,32 @@ Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
 
 Last login: Wed Jul 31 01:38:45 2013 from gjia2d.ptcnet.ptc.com
 hduser@ubuntu:~$ 
+```
+
+9.5 开始安装配置Hadoop
+
+- 配置Hadoop user hduser 加入sudo权限中（需要这一步么？todo……）
 
 ```
+vincent@ubuntu:/etc$ cd /etc/
+vincent@ubuntu:/etc$ ll sudo*
+-r--r----- 1 root root  767 Jul 31 02:17 sudoers
+
+sudoers.d:
+total 20
+drwxr-xr-x   2 root root  4096 Apr 23  2012 ./
+drwxr-xr-x 127 root root 12288 Jul 31 02:17 ../
+-r--r-----   1 root root   753 Jan 31  2012 README
+vincent@ubuntu:/etc$ sudo vi sudoers
+
+// add sudo users
+hduser ALL=(ALL) ALL
+// sudoers文件的修改立即生效
+```
+
+- 添加Hadoop相关变量设置到hduser的$HOME/.bashrc
+
+
 
 TODO：
 
