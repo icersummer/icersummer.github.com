@@ -222,4 +222,8 @@ TODO：
 
 > <I><B>The Hadoop Distributed File System: Architecture and Design</B> - [hadoop.apache.org/hdfs/docs/…](http://hadoop.apache.org/hdfs/docs/current/hdfs_design.html)</I>
 
+The following picture gives an overview of the most important HDFS components.
+
+![HDFS Architecture](../images/HDFS-Architecture.gif "Optional title")
+
 EOF.
