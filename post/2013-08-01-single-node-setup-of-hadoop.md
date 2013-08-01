@@ -36,6 +36,7 @@ export HADOOP_HDFS_HOME
 ```
 
 4. 创建2个目录，用于存储namenode和datanode的数据
+
 ```
 hduser@ubuntu:~$ pwd
 /home/hduser
