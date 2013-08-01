@@ -57,9 +57,68 @@ hduser@ubuntu:~/hadoop_data/hdfs$ pwd
 
 - yarn-site.xml ($HADOOP_HOME/etc/hadoop)
 
+```
+// Site specifc YARN configuration properties
+<property>
+  <name>yarn.nodemanager.aux-services</name>
+  <value>mapreduce.shuffle</value>
+</property>
 
+<property>
+  <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+  <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+```
 
 - core-site.xml ($HADOOP_HOME/etc/hadoop)
+
+```
+<configuration>
+
+ <property>
+    <name>fs.default.name</name>
+    <value>hdfs://localhost:9000</value>
+ </property>
+
+</configuration>
+```
+
+- hdfs-site.xml
+
+```
+<configuration>
+
+ <property>
+    <name>dfs.replication</name>
+    <value>1</value>
+ </property>
+
+ <property>
+   <name>dfs.namenode.name.dir</name>
+   <value>file:/home/hduser/hadoop_data/hdfs/namenode</value>
+ </property>
+
+ <property>
+   <name>dfs.datanode.data.dir</name>
+   <value>file:/home/hduser/hadoop_data/hdfs/datanode</value>
+ </property>
+</configuration>
+```
+
+- mapred-site.xml
+
+```
+<configuration>
+ <property>
+   <name>mapreduce.framework.name</name>
+   <value>yarn</value>
+ </property>
+</configuration>
+```
+
+6. 格式化namenode
+
+
 
 
 
