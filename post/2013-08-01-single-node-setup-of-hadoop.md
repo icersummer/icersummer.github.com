@@ -236,6 +236,9 @@ Instead use the hdfs command for it.
 hduser@ubuntu:~/hadoop-2.0.5-alpha$ ./bin/hadoop fs -copyFromLocal in /in
 ```
 
+运行share目录中提供的wordcount示例：
+
+
 #### 待解问题：
 
 - what's YARN ?
