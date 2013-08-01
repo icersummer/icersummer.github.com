@@ -52,3 +52,20 @@ hduser@ubuntu:~/hadoop_data/hdfs$ mkdir datanode
 hduser@ubuntu:~/hadoop_data/hdfs$ pwd
 /home/hduser/hadoop_data/hdfs
 ```
+
+5. 设置Properties在Config文件中：
+
+- yarn-site.xml ($HADOOP_HOME/etc/hadoop)
+
+
+
+- core-site.xml ($HADOOP_HOME/etc/hadoop)
+
+
+
+#### 待解问题：
+
+- what's YARN?
+
+
+
