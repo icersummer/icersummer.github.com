@@ -170,9 +170,77 @@ SHUTDOWN_MSG: Shutting down NameNode at ubuntu/127.0.1.1
 ************************************************************/
 ```
 
+7. start HDFS processes
+
+*Name node*
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ ./hadoop-daemon
+hadoop-daemon.sh   hadoop-daemons.sh  
+hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ ./hadoop-daemon.sh  start namenode
+starting namenode, logging to /home/hduser/hadoop-2.0.5-alpha/logs/hadoop-hduser-namenode-ubuntu.out
+hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ jps
+The program 'jps' can be found in the following packages:
+ * openjdk-6-jdk
+ * openjdk-7-jdk
+Ask your administrator to install one of them
+// 不清楚jps命令是什么，但是这里应该对安装没有影响，已经安装了Oracle JDK 1.7
+```
+
+*Data node*
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ ./hadoop-daemon.sh start datanode
+starting datanode, logging to /home/hduser/hadoop-2.0.5-alpha/logs/hadoop-hduser-datanode-ubuntu.out
+```
+
+8. start Hadoop Map-Reduce Processes
+
+*Resource Manager*
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha$ sbin/yarn-daemon.sh start resourcemanager
+starting resourcemanager, logging to /home/hduser/hadoop-2.0.5-alpha/logs/yarn-hduser-resourcemanager-ubuntu.out
+```
+
+*Node Manager*
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha$ sbin/yarn-daemon.sh start nodemanager
+starting nodemanager, logging to /home/hduser/hadoop-2.0.5-alpha/logs/yarn-hduser-nodemanager-ubuntu.out
+```
+
+*Job History Server*
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha$ sbin/mr-jobhistory-daemon.sh start historyserver
+starting historyserver, logging to /home/hduser/hadoop-2.0.5-alpha/logs/mapred-hduser-historyserver-ubuntu.out
+```
+
+9. 运行一个简单/经典的字符统计示例，来验证安装是否成功
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha$ mkdir in
+hduser@ubuntu:~/hadoop-2.0.5-alpha$ cat > in/file    //这个命令不错
+This is one line
+This is another one
+```
+
+Add this directory to HDFS:
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha$ bin/hadoop dfs -copyFromLocal in /in
+DEPRECATED: Use of this script to execute hdfs command is deprecated.
+Instead use the hdfs command for it.
+// note: dfs命令已经被弃用，应用fs命令，见[fs replace dfs](http://stackoverflow.com/questions/11715082/why-is-it-keep-showing-deprecated-error-when-running-hadoop-or-dfs-command)
+hduser@ubuntu:~/hadoop-2.0.5-alpha$ ./bin/hadoop fs -copyFromLocal in /in
+```
+
 #### 待解问题：
 
-- what's YARN?
+- what's YARN ?
+
+- what's jps ?
 
 
 
