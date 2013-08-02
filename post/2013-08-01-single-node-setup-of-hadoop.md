@@ -238,7 +238,9 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha$ ./bin/hadoop fs -copyFromLocal in /in
 
 运行share目录中提供的wordcount示例：
 
-todo...
+`hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.0.5-alpha.jar wordcount /in /out3`
+
+to continue...
 
 10. 运行_netstat_命令，查看是否Hadoop监听在已经配置的端口
 
@@ -266,9 +268,13 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$
 
 11. Web界面
 
-查看Hadoop All Applications：
+- 查看HDFS及其health信息
 
-[http://132.253.222.240:8088](http://132.253.222.240:8088/cluster)
+[http://132.253.222.240:50070](http://132.253.222.240:50070) 或者 [http://132.253.222.240:50070/dfshealth.jsp](http://132.253.222.240:50070/dfshealth.jsp)
+
+- 查看Hadoop All Applications：
+
+[http://132.253.222.240:8088](http://132.253.222.240:8088) 或者 [http://132.253.222.240:8088/cluster](http://132.253.222.240:8088/cluster)
 
 #### 待解问题：
 
