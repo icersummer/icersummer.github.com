@@ -238,6 +238,37 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha$ ./bin/hadoop fs -copyFromLocal in /in
 
 运行share目录中提供的wordcount示例：
 
+todo...
+
+10. 运行_netstat_命令，查看是否Hadoop监听在已经配置的端口
+
+```
+hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$ sudo netstat -plten | grep java
+[sudo] password for hduser: 
+tcp        0      0 0.0.0.0:19888           0.0.0.0:*               LISTEN      1001       33451       6931/java       
+tcp        0      0 0.0.0.0:50070           0.0.0.0:*               LISTEN      1001       31961       6436/java       
+tcp        0      0 0.0.0.0:50010           0.0.0.0:*               LISTEN      1001       32345       6510/java       
+tcp        0      0 0.0.0.0:50075           0.0.0.0:*               LISTEN      1001       32352       6510/java       
+tcp        0      0 0.0.0.0:10020           0.0.0.0:*               LISTEN      1001       33459       6931/java       
+tcp        0      0 0.0.0.0:50020           0.0.0.0:*               LISTEN      1001       32358       6510/java       
+tcp        0      0 127.0.0.1:9000          0.0.0.0:*               LISTEN      1001       31785       6436/java       
+tcp6       0      0 :::8042                 :::*                    LISTEN      1001       33369       6825/java       
+tcp6       0      0 :::8080                 :::*                    LISTEN      1001       33367       6825/java       
+tcp6       0      0 :::8088                 :::*                    LISTEN      1001       32771       6594/java       
+tcp6       0      0 :::8030                 :::*                    LISTEN      1001       32823       6594/java       
+tcp6       0      0 :::8031                 :::*                    LISTEN      1001       32779       6594/java       
+tcp6       0      0 :::8032                 :::*                    LISTEN      1001       32831       6594/java       
+tcp6       0      0 :::8033                 :::*                    LISTEN      1001       32843       6594/java       
+tcp6       0      0 :::8040                 :::*                    LISTEN      1001       33363       6825/java       
+tcp6       0      0 :::37896                :::*                    LISTEN      1001       33353       6825/java       
+hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$
+```
+
+11. Web界面
+
+查看Hadoop All Applications：
+
+[http://132.253.222.240:8088](http://132.253.222.240:8088/cluster)
 
 #### 待解问题：
 
