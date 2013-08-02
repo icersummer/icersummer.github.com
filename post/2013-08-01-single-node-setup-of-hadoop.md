@@ -2,7 +2,7 @@
 
 ## Single-Node setup of Hadoop
 
-1. 配置hadoop-env.sh
+1) 配置hadoop-env.sh
 
 走到这一步时，是参照[Michael-noll.com上的内容](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/)，但是需要配置$HADOOP_HOME/conf/hadoop-env.sh了，我不清楚他在写此篇博客时是基于Hadoop哪个版本，但是在我当前版本-2.0.5-alpha，并没有此目录；所以以下内容和记录转向参考[Install Hadoop 2.0.1-alpha Yarn Next-Gen](http://raseshmori.wordpress.com/2012/09/23/install-hadoop-2-0-1-yarn-nextgen/).
 
@@ -15,9 +15,9 @@ From source with checksum c8f4bd45ac25c31b815f311b32ef17
 This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar
 ```
 
-2. 需要安装Tarball么，先不安装，待定。
+2) 需要安装Tarball么，先不安装，待定。
 
-3. 配置环境变量
+3) 配置环境变量
 
 .bashrc:
 ```
@@ -35,7 +35,7 @@ HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 export HADOOP_HDFS_HOME
 ```
 
-4. 创建2个目录，用于存储namenode和datanode的数据
+4) 创建2个目录，用于存储namenode和datanode的数据
 
 ```
 hduser@ubuntu:~$ pwd
@@ -275,6 +275,8 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$
 - 查看Hadoop All Applications：
 
 [http://132.253.222.240:8088](http://132.253.222.240:8088) 或者 [http://132.253.222.240:8088/cluster](http://132.253.222.240:8088/cluster)
+
+(这里的IP请使用localhost或者自己的对应IP，我所使用的是Ubuntu CMD)
 
 #### 待解问题：
 
