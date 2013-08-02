@@ -53,7 +53,7 @@ hduser@ubuntu:~/hadoop_data/hdfs$ pwd
 /home/hduser/hadoop_data/hdfs
 ```
 
-5. 设置Properties在Config文件中：
+5) 设置Properties在Config文件中：
 
 - yarn-site.xml ($HADOOP_HOME/etc/hadoop)
 
@@ -116,7 +116,7 @@ hduser@ubuntu:~/hadoop_data/hdfs$ pwd
 </configuration>
 ```
 
-6. 格式化namenode
+6) 格式化namenode
 
 > This step is needed only for the first time. Doing it every time will result in loss of content on HDFS.
 >> 注意1 > 1.1注意 > 1.2注意
@@ -170,7 +170,7 @@ SHUTDOWN_MSG: Shutting down NameNode at ubuntu/127.0.1.1
 ************************************************************/
 ```
 
-7. start HDFS processes
+7) start HDFS processes
 
 *Name node*
 
@@ -194,7 +194,7 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ ./hadoop-daemon.sh start datanode
 starting datanode, logging to /home/hduser/hadoop-2.0.5-alpha/logs/hadoop-hduser-datanode-ubuntu.out
 ```
 
-8. start Hadoop Map-Reduce Processes
+8) start Hadoop Map-Reduce Processes
 
 *Resource Manager*
 
@@ -217,7 +217,7 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha$ sbin/mr-jobhistory-daemon.sh start historyse
 starting historyserver, logging to /home/hduser/hadoop-2.0.5-alpha/logs/mapred-hduser-historyserver-ubuntu.out
 ```
 
-9. 运行一个简单/经典的字符统计示例，来验证安装是否成功
+9) 运行一个简单/经典的字符统计示例，来验证安装是否成功
 
 ```
 hduser@ubuntu:~/hadoop-2.0.5-alpha$ mkdir in
@@ -242,7 +242,7 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha$ ./bin/hadoop fs -copyFromLocal in /in
 
 to continue...
 
-10. 运行_netstat_命令，查看是否Hadoop监听在已经配置的端口
+10) 运行_netstat_命令，查看是否Hadoop监听在已经配置的端口
 
 ```
 hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$ sudo netstat -plten | grep java
@@ -266,7 +266,7 @@ tcp6       0      0 :::37896                :::*                    LISTEN      
 hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$
 ```
 
-11. Web界面
+11) Web界面
 
 - 查看HDFS及其health信息
 
