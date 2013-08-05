@@ -72,4 +72,18 @@ xinit: unexpected signal 2
 
 Ctrl+C退出。
 
+***
+
+只是不能直接由X-Window切换回CMD，只能够执行命令reboot进行返回：
+
+```
+hduser@ubuntu:~$ sudo reboot -h 0
+[sudo] password for hduser: 
+
+Broadcast message from hduser@ubuntu
+        (/dev/pts/0) at 0:56 ...
+
+The system is going down for reboot NOW!
+```
+
 EOF.
