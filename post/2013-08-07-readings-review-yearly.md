@@ -16,7 +16,7 @@
 
 ![认知盈余](../images/renzhiyingyu.jpg "认知盈余")
 
--- <七周七语言 理解多种编程范式> by Bruce A. Tate
+- <七周七语言 理解多种编程范式> by Bruce A. Tate
 
 ![七周七语言](../images/qizhouqiyuyan.jpg "七周七语言")
 
