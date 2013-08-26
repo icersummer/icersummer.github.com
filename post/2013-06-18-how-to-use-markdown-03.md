@@ -93,10 +93,10 @@ _斜体_
 
 规则就是：
 
-'''
+```
 <b>Advanced lists: Nesting</b>	
 
 To put other Markdown blocks in a list; just indent four spaces for each nesting level.
-'''
+```
 
 //TODO ， 这篇文章研究 http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html
