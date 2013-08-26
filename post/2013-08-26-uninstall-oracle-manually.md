@@ -14,16 +14,16 @@
 
 ### Six-Step Process
 
-- **Delete the Oracle services**: In the registry, go to \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services and delete everything that starts with "Oracle"
+1. **Delete the Oracle services**: In the registry, go to \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services and delete everything that starts with "Oracle"
 
-- **Remove other Oracle stuff from the registry**: Go to \HKEY_LOCAL_MACHINE\SOFTWARE\ and delete the key ORACLE
+2. **Remove other Oracle stuff from the registry**: Go to \HKEY_LOCAL_MACHINE\SOFTWARE\ and delete the key ORACLE
 
-- **Reboot**
+3. **Reboot**
 
-- **Delete all the Oracle software** from the directories where you installed it
+4. **Delete all the Oracle software** from the directories where you installed it
 
-- **Delete the Oracle software inventory**: Delete the directory C:\Program Files\Oracle. You must do this no matter where you installed your Oracle software - the Oracle installer automatically writes information here.
+5. **Delete the Oracle software inventory**: Delete the directory C:\Program Files\Oracle. You must do this no matter where you installed your Oracle software - the Oracle installer automatically writes information here.
 
-- **Delete all shortcuts** from your Start menu.
+6. **Delete all shortcuts** from your Start menu.
 
 参考链接： [How do I a manual uninstall of Oracle](http://stackoverflow.com/questions/83967/how-do-i-do-a-manual-uninstall-of-oracle)
