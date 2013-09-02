@@ -114,7 +114,7 @@ To put other Markdown blocks in a list; just indent four spaces for each nesting
 使用单行分隔符的Code Sample
 ---------------------------
 
-The file [`HELLOWORLD.JAVA`] is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。
+The file [`HELLOWORLD.JAVA`](http://icersummer.github.io) is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。
 
 四个空格可以构造缩进、包围效果：
 
