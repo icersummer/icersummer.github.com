@@ -100,3 +100,40 @@ To put other Markdown blocks in a list; just indent four spaces for each nesting
 ```
 
 //TODO ， 这篇文章研究 http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html
+
+双行分隔符
+========
+
+单行分隔符
+----------
+
+图片嵌入(比文字超链多了惊叹号)
+
+![screen shot](https://github.com/icersummer)
+
+使用单行分隔符的Code Sample
+---------------------------
+
+The file [`HELLOWORLD.JAVA`] is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。
+
+四个空格可以构造缩进、包围效果：
+
+    123467
+	这个世界
+	http://github.com/icersummer
+	nowthat
+	
+> 这是一个引用。
+
+下面引用中无序列表：
+
+> 有趣的现象：
+
+> - 列表1
+
+> - comment list
+
+> - comment list 002
+
+> More details.
+
