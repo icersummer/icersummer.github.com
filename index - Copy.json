@@ -1,0 +1,158 @@
+[
+    {
+        "title": "建立GitHub博客步骤",
+        "path": "2013-04-25-process-to-build-blog",
+        "tags": ["Coursera", "github", "blog"],
+        "date": "2013-04-25"
+    },{
+        "title": "Markdown使用初指南",
+        "path": "2013-04-25-naming-convention-in-blog",
+        "tags": ["Markdown", "open source", "naming"],
+        "date": "2013-04-25"
+    }, {
+		"title": "博客建立记录",
+		"path": "2013-05-07-the-way-to-build-the-blog",
+		"tags": ["process", "simple"],
+		"date": "2013-05-07"
+	}, {
+		"title": "书写博客的好处",
+		"path": "2013-05-08-the-benefit-to-write-blog",
+		"tags": ["write blog"],
+		"date": "2013-05-08"
+	}, {
+		"title": "博客书写的频度",
+		"path": "2013-05-13-try-to-write-blog-in-day",
+		"tags": ["坚持"],
+		"date": "2013-05-13"
+	}, {
+		"title": "阅读Git权威指南--样章一二三章",
+		"path":"2013-05-14-read-git-article-123",
+		"tags":["Git", "reading", "阅读"],
+		"date": "2013-05-14"
+	}, {
+		"title": "Java, Difference in == and equals ",
+		"path":"2013-05-15-java-difference-in-equal-sign-and-equals-method",
+		"tags":["Java", "compare", "equals"],
+		"date": "2013-05-15"
+	}, {
+		"title": "回归Eclipse",
+		"path":"2013-05-30-back-to-Eclipse-and-install-EGit",
+		"tags":["eclipse", "EGit", "SSTS"],
+		"date": "2013-05-30"
+	}, {
+		"title": "Eclipse Color Themes plugin",
+		"path":"2013-05-30-Eclipse-color-themes",
+		"tags":["eclipse", "plugin"],
+		"date": "2013-05-30"
+	}, {
+		"title": "Go-agent GFW",
+		"path":"2013-05-30-go-agent-gfw",
+		"tags":["goagent", "gfw"],
+		"date": "2013-05-30"
+	}, {
+		"title" : "Git Tips",
+		"path":"2013-06-01-Git-Tips",
+		"tags":["git", "tips","collection"],
+		"date":"2013-06-01"
+	}, {
+		"title" : "Template Test",
+		"path":"blog-template-new",
+		"tags":["git", "tips","collection"],
+		"date":"2013-06-01"	
+	} ,{
+		"title" : "how-to-setup-go-agent",
+		"path":"2013-06-12-how-to-setup-go-agent",
+		"tags":["goagent", "gfw"],
+		"date":"2013-06-12"	
+	} ,{
+		"title" : "what is Raspberry Pi",
+		"path":"2013-06-12-what-is-raspberry-pi",
+		"tags":["computer", "programming","integral"],
+		"date":"2013-06-12"	
+	} ,{
+		"title": "Markdown常用语法、格式简介 - 03",
+		"path":"2013-06-18-how-to-use-markdown-03",
+		"tags":["markdown"],
+		"date":"2013-06-18"
+	} ,{
+		"title": "TODO",
+		"path":"2013-06-19-todo",
+		"tags":["TODO"],
+		"date":"2013-06-19"
+	} ,{
+		"title": "Ubuntu CommandLine",
+		"path":"2013-07-10-configure-ubuntu-to-cmdline",
+		"tags":["ubuntu"],
+		"date":"2013-07-10"
+	} ,{
+		"title": "我的linux入门",
+		"path":"2013-07-11-my-learning-path-about-linux",
+		"tags":["linux"],
+		"date":"2013-07-11"
+	} ,{
+		"title": "",
+		"path":"2013-07-11-putty_to_connect_to_ubuntu_vm.md",
+		"tags":["putty","ubuntu"],
+		"date":"2013-07-11"
+	} ,{
+		"title": "查看Ubuntu系统是否64位",
+		"path":"2013-07-13-command-to-see-ubuntu-64-or-32",
+		"tags":["ubuntu"],
+		"date":"2013-07-13"
+	} ,{
+		"title": "应该建立我自己的读书目录",
+		"path":"2013-07-14-should-build-my-booklist",
+		"tags":["reading"],
+		"date":"2013-07-14"
+	} ,{
+		"title": "国内电影 外名列表",
+		"path":"2013-07-16-list-of-china-movie-name-abroad",
+		"tags":["film"],
+		"date":"2013-07-16"
+	} ,{
+		"title": "different_way_to_reverse_java_to_uml",
+		"path":"2013-07-17-different-way-to-reverse-java-to-uml",
+		"tags":["uml"],
+		"date":"2013-07-17"
+	} ,{
+		"title": "My Eclipse Plugins",
+		"path":"2013-07-17-my-eclipse-plugins",
+		"tags":["eclipse","plugin"],
+		"date":"2013-07-17"
+	} ,{
+		"title": "在线学习GIT",
+		"path":"2013-07-18-learn-git-online",
+		"tags":["git"],
+		"date":"2013-07-18"
+	} ,{
+		"title": "如何做好性能测试/调优",
+		"path":"2013-07-19-how-to-do-perfermance-tuning",
+		"tags":["performance","tuning"],
+		"date":"2013-07-19"
+	} ,{
+		"title": "Python学习的资源",
+		"path":"2013-07-25-python-leanring-resources",
+		"tags":["python"],
+		"date":"2013-07-25"
+	} ,{
+		"title": "Single-Node setup of Hadoop",
+		"path":"2013-08-01-single-node-setup-of-hadoop",
+		"tags":["hadoop","single-node"],
+		"date":"2013-08-01"
+	} ,{
+		"title": "在百度BAE中安装Wordpress",
+		"path":"2013-08-06-build-webapp-in-bae",
+		"tags":["bae","wordpress"],
+		"date":"2013-08-06"
+	} ,{
+		"title": "更加的熟练使用Markdown",
+		"path":"2013-08-07-falimiar-with-markdown",
+		"tags":["markdown"],
+		"date":"2013-08-07"
+	} ,{
+		"title": "每年度阅读回顾",
+		"path":"2013-08-07-readings-review-yearly",
+		"tags":["reading","review"],
+		"date":"2013-08-07"
+	}
+]
