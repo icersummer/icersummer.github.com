@@ -20,3 +20,5 @@
 6. 在没有将VisualSVN Server注册为windows service之前，在需要checkin/checkout时，需要手动启动VisualSVN Server Manager。
 
 ![VisualSVN Server Manager running status](../images/visualsvn_server_manager.png)
+
+7- 在不经配置的情况下，提交代码时不会强制输入comment。
