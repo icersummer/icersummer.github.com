@@ -116,7 +116,7 @@ To put other Markdown blocks in a list; just indent four spaces for each nesting
 
 The file [`HELLOWORLD.JAVA`](http://icersummer.github.io) is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。
 
-四个空格可以构造缩进、包围效果：
+四个空格可以构造缩进、包围效果、并且无需换行：
 
     123467
 	这个世界
