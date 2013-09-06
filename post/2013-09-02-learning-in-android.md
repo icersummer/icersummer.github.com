@@ -7,3 +7,5 @@ C语言基础http://www.fenby.com/learn/courseUnits/-3
 
 Android http://developer.android.com/training/basics/fragments/fragment-ui.html
 
+OSCHINA: http://www.oschina.net/android/3/android-dev-base
+
