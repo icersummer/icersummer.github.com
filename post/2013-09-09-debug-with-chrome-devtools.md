@@ -36,4 +36,6 @@
 
 2. Google Developers https://developers.google.com/chrome-developer-tools/
 
+3. Link http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html
+
 
