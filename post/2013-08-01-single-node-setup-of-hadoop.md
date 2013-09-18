@@ -3,6 +3,7 @@
 ## Single-Node setup of Hadoop
 
 1) 配置hadoop-env.sh
+---------------------
 
 走到这一步时，是参照[Michael-noll.com上的内容](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/)，但是需要配置$HADOOP_HOME/conf/hadoop-env.sh了，我不清楚他在写此篇博客时是基于Hadoop哪个版本，但是在我当前版本-2.0.5-alpha，并没有此目录；所以以下内容和记录转向参考[Install Hadoop 2.0.1-alpha Yarn Next-Gen](http://raseshmori.wordpress.com/2012/09/23/install-hadoop-2-0-1-yarn-nextgen/).
 
@@ -16,8 +17,10 @@ This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/h
 ```
 
 2) 需要安装Tarball么，先不安装，待定。
+---------------------------------------
 
 3) 配置环境变量
+---------------------------------------
 
 .bashrc:
 ```
@@ -36,6 +39,7 @@ export HADOOP_HDFS_HOME
 ```
 
 4) 创建2个目录，用于存储namenode和datanode的数据
+------------------------------------------------
 
 ```
 hduser@ubuntu:~$ pwd
@@ -54,6 +58,7 @@ hduser@ubuntu:~/hadoop_data/hdfs$ pwd
 ```
 
 5) 设置Properties在Config文件中：
+---------------------------------------
 
 - yarn-site.xml ($HADOOP_HOME/etc/hadoop)
 
@@ -117,6 +122,7 @@ hduser@ubuntu:~/hadoop_data/hdfs$ pwd
 ```
 
 6) 格式化namenode
+---------------------------------------
 
 > This step is needed only for the first time. Doing it every time will result in loss of content on HDFS.
 >> 注意1 > 1.1注意 > 1.2注意
@@ -171,6 +177,7 @@ SHUTDOWN_MSG: Shutting down NameNode at ubuntu/127.0.1.1
 ```
 
 7) start HDFS processes
+---------------------------------------
 
 *Name node*
 
@@ -195,6 +202,7 @@ starting datanode, logging to /home/hduser/hadoop-2.0.5-alpha/logs/hadoop-hduser
 ```
 
 8) start Hadoop Map-Reduce Processes
+---------------------------------------
 
 *Resource Manager*
 
@@ -218,6 +226,7 @@ starting historyserver, logging to /home/hduser/hadoop-2.0.5-alpha/logs/mapred-h
 ```
 
 9) 运行一个简单/经典的字符统计示例，来验证安装是否成功
+--------------------------------------------------
 
 ```
 hduser@ubuntu:~/hadoop-2.0.5-alpha$ mkdir in
@@ -243,6 +252,7 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha$ ./bin/hadoop fs -copyFromLocal in /in
 to continue...
 
 10) 运行_netstat_命令，查看是否Hadoop监听在已经配置的端口
+---------------------------------------
 
 ```
 hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$ sudo netstat -plten | grep java
@@ -267,6 +277,7 @@ hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$
 ```
 
 11) Web界面
+---------------------------------------
 
 - 查看HDFS及其health信息
 
