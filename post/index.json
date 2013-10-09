@@ -154,5 +154,12 @@
 		"path":"2013-08-07-readings-review-yearly",
 		"tags":["reading","review"],
 		"date":"2013-08-07"
+	} ,{
+		"title": "MD使用格式04",
+		"path":"2013-10-09-how-to-use-markdown-04",
+		"tags":["markdown"],
+		"date":"2013-10-09"
 	}
+	
+	
 ]
