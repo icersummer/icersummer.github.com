@@ -103,6 +103,18 @@ select * from user_cons_columns cl where cl.constraint_name = '外键引用表�
 
 select * from all_triggers where table_name = upper('tableName');
 
+若在SQLPLUS下创建Procedure、Function，需要在末尾或者SQL文件末尾加入'/'，如下：
+CREATE FUNCTION GETEMPSALARY (EMPNUMBER IN INTEGER) RETURN INTEGER
+IS
+DECLARE
+EMPSALARY INTEGER;
+BEGIN
+SELECT SAL INTO EMPSALARY FROM EMP WHERE EMP.EMPNO = EMPNUMBER;
+RETURN EMPSALARY;
+END GETEMPSALARY;
+/
+You need to add a slash (/) at the end of the create procedure/package/function statements.
+
 
 更改system用户密码
 1. sqlplus / as sysdba;
