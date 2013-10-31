@@ -11,7 +11,6 @@ DECLARE
 	fdbk PLS_INTEGER;
 	
 	x NUMBER := 100;
-	y NUMBER := 10000;
 BEGIN
 	DBMS_OUTPUT.ENABLE(100000);
 	
@@ -31,9 +30,8 @@ BEGIN
 	
 	DBMS_SQL.CLOSE_CURSOR(cur);
 	
-	/* test loop myself */
 	FOR i IN 1..10 LOOP
-		IF MOD(i,2) = 0 THEN -- i is even
+		IF MOD(I,2) = 0 THEN -- i is even
 			INSERT INTO vjiaTemp VALUES (i, x, 'i is even');
 		ELSE
 			INSERT INTO vjiaTemp VALUES (i, x, 'i is odd');
@@ -41,14 +39,6 @@ BEGIN
 		x := x + 100;
 	END LOOP;
 	COMMIT;	
-	
-	/* test insert 10W/100W records to costsheet */
-	
-	FOR j IN 1..y LOOP
-		INSERT INTO vjiaTemp VALUES (j, y, 'test, test');
-	END LOOP;
-	COMMIT;
-	DBMS_OUTPUT.PUT_LINE(y || ' records inserted. ');
 END;	
 /	
 	
