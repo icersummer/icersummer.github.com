@@ -12,6 +12,7 @@ DECLARE
 	
 	x NUMBER := 100;
 	y NUMBER := 10000;
+	half NUMBER:= y/2;
 BEGIN
 	DBMS_OUTPUT.ENABLE(100000);
 	
@@ -48,8 +49,21 @@ BEGIN
 		INSERT INTO vjiaTemp VALUES (j, y, 'test, test');
 	END LOOP;
 	COMMIT;
-	DBMS_OUTPUT.PUT_LINE(y || ' records inserted. ');
-END;	
+	DBMS_OUTPUT.PUT_LINE(y || ' records inserted into test. '||half);
+	
+	/* insert into lcsSeasonalChangeLog_vjia and lcsCostSheetMaster_vjia */
+	FOR z IN 1..half LOOP
+		INSERT INTO lcsSeasonalChangeLog_vjia (idA2A2, classnameKeyH4, idA3F4, markForDeleteA2) values ('300','LCSCostSheet', z||'100', '1');
+		IF MOD(z, 2) = 0 THEN 
+			INSERT INTO lcsCostSheetMaster_vjia (idA2A2,costsheetType,markFordeleteA2) VALUES  (z||'100','PRODUCT','00');
+		ELSE
+			INSERT INTO lcsCostSheetMaster_vjia (idA2A2,costsheetType,markFordeleteA2) VALUES  (z||'100','SKU','00');
+		END IF;
+	END LOOP;
+	COMMIT;
+	DBMS_OUTPUT.PUT_LINE(half || ' lines of Seaonal Log and Costsheet inserted.'); 
+			
+END; -- end of Procedure	
 /	
 	
 	

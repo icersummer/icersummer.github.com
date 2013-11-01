@@ -115,10 +115,22 @@ END GETEMPSALARY;
 /
 You need to add a slash (/) at the end of the create procedure/package/function statements.
 
+在Procedure中这样写是不行的：
+DBMS_OUTPUT.PUT_LINE(half || ' lines of Seaonal Log & Costsheet inserted.'); -- & is a meaning symbol
+其中的&符号和is单词都会被解析，它们都是Oracle关键字。
 
 更改system用户密码
 1. sqlplus / as sysdba;
 2. alter user system identified by admin;
+
+Oracle中查处相关表的索引、主键、约束：
+--get index
+select * from user_indexes where TABLE_NAME = UPPER('table_name')
+select * from all_indexes where TABLE_NAME = UPPER('lcsSeasonalChangeLog');
+TODO: user_indexes, all_indexes 什么区别？
+--get PK, Constraints
+select * from all_constraints where TABLE_NAME = UPPER('tbl_name');
+
 
 
 外一篇：
