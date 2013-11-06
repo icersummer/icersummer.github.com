@@ -12,10 +12,14 @@ sudo gedit /etc/hosts
 
 更改第二行箭头标记位置的值，使它与你刚才输入的计算机名字相符，完成后保存文件。
 
-![Ubunbu hosts](../images/ubuntu-hostname/png)
+![Ubunbu hosts](../images/ubuntu-hostname.png)
 
 重启，显示新的名字。
 
 `$ sudo reboot -h 0`
 
-参考链接：http://linux.cn/thread/11846/1/1/
+参考链接：
+
+* http://linux.cn/thread/11846/1/1/
+
+* http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/
