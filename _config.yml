@@ -2,12 +2,12 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
+url: http://icersummer.github.io
+title: Coder Blog VJIA
 subtitle: A blogging framework for hackers.
-author: Your Name
+author: Vincent J
 simple_search: http://google.com/search
-description:
+description: Simple blog built with octopress
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
