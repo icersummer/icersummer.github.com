@@ -3,7 +3,7 @@ layout: post
 title: "a first blog in octopress"
 date: 2013-11-22 01:09:03 -0800
 comments: true
-categories:[blog, octopress] 
+categories: [blog, octopress] 
 ---
 
 
