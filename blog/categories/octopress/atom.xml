@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Coder Blog VJIA]]></title>
-  <link href="http://icersummer.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Octopress | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
   <updated>2013-11-22T01:35:40-08:00</updated>
   <id>http://icersummer.github.io/</id>
@@ -12,39 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Test and Come on Post]]></title>
-    <link href="http://icersummer.github.io/blog/2013/11/22/test-and-come-on-post/"/>
-    <updated>2013-11-22T01:33:38-08:00</updated>
-    <id>http://icersummer.github.io/blog/2013/11/22/test-and-come-on-post</id>
-    <content type="html"><![CDATA[<p>The relationship of ExtJS, GWT  and SenCha. The detail information info can be found at  Wiki page.</p>
-
-<p>On 15 June 2010, the merge of Ext JS with JQTouch and Rapha?l was announced[7] forming a new organisation called Sencha Inc. Ext JS continues to be available as a main product on the new Sencha website[8] together with Sencha Touch, Sencha GWT (now Sencha GXT), Sencha Architect, Sencha Animator and Ext core.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Another Post to POC]]></title>
-    <link href="http://icersummer.github.io/blog/2013/11/22/another-post-to-poc/"/>
-    <updated>2013-11-22T01:13:45-08:00</updated>
-    <id>http://icersummer.github.io/blog/2013/11/22/another-post-to-poc</id>
-    <content type="html"><![CDATA[<p>ok</p>
-
-<p>not ok</p>
-
-<p>hello world</p>
-
-<p>show me your code</p>
-
-<ul>
-<li>w</li>
-<li>ss</li>
-<li>tu</li>
-</ul>
-
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[A First Blog in Octopress]]></title>

@@ -1,23 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>googleservice.cn/blog/2013/11/22/a-first-blog-in-octopress/</loc>
-        <lastmod>2013-11-22T01:12:39-08:00</lastmod>
+        <loc>http://icersummer.github.io/blog/2013/11/22/a-first-blog-in-octopress/</loc>
+        <lastmod>2013-11-22T01:35:34-08:00</lastmod>
     </url>
     <url>
-        <loc>googleservice.cn/blog/2013/11/22/another-post-to-poc/</loc>
+        <loc>http://icersummer.github.io/blog/2013/11/22/another-post-to-poc/</loc>
         <lastmod>2013-11-22T01:14:27-08:00</lastmod>
     </url>
     <url>
-        <loc>googleservice.cn/</loc>
-        <lastmod>2013-11-22T01:14:27-08:00</lastmod>
+        <loc>http://icersummer.github.io/blog/2013/11/22/test-and-come-on-post/</loc>
+        <lastmod>2013-11-22T01:34:28-08:00</lastmod>
     </url>
     <url>
-        <loc>googleservice.cn/robots.txt</loc>
+        <loc>http://icersummer.github.io/</loc>
+        <lastmod>2013-11-22T01:35:34-08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://icersummer.github.io/robots.txt</loc>
         <lastmod>2013-11-22T01:05:55-08:00</lastmod>
     </url>
     <url>
-        <loc>googleservice.cn/blog/archives/</loc>
-        <lastmod>2013-11-22T01:14:27-08:00</lastmod>
+        <loc>http://icersummer.github.io/blog/archives/</loc>
+        <lastmod>2013-11-22T01:35:34-08:00</lastmod>
     </url>
 </urlset>
