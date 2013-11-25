@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Oracle | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/oracle/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2013-11-24T22:25:50-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Oracle命令集合]]></title>
+    <link href="http://icersummer.github.io/blog/2013/10/23/oracle-commands/"/>
+    <updated>2013-10-23T21:23:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/10/23/oracle-commands</id>
+    <content type="html"><![CDATA[<ol>
+<li>查询表结构基本信息</li>
+</ol>
+
+
+<p>```
+select * from user_tables;</p>
+
+<p>select * from user_tab_comments;</p>
+
+<p>select * from user_tables t, user_tab_comments c where t.table_name = c.table_name and t.table_name = &lsquo;INDEXSTATUS&rsquo;;
+```</p>
+
+<ol>
+<li>查询表的所有列及其属性</li>
+</ol>
+
+
+<p>```
+select t.COLUMN_NAME,</p>
+
+<pre><code>   t.DATA_TYPE,
+
+   t.DATA_LENGTH,
+
+   t.DATA_PRECISION,
+
+   t.NULLABLE,
+
+   t.COLUMN_ID,
+
+   c.COMMENTS
+</code></pre>
+
+<p>  from user_tab_columns t, user_col_comments c</p>
+
+<p> where t.table_name = c.table_name</p>
+
+<p>   and t.column_name = c.column_name</p>
+
+<p>   and t.table_name = &lsquo;表名&rsquo;</p>
+
+<p>   order by t.COLUMN_ID ;
+```</p>
+
+<p>3  . 查找表的主键（包括名称，构成列）</p>
+
+<p>select cu.*,c.DATA_TYPE</p>
+
+<p>  from user_cons_columns cu, user_constraints au,user_tab_columns c</p>
+
+<p> where cu.constraint_name = au.constraint_name</p>
+
+<p>   and c.COLUMN_NAME = cu.column_name</p>
+
+<p>   and c.TABLE_NAME = cu.table_name</p>
+
+<p>   and au.constraint_type = &lsquo;P&rsquo;</p>
+
+<p>   and au.table_name = &lsquo;表名&rsquo;</p>
+
+<p>4 . 查找表的所有索引（包括索引名，类型，构成列）</p>
+
+<p>select t.*, i.index_type</p>
+
+<p>  from user_ind_columns t, user_indexes i</p>
+
+<p> where t.index_name = i.index_name</p>
+
+<p>   and t.table_name = i.table_name</p>
+
+<p>   and t.table_name = &lsquo;表名&rsquo;</p>
+
+<p>5.查找表的唯一性约束（包括名称，构成列）</p>
+
+<p>select column_name</p>
+
+<p>  from user_cons_columns cu, user_constraints au</p>
+
+<p> where cu.constraint_name = au.constraint_name</p>
+
+<p>   and au.constraint_type = &lsquo;U&rsquo;</p>
+
+<p>   and au.table_name = &lsquo;表名&rsquo;</p>
+
+<ol>
+<li>查找表的外键（包括名称，引用表的表名和对应的键名，下面是分成多步查询）</li>
+</ol>
+
+
+<p>select *</p>
+
+<p>  from user_constraints c</p>
+
+<p> where c.constraint_type = &lsquo;R&rsquo;</p>
+
+<p>   and c.table_name = &lsquo;表名&rsquo;</p>
+
+<ol>
+<li>查询外键约束的列名</li>
+</ol>
+
+
+<p>select * from user_cons_columns cl where cl.constraint_name = &lsquo;外键名称&rsquo;</p>
+
+<p>8.查询引用表的键的列名</p>
+
+<p>select * from user_cons_columns cl where cl.constraint_name = &lsquo;外键引用表的键名&rsquo;</p>
+
+<p>参考来源：Linux公社网站(www.linuxidc.com)  <a href="http://www.linuxidc.com/Linux/2012-02/54944.htm">http://www.linuxidc.com/Linux/2012-02/54944.htm</a></p>
+
+<p>获取某张表上建立的Trigger</p>
+
+<p>select * from all_triggers where table_name = upper(&lsquo;tableName&rsquo;);</p>
+
+<p>若在SQLPLUS下创建Procedure、Function，需要在末尾或者SQL文件末尾加入'/&lsquo;，如下：
+CREATE FUNCTION GETEMPSALARY (EMPNUMBER IN INTEGER) RETURN INTEGER
+IS
+DECLARE
+EMPSALARY INTEGER;
+BEGIN
+SELECT SAL INTO EMPSALARY FROM EMP WHERE EMP.EMPNO = EMPNUMBER;
+RETURN EMPSALARY;
+END GETEMPSALARY;
+/
+You need to add a slash (/) at the end of the create procedure/package/function statements.</p>
+
+<p>在Procedure中这样写是不行的：
+DBMS_OUTPUT.PUT_LINE(half || &lsquo; lines of Seaonal Log &amp; Costsheet inserted.&rsquo;); &mdash; &amp; is a meaning symbol
+其中的&amp;符号和is单词都会被解析，它们都是Oracle关键字。</p>
+
+<p>更改system用户密码
+1. sqlplus / as sysdba;
+2. alter user system identified by admin;</p>
+
+<p>Oracle中查处相关表的索引、主键、约束：
+&mdash;get index
+select * from user_indexes where TABLE_NAME = UPPER(&lsquo;table_name&rsquo;)
+select * from all_indexes where TABLE_NAME = UPPER(&lsquo;lcsSeasonalChangeLog&rsquo;);
+TODO: user_indexes, all_indexes 什么区别？
+&mdash;get PK, Constraints
+select * from all_constraints where TABLE_NAME = UPPER(&lsquo;tbl_name&rsquo;);</p>
+
+<p>外一篇：
+SQLServer下根据已存在表创建新表：
+select * into my_table from exist_table;
+若表已存在：
+insert into my_table select * from exist_table;
+参考：<a href="http://www.w3schools.com/sql/sql_select_into.asp">http://www.w3schools.com/sql/sql_select_into.asp</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[手动卸载Oracle]]></title>
+    <link href="http://icersummer.github.io/blog/2013/08/26/uninstall-oracle-manually/"/>
+    <updated>2013-08-26T21:11:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/08/26/uninstall-oracle-manually</id>
+    <content type="html"><![CDATA[<p>直接使用安装完成后的Oracle自带的Uninstallation程序，也是可以部分完成我们所需的卸载功能，但是终究还是会遗留一部分需要手工参与的步骤。</p>
+
+<p>而我今天所面临的问题是：2块硬盘，在上个礼拜其中一块硬盘罢工，幸好不是系统盘，免去了我要重装系统的麻烦；但麻烦的是损坏的F盘也是Oracle 11g所在磁盘，导致Oracle中服务及应用都不可使用。</p>
+
+<p>虽然我手动将Oracle原有目录及文件（F:\app\user_name...）拷贝了回去到原位置，但Oracle已然不能使用。尝试了2种方式去重装，没有成功：</p>
+
+<ul>
+<li><p>运行Uninstallation，中止；</p></li>
+<li><p>运行installation，企图覆盖原有程序，中止。</p></li>
+</ul>
+
+
+<p>看到有些文章，说可以通过手动删除Oracle注册表项操作，但是不太想通过此种方式，但是在看到stackoverflow上一篇帖子后，处于对他们的信任，还是使用这种方式：</p>
+
+<h3>Six-Step Process</h3>
+
+<ol>
+<li><p><strong>Delete the Oracle services</strong>: In the registry, go to \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services and delete everything that starts with &ldquo;Oracle&rdquo;</p></li>
+<li><p><strong>Remove other Oracle stuff from the registry</strong>: Go to \HKEY_LOCAL_MACHINE\SOFTWARE\ and delete the key ORACLE</p></li>
+<li><p><strong>Reboot</strong></p></li>
+<li><p><strong>Delete all the Oracle software</strong> from the directories where you installed it</p></li>
+<li><p><strong>Delete the Oracle software inventory</strong>: Delete the directory C:\Program Files\Oracle. You must do this no matter where you installed your Oracle software &ndash; the Oracle installer automatically writes information here.</p></li>
+<li><p><strong>Delete all shortcuts</strong> from your Start menu.</p></li>
+</ol>
+
+
+<p>参考链接： <a href="http://stackoverflow.com/questions/83967/how-do-i-do-a-manual-uninstall-of-oracle">How do I a manual uninstall of Oracle</a></p>
+]]></content>
+  </entry>
+  
+</feed>

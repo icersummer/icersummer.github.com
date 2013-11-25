@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Movie | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/movie/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2013-11-24T22:25:50-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[国内电影 外名列表]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/16/list-of-china-movie-name-abroad/"/>
+    <updated>2013-07-16T21:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/16/list-of-china-movie-name-abroad</id>
+    <content type="html"><![CDATA[<ul>
+<li>英雄本色 &ndash; A Better Tomorrow</li>
+<li>国产凌凌漆 &ndash; From Beijing with Love</li>
+<li>活着 &ndash; To Live</li>
+<li>TBD</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

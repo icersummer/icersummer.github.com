@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: API | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/api/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2013-11-24T22:25:50-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[开源免费API]]></title>
+    <link href="http://icersummer.github.io/blog/2013/09/09/open-api/"/>
+    <updated>2013-09-09T21:17:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/09/09/open-api</id>
+    <content type="html"><![CDATA[<h2>天气预报</h2>
+
+<p>国家气象局提供的天气预报接口</p>
+
+<p>接口地址：</p>
+
+<p><a href="http://www.weather.com.cn/data/sk/101010100.html">http://www.weather.com.cn/data/sk/101010100.html</a></p>
+
+<p><a href="http://www.weather.com.cn/data/cityinfo/101010100.html">http://www.weather.com.cn/data/cityinfo/101010100.html</a></p>
+
+<p><a href="http://m.weather.com.cn/data/101010100.html">http://m.weather.com.cn/data/101010100.html</a></p>
+
+<p><a href="http://mobile.51cto.com/hot-409995.htm">http://mobile.51cto.com/hot-409995.htm</a></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2013-11-24T22:25:50-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Android知识点]]></title>
+    <link href="http://icersummer.github.io/blog/2013/09/02/learning-in-android/"/>
+    <updated>2013-09-02T21:14:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/09/02/learning-in-android</id>
+    <content type="html"><![CDATA[<p>粉笔网 Fenby.com 在线编程，Android知识视频<a href="http://www.fenby.com/learn/courseExercises/31">http://www.fenby.com/learn/courseExercises/31</a></p>
+
+<p>C语言基础<a href="http://www.fenby.com/learn/courseUnits/-3">http://www.fenby.com/learn/courseUnits/-3</a></p>
+
+<p>Android <a href="http://developer.android.com/training/basics/fragments/fragment-ui.html">http://developer.android.com/training/basics/fragments/fragment-ui.html</a></p>
+
+<p>OSCHINA: <a href="http://www.oschina.net/android/3/android-dev-base">http://www.oschina.net/android/3/android-dev-base</a></p>
+]]></content>
+  </entry>
+  
+</feed>

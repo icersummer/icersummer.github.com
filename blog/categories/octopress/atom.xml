@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2013-11-22T01:35:40-08:00</updated>
+  <updated>2013-11-24T22:25:50-08:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -83,6 +83,50 @@
 <p>.slugignore</p>
 
 <p>added slugignore to help with heroku deployment</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[博客建立记录]]></title>
+    <link href="http://icersummer.github.io/blog/2013/05/07/the-way-to-build-the-blog/"/>
+    <updated>2013-05-07T12:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/05/07/the-way-to-build-the-blog</id>
+    <content type="html"><![CDATA[<p>由上个礼拜有了使用GitHub建立自己博客的想法，开始参考<a href="http://lvkun.github.io/#!2012-01-29-write-blog-on-github">已有博客</a>进行创建。</p>
+
+<p>首先是建立一个极简的博客写作、更新至master、博客页面展示流程，参看<a href="http://lvkun.github.io/#!2012-01-29-write-blog-on-github">此处</a>的博客，总体感觉简洁、易于管理，对于样式可以自己创建，自由度大，但同时也是不能重用已有的类似wordpress的整体方案。缺点在于页面是使用JS动态生成，对于搜索引擎、页面静态化可能有影响。</p>
+
+<p>然后看到一些通过otcopress建立的博客，样式、风格挺喜欢，基于Jelly建立；但是同时它需要ruby环境，有一套已经成熟的流程。在耗费了3天时间建立otcopress博客、走通create、update、display流程后，忽然感觉自己是不是有些本末倒置。ruby自己不熟悉，在现阶段自己的想法是开始使用Github博客记录想法、养成习惯，如果精力分散到不相关的地方（也许是自己的方法不对，没有找到最优途径），可能就偏离了自己的预设。</p>
+
+<p>所以，还是回归简单，先使用JS style的GitHub blog <a href="http://icersummer.github.io/">我的博客</a>。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Process to Build Blog]]></title>
+    <link href="http://icersummer.github.io/blog/2013/04/25/process-to-build-blog/"/>
+    <updated>2013-04-25T02:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/04/25/process-to-build-blog</id>
+    <content type="html"><![CDATA[<p>本博地址: <a href="#!2013-04-25-process-to-build-blog">本博地址</a></p>
+
+<p>具体内容：<a href="#!"> TODO </a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Name Convention Blog in Octopress]]></title>
+    <link href="http://icersummer.github.io/blog/2013/04/25/naming-convention-in-blog/"/>
+    <updated>2013-04-25T02:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/04/25/naming-convention-in-blog</id>
+    <content type="html"><![CDATA[<p>本博地址: <a href="#!2013-04-25-naming-convention-in-blog">本博地址</a></p>
+
+<p>命名：YYYY-MM-DD-BLOG-NAME</p>
+
+<h3>基本格式</h3>
+
+<p>使用<a href="http://daringfireball.net/projects/markdown/">Markdown</a>，具体语法参考<a href="http://daringfireball.net/projects/markdown/dingus">Dingus</a>。
+空行换行。</p>
+
+<p>新行。</p>
 ]]></content>
   </entry>
   

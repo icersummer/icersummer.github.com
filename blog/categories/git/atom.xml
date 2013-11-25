@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2013-11-24T22:25:50-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在线学习GIT]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/18/learn-git-online/"/>
+    <updated>2013-07-18T21:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/18/learn-git-online</id>
+    <content type="html"><![CDATA[<ul>
+<li>Try-Git 10 分钟教程 [<a href="http://try.github.io/wrap_up">http://try.github.io/wrap_up</a>]</li>
+<li>Git Real at Code School &ndash; Level 1 [<a href="http://gitreal.codeschool.com/levels/1">http://gitreal.codeschool.com/levels/1</a>]</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[GitTips]]></title>
+    <link href="http://icersummer.github.io/blog/2013/06/01/Git-Tips/"/>
+    <updated>2013-06-01T17:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/06/01/Git-Tips</id>
+    <content type="html"><![CDATA[<h1>收集整理Git小技巧、资料。</h1>
+
+<hr />
+
+<h3>入门书籍</h3>
+
+<ul>
+<li>Pro Git 中文版 &ndash; [Link] (<a href="http://progit.org/book/zh/">http://progit.org/book/zh/</a>)</li>
+</ul>
+
+
+<hr />
+
+<h3>在线教程</h3>
+
+<ul>
+<li>Git分支模型 &ndash; <a href="http://www.juvenxu.com/2010/11/28/a-successful-git-branching-model/">Link</a></li>
+<li>Git rebase/merge 合并操作演示  &ndash; <a href="http://ihower.tw/blog/archives/6704/">Link</a></li>
+<li>Git常用命令导图  &ndash; <a href="http://pic002.cnblogs.com/img/1-2-3/201007/2010072023345292.png">Link</a></li>
+<li>Git简易指南  &ndash; <a href="http://rogerdudler.github.com/git-guide/index.zh.html">Link</a></li>
+<li>Git分支管理策略  &ndash; <a href="http://www.ruanyifeng.com/blog/2012/07/git.html">Link</a></li>
+<li>Git视频教程  &ndash; <a href="http://happycasts.net/episodes?tag_id=2">Link</a></li>
+</ul>
+
+
+<hr />
+
+<h3>相关资源</h3>
+
+<ul>
+<li>githug： 一个 Ruby gem包，可以边玩游戏边学Git，安装如下：
+  <code>gem install github</code></li>
+<li><p>GitGuys.com &ndash; <a href="http://www.gitguys.com/">Link</a></p></li>
+<li><p>Set Up Git &ndash; 来自官网的说明 Bootcamp (link, <a href="https://help.github.com/articles/set-up-git">https://help.github.com/articles/set-up-git</a>)</p></li>
+</ul>
+
+
+<h3>使用中碰到的问题、解决方法将陆续添加。</h3>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Back to Eclipse and Install EGit]]></title>
+    <link href="http://icersummer.github.io/blog/2013/05/30/back-to-Eclipse-and-install-EGit/"/>
+    <updated>2013-05-30T12:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/05/30/back-to-Eclipse-and-install-EGit</id>
+    <content type="html"><![CDATA[<p>打算切换我的IDE从SSTS到Eclipse了，因为在Eclipse官网首页看到了它的Featured Eclipse Project &ndash; EGit。</p>
+
+<p>而且，一直觉得，SSTS更新速度不够快，而Eclipse紧跟潮流。</p>
+
+<p>连现在Eclipse MarketPlace SSTS都没有。不会是因为我的IDE太古老了吧，anyway，我要换回使用Pure Eclipse了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[阅读Git权威指南--样章一二三章]]></title>
+    <link href="http://icersummer.github.io/blog/2013/05/14/read-git-article-123/"/>
+    <updated>2013-05-14T02:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/05/14/read-git-article-123</id>
+    <content type="html"><![CDATA[<p><img src="http://ts4.mm.bing.net/th?id=H.4525792752435275&amp;pid=1.7" title="pic title" alt="Heading pic" /></p>
+
+<p>今天读了<a href="https://google.com/icersummer" title="title vjia">Git权威指南</a>，前3篇，来自ChinaPub的样章，对Git有了粗浅了解。</p>
+
+<p><em>第1篇：初识Git</em></p>
+
+<ul>
+<li><p>第1章： 版本控制的前世和今生
+主要对比了CVS、SVN、Git的异同，并且大书了Git的可用性、易用性。</p></li>
+<li><p>第2章： 爱上Git的理由
+列举了Git的一些闪亮特性，并且通过Git和SVN的对照看到Git的神奇和强大，包括每日工作备份、异地协同工作、现场版本控制。</p></li>
+<li><p>第3章： Git的安装和使用
+介绍主要安装步骤，Git在各主流平台：Linux、Mac OS X、Windows。</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

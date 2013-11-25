@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[Ubuntu] 怎样修改计算机名字 - Coder Blog VJIA</title>
+  <meta name="author" content="Vincent J">
+
+  
+  <meta name="description" content="按下 Ctrl &ndash; Alt &ndash; T 组合键，打开终端。 当终端打开，输入下列命令，使用gedit编辑hostname文件 sudo gedit /etc/hostname 接下来，无论旧的计算机名字是什么，换一个新的吧。例如，如果你想要你的计算机名字为“RDOMNU”， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icersummer.github.io/blog/2013/11/06/how-to-change-ubuntu-hostname">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coder Blog VJIA" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coder Blog VJIA</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:icersummer.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[Ubuntu] 怎样修改计算机名字</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-06T20:25:03-08:00" pubdate data-updated="true">Nov 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>按下 Ctrl &ndash; Alt &ndash; T 组合键，打开终端。 当终端打开，输入下列命令，使用gedit编辑hostname文件</p>
+
+<p>sudo gedit /etc/hostname</p>
+
+<p>接下来，无论旧的计算机名字是什么，换一个新的吧。例如，如果你想要你的计算机名字为“RDOMNU”，先删除文件内容，输入 RDOMNU，然后保存文件。</p>
+
+<p>然后，再输入下列命令来打开hosts文件</p>
+
+<p>sudo gedit /etc/hosts</p>
+
+<p>更改第二行箭头标记位置的值，使它与你刚才输入的计算机名字相符，完成后保存文件。</p>
+
+<p><img src="../images/ubuntu-hostname.png" alt="Ubunbu hosts" /></p>
+
+<p>重启，显示新的名字。</p>
+
+<p><code>$ sudo reboot -h 0</code></p>
+
+<p>参考链接：</p>
+
+<ul>
+<li><p><a href="http://linux.cn/thread/11846/1/1/">http://linux.cn/thread/11846/1/1/</a></p></li>
+<li><p><a href="http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/">http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/</a></p></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent J</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-06T20:25:03-08:00" pubdate data-updated="true">Nov 6<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>, <a class='category' href='/blog/categories/oldblog/'>oldblog</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icersummer.github.io/blog/2013/11/06/how-to-change-ubuntu-hostname/" data-via="" data-counturl="http://icersummer.github.io/blog/2013/11/06/how-to-change-ubuntu-hostname/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/11/01/eclipse-plugins/" title="Previous Post: Eclipse Plugins">&laquo; Eclipse Plugins</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/11/22/a-first-blog-in-octopress/" title="Next Post: a first blog in octopress">a first blog in octopress &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/test-and-come-on-post/">Test and Come on Post</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/another-post-to-poc/">Another Post to POC</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/06/how-to-change-ubuntu-hostname/">[Ubuntu] 怎样修改计算机名字</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/01/eclipse-plugins/">Eclipse Plugins</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Vincent J -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
