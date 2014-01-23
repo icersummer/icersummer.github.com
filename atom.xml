@@ -4,7 +4,7 @@
   <title><![CDATA[Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2013-11-24T22:25:50-08:00</updated>
+  <updated>2014-01-23T01:47:05-08:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Reset Centos Root Password]]></title>
+    <link href="http://icersummer.github.io/blog/2014/01/23/reset-centos-root-password/"/>
+    <updated>2014-01-23T01:43:47-08:00</updated>
+    <id>http://icersummer.github.io/blog/2014/01/23/reset-centos-root-password</id>
+    <content type="html"><![CDATA[<p>root和一般用户密码忘记</p>
+
+<p>重置步骤</p>
+
+<ol>
+<li><p>重置root
+<a href="http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-root-passwd.html">http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-root-passwd.html</a></p></li>
+<li><p>重置普通
+<a href="http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-forgot-user.html">http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-forgot-user.html</a></p></li>
+</ol>
+
+
+<p>参看截图：</p>
+
+<p>step1.png</p>
+
+<p>step2.png</p>
+
+<p>step3.png</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Test and Come on Post]]></title>
@@ -1214,32 +1241,6 @@ insert into my_table select * from exist_table;
 <ul>
 <li><p>what&rsquo;s YARN ?</p></li>
 <li><p>what&rsquo;s jps ?</p></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python学习的资源]]></title>
-    <link href="http://icersummer.github.io/blog/2013/07/25/python-leanring-resources/"/>
-    <updated>2013-07-25T21:09:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/07/25/python-leanring-resources</id>
-    <content type="html"><![CDATA[<ul>
-<li><em>啄木鸟社区</em> [link, <a href="http://woodpecker.org.cn/">http://woodpecker.org.cn/</a>]</li>
-</ul>
-
-
-<p>(里面内容分为：
-&ndash; Wiki
-&ndash; Planet
-&ndash; 简明Python 2.3教程
-&ndash; 简明Python 3教程
-&ndash; Dive Into Python中文版
-&ndash; Dive Into Python 3中文版
-)</p>
-
-<ul>
-<li>《深入Python3》 [link, <a href="http://woodpecker.org.cn/diveintopython3/index.html">http://woodpecker.org.cn/diveintopython3/index.html</a>]</li>
 </ul>
 
 ]]></content>

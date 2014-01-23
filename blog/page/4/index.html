@@ -9,9 +9,18 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="如何部署和使用goagent，以Windows为例： &mdash;申请Google Appengine并创建appid。
-&mdash;下载goagent最新版 https://code.google.com/p/goagent/
-&mdash;修改local\proxy.ini中的[gae] &hellip;">
+  <meta name="description" content="加粗 粗体1
+粗体2
+粗体3 标题 标题1 标题2 标题3 黑体 黑体 斜体 斜体 分割线 列表 列表项目1
+列表项目2
+列表项目3 单行代码 这里是单行代码 多行代码 1
+2
+3
+4
+5
+或者rb，
+或者HTML 空格二 空格四 结束 引用 引用内容，分别显示；
+无空行第二引用，附于第一段； &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +76,208 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/18/how-to-use-markdown-03/">Markdown常用语法、格式简介 - 03</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-18T21:12:03-07:00" pubdate data-updated="true">Jun 18<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>加粗</p>
+
+<p><em>粗体1</em>
+<strong>粗体2</strong>
+<strong><em>粗体3</em></strong></p>
+
+<p>标题</p>
+
+<h1>标题1</h1>
+
+<h2>标题2</h2>
+
+<h3>标题3</h3>
+
+<p>黑体</p>
+
+<p><b>黑体</b></p>
+
+<p>斜体</p>
+
+<p><em>斜体</em></p>
+
+<p>分割线</p>
+
+<hr />
+
+<p>列表</p>
+
+<ul>
+<li>列表项目1</li>
+<li>列表项目2</li>
+<li>列表项目3</li>
+</ul>
+
+
+<p>单行代码</p>
+
+<p><code>这里是单行代码</code></p>
+
+<p>多行代码</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>或者rb，
+</span><span class='line'>或者HTML
+</span><span class='line'>  空格二
+</span><span class='line'>      空格四
+</span><span class='line'>  结束</span></code></pre></td></tr></table></div></figure>
+
+
+<p>引用</p>
+
+<blockquote><p>引用内容，分别显示；
+无空行第二引用，附于第一段；</p>
+
+<p>换行，则新行。</p></blockquote>
+
+<hr />
+
+<p>源代码格式</p>
+
+<hr />
+
+<p>加粗</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>*粗体1*
+</span><span class='line'>**粗体2**
+</span><span class='line'>**粗体3**</span></code></pre></td></tr></table></div></figure>
+
+
+<p>标题</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#标题1#
+</span><span class='line'>##标题2##</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有序编号显示</p>
+
+<ol>
+<li>第一行</li>
+<li>第二行</li>
+<li>第三行</li>
+<li>第四行 (行前的数字其实不起作用)</li>
+</ol>
+
+
+<p>嵌套编号</p>
+
+<ol>
+<li>Dog
+
+<ol>
+<li>German Shepherd</li>
+<li>Belgian Shepherd
+
+<ol>
+<li>Malinois</li>
+<li>Groenendael</li>
+<li>Tervuren</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Cat
+
+<ol>
+<li>Siberian</li>
+<li>Siamese</li>
+</ol>
+</li>
+</ol>
+
+
+<p>规则就是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;b&gt;Advanced lists: Nesting&lt;/b&gt;   
+</span><span class='line'>
+</span><span class='line'>To put other Markdown blocks in a list; just indent four spaces for each nesting level.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>//TODO ， 这篇文章研究 <a href="http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html">http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html</a></p>
+
+<h1>双行分隔符</h1>
+
+<h2>单行分隔符</h2>
+
+<p>图片嵌入(比文字超链多了惊叹号)</p>
+
+<p><img src="https://github.com/icersummer" alt="screen shot" /></p>
+
+<h2>使用单行分隔符的Code Sample</h2>
+
+<p>The file <a href="http://icersummer.github.io"><code>HELLOWORLD.JAVA</code></a> is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。</p>
+
+<p>四个空格可以构造缩进、包围效果、并且无需换行：</p>
+
+<pre><code>123467
+这个世界
+http://github.com/icersummer
+nowthat
+</code></pre>
+
+<blockquote><p>这是一个引用。</p></blockquote>
+
+<p>下面引用中无序列表：</p>
+
+<blockquote><p>有趣的现象：</p>
+
+<ul>
+<li><p>列表1</p></li>
+<li><p>comment list</p></li>
+<li><p>comment list 002</p></li>
+</ul>
+
+
+<p>More details.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -540,51 +751,6 @@ firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/08/the-benefit-to-write-blog/">书写博客的好处</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-08T02:09:03-07:00" pubdate data-updated="true">May 8<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>列举一下关于写博客的好处：</p>
-
-<ol>
-<li>即便没有读者，你也要写博客 <a href="http://blog.jobbole.com/38258/">linkA</a></li>
-<li>开发者拒绝写技术博客的常见理由 <a href="http://blog.jobbole.com/18251/">linkB</a></li>
-<li>敏捷的写博客 <a href="http://blog.jobbole.com/38203/">linkC</a></li>
-<li>On Writing &ndash; why entrepreneurs should write. <a href="http://spencerfry.com/on-writing">linkD</a></li>
-<li>Break into Silicon Valley with a blog. <a href="http://nathanmarz.com/blog/break-into-silicon-valley-with-a-blog-1.html">linkE</a></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -602,6 +768,10 @@ firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/22/test-and-come-on-post/">Test and Come on Post</a>
       </li>
     
@@ -617,10 +787,6 @@ firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
         <a href="/blog/2013/11/06/how-to-change-ubuntu-hostname/">[Ubuntu] 怎样修改计算机名字</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2013/11/01/eclipse-plugins/">Eclipse Plugins</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -634,7 +800,7 @@ firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Vincent J -
+  Copyright &copy; 2014 - Vincent J -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
