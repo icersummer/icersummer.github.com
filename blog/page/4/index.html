@@ -9,18 +9,8 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="加粗 粗体1
-粗体2
-粗体3 标题 标题1 标题2 标题3 黑体 黑体 斜体 斜体 分割线 列表 列表项目1
-列表项目2
-列表项目3 单行代码 这里是单行代码 多行代码 1
-2
-3
-4
-5
-或者rb，
-或者HTML 空格二 空格四 结束 引用 引用内容，分别显示；
-无空行第二引用，附于第一段； &hellip;">
+  <meta name="description" content="X-Window模式 使用VM安装Ubuntu，如果使用X-window启动方式，会占用过多内存，而且操作方式并不是很方便，所以修改配置，使其可以启动直接进入命令行模式。 可以通过X-window登陆后，运行如下命令如下： &lsquo;&rsquo;&lsquo;
+$sudo gedit / &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +66,171 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/10/configure-ubuntu-to-cmdline/">Ubuntu CommandLine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-10T13:09:03-07:00" pubdate data-updated="true">Jul 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p><strong>X-Window模式</strong></p>
+
+<p>使用VM安装Ubuntu，如果使用X-window启动方式，会占用过多内存，而且操作方式并不是很方便，所以修改配置，使其可以启动直接进入命令行模式。</p>
+
+<p>可以通过X-window登陆后，运行如下命令如下：</p>
+
+<p>&lsquo;&rsquo;&lsquo;
+$sudo gedit /etc/default/grub</p>
+
+<p>&mdash;修改行
+$GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;quiet splash&#8221;为</p>
+
+<p>$GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;quiet splash text&rdquo;</p>
+
+<p>$sudo update-grub</p>
+
+<p>$sudo reboot
+&lsquo;&rsquo;&#8217;</p>
+
+<hr />
+
+<p><strong>CMD启动X-Window</strong></p>
+
+<p>命令行方式登录进入系统后，可以通过$startx命令进入图形界面</p>
+
+<ul>
+<li><p>在系统终端（比如VMWare中）执行$startx，系统直接启动图形界面；</p></li>
+<li><p>在Terminal端（如Putty或SecureCRT）中执行$startx，则系统终端会启动图形界面，而SecureCRT端则只有类log输出：</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~$ startx
+</span><span class='line'>xauth:  file /home/hduser/.Xauthority does not exist
+</span><span class='line'>
+</span><span class='line'>X: user not authorized to run the X server, aborting.
+</span><span class='line'>sudo startx
+</span><span class='line'>xinit: giving up
+</span><span class='line'>xinit: unable to connect to X server: No such file or directory
+</span><span class='line'>xinit: server error
+</span><span class='line'>hduser@ubuntu:~$ sudo startx
+</span><span class='line'>[sudo] password for hduser: 
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>X.Org X Server 1.11.3
+</span><span class='line'>Release Date: 2011-12-16
+</span><span class='line'>X Protocol Version 11, Revision 0
+</span><span class='line'>Build Operating System: Linux 2.6.24-29-server i686 Ubuntu
+</span><span class='line'>Current Operating System: Linux ubuntu 3.2.0-23-generic-pae #36-Ubuntu SMP Tue Apr 10 22:19:09 UTC 2012 i686
+</span><span class='line'>Kernel command line: BOOT_IMAGE=/boot/vmlinuz-3.2.0-23-generic-pae root=UUID=4594ceba-abdf-430c-9f6e-910d0ad98e52 ro quiet splash text
+</span><span class='line'>Build Date: 04 April 2012  11:58:38PM
+</span><span class='line'>xorg-server 2:1.11.4-0ubuntu10 (For technical support please see http://www.ubuntu.com/support) 
+</span><span class='line'>Current version of pixman: 0.24.4
+</span><span class='line'>        Before reporting problems, check http://wiki.x.org
+</span><span class='line'>        to make sure that you have the latest version.
+</span><span class='line'>Markers: (--) probed, (**) from config file, (==) default setting,
+</span><span class='line'>        (++) from command line, (!!) notice, (II) informational,
+</span><span class='line'>        (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+</span><span class='line'>(==) Log file: "/var/log/Xorg.0.log", Time: Fri Aug  2 00:11:15 2013
+</span><span class='line'>(==) Using system config directory "/usr/share/X11/xorg.conf.d"
+</span><span class='line'>(EE) open /dev/fb0: No such file or directory
+</span><span class='line'>(EE) vmware(0): Device is not screen object capable.
+</span><span class='line'>^Cxinit: connection to X server lost
+</span><span class='line'>
+</span><span class='line'>waiting for X server to shut down .... ddxSigGiveUp: Closing log
+</span><span class='line'>Server terminated successfully (0). Closing log file.
+</span><span class='line'>.
+</span><span class='line'>xinit: unexpected signal 2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ctrl+C退出。</p>
+
+<hr />
+
+<p>只是不能直接由X-Window切换回CMD，只能够执行命令reboot进行返回：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~$ sudo reboot -h 0
+</span><span class='line'>[sudo] password for hduser: 
+</span><span class='line'>
+</span><span class='line'>Broadcast message from hduser@ubuntu
+</span><span class='line'>        (/dev/pts/0) at 0:56 ...
+</span><span class='line'>
+</span><span class='line'>The system is going down for reboot NOW!</span></code></pre></td></tr></table></div></figure>
+
+
+<p>EOF.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -713,44 +868,6 @@ firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/13/try-to-write-blog-in-day/">博客书写的频度</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-13T02:09:03-07:00" pubdate data-updated="true">May 13<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>主题、频度、质量……</p>
-
-<p>建立起了不同的博客后，怎么保证不间断的书写呢？不知道怎么会有那么多的琐事，不能够安下心来写作；看书也那么浮躁，有些是真的是无法控制，该整理的东西整理起来吧，</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -768,6 +885,10 @@ firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a>
       </li>
     
@@ -781,10 +902,6 @@ firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
     
       <li class="post">
         <a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/06/how-to-change-ubuntu-hostname/">[Ubuntu] 怎样修改计算机名字</a>
       </li>
     
   </ul>

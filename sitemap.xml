@@ -185,8 +185,14 @@
         <lastmod>2014-01-23T01:46:35-08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://icersummer.github.io/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/
+        </loc>
+        <lastmod>2014-01-27T00:21:26-08:00</lastmod>
+    </url>
+    <url>
         <loc>http://icersummer.github.io/</loc>
-        <lastmod>2014-01-23T01:46:35-08:00</lastmod>
+        <lastmod>2014-01-27T00:21:26-08:00</lastmod>
     </url>
     <url>
         <loc>http://icersummer.github.io/robots.txt</loc>
@@ -194,6 +200,6 @@
     </url>
     <url>
         <loc>http://icersummer.github.io/blog/archives/</loc>
-        <lastmod>2014-01-23T01:46:35-08:00</lastmod>
+        <lastmod>2014-01-27T00:21:26-08:00</lastmod>
     </url>
 </urlset>

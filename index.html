@@ -9,10 +9,7 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="root和一般用户密码忘记 重置步骤 重置root
-http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-root-passwd.html
-重置普通
-http://www.centos.org/docs/4/html/rhel-sbs &hellip;">
+  <meta name="description" content="how to find the lost Chrome bookmarks I don&rsquo;t know why, but one day when I open my Chrome, all the bookmarks gone. I&rsquo;m still signed in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +65,56 @@ http://www.centos.org/docs/4/html/rhel-sbs &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-27T00:20:38-08:00" pubdate data-updated="true">Jan 27<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>how to find the lost Chrome bookmarks</p>
+
+<hr />
+
+<p>I don&rsquo;t know why, but one day when I open my Chrome, all the bookmarks gone. I&rsquo;m still signed in with my gmail account. I believe these bookmarks are stored locally. The last bak file I can find is 5 month ago.</p>
+
+<p>I find a way to find a possible backup via <a href="http://productforums.google.com/forum/#!topic/chrome/EUMCNrG8J1M">Google search</a>;</p>
+
+<blockquote><p>I found the backup version of my bookmark but it is 15 days old. Atleast I found a place there Google Chrome keeps a backup copy but it is located in some obscure folder directory.
+C:\Users\NAME\AppData\Local\Google\Chrome\User Data\Default
+There is a file called: Bookmarks.bak.  The sad part that i can not simply rename this file to Bookmarks aand for chrome to be back in business. One has to locate a JSON parser to parse through this JSON file into a html file for Chrome to ingest the html bookmark. I am looking around for a JSON parser into HTML then ingest this new html file into my PC chrome browser.</p></blockquote>
+
+<p>Folder in my local is D:\Users\$name\AppData\Local\Google\Chrome\User Data\Default</p>
+
+<p>You can find the file Bookmarks.bak with JSON format.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -811,65 +858,6 @@ insert into my_table select * from exist_table;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/09/09/debug-with-chrome-devtools/">Chrome Developer Tool调试技巧</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-09T21:19:03-07:00" pubdate data-updated="true">Sep 9<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>使用CDT进行调试</h2>
-
-<ol>
-<li><p>Beautify Javascript</p></li>
-<li><p>查看元素绑定了哪些事件</p></li>
-<li><p>AJax时中断</p></li>
-<li><p>页面事件中断</p></li>
-<li><p>JavaScript异常时中断</p></li>
-<li><p>DOM Level 3 Event事件中断</p></li>
-<li><p>所有文件中搜索、查找</p></li>
-<li><p>CommandLine API</p></li>
-<li><p>实时修改JS代码生效</p></li>
-<li><p>Console中执行的代码可断点</p></li>
-</ol>
-
-
-<h2>参考链接：</h2>
-
-<ol>
-<li><p>UED <a href="http://ued.taobao.com/blog/2012/06/debug-with-chrome-dev-tool/">http://ued.taobao.com/blog/2012/06/debug-with-chrome-dev-tool/</a></p></li>
-<li><p>Google Developers <a href="https://developers.google.com/chrome-developer-tools/">https://developers.google.com/chrome-developer-tools/</a></p></li>
-<li><p>Link <a href="http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html">http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html</a></p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -885,6 +873,10 @@ insert into my_table select * from exist_table;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a>
       </li>
     
@@ -898,10 +890,6 @@ insert into my_table select * from exist_table;
     
       <li class="post">
         <a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/06/how-to-change-ubuntu-hostname/">[Ubuntu] 怎样修改计算机名字</a>
       </li>
     
   </ul>
