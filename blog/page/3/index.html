@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="1) 配置hadoop-env.sh 走到这一步时，是参照Michael-noll.com上的内容，但是需要配置$HADOOP_HOME/conf/hadoop-env.sh了，我不清楚他在写此篇博客时是基于Hadoop哪个版本，但是在我当前版本-2.0.5-alpha，并没有此目录； &hellip;">
+  <meta name="description" content="粉笔网 Fenby.com 在线编程，Android知识视频http://www.fenby.com/learn/courseExercises/31 C语言基础http://www.fenby.com/learn/courseUnits/-3 Android http://developer. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,264 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/02/learning-in-android/">Android知识点</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-02T21:14:03-07:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>粉笔网 Fenby.com 在线编程，Android知识视频<a href="http://www.fenby.com/learn/courseExercises/31">http://www.fenby.com/learn/courseExercises/31</a></p>
+
+<p>C语言基础<a href="http://www.fenby.com/learn/courseUnits/-3">http://www.fenby.com/learn/courseUnits/-3</a></p>
+
+<p>Android <a href="http://developer.android.com/training/basics/fragments/fragment-ui.html">http://developer.android.com/training/basics/fragments/fragment-ui.html</a></p>
+
+<p>OSCHINA: <a href="http://www.oschina.net/android/3/android-dev-base">http://www.oschina.net/android/3/android-dev-base</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/26/uninstall-oracle-manually/">手动卸载Oracle</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-26T21:11:03-07:00" pubdate data-updated="true">Aug 26<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>直接使用安装完成后的Oracle自带的Uninstallation程序，也是可以部分完成我们所需的卸载功能，但是终究还是会遗留一部分需要手工参与的步骤。</p>
+
+<p>而我今天所面临的问题是：2块硬盘，在上个礼拜其中一块硬盘罢工，幸好不是系统盘，免去了我要重装系统的麻烦；但麻烦的是损坏的F盘也是Oracle 11g所在磁盘，导致Oracle中服务及应用都不可使用。</p>
+
+<p>虽然我手动将Oracle原有目录及文件（F:\app\user_name&#8230;）拷贝了回去到原位置，但Oracle已然不能使用。尝试了2种方式去重装，没有成功：</p>
+
+<ul>
+<li><p>运行Uninstallation，中止；</p></li>
+<li><p>运行installation，企图覆盖原有程序，中止。</p></li>
+</ul>
+
+
+<p>看到有些文章，说可以通过手动删除Oracle注册表项操作，但是不太想通过此种方式，但是在看到stackoverflow上一篇帖子后，处于对他们的信任，还是使用这种方式：</p>
+
+<h3>Six-Step Process</h3>
+
+<ol>
+<li><p><strong>Delete the Oracle services</strong>: In the registry, go to \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services and delete everything that starts with &ldquo;Oracle&rdquo;</p></li>
+<li><p><strong>Remove other Oracle stuff from the registry</strong>: Go to \HKEY_LOCAL_MACHINE\SOFTWARE\ and delete the key ORACLE</p></li>
+<li><p><strong>Reboot</strong></p></li>
+<li><p><strong>Delete all the Oracle software</strong> from the directories where you installed it</p></li>
+<li><p><strong>Delete the Oracle software inventory</strong>: Delete the directory C:\Program Files\Oracle. You must do this no matter where you installed your Oracle software &ndash; the Oracle installer automatically writes information here.</p></li>
+<li><p><strong>Delete all shortcuts</strong> from your Start menu.</p></li>
+</ol>
+
+
+<p>参考链接： <a href="http://stackoverflow.com/questions/83967/how-do-i-do-a-manual-uninstall-of-oracle">How do I a manual uninstall of Oracle</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/07/readings-review-yearly/">每年度阅读回顾</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-07T20:09:03-07:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>每年度阅读回顾</h2>
+
+<p>在网络上一个空间中，看到了Amazon的CTO，Werner Vogels在他的[博客][1]中，列出了2012年读过的书籍和文章，这是一个Back to Basics的系列。</p>
+
+<p>其他一些别人推荐或读过的书籍有：</p>
+
+<ul>
+<li>&lt;Linux/Unix设计思想> by Mike Gancarz</li>
+</ul>
+
+
+<p><img src="/images/linuxshejisixiang.jpg" title="Linux/Unix设计思想" alt="Linux/Unix设计思想" /></p>
+
+<p>(本书适合入门，初步体会Linux/Unix的设计)</p>
+
+<ul>
+<li>&lt;认知盈余> by 克莱·舍基</li>
+</ul>
+
+
+<p><img src="/images/renzhiyingyu.jpg" title="认知盈余" alt="认知盈余" /></p>
+
+<ul>
+<li>&lt;七周七语言 理解多种编程范式> by Bruce A. Tate</li>
+</ul>
+
+
+<p><img src="/images/qizhouqiyuyan.jpg" title="七周七语言" alt="七周七语言" /></p>
+
+<p>&mdash;</p>
+
+<p>[1] <a href="http://www.allthingsdistributed.com/2012/12/paper-readings-2012.html">http://www.allthingsdistributed.com/2012/12/paper-readings-2012.html</a> &ldquo;The Back-to-Basics Readings of 2012&rdquo;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/07/falimiar-with-markdown/">2013-08-07-falimiar-with-markdown</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-07T20:09:03-07:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>更加的熟练使用Markdown</h2>
+
+<ul>
+<li>一个Markdown的在线编辑网站， <a href="http://www.ctrlshift.net/project/markdowneditor/">Online Markdown Editor</a></li>
+</ul>
+
+
+<p>这里面包含了实时预览已经书写的Markdown文本-Preview、解释后的HTML-HTML Output、通用的Markdown教程-Syntax Guide。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/06/build-webapp-in-bae/">在百度BAE中安装Wordpress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-06T13:09:03-07:00" pubdate data-updated="true">Aug 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/BAE.jpg" alt="BAE" /></p>
+
+<p>1) 参考文章，<a href="http://blog.tzvb.com/nr/2013/05/10/109">如何在百度BAE安装discuz论坛之全方位解析（图解）</a>。</p>
+
+<p>2) 在参考文章中描述的是如何安装BAE版Discuz，目前打算安装Wordpress。移步到<a href="http://blog.tzvb.com/nr/2013/05/08/87">百度BAE安装（WP）WordPress博客详细图文教程</a>进行安装WP。</p>
+
+<p>3) 安装完成，访问<a href="http://phpplay.duapp.com">http://phpplay.duapp.com</a> 总是报错“建立数据库连接时出错”；参考<a href="http://blog.gimhoy.com/archives/bae-database-and-page-navi.html">这里</a>，导入了wpback.sql。继续报错。</p>
+
+<p><a href="http://mawenjian.net/p/994.html">http://mawenjian.net/p/994.html</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -728,721 +986,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/17/different-way-to-reverse-java-to-uml/">Different_way_to_reverse_java_to_uml</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-17T21:09:03-07:00" pubdate data-updated="true">Jul 17<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>different_way_to_reverse_java_to_uml.md</h2>
-
-<p>常用的几种方式</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/16/list-of-china-movie-name-abroad/">国内电影 外名列表</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-16T21:09:03-07:00" pubdate data-updated="true">Jul 16<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>英雄本色 &ndash; A Better Tomorrow</li>
-<li>国产凌凌漆 &ndash; From Beijing with Love</li>
-<li>活着 &ndash; To Live</li>
-<li>TBD</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/14/should-build-my-booklist/">应该建立我自己的读书目录</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-14T21:09:03-07:00" pubdate data-updated="true">Jul 14<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>有很多电子书，读过了并没有记下多少东西，有些书很有用、但是还没有读过，而自己也没有有效的分类方式。</p>
-
-<p>建立状态表格：</p>
-
-<ul>
-<li>书名 磁盘名 笔记链接 是否已读 阅读进度</li>
-<li>A</li>
-<li>B</li>
-</ul>
-
-
-<p>TBD.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/13/command-to-see-ubuntu-64-or-32/">查看Ubuntu系统是否64位</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-13T21:09:03-07:00" pubdate data-updated="true">Jul 13<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>1.$uname -a</li>
-</ul>
-
-
-<p>如果有x86_64就是64位的，没有就是32位的</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ uname -a 
-</span><span class='line'>Linux ubuntu 3.2.0-23-generic-pae #36-Ubuntu SMP Tue Apr 10 22:19:09 UTC 2012 i686 i686 i386 GNU/Linux</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>2.$ uname -m</li>
-</ul>
-
-
-<p>x86_64</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ uname -m
-</span><span class='line'>i686</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>3.$ arch</li>
-</ul>
-
-
-<p>x86_64</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ arch
-</span><span class='line'>i686</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>4.$file /bin/cat</li>
-</ul>
-
-
-<p>/bin/cat: ELF 64-bit LSB executable, AMD x86-64, version 1 (SYSV), for GNU/Linux 2.4.0, dynamically linked (uses shared libs), stripped</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ file /bin/cat 
-</span><span class='line'>/bin/cat: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0x9e7f078dcc2d3dae02f578a1390debea06a26b74, stripped</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>5.查看cpu是多少位的</li>
-</ul>
-
-
-<p>more /proc/cpuinfo</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ more /proc/cpuinfo 
-</span><span class='line'>processor       : 0
-</span><span class='line'>vendor_id       : GenuineIntel
-</span><span class='line'>cpu family      : 6
-</span><span class='line'>model           : 44
-</span><span class='line'>model name      : Intel(R) Xeon(R) CPU           E5606  @ 2.13GHz
-</span><span class='line'>stepping        : 2
-</span><span class='line'>microcode       : 0x10
-</span><span class='line'>cpu MHz         : 2128.070
-</span><span class='line'>cache size      : 8192 KB
-</span><span class='line'>fdiv_bug        : no
-</span><span class='line'>hlt_bug         : no
-</span><span class='line'>f00f_bug        : no
-</span><span class='line'>coma_bug        : no
-</span><span class='line'>fpu             : yes
-</span><span class='line'>fpu_exception   : yes
-</span><span class='line'>cpuid level     : 11
-</span><span class='line'>wp              : yes
-</span><span class='line'>flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss nx rdt
-</span><span class='line'>scp constant_tsc up pebs bts xtopology tsc_reliable aperfmperf pni pclmulqdq ssse3 sse4_1 sse4_2 popcnt aes hypervisor arat epb dts
-</span><span class='line'>bogomips        : 4256.14
-</span><span class='line'>clflush size    : 64
-</span><span class='line'>cache_alignment : 64
-</span><span class='line'>address sizes   : 40 bits physical, 48 bits virtual
-</span><span class='line'>power management:</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>6.file /sbin/init</li>
-</ul>
-
-
-<p>/sbin/init: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV),</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ file /sbin/init
-</span><span class='line'>/sbin/init: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0x0ec7a63bbdb983cd488002f4cb87cdc0de5596f8, stripped</span></code></pre></td></tr></table></div></figure>
-
-
-<p>EOF.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/11/putty_to_connect_to_ubuntu_vm/">2013-07-11-putty_to_connect_to_ubuntu_vm</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-11T13:09:03-07:00" pubdate data-updated="true">Jul 11<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Putty连接VM中的Ubuntu问题及解决</h2>
-
-<p>问题：</p>
-
-<p>VMWare中安装了Ubuntu，通过配置使其命令行模式启动；启动后通过$ifconfig获得其IP，通过Putty中设置IP、Port 22 访问报错，错误信息“不会出现登录界面，几秒钟后弹出窗口-Network error : Connection Refused”.</p>
-
-<p>解决：</p>
-
-<ol>
-<li>可能没有开启ssh-server服务：</li>
-</ol>
-
-
-<p>命令$ sudo apt-get install openssh-server</p>
-
-<p>安装成功；之后还是之前同样的错误、不能Putty连接；</p>
-
-<ol>
-<li>安装openssh-client，但是Ubuntu缺省已经安装了openssh-client。</li>
-</ol>
-
-
-<p>$sudo apt-get insall openssh-client</p>
-
-<ol>
-<li>确认sshserver已经启动：</li>
-</ol>
-
-
-<p>$ps -e | grep ssh</p>
-
-<p>如果没有看到ssh，则手动启动 $sudo /etc/init.d/ssh start (or $sudo service ssh start)</p>
-
-<ol>
-<li>Putty依旧不能访问</li>
-</ol>
-
-
-<p>关闭windows7防火墙，全部关闭，应该是windows禁止了通过22端口访问；可以连接成功。</p>
-
-<ol>
-<li>VM Ubuntu端口改变问题</li>
-</ol>
-
-
-<p>配置成功后，通过Putty连接没有问题，但是发现每过一段时间，就回出现连接丢失的现象；几次三番后，发现其IP在动态改变；解决办法是在VM Setting中修改Network Adapter方式，NAT &ndash;> Bridged。</p>
-
-<p>（NAT: Used to share the host&rsquo;s IP address; Bridged: Connected directly to the physical network）</p>
-
-<ol>
-<li>其它说明</li>
-</ol>
-
-
-<p>ssh-server配置文件位于/etc/ssh/sshd_config文件，可以修改ssh的服务端口，默认是22,；修改后重启ssh服务： $sudo /etc/init.d/ssh restart</p>
-
-<ol>
-<li>遗留问题</li>
-</ol>
-
-
-<p>只能通过IP+Port的方式访问，如何才能通过hostname访问呢？</p>
-
-<ol>
-<li>JDK下载，通过curl</li>
-</ol>
-
-
-<p>8.1 安装 curl：$sudo apt-get curl</p>
-
-<p>8.2 how to download Oracle JDK without browser: [<a href="https://gist.github.com/hgomez/4697585">https://gist.github.com/hgomez/4697585</a>]</p>
-
-<p>8.3 使用SecureCRT所带SFTP上传JDK至Ubuntu，版本jdk-7u25-linux-i586.tar.gz</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ tar -xf jdk-7u25-linux-i586.tar.gz 
-</span><span class='line'>vincent@ubuntu:~$ ls
-</span><span class='line'>Desktop    examples.desktop            Music     Templates
-</span><span class='line'>Documents  jdk1.7.0_25                 Pictures  Videos
-</span><span class='line'>Downloads  jdk-7u25-linux-i586.tar.gz  Public
-</span><span class='line'>vincent@ubuntu:~$ cd jdk1.7.0_25/
-</span><span class='line'>vincent@ubuntu:~/jdk1.7.0_25$ cd bin
-</span><span class='line'>vincent@ubuntu:~/jdk1.7.0_25/bin$ ./java -version
-</span><span class='line'>java version "1.7.0_25"
-</span><span class='line'>Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
-</span><span class='line'>Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)</span></code></pre></td></tr></table></div></figure>
-
-
-<p>配置JDK variables</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ vi .bashrc
-</span><span class='line'>
-</span><span class='line'># export my own variables
-</span><span class='line'>JAVA_HOME=/home/vincent/jdk1.7.0_25
-</span><span class='line'>export JAVA_HOME
-</span><span class='line'>PATH=$PATH:$JAVA_HOME/bin
-</span><span class='line'>export PATH
-</span><span class='line'>
-</span><span class='line'>vincent@ubuntu:~$ source .bashrc
-</span><span class='line'>vincent@ubuntu:~$ java -version
-</span><span class='line'>java version "1.7.0_25"
-</span><span class='line'>Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
-</span><span class='line'>Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li>安装Hadoop</li>
-</ol>
-
-
-<p>9.1 [下载地址, <a href="http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-2.0.5-alpha/">http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-2.0.5-alpha/</a>]</p>
-
-<p>9.2 Setting up a Single Node Cluster, follow <B>Running Hadoop on Ubuntu Linux (Single-Node Cluster)</B> [<a href="http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/">http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/</a>]</p>
-
-<blockquote><p> The main goal of this tutorial is to get a simple Hadoop installation up and running so that you can play around with the software and learn more about it.</p></blockquote>
-
-<p>9.3 添加Hadoop专用user</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ sudo addgroup hadoop
-</span><span class='line'>[sudo] password for vincent: 
-</span><span class='line'>Adding group `hadoop' (GID 1001) ...
-</span><span class='line'>Done.
-</span><span class='line'>vincent@ubuntu:~$ sudo adduser --ingroup hadoop hduser
-</span><span class='line'>Adding user `hduser' ...
-</span><span class='line'>Adding new user `hduser' (1001) with group `hadoop' ...
-</span><span class='line'>Creating home directory `/home/hduser' ...
-</span><span class='line'>Copying files from `/etc/skel' ...
-</span><span class='line'>Enter new UNIX password: 
-</span><span class='line'>Retype new UNIX password: 
-</span><span class='line'>Sorry, passwords do not match
-</span><span class='line'>passwd: Authentication token manipulation error
-</span><span class='line'>passwd: password unchanged
-</span><span class='line'>Try again? [y/N] y
-</span><span class='line'>Enter new UNIX password: 
-</span><span class='line'>Retype new UNIX password: 
-</span><span class='line'>passwd: password updated successfully
-</span><span class='line'>Changing the user information for hduser
-</span><span class='line'>Enter the new value, or press ENTER for the default
-</span><span class='line'>        Full Name []: hadoop user
-</span><span class='line'>        Room Number []: 
-</span><span class='line'>        Work Phone []: 
-</span><span class='line'>        Home Phone []: 
-</span><span class='line'>        Other []: 
-</span><span class='line'>Is the information correct? [Y/n] y</span></code></pre></td></tr></table></div></figure>
-
-
-<p>9.4 需要设置SSH远程自动登录，需要其他机器直接访问Hadoop node，configure it to allow SSH public key authentication. 参考[Ubuntu Guide, <a href="http://ubuntuguide.org/wiki/Ubuntu_Raring">http://ubuntuguide.org/wiki/Ubuntu_Raring</a>]</p>
-
-<ul>
-<li>(这个时候，考虑，是不是之前使用user vincent配置了Java环境变量是不是不对、应该配置为全局变量？ 后面再看。)</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~$ ssh-keygen -t rsa -P ""
-</span><span class='line'>Generating public/private rsa key pair.
-</span><span class='line'>Enter file in which to save the key (/home/hduser/.ssh/id_rsa): 
-</span><span class='line'>Created directory '/home/hduser/.ssh'.
-</span><span class='line'>Your identification has been saved in /home/hduser/.ssh/id_rsa.
-</span><span class='line'>Your public key has been saved in /home/hduser/.ssh/id_rsa.pub.
-</span><span class='line'>The key fingerprint is:
-</span><span class='line'>9f:28:f3:80:ae:6c:64:d6:78:74:74:67:fa:21:91:f3 hduser@ubuntu
-</span><span class='line'>The key's randomart image is:
-</span><span class='line'>+--[ RSA 2048]----+
-</span><span class='line'>|         .       |
-</span><span class='line'>|      . = o      |
-</span><span class='line'>|     . . B       |
-</span><span class='line'>|    . . o E      |
-</span><span class='line'>|   + .  So .     |
-</span><span class='line'>|  = o.   o..     |
-</span><span class='line'>| + .. + . o      |
-</span><span class='line'>| ...   =         |
-</span><span class='line'>| .o..   .        |
-</span><span class='line'>+-----------------+
-</span><span class='line'>hduser@ubuntu:~$ ll
-</span><span class='line'>hduser@ubuntu:~$ cat .ssh/id_rsa.pub &gt;&gt; .ssh/authorized_keys
-</span><span class='line'>
-</span><span class='line'>//测试是否可以无密码登录
-</span><span class='line'>hduser@ubuntu:~/.ssh$ ssh localhost 
-</span><span class='line'>The authenticity of host 'localhost (127.0.0.1)' can't be established.
-</span><span class='line'>ECDSA key fingerprint is 47:6b:7b:a6:e4:80:38:96:f9:9c:a3:58:48:f4:51:82.
-</span><span class='line'>Are you sure you want to continue connecting (yes/no)? yes
-</span><span class='line'>Warning: Permanently added 'localhost' (ECDSA) to the list of known hosts.
-</span><span class='line'>Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
-</span><span class='line'>
-</span><span class='line'> * Documentation:  https://help.ubuntu.com/
-</span><span class='line'>
-</span><span class='line'>Last login: Wed Jul 31 01:38:45 2013 from gjia2d.ptcnet.ptc.com
-</span><span class='line'>hduser@ubuntu:~$ </span></code></pre></td></tr></table></div></figure>
-
-
-<p>9.5 开始安装配置Hadoop</p>
-
-<ul>
-<li>配置Hadoop user hduser 加入sudo权限中（需要这一步么？todo……）</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:/etc$ cd /etc/
-</span><span class='line'>vincent@ubuntu:/etc$ ll sudo*
-</span><span class='line'>-r--r----- 1 root root  767 Jul 31 02:17 sudoers
-</span><span class='line'>
-</span><span class='line'>sudoers.d:
-</span><span class='line'>total 20
-</span><span class='line'>drwxr-xr-x   2 root root  4096 Apr 23  2012 ./
-</span><span class='line'>drwxr-xr-x 127 root root 12288 Jul 31 02:17 ../
-</span><span class='line'>-r--r-----   1 root root   753 Jan 31  2012 README
-</span><span class='line'>vincent@ubuntu:/etc$ sudo vi sudoers
-</span><span class='line'>
-</span><span class='line'>// add sudo users
-</span><span class='line'>hduser ALL=(ALL) ALL
-</span><span class='line'>// sudoers文件的修改立即生效</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>添加Hadoop相关变量设置到hduser的$HOME/.bashrc</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// vj, add Hadoop Variables
-</span><span class='line'>hduser@ubuntu:~$ vi .bashrc
-</span><span class='line'>
-</span><span class='line'>HADOOP_HOME=/home/hduser/hadoop-2.0.5-alpha
-</span><span class='line'>export HADOOP_HOME
-</span><span class='line'>JAVA_HOME=/home/vincent/jdk1.7.0_25
-</span><span class='line'>export JAVA_HOME
-</span><span class='line'>
-</span><span class='line'>//Some convenient aliases and functions for running Hadoop-related commands
-</span><span class='line'>unalias fs &&gt; /dev/null
-</span><span class='line'>alias fs="hadoop fs"
-</span><span class='line'>unalias hls &&gt; /dev/null
-</span><span class='line'>alias hls="fs -ls"
-</span><span class='line'>
-</span><span class='line'>PATH=$PATH:$HADOOP_HOME/bin
-</span><span class='line'>export PATH
-</span><span class='line'>
-</span><span class='line'>hduser@ubuntu:~$ hadoop version
-</span><span class='line'>Hadoop 2.0.5-alpha
-</span><span class='line'>Subversion http://svn.apache.org/repos/asf/hadoop/common -r 1488459
-</span><span class='line'>Compiled by jenkins on 2013-06-01T04:05Z
-</span><span class='line'>From source with checksum c8f4bd45ac25c31b815f311b32ef17
-</span><span class='line'>This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>配置并运行起Hadoop，请看<a href="./2013-08-01-single-node-setup-of-hadoop.md">下一篇 &ndash; Single-Node setup of Hadoop</a></li>
-</ul>
-
-
-<p>TODO：</p>
-
-<ul>
-<li>当前时间显示是PDT时区(Wed Jul 31 01:46:14 PDT 2013)，如何配置显示东八区时间？</li>
-</ul>
-
-
-<p>补充资料：</p>
-
-<ul>
-<li><p>Ubuntu Environment Variables (link, <a href="https://help.ubuntu.com/community/EnvironmentVariables">https://help.ubuntu.com/community/EnvironmentVariables</a>)</p></li>
-<li><h3>What&rsquo;s Hadoop Distributed File System (HDFS)</h3></li>
-</ul>
-
-
-<blockquote><p>The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It has many similarities with existing distributed file systems. However, the differences from other distributed file systems are significant. HDFS is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets. HDFS relaxes a few POSIX requirements to enable streaming access to file system data. HDFS was originally built as infrastructure for the Apache Nutch web search engine project. HDFS is part of the Apache Hadoop project, which is part of the Apache Lucene project.</p>
-
-<p><I><B>The Hadoop Distributed File System: Architecture and Design</B> &ndash; <a href="http://hadoop.apache.org/hdfs/docs/current/hdfs_design.html">hadoop.apache.org/hdfs/docs/…</a></I></p></blockquote>
-
-<p>The following picture gives an overview of the most important HDFS components.</p>
-
-<p><img src="../images/HDFS-Architecture.gif" title="Optional title" alt="HDFS Architecture" /></p>
-
-<p>EOF.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1460,23 +1003,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a>
+        <a href="/blog/2014/04/15/usage-of-scp/">SCP命令的使用</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a>
+        <a href="/blog/2014/04/08/use-superputty-to-replace-putty/">使用带有TAB功能的superPutty代替putty</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/test-and-come-on-post/">Test and Come on Post</a>
+        <a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/another-post-to-poc/">Another Post to POC</a>
+        <a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a>
+        <a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a>
       </li>
     
   </ul>

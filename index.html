@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="how to find the lost Chrome bookmarks I don&rsquo;t know why, but one day when I open my Chrome, all the bookmarks gone. I&rsquo;m still signed in &hellip;">
+  <meta name="description" content="复制文件 SCP命令用于在Linux间拷贝文件，（可以在拷贝过程中重命名） scp [可选参数] file_source file_target 从本地复制到远程： scp local_file remote_username@remote_ip:remote_folder scp &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,515 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/15/usage-of-scp/">SCP命令的使用</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-15T21:12:03-07:00" pubdate data-updated="true">Apr 15<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>复制文件</strong></p>
+
+<p>SCP命令用于在Linux间拷贝文件，（可以在拷贝过程中重命名）</p>
+
+<p>scp [可选参数] file_source file_target</p>
+
+<p>从本地复制到远程：</p>
+
+<p>scp local_file remote_username@remote_ip:remote_folder</p>
+
+<p>scp local_file remote_username@remote_ip:remote_folder</p>
+
+<p>scp local_file remote_ip:remote_folder</p>
+
+<p>scp local_file remote_ip:remote_file</p>
+
+<p>用法示例：</p>
+
+<p>user1 in centos, user2 in ubuntu</p>
+
+<p>copy file1 from centos to ubuntu</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$scp /home/user1/downloads/file1 user2@ubuntu_ip:/home/user2/
+</span><span class='line'>type in the password of user2</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>复制目录</strong></p>
+
+<p>scp -r local_folder remote_username@remote_ip:remote_folder</p>
+
+<p><strong>从远程复制到本地</strong></p>
+
+<p>scp remote_user@remote_ip:remote_file locale_file_path</p>
+
+<p>scp -r remote_user@remote_ip:remote_folder locale_folder_path</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/08/use-superputty-to-replace-putty/">使用带有TAB功能的superPutty代替putty</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-08T21:12:03-07:00" pubdate data-updated="true">Apr 8<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>设置中SuperPutty是依赖于putty的，需要设置Putty.exe的路径。</p>
+
+<p>官网： <a href="http://code.google.com/p/superputty/">http://code.google.com/p/superputty/</a></p>
+
+<p>下载地址：<a href="http://code.google.com/p/superputty/downloads/detail?name=SuperPutty-1.4.0.4.zip&amp;can=2&amp;q=">link</a></p>
+
+<p>官方说明：</p>
+
+<blockquote><p>Introduction</p>
+
+<p>SuperPutty is a Windows GUI Application that allows the PuTTY SSH Client to be opened in Tabs. Additionally there is support for SCP to transfer files.</p>
+
+<p>SuperPutty is written in C# and runs on any Windows platform supporting the .NET Framework 2.0 or newer.</p>
+
+<p>Features</p></blockquote>
+
+<pre><code>Docking user interface allows personalized workspace and managing multiple PuTTY sessions easy
+Export/Import session configuration
+Upload files securely using the scp or sftp protocols
+Layouts
+Supports PuTTY session configurations including Private Keys
+Supports SSH, RLogin, Telnet and RAW protocols
+Supports local shell via MinTTY or puttycyg
+Supports KiTTY 
+</code></pre>
+
+<blockquote><p>Project Status</p></blockquote>
+
+<p>SuperPutty is stable and usable. Please report and bugs in the issue tracker</p>
+
+<p>来自softpedia.com的评论：</p>
+
+<p><a href="http://www.softpedia.com/get/Network-Tools/Telnet-SSH-Clients/SuperPutty.shtml">SoftPedia.com</a></p>
+
+<p>Softpedia Editor&rsquo;s Review for SuperPuTTY</p>
+
+<p>EDITOR&rsquo;S RATING:   4.5/5</p>
+
+<p>**Accessible and user-friendly PuTTY interface that features support for KiTTY, SSH, RLogin, RAW protocols, Telnet and local shell</p>
+
+<p>Written by <em><em>Mihaela Citea</em></em> on November 28th, 2013</p>
+
+<p>SuperPuTTY aims to enhance the capabilities of the PuTTY SSH and Telnet client by allowing you to launch it in multiple tabs. It offers you the possibility to easily manage multiple sessions of PuTTY using a single, comprehensive working environment.</p>
+
+<p>Aside from this significantly important advantage, the application comes with all the advantages and tools that PuTTY brings. It features support for multiple connection types and protocols, including Raw, Telnet, SCP, Rlogin, SSH, Serial, KiTTY and local shell via Cygterm and Mintty.</p>
+
+<p>The tab-based interface enables you to personalize your workspace and organize all the running PuTTY sessions. You can easily create a new session and opt for the desired profile to load. The xterm terminal emulator is intended for advanced users, while the comprehensive configuration panel of PuTTY enables you to change the connection options.</p>
+
+<p>Various general settings are available for customization and the application enables you to configure line discipline and remote-controlled printing. Also, you can set keyboard controls, notifications and alarms, as well as tweak the behavior of the terminal screen, TCP connections, login and terminal details, environment variables, proxy settings and a few settings specific to each protocol type.</p>
+
+<p>Sessions can be imported and exported and layouts can be saved for later use. The main window of SuperPuTTY allows quick switching between used protocols, hosts and sessions, as well as one-click configuration selection and command sending.</p>
+
+<p>SuperPuTTY enables you to link your machine to multiple computers and control all the workstations using one single interface. Aside from running multiple sessions, it tries to enhance the power of PuTTY even more, with advanced support for data encryption, reliable command-line SCP and SFTP clients for file uploading, port forwarding and private key-based authentication.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T21:12:03-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>错误信息：</p>
+
+<blockquote><p>ORA-28000
+Error: ORA-28000: the account is locked</p>
+
+<p>Cause: The user has entered wrong password consequently for maximum number of times specified by the user&rsquo;s profile parameter FAILED_LOGIN_ATTEMPTS, or the database administrator has locked the account.</p>
+
+<p>Action: Wait for PASSWORD_LOCK_TIME or contact the database administrator</p></blockquote>
+
+<p>解决办法：</p>
+
+<blockquote><p>To unlock an user manually:
+ALTER USER username ACCOUNT UNLOCK;</p>
+
+<p>to change his password:
+alter user username identified by new_password;</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T21:12:03-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>~$ git clone git://github.com/imathis/octopress.git hellosummer_blog</p>
+
+<p>git push origin branchName
+git remote add -t master -f origin <a href="https://github.com/hellosummer/hellosummer.github.com.git">https://github.com/hellosummer/hellosummer.github.com.git</a>
+$git remote add origin git@github:YourGithubID/work.git</p>
+
+<p>git checkout -b feature_x
+git push origin <branch></p>
+
+<p>不同情况的提交：</p>
+
+<p>1.checkout新项目，修改，提交
+//在当前目录下建立solrLearning目录，并克隆成功solrLearning项目
+$ git clone git://github.com/icersummer/solrLearning.git solrLearning
+//如下命令checkin成功
+$ git push <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a> master
+Username for &lsquo;<a href="https://github.com">https://github.com</a>&rsquo;:
+Password for &lsquo;<a href="https://icersummer@github.com">https://icersummer@github.com</a>&rsquo;:
+To <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a>
+   dcfaaac..16d9c7e  master &ndash;> master</p>
+
+<p>2.已存在的checkout的项目，拉取最新，修改，提交
+git pull</p>
+
+<p>3.建立分支，修改，提交</p>
+
+<p>4.已存在分支，拉取最新，修改，提交</p>
+
+<p>5.合并其他分支到Master分支
+git merge <branch></p>
+
+<p>6.回滚本地未提交改动
+git checkout &mdash; <filename></p>
+
+<p>7.覆盖本地所有改动与提交
+git fetch origin</p>
+
+<p>实用小贴士</p>
+
+<p>内建的图形化 git：
+gitk
+彩色的 git 输出：
+git config color.ui true
+显示历史记录时，每个提交的信息只显示一行：
+git config format.pretty oneline
+交互式添加文件到暂存区：
+git add -i</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-10T21:12:03-07:00" pubdate data-updated="true">Mar 10<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>导出数据： exp myadmin/myadmin@myinstace
+(data store on c:\backup.dmp)</p>
+
+<p>导入数据：
+sqlplus / as sysdba;
+(问题TBD: 为什么有的命令行可以运行并登录sqlplus / as sysdba; 而有的机器却报错，而且只能通过输入用户名密码的方式登录如：sqlplus system/password as sysdba; 区别和设置在哪里。)
+create user vjtest identified by vjtest;
+grant dba to vjtest;</p>
+
+<p>imp fromuser myadmin touser vjtest file=c:\backup.dmp
+(在提问中输入用户名、密码：vjtest, vjtest)</p>
+
+<p>同一用户的话使用：imp fromuser myadmin touser myadmin file=c:\backup.dmp</p>
+
+<p>加粗</p>
+
+<p><em>粗体1</em>
+<strong>粗体2</strong>
+<strong><em>粗体3</em></strong></p>
+
+<p>标题</p>
+
+<h1>标题1</h1>
+
+<h2>标题2</h2>
+
+<h3>标题3</h3>
+
+<p>黑体</p>
+
+<p><b>黑体</b></p>
+
+<p>斜体</p>
+
+<p><em>斜体</em></p>
+
+<p>分割线</p>
+
+<hr />
+
+<p>列表</p>
+
+<ul>
+<li>列表项目1</li>
+<li>列表项目2</li>
+<li>列表项目3</li>
+</ul>
+
+
+<p>单行代码</p>
+
+<p><code>这里是单行代码</code></p>
+
+<p>多行代码</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>或者rb，
+</span><span class='line'>或者HTML
+</span><span class='line'>  空格二
+</span><span class='line'>      空格四
+</span><span class='line'>  结束</span></code></pre></td></tr></table></div></figure>
+
+
+<p>引用</p>
+
+<blockquote><p>引用内容，分别显示；
+无空行第二引用，附于第一段；</p>
+
+<p>换行，则新行。</p></blockquote>
+
+<hr />
+
+<p>源代码格式</p>
+
+<hr />
+
+<p>加粗</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>*粗体1*
+</span><span class='line'>**粗体2**
+</span><span class='line'>**粗体3**</span></code></pre></td></tr></table></div></figure>
+
+
+<p>标题</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#标题1#
+</span><span class='line'>##标题2##</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有序编号显示</p>
+
+<ol>
+<li>第一行</li>
+<li>第二行</li>
+<li>第三行</li>
+<li>第四行 (行前的数字其实不起作用)</li>
+</ol>
+
+
+<p>嵌套编号</p>
+
+<ol>
+<li>Dog
+
+<ol>
+<li>German Shepherd</li>
+<li>Belgian Shepherd
+
+<ol>
+<li>Malinois</li>
+<li>Groenendael</li>
+<li>Tervuren</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Cat
+
+<ol>
+<li>Siberian</li>
+<li>Siamese</li>
+</ol>
+</li>
+</ol>
+
+
+<p>规则就是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;b&gt;Advanced lists: Nesting&lt;/b&gt;   
+</span><span class='line'>
+</span><span class='line'>To put other Markdown blocks in a list; just indent four spaces for each nesting level.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>//TODO ， 这篇文章研究 <a href="http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html">http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html</a></p>
+
+<h1>双行分隔符</h1>
+
+<h2>单行分隔符</h2>
+
+<p>图片嵌入(比文字超链多了惊叹号)</p>
+
+<p><img src="https://github.com/icersummer" alt="screen shot" /></p>
+
+<h2>使用单行分隔符的Code Sample</h2>
+
+<p>The file <a href="http://icersummer.github.io"><code>HELLOWORLD.JAVA</code></a> is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。</p>
+
+<p>四个空格可以构造缩进、包围效果、并且无需换行：</p>
+
+<pre><code>123467
+这个世界
+http://github.com/icersummer
+nowthat
+</code></pre>
+
+<blockquote><p>这是一个引用。</p></blockquote>
+
+<p>下面引用中无序列表：</p>
+
+<blockquote><p>有趣的现象：</p>
+
+<ul>
+<li><p>列表1</p></li>
+<li><p>comment list</p></li>
+<li><p>comment list 002</p></li>
+</ul>
+
+
+<p>More details.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -357,507 +866,6 @@ There is a file called: Bookmarks.bak.  The sad part that i can not simply renam
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/06/how-to-change-ubuntu-hostname/">[Ubuntu] 怎样修改计算机名字</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-06T20:25:03-08:00" pubdate data-updated="true">Nov 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>按下 Ctrl &ndash; Alt &ndash; T 组合键，打开终端。 当终端打开，输入下列命令，使用gedit编辑hostname文件</p>
-
-<p>sudo gedit /etc/hostname</p>
-
-<p>接下来，无论旧的计算机名字是什么，换一个新的吧。例如，如果你想要你的计算机名字为“RDOMNU”，先删除文件内容，输入 RDOMNU，然后保存文件。</p>
-
-<p>然后，再输入下列命令来打开hosts文件</p>
-
-<p>sudo gedit /etc/hosts</p>
-
-<p>更改第二行箭头标记位置的值，使它与你刚才输入的计算机名字相符，完成后保存文件。</p>
-
-<p><img src="../images/ubuntu-hostname.png" alt="Ubunbu hosts" /></p>
-
-<p>重启，显示新的名字。</p>
-
-<p><code>$ sudo reboot -h 0</code></p>
-
-<p>参考链接：</p>
-
-<ul>
-<li><p><a href="http://linux.cn/thread/11846/1/1/">http://linux.cn/thread/11846/1/1/</a></p></li>
-<li><p><a href="http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/">http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/</a></p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/01/eclipse-plugins/">Eclipse Plugins</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-01T21:24:03-07:00" pubdate data-updated="true">Nov 1<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天从Eclipse Marketplace直接搜索、安装了Subversion、JadClipse。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/26/linux-commands/">Linux常用命令</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-26T21:22:03-07:00" pubdate data-updated="true">Oct 26<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>查找</p>
-
-<p>vjia@ubuntu:~/hadoop-0.20.2-cdh3u6$ find . -name &lsquo;<em>jar</em>&rsquo;</p>
-
-<p>参考链接：<a href="http://www.ruanyifeng.com/blog/2009/10/5_ways_to_search_for_files_using_the_terminal.html">http://www.ruanyifeng.com/blog/2009/10/5_ways_to_search_for_files_using_the_terminal.html</a></p>
-
-<p>查看系统版本、CPU、Memory信息：</p>
-
-<p>$ cat /proc/ (tab)</p>
-
-<p>$ cat /proc/cpuinfo</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/23/oracle-commands/">Oracle命令集合</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-23T21:23:03-07:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-<li>查询表结构基本信息</li>
-</ol>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>select * from user_tables;
-</span><span class='line'>
-</span><span class='line'>select * from user_tab_comments;
-</span><span class='line'>
-</span><span class='line'>select * from user_tables t, user_tab_comments c where t.table_name = c.table_name and t.table_name = 'INDEXSTATUS';</span></code></pre></td></tr></table></div></figure>
-
-
-<ol>
-<li>查询表的所有列及其属性</li>
-</ol>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>select t.COLUMN_NAME,
-</span><span class='line'> 
-</span><span class='line'>       t.DATA_TYPE,
-</span><span class='line'> 
-</span><span class='line'>       t.DATA_LENGTH,
-</span><span class='line'> 
-</span><span class='line'>       t.DATA_PRECISION,
-</span><span class='line'> 
-</span><span class='line'>       t.NULLABLE,
-</span><span class='line'> 
-</span><span class='line'>       t.COLUMN_ID,
-</span><span class='line'> 
-</span><span class='line'>       c.COMMENTS
-</span><span class='line'> 
-</span><span class='line'>  from user_tab_columns t, user_col_comments c
-</span><span class='line'> 
-</span><span class='line'> where t.table_name = c.table_name
-</span><span class='line'> 
-</span><span class='line'>   and t.column_name = c.column_name
-</span><span class='line'> 
-</span><span class='line'>   and t.table_name = '表名'
-</span><span class='line'> 
-</span><span class='line'>   order by t.COLUMN_ID ;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>3  . 查找表的主键（包括名称，构成列）</p>
-
-<p>select cu.*,c.DATA_TYPE</p>
-
-<p>  from user_cons_columns cu, user_constraints au,user_tab_columns c</p>
-
-<p> where cu.constraint_name = au.constraint_name</p>
-
-<p>   and c.COLUMN_NAME = cu.column_name</p>
-
-<p>   and c.TABLE_NAME = cu.table_name</p>
-
-<p>   and au.constraint_type = &lsquo;P&rsquo;</p>
-
-<p>   and au.table_name = &lsquo;表名&rsquo;</p>
-
-<p>4 . 查找表的所有索引（包括索引名，类型，构成列）</p>
-
-<p>select t.*, i.index_type</p>
-
-<p>  from user_ind_columns t, user_indexes i</p>
-
-<p> where t.index_name = i.index_name</p>
-
-<p>   and t.table_name = i.table_name</p>
-
-<p>   and t.table_name = &lsquo;表名&rsquo;</p>
-
-<p>5.查找表的唯一性约束（包括名称，构成列）</p>
-
-<p>select column_name</p>
-
-<p>  from user_cons_columns cu, user_constraints au</p>
-
-<p> where cu.constraint_name = au.constraint_name</p>
-
-<p>   and au.constraint_type = &lsquo;U&rsquo;</p>
-
-<p>   and au.table_name = &lsquo;表名&rsquo;</p>
-
-<ol>
-<li>查找表的外键（包括名称，引用表的表名和对应的键名，下面是分成多步查询）</li>
-</ol>
-
-
-<p>select *</p>
-
-<p>  from user_constraints c</p>
-
-<p> where c.constraint_type = &lsquo;R&rsquo;</p>
-
-<p>   and c.table_name = &lsquo;表名&rsquo;</p>
-
-<ol>
-<li>查询外键约束的列名</li>
-</ol>
-
-
-<p>select * from user_cons_columns cl where cl.constraint_name = &lsquo;外键名称&rsquo;</p>
-
-<p>8.查询引用表的键的列名</p>
-
-<p>select * from user_cons_columns cl where cl.constraint_name = &lsquo;外键引用表的键名&rsquo;</p>
-
-<p>参考来源：Linux公社网站(www.linuxidc.com)  <a href="http://www.linuxidc.com/Linux/2012-02/54944.htm">http://www.linuxidc.com/Linux/2012-02/54944.htm</a></p>
-
-<p>获取某张表上建立的Trigger</p>
-
-<p>select * from all_triggers where table_name = upper(&lsquo;tableName&rsquo;);</p>
-
-<p>若在SQLPLUS下创建Procedure、Function，需要在末尾或者SQL文件末尾加入&#8217;/&lsquo;，如下：
-CREATE FUNCTION GETEMPSALARY (EMPNUMBER IN INTEGER) RETURN INTEGER
-IS
-DECLARE
-EMPSALARY INTEGER;
-BEGIN
-SELECT SAL INTO EMPSALARY FROM EMP WHERE EMP.EMPNO = EMPNUMBER;
-RETURN EMPSALARY;
-END GETEMPSALARY;
-/
-You need to add a slash (/) at the end of the create procedure/package/function statements.</p>
-
-<p>在Procedure中这样写是不行的：
-DBMS_OUTPUT.PUT_LINE(half || &lsquo; lines of Seaonal Log &amp; Costsheet inserted.&rsquo;); &mdash; &amp; is a meaning symbol
-其中的&amp;符号和is单词都会被解析，它们都是Oracle关键字。</p>
-
-<p>更改system用户密码
-1. sqlplus / as sysdba;
-2. alter user system identified by admin;</p>
-
-<p>Oracle中查处相关表的索引、主键、约束：
-&mdash;get index
-select * from user_indexes where TABLE_NAME = UPPER(&lsquo;table_name&rsquo;)
-select * from all_indexes where TABLE_NAME = UPPER(&lsquo;lcsSeasonalChangeLog&rsquo;);
-TODO: user_indexes, all_indexes 什么区别？
-&mdash;get PK, Constraints
-select * from all_constraints where TABLE_NAME = UPPER(&lsquo;tbl_name&rsquo;);</p>
-
-<p>外一篇：
-SQLServer下根据已存在表创建新表：
-select * into my_table from exist_table;
-若表已存在：
-insert into my_table select * from exist_table;
-参考：<a href="http://www.w3schools.com/sql/sql_select_into.asp">http://www.w3schools.com/sql/sql_select_into.asp</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/09/how-to-use-markdown-04/">根据其他资料完成的MD格式</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-09T21:21:03-07:00" pubdate data-updated="true">Oct 9<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>为什么人无聊的时候就容易犯困？这个问题牵扯到睡眠机制的问题。现在科学关于睡眠发生的机制还有很多不清楚的地方，目前的研究发现：正常情况下睡眠是生物钟和一种叫腺苷的神经递质引起的。生物钟会在夜间促进大脑里的松果体释放褪黑素，褪黑素对睡眠的产生和维持都起着重要作用；腺苷可以抑制神经活动，它会在白天的活动中慢慢积累，积累到一定程度就会引发睡意。</p>
-
-<h2>翻译人员列表-这里是表格形式展示</h2>
-
-<hr />
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th> 章节   </th>
-<th> 翻译 </th>
-<th> 进度 </th>
-<th> 校对 </th>
-<th> 进度 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td> 第一章 </td>
-<td> 黎明 </td>
-<td> 已成 </td>
-<td> 德华 </td>
-<td> 进行 |</td>
-</tr>
-<tr>
-<td></td>
-<td> 第二章 </td>
-<td> 徐克 </td>
-<td> 进行 </td>
-<td> 已成 </td>
-<td> 已成 |</td>
-</tr>
-<tr>
-<td></td>
-<td> 第三章 </td>
-<td> 徐铮 </td>
-<td> 已成 </td>
-<td> 已成 </td>
-<td> 已成 |</td>
-</tr>
-<tr>
-<td></td>
-<td> 第四章 </td>
-<td> 密码 </td>
-<td> 已成 </td>
-<td> 已成 </td>
-<td> 已成 |</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2>翻译注意事项</h2>
-
-<hr />
-
-<ul>
-<li>下载项目文件
-
-<ul>
-<li>git下载：<code>git clone https://github.com</code>；</li>
-<li>压缩包下载：<a href="https://github.com">https://github.com</a> ；</li>
-</ul>
-</li>
-<li>修改文件</li>
-<li>保留文件
-
-<ul>
-<li>缩进保留；</li>
-<li>空白行保留；</li>
-<li>引号特殊符号，如<code>两个符合的效果</code>；</li>
-<li>复杂的格式；</li>
-</ul>
-</li>
-<li>不需翻译</li>
-<li>章节名称</li>
-<li>专有名词</li>
-</ul>
-
-
-<h2>进度安排</h2>
-
-<hr />
-
-<ul>
-<li>6月-8月：xx；</li>
-<li>9月：yy；</li>
-<li>10月：zz；</li>
-<li>11月：vv。</li>
-</ul>
-
-
-<h2>校对事项</h2>
-
-<ul>
-<li>组队校对；</li>
-<li>按步骤校对：
-
-<ul>
-<li>第一遍xx；</li>
-<li>第二遍yy；</li>
-<li>第三遍zz。</li>
-</ul>
-</li>
-<li>其他问题</li>
-</ul>
-
-
-<h2>参考</h2>
-
-<p>Link <a href="https://github.com/bigwiv/Biopython-cn/blob/master/README.md">https://github.com/bigwiv/Biopython-cn/blob/master/README.md</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -873,23 +881,23 @@ insert into my_table select * from exist_table;
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a>
+        <a href="/blog/2014/04/15/usage-of-scp/">SCP命令的使用</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a>
+        <a href="/blog/2014/04/08/use-superputty-to-replace-putty/">使用带有TAB功能的superPutty代替putty</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/test-and-come-on-post/">Test and Come on Post</a>
+        <a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/another-post-to-poc/">Another Post to POC</a>
+        <a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a>
+        <a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a>
       </li>
     
   </ul>

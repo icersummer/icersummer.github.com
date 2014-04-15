@@ -4,7 +4,7 @@
   <title><![CDATA[Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-01-27T00:22:32-08:00</updated>
+  <updated>2014-04-15T02:40:44-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -12,6 +12,380 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SCP命令的使用]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/15/usage-of-scp/"/>
+    <updated>2014-04-15T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/15/usage-of-scp</id>
+    <content type="html"><![CDATA[<p><strong>复制文件</strong></p>
+
+<p>SCP命令用于在Linux间拷贝文件，（可以在拷贝过程中重命名）</p>
+
+<p>scp [可选参数] file_source file_target</p>
+
+<p>从本地复制到远程：</p>
+
+<p>scp local_file remote_username@remote_ip:remote_folder</p>
+
+<p>scp local_file remote_username@remote_ip:remote_folder</p>
+
+<p>scp local_file remote_ip:remote_folder</p>
+
+<p>scp local_file remote_ip:remote_file</p>
+
+<p>用法示例：</p>
+
+<p>user1 in centos, user2 in ubuntu</p>
+
+<p>copy file1 from centos to ubuntu</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$scp /home/user1/downloads/file1 user2@ubuntu_ip:/home/user2/
+</span><span class='line'>type in the password of user2</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>复制目录</strong></p>
+
+<p>scp -r local_folder remote_username@remote_ip:remote_folder</p>
+
+<p><strong>从远程复制到本地</strong></p>
+
+<p>scp remote_user@remote_ip:remote_file locale_file_path</p>
+
+<p>scp -r remote_user@remote_ip:remote_folder locale_folder_path</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[使用带有TAB功能的superPutty代替putty]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/08/use-superputty-to-replace-putty/"/>
+    <updated>2014-04-08T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/08/use-superputty-to-replace-putty</id>
+    <content type="html"><![CDATA[<p>设置中SuperPutty是依赖于putty的，需要设置Putty.exe的路径。</p>
+
+<p>官网： <a href="http://code.google.com/p/superputty/">http://code.google.com/p/superputty/</a></p>
+
+<p>下载地址：<a href="http://code.google.com/p/superputty/downloads/detail?name=SuperPutty-1.4.0.4.zip&amp;can=2&amp;q=">link</a></p>
+
+<p>官方说明：</p>
+
+<blockquote><p>Introduction</p>
+
+<p>SuperPutty is a Windows GUI Application that allows the PuTTY SSH Client to be opened in Tabs. Additionally there is support for SCP to transfer files.</p>
+
+<p>SuperPutty is written in C# and runs on any Windows platform supporting the .NET Framework 2.0 or newer.</p>
+
+<p>Features</p></blockquote>
+
+<pre><code>Docking user interface allows personalized workspace and managing multiple PuTTY sessions easy
+Export/Import session configuration
+Upload files securely using the scp or sftp protocols
+Layouts
+Supports PuTTY session configurations including Private Keys
+Supports SSH, RLogin, Telnet and RAW protocols
+Supports local shell via MinTTY or puttycyg
+Supports KiTTY 
+</code></pre>
+
+<blockquote><p>Project Status</p></blockquote>
+
+<p>SuperPutty is stable and usable. Please report and bugs in the issue tracker</p>
+
+<p>来自softpedia.com的评论：</p>
+
+<p><a href="http://www.softpedia.com/get/Network-Tools/Telnet-SSH-Clients/SuperPutty.shtml">SoftPedia.com</a></p>
+
+<p>Softpedia Editor&rsquo;s Review for SuperPuTTY</p>
+
+<p>EDITOR&rsquo;S RATING:   4.5/5</p>
+
+<p>**Accessible and user-friendly PuTTY interface that features support for KiTTY, SSH, RLogin, RAW protocols, Telnet and local shell</p>
+
+<p>Written by <em><em>Mihaela Citea</em></em> on November 28th, 2013</p>
+
+<p>SuperPuTTY aims to enhance the capabilities of the PuTTY SSH and Telnet client by allowing you to launch it in multiple tabs. It offers you the possibility to easily manage multiple sessions of PuTTY using a single, comprehensive working environment.</p>
+
+<p>Aside from this significantly important advantage, the application comes with all the advantages and tools that PuTTY brings. It features support for multiple connection types and protocols, including Raw, Telnet, SCP, Rlogin, SSH, Serial, KiTTY and local shell via Cygterm and Mintty.</p>
+
+<p>The tab-based interface enables you to personalize your workspace and organize all the running PuTTY sessions. You can easily create a new session and opt for the desired profile to load. The xterm terminal emulator is intended for advanced users, while the comprehensive configuration panel of PuTTY enables you to change the connection options.</p>
+
+<p>Various general settings are available for customization and the application enables you to configure line discipline and remote-controlled printing. Also, you can set keyboard controls, notifications and alarms, as well as tweak the behavior of the terminal screen, TCP connections, login and terminal details, environment variables, proxy settings and a few settings specific to each protocol type.</p>
+
+<p>Sessions can be imported and exported and layouts can be saved for later use. The main window of SuperPuTTY allows quick switching between used protocols, hosts and sessions, as well as one-click configuration selection and command sending.</p>
+
+<p>SuperPuTTY enables you to link your machine to multiple computers and control all the workstations using one single interface. Aside from running multiple sessions, it tries to enhance the power of PuTTY even more, with advanced support for data encryption, reliable command-line SCP and SFTP clients for file uploading, port forwarding and private key-based authentication.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[解锁Oracle账号]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/02/oracle-the-account-is-locked/"/>
+    <updated>2014-04-02T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/02/oracle-the-account-is-locked</id>
+    <content type="html"><![CDATA[<p>错误信息：</p>
+
+<blockquote><p>ORA-28000
+Error: ORA-28000: the account is locked</p>
+
+<p>Cause: The user has entered wrong password consequently for maximum number of times specified by the user&rsquo;s profile parameter FAILED_LOGIN_ATTEMPTS, or the database administrator has locked the account.</p>
+
+<p>Action: Wait for PASSWORD_LOCK_TIME or contact the database administrator</p></blockquote>
+
+<p>解决办法：</p>
+
+<blockquote><p>To unlock an user manually:
+ALTER USER username ACCOUNT UNLOCK;</p>
+
+<p>to change his password:
+alter user username identified by new_password;</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[创建Solr UI应用]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/02/create-project-solr-ui/"/>
+    <updated>2014-04-02T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/02/create-project-solr-ui</id>
+    <content type="html"><![CDATA[<p>~$ git clone git://github.com/imathis/octopress.git hellosummer_blog</p>
+
+<p>git push origin branchName
+git remote add -t master -f origin <a href="https://github.com/hellosummer/hellosummer.github.com.git">https://github.com/hellosummer/hellosummer.github.com.git</a>
+$git remote add origin git@github:YourGithubID/work.git</p>
+
+<p>git checkout -b feature_x
+git push origin <branch></p>
+
+<p>不同情况的提交：</p>
+
+<p>1.checkout新项目，修改，提交
+//在当前目录下建立solrLearning目录，并克隆成功solrLearning项目
+$ git clone git://github.com/icersummer/solrLearning.git solrLearning
+//如下命令checkin成功
+$ git push <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a> master
+Username for &lsquo;<a href="https://github.com">https://github.com</a>&rsquo;:
+Password for &lsquo;<a href="https://icersummer@github.com">https://icersummer@github.com</a>&rsquo;:
+To <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a>
+   dcfaaac..16d9c7e  master &ndash;> master</p>
+
+<p>2.已存在的checkout的项目，拉取最新，修改，提交
+git pull</p>
+
+<p>3.建立分支，修改，提交</p>
+
+<p>4.已存在分支，拉取最新，修改，提交</p>
+
+<p>5.合并其他分支到Master分支
+git merge <branch></p>
+
+<p>6.回滚本地未提交改动
+git checkout &mdash; <filename></p>
+
+<p>7.覆盖本地所有改动与提交
+git fetch origin</p>
+
+<p>实用小贴士</p>
+
+<p>内建的图形化 git：
+gitk
+彩色的 git 输出：
+git config color.ui true
+显示历史记录时，每个提交的信息只显示一行：
+git config format.pretty oneline
+交互式添加文件到暂存区：
+git add -i</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[导入、导出Oracle数据]]></title>
+    <link href="http://icersummer.github.io/blog/2014/03/10/how-to-import-export-data-on-oracle/"/>
+    <updated>2014-03-10T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/03/10/how-to-import-export-data-on-oracle</id>
+    <content type="html"><![CDATA[<p>导出数据： exp myadmin/myadmin@myinstace
+(data store on c:\backup.dmp)</p>
+
+<p>导入数据：
+sqlplus / as sysdba;
+(问题TBD: 为什么有的命令行可以运行并登录sqlplus / as sysdba; 而有的机器却报错，而且只能通过输入用户名密码的方式登录如：sqlplus system/password as sysdba; 区别和设置在哪里。)
+create user vjtest identified by vjtest;
+grant dba to vjtest;</p>
+
+<p>imp fromuser myadmin touser vjtest file=c:\backup.dmp
+(在提问中输入用户名、密码：vjtest, vjtest)</p>
+
+<p>同一用户的话使用：imp fromuser myadmin touser myadmin file=c:\backup.dmp</p>
+
+<p>加粗</p>
+
+<p><em>粗体1</em>
+<strong>粗体2</strong>
+<strong><em>粗体3</em></strong></p>
+
+<p>标题</p>
+
+<h1>标题1</h1>
+
+<h2>标题2</h2>
+
+<h3>标题3</h3>
+
+<p>黑体</p>
+
+<p><b>黑体</b></p>
+
+<p>斜体</p>
+
+<p><em>斜体</em></p>
+
+<p>分割线</p>
+
+<hr />
+
+<p>列表</p>
+
+<ul>
+<li>列表项目1</li>
+<li>列表项目2</li>
+<li>列表项目3</li>
+</ul>
+
+
+<p>单行代码</p>
+
+<p><code>这里是单行代码</code></p>
+
+<p>多行代码</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>或者rb，
+</span><span class='line'>或者HTML
+</span><span class='line'>  空格二
+</span><span class='line'>      空格四
+</span><span class='line'>  结束</span></code></pre></td></tr></table></div></figure>
+
+
+<p>引用</p>
+
+<blockquote><p>引用内容，分别显示；
+无空行第二引用，附于第一段；</p>
+
+<p>换行，则新行。</p></blockquote>
+
+<hr />
+
+<p>源代码格式</p>
+
+<hr />
+
+<p>加粗</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>*粗体1*
+</span><span class='line'>**粗体2**
+</span><span class='line'>**粗体3**</span></code></pre></td></tr></table></div></figure>
+
+
+<p>标题</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#标题1#
+</span><span class='line'>##标题2##</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有序编号显示</p>
+
+<ol>
+<li>第一行</li>
+<li>第二行</li>
+<li>第三行</li>
+<li>第四行 (行前的数字其实不起作用)</li>
+</ol>
+
+
+<p>嵌套编号</p>
+
+<ol>
+<li>Dog
+
+<ol>
+<li>German Shepherd</li>
+<li>Belgian Shepherd
+
+<ol>
+<li>Malinois</li>
+<li>Groenendael</li>
+<li>Tervuren</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Cat
+
+<ol>
+<li>Siberian</li>
+<li>Siamese</li>
+</ol>
+</li>
+</ol>
+
+
+<p>规则就是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;b&gt;Advanced lists: Nesting&lt;/b&gt;   
+</span><span class='line'>
+</span><span class='line'>To put other Markdown blocks in a list; just indent four spaces for each nesting level.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>//TODO ， 这篇文章研究 <a href="http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html">http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html</a></p>
+
+<h1>双行分隔符</h1>
+
+<h2>单行分隔符</h2>
+
+<p>图片嵌入(比文字超链多了惊叹号)</p>
+
+<p><img src="https://github.com/icersummer" alt="screen shot" /></p>
+
+<h2>使用单行分隔符的Code Sample</h2>
+
+<p>The file <a href="http://icersummer.github.io"><code>HELLOWORLD.JAVA</code></a> is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。</p>
+
+<p>四个空格可以构造缩进、包围效果、并且无需换行：</p>
+
+<pre><code>123467
+这个世界
+http://github.com/icersummer
+nowthat
+</code></pre>
+
+<blockquote><p>这是一个引用。</p></blockquote>
+
+<p>下面引用中无序列表：</p>
+
+<blockquote><p>有趣的现象：</p>
+
+<ul>
+<li><p>列表1</p></li>
+<li><p>comment list</p></li>
+<li><p>comment list 002</p></li>
+</ul>
+
+
+<p>More details.</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How to Find the Lost Chrome Bookmarks]]></title>
@@ -686,129 +1060,6 @@ insert into my_table select * from exist_table;
 <p><img src="../images/visualsvn_server_manager.png" alt="VisualSVN Server Manager running status" /></p>
 
 <p>7- 在不经配置的情况下，提交代码时不会强制输入comment。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Android知识点]]></title>
-    <link href="http://icersummer.github.io/blog/2013/09/02/learning-in-android/"/>
-    <updated>2013-09-02T21:14:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/09/02/learning-in-android</id>
-    <content type="html"><![CDATA[<p>粉笔网 Fenby.com 在线编程，Android知识视频<a href="http://www.fenby.com/learn/courseExercises/31">http://www.fenby.com/learn/courseExercises/31</a></p>
-
-<p>C语言基础<a href="http://www.fenby.com/learn/courseUnits/-3">http://www.fenby.com/learn/courseUnits/-3</a></p>
-
-<p>Android <a href="http://developer.android.com/training/basics/fragments/fragment-ui.html">http://developer.android.com/training/basics/fragments/fragment-ui.html</a></p>
-
-<p>OSCHINA: <a href="http://www.oschina.net/android/3/android-dev-base">http://www.oschina.net/android/3/android-dev-base</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[手动卸载Oracle]]></title>
-    <link href="http://icersummer.github.io/blog/2013/08/26/uninstall-oracle-manually/"/>
-    <updated>2013-08-26T21:11:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/08/26/uninstall-oracle-manually</id>
-    <content type="html"><![CDATA[<p>直接使用安装完成后的Oracle自带的Uninstallation程序，也是可以部分完成我们所需的卸载功能，但是终究还是会遗留一部分需要手工参与的步骤。</p>
-
-<p>而我今天所面临的问题是：2块硬盘，在上个礼拜其中一块硬盘罢工，幸好不是系统盘，免去了我要重装系统的麻烦；但麻烦的是损坏的F盘也是Oracle 11g所在磁盘，导致Oracle中服务及应用都不可使用。</p>
-
-<p>虽然我手动将Oracle原有目录及文件（F:\app\user_name&#8230;）拷贝了回去到原位置，但Oracle已然不能使用。尝试了2种方式去重装，没有成功：</p>
-
-<ul>
-<li><p>运行Uninstallation，中止；</p></li>
-<li><p>运行installation，企图覆盖原有程序，中止。</p></li>
-</ul>
-
-
-<p>看到有些文章，说可以通过手动删除Oracle注册表项操作，但是不太想通过此种方式，但是在看到stackoverflow上一篇帖子后，处于对他们的信任，还是使用这种方式：</p>
-
-<h3>Six-Step Process</h3>
-
-<ol>
-<li><p><strong>Delete the Oracle services</strong>: In the registry, go to \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services and delete everything that starts with &ldquo;Oracle&rdquo;</p></li>
-<li><p><strong>Remove other Oracle stuff from the registry</strong>: Go to \HKEY_LOCAL_MACHINE\SOFTWARE\ and delete the key ORACLE</p></li>
-<li><p><strong>Reboot</strong></p></li>
-<li><p><strong>Delete all the Oracle software</strong> from the directories where you installed it</p></li>
-<li><p><strong>Delete the Oracle software inventory</strong>: Delete the directory C:\Program Files\Oracle. You must do this no matter where you installed your Oracle software &ndash; the Oracle installer automatically writes information here.</p></li>
-<li><p><strong>Delete all shortcuts</strong> from your Start menu.</p></li>
-</ol>
-
-
-<p>参考链接： <a href="http://stackoverflow.com/questions/83967/how-do-i-do-a-manual-uninstall-of-oracle">How do I a manual uninstall of Oracle</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[每年度阅读回顾]]></title>
-    <link href="http://icersummer.github.io/blog/2013/08/07/readings-review-yearly/"/>
-    <updated>2013-08-07T20:09:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/08/07/readings-review-yearly</id>
-    <content type="html"><![CDATA[<h2>每年度阅读回顾</h2>
-
-<p>在网络上一个空间中，看到了Amazon的CTO，Werner Vogels在他的[博客][1]中，列出了2012年读过的书籍和文章，这是一个Back to Basics的系列。</p>
-
-<p>其他一些别人推荐或读过的书籍有：</p>
-
-<ul>
-<li>&lt;Linux/Unix设计思想> by Mike Gancarz</li>
-</ul>
-
-
-<p><img src="http://icersummer.github.io/images/linuxshejisixiang.jpg" title="Linux/Unix设计思想" alt="Linux/Unix设计思想" /></p>
-
-<p>(本书适合入门，初步体会Linux/Unix的设计)</p>
-
-<ul>
-<li>&lt;认知盈余> by 克莱·舍基</li>
-</ul>
-
-
-<p><img src="http://icersummer.github.io/images/renzhiyingyu.jpg" title="认知盈余" alt="认知盈余" /></p>
-
-<ul>
-<li>&lt;七周七语言 理解多种编程范式> by Bruce A. Tate</li>
-</ul>
-
-
-<p><img src="http://icersummer.github.io/images/qizhouqiyuyan.jpg" title="七周七语言" alt="七周七语言" /></p>
-
-<p>&mdash;</p>
-
-<p>[1] <a href="http://www.allthingsdistributed.com/2012/12/paper-readings-2012.html">http://www.allthingsdistributed.com/2012/12/paper-readings-2012.html</a> &ldquo;The Back-to-Basics Readings of 2012&rdquo;</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[2013-08-07-falimiar-with-markdown]]></title>
-    <link href="http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown/"/>
-    <updated>2013-08-07T20:09:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown</id>
-    <content type="html"><![CDATA[<h2>更加的熟练使用Markdown</h2>
-
-<ul>
-<li>一个Markdown的在线编辑网站， <a href="http://www.ctrlshift.net/project/markdowneditor/">Online Markdown Editor</a></li>
-</ul>
-
-
-<p>这里面包含了实时预览已经书写的Markdown文本-Preview、解释后的HTML-HTML Output、通用的Markdown教程-Syntax Guide。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[在百度BAE中安装Wordpress]]></title>
-    <link href="http://icersummer.github.io/blog/2013/08/06/build-webapp-in-bae/"/>
-    <updated>2013-08-06T13:09:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/08/06/build-webapp-in-bae</id>
-    <content type="html"><![CDATA[<p><img src="http://icersummer.github.io/images/BAE.jpg" alt="BAE" /></p>
-
-<p>1) 参考文章，<a href="http://blog.tzvb.com/nr/2013/05/10/109">如何在百度BAE安装discuz论坛之全方位解析（图解）</a>。</p>
-
-<p>2) 在参考文章中描述的是如何安装BAE版Discuz，目前打算安装Wordpress。移步到<a href="http://blog.tzvb.com/nr/2013/05/08/87">百度BAE安装（WP）WordPress博客详细图文教程</a>进行安装WP。</p>
-
-<p>3) 安装完成，访问<a href="http://phpplay.duapp.com">http://phpplay.duapp.com</a> 总是报错“建立数据库连接时出错”；参考<a href="http://blog.gimhoy.com/archives/bae-database-and-page-navi.html">这里</a>，导入了wpback.sql。继续报错。</p>
-
-<p><a href="http://mawenjian.net/p/994.html">http://mawenjian.net/p/994.html</a></p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Centos | Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-01-27T00:22:32-08:00</updated>
+  <updated>2014-04-15T02:40:44-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SCP命令的使用]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/15/usage-of-scp/"/>
+    <updated>2014-04-15T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/15/usage-of-scp</id>
+    <content type="html"><![CDATA[<p><strong>复制文件</strong></p>
+
+<p>SCP命令用于在Linux间拷贝文件，（可以在拷贝过程中重命名）</p>
+
+<p>scp [可选参数] file_source file_target</p>
+
+<p>从本地复制到远程：</p>
+
+<p>scp local_file remote_username@remote_ip:remote_folder</p>
+
+<p>scp local_file remote_username@remote_ip:remote_folder</p>
+
+<p>scp local_file remote_ip:remote_folder</p>
+
+<p>scp local_file remote_ip:remote_file</p>
+
+<p>用法示例：</p>
+
+<p>user1 in centos, user2 in ubuntu</p>
+
+<p>copy file1 from centos to ubuntu</p>
+
+<p><code>
+$scp /home/user1/downloads/file1 user2@ubuntu_ip:/home/user2/
+type in the password of user2
+</code></p>
+
+<p><strong>复制目录</strong></p>
+
+<p>scp -r local_folder remote_username@remote_ip:remote_folder</p>
+
+<p><strong>从远程复制到本地</strong></p>
+
+<p>scp remote_user@remote_ip:remote_file locale_file_path</p>
+
+<p>scp -r remote_user@remote_ip:remote_folder locale_folder_path</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Reset Centos Root Password]]></title>

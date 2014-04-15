@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Markdown | Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/blog/categories/markdown/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-01-27T00:22:32-08:00</updated>
+  <updated>2014-04-15T02:40:44-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -14,150 +14,165 @@
 
   
   <entry>
-    <title type="html"><![CDATA[根据其他资料完成的MD格式]]></title>
-    <link href="http://icersummer.github.io/blog/2013/10/09/how-to-use-markdown-04/"/>
-    <updated>2013-10-09T21:21:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/10/09/how-to-use-markdown-04</id>
-    <content type="html"><![CDATA[<hr />
+    <title type="html"><![CDATA[使用带有TAB功能的superPutty代替putty]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/08/use-superputty-to-replace-putty/"/>
+    <updated>2014-04-08T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/08/use-superputty-to-replace-putty</id>
+    <content type="html"><![CDATA[<p>设置中SuperPutty是依赖于putty的，需要设置Putty.exe的路径。</p>
 
-<p>为什么人无聊的时候就容易犯困？这个问题牵扯到睡眠机制的问题。现在科学关于睡眠发生的机制还有很多不清楚的地方，目前的研究发现：正常情况下睡眠是生物钟和一种叫腺苷的神经递质引起的。生物钟会在夜间促进大脑里的松果体释放褪黑素，褪黑素对睡眠的产生和维持都起着重要作用；腺苷可以抑制神经活动，它会在白天的活动中慢慢积累，积累到一定程度就会引发睡意。</p>
+<p>官网： <a href="http://code.google.com/p/superputty/">http://code.google.com/p/superputty/</a></p>
 
-<h2>翻译人员列表-这里是表格形式展示</h2>
+<p>下载地址：<a href="http://code.google.com/p/superputty/downloads/detail?name=SuperPutty-1.4.0.4.zip&amp;can=2&amp;q=">link</a></p>
 
-<hr />
+<p>官方说明：</p>
 
-<table>
-<thead>
-<tr>
-<th></th>
-<th> 章节   </th>
-<th> 翻译 </th>
-<th> 进度 </th>
-<th> 校对 </th>
-<th> 进度 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td> 第一章 </td>
-<td> 黎明 </td>
-<td> 已成 </td>
-<td> 德华 </td>
-<td> 进行 |</td>
-</tr>
-<tr>
-<td></td>
-<td> 第二章 </td>
-<td> 徐克 </td>
-<td> 进行 </td>
-<td> 已成 </td>
-<td> 已成 |</td>
-</tr>
-<tr>
-<td></td>
-<td> 第三章 </td>
-<td> 徐铮 </td>
-<td> 已成 </td>
-<td> 已成 </td>
-<td> 已成 |</td>
-</tr>
-<tr>
-<td></td>
-<td> 第四章 </td>
-<td> 密码 </td>
-<td> 已成 </td>
-<td> 已成 </td>
-<td> 已成 |</td>
-</tr>
-</tbody>
-</table>
+<blockquote><p>Introduction</p>
 
+<p>SuperPutty is a Windows GUI Application that allows the PuTTY SSH Client to be opened in Tabs. Additionally there is support for SCP to transfer files.</p>
 
-<h2>翻译注意事项</h2>
+<p>SuperPutty is written in C# and runs on any Windows platform supporting the .NET Framework 2.0 or newer.</p>
 
-<hr />
+<p>Features</p></blockquote>
 
-<ul>
-<li>下载项目文件
+<pre><code>Docking user interface allows personalized workspace and managing multiple PuTTY sessions easy
+Export/Import session configuration
+Upload files securely using the scp or sftp protocols
+Layouts
+Supports PuTTY session configurations including Private Keys
+Supports SSH, RLogin, Telnet and RAW protocols
+Supports local shell via MinTTY or puttycyg
+Supports KiTTY 
+</code></pre>
 
-<ul>
-<li>git下载：<code>git clone https://github.com</code>；</li>
-<li>压缩包下载：<a href="https://github.com">https://github.com</a> ；</li>
-</ul>
-</li>
-<li>修改文件</li>
-<li>保留文件
+<blockquote><p>Project Status</p></blockquote>
 
-<ul>
-<li>缩进保留；</li>
-<li>空白行保留；</li>
-<li>引号特殊符号，如<code>两个符合的效果</code>；</li>
-<li>复杂的格式；</li>
-</ul>
-</li>
-<li>不需翻译</li>
-<li>章节名称</li>
-<li>专有名词</li>
-</ul>
+<p>SuperPutty is stable and usable. Please report and bugs in the issue tracker</p>
 
+<p>来自softpedia.com的评论：</p>
 
-<h2>进度安排</h2>
+<p><a href="http://www.softpedia.com/get/Network-Tools/Telnet-SSH-Clients/SuperPutty.shtml">SoftPedia.com</a></p>
 
-<hr />
+<p>Softpedia Editor&rsquo;s Review for SuperPuTTY</p>
 
-<ul>
-<li>6月-8月：xx；</li>
-<li>9月：yy；</li>
-<li>10月：zz；</li>
-<li>11月：vv。</li>
-</ul>
+<p>EDITOR&rsquo;S RATING:   4.5/5</p>
 
+<p>**Accessible and user-friendly PuTTY interface that features support for KiTTY, SSH, RLogin, RAW protocols, Telnet and local shell</p>
 
-<h2>校对事项</h2>
+<p>Written by <em><em>Mihaela Citea</em></em> on November 28th, 2013</p>
 
-<ul>
-<li>组队校对；</li>
-<li>按步骤校对：
+<p>SuperPuTTY aims to enhance the capabilities of the PuTTY SSH and Telnet client by allowing you to launch it in multiple tabs. It offers you the possibility to easily manage multiple sessions of PuTTY using a single, comprehensive working environment.</p>
 
-<ul>
-<li>第一遍xx；</li>
-<li>第二遍yy；</li>
-<li>第三遍zz。</li>
-</ul>
-</li>
-<li>其他问题</li>
-</ul>
+<p>Aside from this significantly important advantage, the application comes with all the advantages and tools that PuTTY brings. It features support for multiple connection types and protocols, including Raw, Telnet, SCP, Rlogin, SSH, Serial, KiTTY and local shell via Cygterm and Mintty.</p>
 
+<p>The tab-based interface enables you to personalize your workspace and organize all the running PuTTY sessions. You can easily create a new session and opt for the desired profile to load. The xterm terminal emulator is intended for advanced users, while the comprehensive configuration panel of PuTTY enables you to change the connection options.</p>
 
-<h2>参考</h2>
+<p>Various general settings are available for customization and the application enables you to configure line discipline and remote-controlled printing. Also, you can set keyboard controls, notifications and alarms, as well as tweak the behavior of the terminal screen, TCP connections, login and terminal details, environment variables, proxy settings and a few settings specific to each protocol type.</p>
 
-<p>Link <a href="https://github.com/bigwiv/Biopython-cn/blob/master/README.md">https://github.com/bigwiv/Biopython-cn/blob/master/README.md</a></p>
+<p>Sessions can be imported and exported and layouts can be saved for later use. The main window of SuperPuTTY allows quick switching between used protocols, hosts and sessions, as well as one-click configuration selection and command sending.</p>
+
+<p>SuperPuTTY enables you to link your machine to multiple computers and control all the workstations using one single interface. Aside from running multiple sessions, it tries to enhance the power of PuTTY even more, with advanced support for data encryption, reliable command-line SCP and SFTP clients for file uploading, port forwarding and private key-based authentication.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[2013-08-07-falimiar-with-markdown]]></title>
-    <link href="http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown/"/>
-    <updated>2013-08-07T20:09:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown</id>
-    <content type="html"><![CDATA[<h2>更加的熟练使用Markdown</h2>
+    <title type="html"><![CDATA[解锁Oracle账号]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/02/oracle-the-account-is-locked/"/>
+    <updated>2014-04-02T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/02/oracle-the-account-is-locked</id>
+    <content type="html"><![CDATA[<p>错误信息：</p>
 
-<ul>
-<li>一个Markdown的在线编辑网站， <a href="http://www.ctrlshift.net/project/markdowneditor/">Online Markdown Editor</a></li>
-</ul>
+<blockquote><p>ORA-28000
+Error: ORA-28000: the account is locked</p>
 
+<p>Cause: The user has entered wrong password consequently for maximum number of times specified by the user&rsquo;s profile parameter FAILED_LOGIN_ATTEMPTS, or the database administrator has locked the account.</p>
 
-<p>这里面包含了实时预览已经书写的Markdown文本-Preview、解释后的HTML-HTML Output、通用的Markdown教程-Syntax Guide。</p>
+<p>Action: Wait for PASSWORD_LOCK_TIME or contact the database administrator</p></blockquote>
+
+<p>解决办法：</p>
+
+<blockquote><p>To unlock an user manually:
+ALTER USER username ACCOUNT UNLOCK;</p>
+
+<p>to change his password:
+alter user username identified by new_password;</p></blockquote>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Markdown常用语法、格式简介 - 03]]></title>
-    <link href="http://icersummer.github.io/blog/2013/06/18/how-to-use-markdown-03/"/>
-    <updated>2013-06-18T21:12:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/06/18/how-to-use-markdown-03</id>
-    <content type="html"><![CDATA[<p>加粗</p>
+    <title type="html"><![CDATA[创建Solr UI应用]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/02/create-project-solr-ui/"/>
+    <updated>2014-04-02T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/02/create-project-solr-ui</id>
+    <content type="html"><![CDATA[<p>~$ git clone git://github.com/imathis/octopress.git hellosummer_blog</p>
+
+<p>git push origin branchName
+git remote add -t master -f origin <a href="https://github.com/hellosummer/hellosummer.github.com.git">https://github.com/hellosummer/hellosummer.github.com.git</a>
+$git remote add origin git@github:YourGithubID/work.git</p>
+
+<p>git checkout -b feature_x
+git push origin <branch></p>
+
+<p>不同情况的提交：</p>
+
+<p>1.checkout新项目，修改，提交
+//在当前目录下建立solrLearning目录，并克隆成功solrLearning项目
+$ git clone git://github.com/icersummer/solrLearning.git solrLearning
+//如下命令checkin成功
+$ git push <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a> master
+Username for &lsquo;<a href="https://github.com">https://github.com</a>&rsquo;:
+Password for &lsquo;<a href="https://icersummer@github.com">https://icersummer@github.com</a>&rsquo;:
+To <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a>
+   dcfaaac..16d9c7e  master &ndash;> master</p>
+
+<p>2.已存在的checkout的项目，拉取最新，修改，提交
+git pull</p>
+
+<p>3.建立分支，修改，提交</p>
+
+<p>4.已存在分支，拉取最新，修改，提交</p>
+
+<p>5.合并其他分支到Master分支
+git merge <branch></p>
+
+<p>6.回滚本地未提交改动
+git checkout &mdash; <filename></p>
+
+<p>7.覆盖本地所有改动与提交
+git fetch origin</p>
+
+<p>实用小贴士</p>
+
+<p>内建的图形化 git：
+gitk
+彩色的 git 输出：
+git config color.ui true
+显示历史记录时，每个提交的信息只显示一行：
+git config format.pretty oneline
+交互式添加文件到暂存区：
+git add -i</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[导入、导出Oracle数据]]></title>
+    <link href="http://icersummer.github.io/blog/2014/03/10/how-to-import-export-data-on-oracle/"/>
+    <updated>2014-03-10T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/03/10/how-to-import-export-data-on-oracle</id>
+    <content type="html"><![CDATA[<p>导出数据： exp myadmin/myadmin@myinstace
+(data store on c:\backup.dmp)</p>
+
+<p>导入数据：
+sqlplus / as sysdba;
+(问题TBD: 为什么有的命令行可以运行并登录sqlplus / as sysdba; 而有的机器却报错，而且只能通过输入用户名密码的方式登录如：sqlplus system/password as sysdba; 区别和设置在哪里。)
+create user vjtest identified by vjtest;
+grant dba to vjtest;</p>
+
+<p>imp fromuser myadmin touser vjtest file=c:\backup.dmp
+(在提问中输入用户名、密码：vjtest, vjtest)</p>
+
+<p>同一用户的话使用：imp fromuser myadmin touser myadmin file=c:\backup.dmp</p>
+
+<p>加粗</p>
 
 <p><em>粗体1</em>
 <strong>粗体2</strong>
@@ -321,6 +336,129 @@ nowthat
 
 
 <p>More details.</p></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[根据其他资料完成的MD格式]]></title>
+    <link href="http://icersummer.github.io/blog/2013/10/09/how-to-use-markdown-04/"/>
+    <updated>2013-10-09T21:21:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/10/09/how-to-use-markdown-04</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>为什么人无聊的时候就容易犯困？这个问题牵扯到睡眠机制的问题。现在科学关于睡眠发生的机制还有很多不清楚的地方，目前的研究发现：正常情况下睡眠是生物钟和一种叫腺苷的神经递质引起的。生物钟会在夜间促进大脑里的松果体释放褪黑素，褪黑素对睡眠的产生和维持都起着重要作用；腺苷可以抑制神经活动，它会在白天的活动中慢慢积累，积累到一定程度就会引发睡意。</p>
+
+<h2>翻译人员列表-这里是表格形式展示</h2>
+
+<hr />
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 章节   </th>
+<th> 翻译 </th>
+<th> 进度 </th>
+<th> 校对 </th>
+<th> 进度 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> 第一章 </td>
+<td> 黎明 </td>
+<td> 已成 </td>
+<td> 德华 </td>
+<td> 进行 |</td>
+</tr>
+<tr>
+<td></td>
+<td> 第二章 </td>
+<td> 徐克 </td>
+<td> 进行 </td>
+<td> 已成 </td>
+<td> 已成 |</td>
+</tr>
+<tr>
+<td></td>
+<td> 第三章 </td>
+<td> 徐铮 </td>
+<td> 已成 </td>
+<td> 已成 </td>
+<td> 已成 |</td>
+</tr>
+<tr>
+<td></td>
+<td> 第四章 </td>
+<td> 密码 </td>
+<td> 已成 </td>
+<td> 已成 </td>
+<td> 已成 |</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>翻译注意事项</h2>
+
+<hr />
+
+<ul>
+<li>下载项目文件
+
+<ul>
+<li>git下载：<code>git clone https://github.com</code>；</li>
+<li>压缩包下载：<a href="https://github.com">https://github.com</a> ；</li>
+</ul>
+</li>
+<li>修改文件</li>
+<li>保留文件
+
+<ul>
+<li>缩进保留；</li>
+<li>空白行保留；</li>
+<li>引号特殊符号，如<code>两个符合的效果</code>；</li>
+<li>复杂的格式；</li>
+</ul>
+</li>
+<li>不需翻译</li>
+<li>章节名称</li>
+<li>专有名词</li>
+</ul>
+
+
+<h2>进度安排</h2>
+
+<hr />
+
+<ul>
+<li>6月-8月：xx；</li>
+<li>9月：yy；</li>
+<li>10月：zz；</li>
+<li>11月：vv。</li>
+</ul>
+
+
+<h2>校对事项</h2>
+
+<ul>
+<li>组队校对；</li>
+<li>按步骤校对：
+
+<ul>
+<li>第一遍xx；</li>
+<li>第二遍yy；</li>
+<li>第三遍zz。</li>
+</ul>
+</li>
+<li>其他问题</li>
+</ul>
+
+
+<h2>参考</h2>
+
+<p>Link <a href="https://github.com/bigwiv/Biopython-cn/blob/master/README.md">https://github.com/bigwiv/Biopython-cn/blob/master/README.md</a></p>
 ]]></content>
   </entry>
   
