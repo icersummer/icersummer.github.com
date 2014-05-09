@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>2013-07-11-putty_to_connect_to_ubuntu_vm - Coder Blog VJIA</title>
+  <meta name="author" content="Vincent J">
+
+  
+  <meta name="description" content="Putty连接VM中的Ubuntu问题及解决 问题： VMWare中安装了Ubuntu，通过配置使其命令行模式启动；启动后通过$ifconfig获得其IP，通过Putty中设置IP、Port 22 访问报错，错误信息“不会出现登录界面，几秒钟后弹出窗口-Network error : &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icersummer.github.io/blog/2013/07/11/putty_to_connect_to_ubuntu_vm">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coder Blog VJIA" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coder Blog VJIA</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:icersummer.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">2013-07-11-putty_to_connect_to_ubuntu_vm</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-11T13:09:03-07:00" pubdate data-updated="true">Jul 11<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>Putty连接VM中的Ubuntu问题及解决</h2>
+
+<p>问题：</p>
+
+<p>VMWare中安装了Ubuntu，通过配置使其命令行模式启动；启动后通过$ifconfig获得其IP，通过Putty中设置IP、Port 22 访问报错，错误信息“不会出现登录界面，几秒钟后弹出窗口-Network error : Connection Refused”.</p>
+
+<p>解决：</p>
+
+<ol>
+<li>可能没有开启ssh-server服务：</li>
+</ol>
+
+
+<p>命令$ sudo apt-get install openssh-server</p>
+
+<p>安装成功；之后还是之前同样的错误、不能Putty连接；</p>
+
+<ol>
+<li>安装openssh-client，但是Ubuntu缺省已经安装了openssh-client。</li>
+</ol>
+
+
+<p>$sudo apt-get insall openssh-client</p>
+
+<ol>
+<li>确认sshserver已经启动：</li>
+</ol>
+
+
+<p>$ps -e | grep ssh</p>
+
+<p>如果没有看到ssh，则手动启动 $sudo /etc/init.d/ssh start (or $sudo service ssh start)</p>
+
+<ol>
+<li>Putty依旧不能访问</li>
+</ol>
+
+
+<p>关闭windows7防火墙，全部关闭，应该是windows禁止了通过22端口访问；可以连接成功。</p>
+
+<ol>
+<li>VM Ubuntu端口改变问题</li>
+</ol>
+
+
+<p>配置成功后，通过Putty连接没有问题，但是发现每过一段时间，就回出现连接丢失的现象；几次三番后，发现其IP在动态改变；解决办法是在VM Setting中修改Network Adapter方式，NAT &ndash;> Bridged。</p>
+
+<p>（NAT: Used to share the host&rsquo;s IP address; Bridged: Connected directly to the physical network）</p>
+
+<ol>
+<li>其它说明</li>
+</ol>
+
+
+<p>ssh-server配置文件位于/etc/ssh/sshd_config文件，可以修改ssh的服务端口，默认是22,；修改后重启ssh服务： $sudo /etc/init.d/ssh restart</p>
+
+<ol>
+<li>遗留问题</li>
+</ol>
+
+
+<p>只能通过IP+Port的方式访问，如何才能通过hostname访问呢？</p>
+
+<ol>
+<li>JDK下载，通过curl</li>
+</ol>
+
+
+<p>8.1 安装 curl：$sudo apt-get curl</p>
+
+<p>8.2 how to download Oracle JDK without browser: [<a href="https://gist.github.com/hgomez/4697585">https://gist.github.com/hgomez/4697585</a>]</p>
+
+<p>8.3 使用SecureCRT所带SFTP上传JDK至Ubuntu，版本jdk-7u25-linux-i586.tar.gz</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ tar -xf jdk-7u25-linux-i586.tar.gz 
+</span><span class='line'>vincent@ubuntu:~$ ls
+</span><span class='line'>Desktop    examples.desktop            Music     Templates
+</span><span class='line'>Documents  jdk1.7.0_25                 Pictures  Videos
+</span><span class='line'>Downloads  jdk-7u25-linux-i586.tar.gz  Public
+</span><span class='line'>vincent@ubuntu:~$ cd jdk1.7.0_25/
+</span><span class='line'>vincent@ubuntu:~/jdk1.7.0_25$ cd bin
+</span><span class='line'>vincent@ubuntu:~/jdk1.7.0_25/bin$ ./java -version
+</span><span class='line'>java version "1.7.0_25"
+</span><span class='line'>Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
+</span><span class='line'>Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>配置JDK variables</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ vi .bashrc
+</span><span class='line'>
+</span><span class='line'># export my own variables
+</span><span class='line'>JAVA_HOME=/home/vincent/jdk1.7.0_25
+</span><span class='line'>export JAVA_HOME
+</span><span class='line'>PATH=$PATH:$JAVA_HOME/bin
+</span><span class='line'>export PATH
+</span><span class='line'>
+</span><span class='line'>vincent@ubuntu:~$ source .bashrc
+</span><span class='line'>vincent@ubuntu:~$ java -version
+</span><span class='line'>java version "1.7.0_25"
+</span><span class='line'>Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
+</span><span class='line'>Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>安装Hadoop</li>
+</ol>
+
+
+<p>9.1 [下载地址, <a href="http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-2.0.5-alpha/">http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-2.0.5-alpha/</a>]</p>
+
+<p>9.2 Setting up a Single Node Cluster, follow <B>Running Hadoop on Ubuntu Linux (Single-Node Cluster)</B> [<a href="http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/">http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/</a>]</p>
+
+<blockquote><p> The main goal of this tutorial is to get a simple Hadoop installation up and running so that you can play around with the software and learn more about it.</p></blockquote>
+
+<p>9.3 添加Hadoop专用user</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:~$ sudo addgroup hadoop
+</span><span class='line'>[sudo] password for vincent: 
+</span><span class='line'>Adding group `hadoop' (GID 1001) ...
+</span><span class='line'>Done.
+</span><span class='line'>vincent@ubuntu:~$ sudo adduser --ingroup hadoop hduser
+</span><span class='line'>Adding user `hduser' ...
+</span><span class='line'>Adding new user `hduser' (1001) with group `hadoop' ...
+</span><span class='line'>Creating home directory `/home/hduser' ...
+</span><span class='line'>Copying files from `/etc/skel' ...
+</span><span class='line'>Enter new UNIX password: 
+</span><span class='line'>Retype new UNIX password: 
+</span><span class='line'>Sorry, passwords do not match
+</span><span class='line'>passwd: Authentication token manipulation error
+</span><span class='line'>passwd: password unchanged
+</span><span class='line'>Try again? [y/N] y
+</span><span class='line'>Enter new UNIX password: 
+</span><span class='line'>Retype new UNIX password: 
+</span><span class='line'>passwd: password updated successfully
+</span><span class='line'>Changing the user information for hduser
+</span><span class='line'>Enter the new value, or press ENTER for the default
+</span><span class='line'>        Full Name []: hadoop user
+</span><span class='line'>        Room Number []: 
+</span><span class='line'>        Work Phone []: 
+</span><span class='line'>        Home Phone []: 
+</span><span class='line'>        Other []: 
+</span><span class='line'>Is the information correct? [Y/n] y</span></code></pre></td></tr></table></div></figure>
+
+
+<p>9.4 需要设置SSH远程自动登录，需要其他机器直接访问Hadoop node，configure it to allow SSH public key authentication. 参考[Ubuntu Guide, <a href="http://ubuntuguide.org/wiki/Ubuntu_Raring">http://ubuntuguide.org/wiki/Ubuntu_Raring</a>]</p>
+
+<ul>
+<li>(这个时候，考虑，是不是之前使用user vincent配置了Java环境变量是不是不对、应该配置为全局变量？ 后面再看。)</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~$ ssh-keygen -t rsa -P ""
+</span><span class='line'>Generating public/private rsa key pair.
+</span><span class='line'>Enter file in which to save the key (/home/hduser/.ssh/id_rsa): 
+</span><span class='line'>Created directory '/home/hduser/.ssh'.
+</span><span class='line'>Your identification has been saved in /home/hduser/.ssh/id_rsa.
+</span><span class='line'>Your public key has been saved in /home/hduser/.ssh/id_rsa.pub.
+</span><span class='line'>The key fingerprint is:
+</span><span class='line'>9f:28:f3:80:ae:6c:64:d6:78:74:74:67:fa:21:91:f3 hduser@ubuntu
+</span><span class='line'>The key's randomart image is:
+</span><span class='line'>+--[ RSA 2048]----+
+</span><span class='line'>|         .       |
+</span><span class='line'>|      . = o      |
+</span><span class='line'>|     . . B       |
+</span><span class='line'>|    . . o E      |
+</span><span class='line'>|   + .  So .     |
+</span><span class='line'>|  = o.   o..     |
+</span><span class='line'>| + .. + . o      |
+</span><span class='line'>| ...   =         |
+</span><span class='line'>| .o..   .        |
+</span><span class='line'>+-----------------+
+</span><span class='line'>hduser@ubuntu:~$ ll
+</span><span class='line'>hduser@ubuntu:~$ cat .ssh/id_rsa.pub &gt;&gt; .ssh/authorized_keys
+</span><span class='line'>
+</span><span class='line'>//测试是否可以无密码登录
+</span><span class='line'>hduser@ubuntu:~/.ssh$ ssh localhost 
+</span><span class='line'>The authenticity of host 'localhost (127.0.0.1)' can't be established.
+</span><span class='line'>ECDSA key fingerprint is 47:6b:7b:a6:e4:80:38:96:f9:9c:a3:58:48:f4:51:82.
+</span><span class='line'>Are you sure you want to continue connecting (yes/no)? yes
+</span><span class='line'>Warning: Permanently added 'localhost' (ECDSA) to the list of known hosts.
+</span><span class='line'>Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)
+</span><span class='line'>
+</span><span class='line'> * Documentation:  https://help.ubuntu.com/
+</span><span class='line'>
+</span><span class='line'>Last login: Wed Jul 31 01:38:45 2013 from gjia2d.ptcnet.ptc.com
+</span><span class='line'>hduser@ubuntu:~$ </span></code></pre></td></tr></table></div></figure>
+
+
+<p>9.5 开始安装配置Hadoop</p>
+
+<ul>
+<li>配置Hadoop user hduser 加入sudo权限中（需要这一步么？todo……）</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vincent@ubuntu:/etc$ cd /etc/
+</span><span class='line'>vincent@ubuntu:/etc$ ll sudo*
+</span><span class='line'>-r--r----- 1 root root  767 Jul 31 02:17 sudoers
+</span><span class='line'>
+</span><span class='line'>sudoers.d:
+</span><span class='line'>total 20
+</span><span class='line'>drwxr-xr-x   2 root root  4096 Apr 23  2012 ./
+</span><span class='line'>drwxr-xr-x 127 root root 12288 Jul 31 02:17 ../
+</span><span class='line'>-r--r-----   1 root root   753 Jan 31  2012 README
+</span><span class='line'>vincent@ubuntu:/etc$ sudo vi sudoers
+</span><span class='line'>
+</span><span class='line'>// add sudo users
+</span><span class='line'>hduser ALL=(ALL) ALL
+</span><span class='line'>// sudoers文件的修改立即生效</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>添加Hadoop相关变量设置到hduser的$HOME/.bashrc</li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>// vj, add Hadoop Variables
+</span><span class='line'>hduser@ubuntu:~$ vi .bashrc
+</span><span class='line'>
+</span><span class='line'>HADOOP_HOME=/home/hduser/hadoop-2.0.5-alpha
+</span><span class='line'>export HADOOP_HOME
+</span><span class='line'>JAVA_HOME=/home/vincent/jdk1.7.0_25
+</span><span class='line'>export JAVA_HOME
+</span><span class='line'>
+</span><span class='line'>//Some convenient aliases and functions for running Hadoop-related commands
+</span><span class='line'>unalias fs &&gt; /dev/null
+</span><span class='line'>alias fs="hadoop fs"
+</span><span class='line'>unalias hls &&gt; /dev/null
+</span><span class='line'>alias hls="fs -ls"
+</span><span class='line'>
+</span><span class='line'>PATH=$PATH:$HADOOP_HOME/bin
+</span><span class='line'>export PATH
+</span><span class='line'>
+</span><span class='line'>hduser@ubuntu:~$ hadoop version
+</span><span class='line'>Hadoop 2.0.5-alpha
+</span><span class='line'>Subversion http://svn.apache.org/repos/asf/hadoop/common -r 1488459
+</span><span class='line'>Compiled by jenkins on 2013-06-01T04:05Z
+</span><span class='line'>From source with checksum c8f4bd45ac25c31b815f311b32ef17
+</span><span class='line'>This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>配置并运行起Hadoop，请看<a href="./2013-08-01-single-node-setup-of-hadoop.md">下一篇 &ndash; Single-Node setup of Hadoop</a></li>
+</ul>
+
+
+<p>TODO：</p>
+
+<ul>
+<li>当前时间显示是PDT时区(Wed Jul 31 01:46:14 PDT 2013)，如何配置显示东八区时间？</li>
+</ul>
+
+
+<p>补充资料：</p>
+
+<ul>
+<li><p>Ubuntu Environment Variables (link, <a href="https://help.ubuntu.com/community/EnvironmentVariables">https://help.ubuntu.com/community/EnvironmentVariables</a>)</p></li>
+<li><h3>What&rsquo;s Hadoop Distributed File System (HDFS)</h3></li>
+</ul>
+
+
+<blockquote><p>The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It has many similarities with existing distributed file systems. However, the differences from other distributed file systems are significant. HDFS is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets. HDFS relaxes a few POSIX requirements to enable streaming access to file system data. HDFS was originally built as infrastructure for the Apache Nutch web search engine project. HDFS is part of the Apache Hadoop project, which is part of the Apache Lucene project.</p>
+
+<p><I><B>The Hadoop Distributed File System: Architecture and Design</B> &ndash; <a href="http://hadoop.apache.org/hdfs/docs/current/hdfs_design.html">hadoop.apache.org/hdfs/docs/…</a></I></p></blockquote>
+
+<p>The following picture gives an overview of the most important HDFS components.</p>
+
+<p><img src="../images/HDFS-Architecture.gif" title="Optional title" alt="HDFS Architecture" /></p>
+
+<p>EOF.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent J</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-11T13:09:03-07:00" pubdate data-updated="true">Jul 11<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ssh/'>SSH</a>, <a class='category' href='/blog/categories/ubuntu/'>Ubuntu</a>, <a class='category' href='/blog/categories/oldblog/'>oldblog</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icersummer.github.io/blog/2013/07/11/putty_to_connect_to_ubuntu_vm/" data-via="" data-counturl="http://icersummer.github.io/blog/2013/07/11/putty_to_connect_to_ubuntu_vm/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/07/10/configure-ubuntu-to-cmdline/" title="Previous Post: Ubuntu CommandLine">&laquo; Ubuntu CommandLine</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/07/13/command-to-see-ubuntu-64-or-32/" title="Next Post: 查看Ubuntu系统是否64位">查看Ubuntu系统是否64位 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/test-and-come-on-post/">Test and Come on Post</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/another-post-to-poc/">Another Post to POC</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Vincent J -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

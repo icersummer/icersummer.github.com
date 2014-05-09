@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Booklist | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/booklist/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[应该建立我自己的读书目录]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/14/should-build-my-booklist/"/>
+    <updated>2013-07-14T21:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/14/should-build-my-booklist</id>
+    <content type="html"><![CDATA[<p>有很多电子书，读过了并没有记下多少东西，有些书很有用、但是还没有读过，而自己也没有有效的分类方式。</p>
+
+<p>建立状态表格：</p>
+
+<ul>
+<li>书名 磁盘名 笔记链接 是否已读 阅读进度</li>
+<li>A</li>
+<li>B</li>
+</ul>
+
+
+<p>TBD.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: VisualSVN | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/visualsvn/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[使用VisualSVN建立SVN Server]]></title>
+    <link href="http://icersummer.github.io/blog/2013/09/06/set-up-svn-server/"/>
+    <updated>2013-09-06T21:13:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/09/06/set-up-svn-server</id>
+    <content type="html"><![CDATA[<h2>安装windows版</h2>
+
+<ol>
+<li><p>运行exe后，设定作为server端存储使用的目录是F:\localSVNServer.</p></li>
+<li><p>启动VisualSVN Server Manager；</p></li>
+<li><p>create new repository &ndash; rep001, 则其访问目录就是<a href="https://YOUR_IP_ADDRESS/svn/rep001/;">https://YOUR_IP_ADDRESS/svn/rep001/;</a></p></li>
+<li><p>首先需要创建用户，否则会有警告信息：</p></li>
+</ol>
+
+
+<p><img src="../images/no_user_warning_svn_server.png" alt="warning no user" /></p>
+
+<p>创建user：admin@admin</p>
+
+<ol>
+<li><p>检出<a href="https://YOUR_IP_ADDRESS/svn/rep001/branches%E7%9B%AE%E5%BD%95%E3%80%82">https://YOUR_IP_ADDRESS/svn/rep001/branches%E7%9B%AE%E5%BD%95%E3%80%82</a></p></li>
+<li><p>在没有将VisualSVN Server注册为windows service之前，在需要checkin/checkout时，需要手动启动VisualSVN Server Manager。</p></li>
+</ol>
+
+
+<p><img src="../images/visualsvn_server_manager.png" alt="VisualSVN Server Manager running status" /></p>
+
+<p>7- 在不经配置的情况下，提交代码时不会强制输入comment。</p>
+]]></content>
+  </entry>
+  
+</feed>

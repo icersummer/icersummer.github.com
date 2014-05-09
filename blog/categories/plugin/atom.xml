@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Plugin | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/plugin/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My Eclipse Plugins]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/17/my-eclipse-plugins/"/>
+    <updated>2013-07-17T23:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/17/my-eclipse-plugins</id>
+    <content type="html"><![CDATA[<p>&mdash;filename: 2013_07_17_my_eclipse_plugins.md</p>
+
+<h2>My Eclipse Plugins</h2>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse Color Themes]]></title>
+    <link href="http://icersummer.github.io/blog/2013/05/30/Eclipse-color-themes/"/>
+    <updated>2013-05-30T02:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/05/30/Eclipse-color-themes</id>
+    <content type="html"><![CDATA[<p>新近使用的Eclipse Theme 插件，</p>
+
+<p>来源于 <a href="http://eclipsecolorthemes.org/">Eclipse Color Themes org</a></p>
+
+<p><a href="http://eclipsecolorthemes.org/">http://eclipsecolorthemes.org/</a></p>
+]]></content>
+  </entry>
+  
+</feed>

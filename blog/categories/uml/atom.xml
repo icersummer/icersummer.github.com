@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: UML | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/uml/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Different_way_to_reverse_java_to_uml]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/17/different-way-to-reverse-java-to-uml/"/>
+    <updated>2013-07-17T21:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/17/different-way-to-reverse-java-to-uml</id>
+    <content type="html"><![CDATA[<h2>different_way_to_reverse_java_to_uml.md</h2>
+
+<p>常用的几种方式</p>
+]]></content>
+  </entry>
+  
+</feed>

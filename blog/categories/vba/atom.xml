@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: VBA | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/vba/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[VBA/Marco in Excel]]></title>
+    <link href="http://icersummer.github.io/blog/2013/09/06/marco-vba-in-excel/"/>
+    <updated>2013-09-06T21:15:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/09/06/marco-vba-in-excel</id>
+    <content type="html"><![CDATA[<h2>示例1</h2>
+
+<p>有一列数据1、2、3、6、6、8，把等于6的单元格用红色标出</p>
+
+<p>```
+Sub Macro1()
+&lsquo;
+&rsquo; Macro1 Macro
+'</p>
+
+<p>'</p>
+
+<pre><code>' add
+For x = 1 To Range("A65536").End(xlUp).Row '
+    If Cells(x, 1) = 2180880 Then '
+        Cells(x, 1).Interior.ColorIndex = 3
+    End If
+
+Next x    
+
+'With Selection.Interior
+'    .Pattern = xlSolid
+'    .PatternColorIndex = xlAutomatic
+'    .Color = 65535
+'    .TintAndShade = 0
+'    .PatternTintAndShade = 0
+'End With
+</code></pre>
+
+<p>End Sub</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+</feed>

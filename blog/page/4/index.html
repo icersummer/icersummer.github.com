@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Coder Blog VJIA</title>
+  <meta name="author" content="Vincent J">
+
+  
+  <meta name="description" content="X-Window模式 使用VM安装Ubuntu，如果使用X-window启动方式，会占用过多内存，而且操作方式并不是很方便，所以修改配置，使其可以启动直接进入命令行模式。 可以通过X-window登陆后，运行如下命令如下： &lsquo;&rsquo;&lsquo;
+$sudo gedit / &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icersummer.github.io/blog/page/4">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coder Blog VJIA" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coder Blog VJIA</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:icersummer.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/10/configure-ubuntu-to-cmdline/">Ubuntu CommandLine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-10T13:09:03-07:00" pubdate data-updated="true">Jul 10<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p><strong>X-Window模式</strong></p>
+
+<p>使用VM安装Ubuntu，如果使用X-window启动方式，会占用过多内存，而且操作方式并不是很方便，所以修改配置，使其可以启动直接进入命令行模式。</p>
+
+<p>可以通过X-window登陆后，运行如下命令如下：</p>
+
+<p>&lsquo;&rsquo;&lsquo;
+$sudo gedit /etc/default/grub</p>
+
+<p>&mdash;修改行
+$GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;quiet splash&#8221;为</p>
+
+<p>$GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;quiet splash text&rdquo;</p>
+
+<p>$sudo update-grub</p>
+
+<p>$sudo reboot
+&lsquo;&rsquo;&#8217;</p>
+
+<hr />
+
+<p><strong>CMD启动X-Window</strong></p>
+
+<p>命令行方式登录进入系统后，可以通过$startx命令进入图形界面</p>
+
+<ul>
+<li><p>在系统终端（比如VMWare中）执行$startx，系统直接启动图形界面；</p></li>
+<li><p>在Terminal端（如Putty或SecureCRT）中执行$startx，则系统终端会启动图形界面，而SecureCRT端则只有类log输出：</p></li>
+</ul>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~$ startx
+</span><span class='line'>xauth:  file /home/hduser/.Xauthority does not exist
+</span><span class='line'>
+</span><span class='line'>X: user not authorized to run the X server, aborting.
+</span><span class='line'>sudo startx
+</span><span class='line'>xinit: giving up
+</span><span class='line'>xinit: unable to connect to X server: No such file or directory
+</span><span class='line'>xinit: server error
+</span><span class='line'>hduser@ubuntu:~$ sudo startx
+</span><span class='line'>[sudo] password for hduser: 
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>X.Org X Server 1.11.3
+</span><span class='line'>Release Date: 2011-12-16
+</span><span class='line'>X Protocol Version 11, Revision 0
+</span><span class='line'>Build Operating System: Linux 2.6.24-29-server i686 Ubuntu
+</span><span class='line'>Current Operating System: Linux ubuntu 3.2.0-23-generic-pae #36-Ubuntu SMP Tue Apr 10 22:19:09 UTC 2012 i686
+</span><span class='line'>Kernel command line: BOOT_IMAGE=/boot/vmlinuz-3.2.0-23-generic-pae root=UUID=4594ceba-abdf-430c-9f6e-910d0ad98e52 ro quiet splash text
+</span><span class='line'>Build Date: 04 April 2012  11:58:38PM
+</span><span class='line'>xorg-server 2:1.11.4-0ubuntu10 (For technical support please see http://www.ubuntu.com/support) 
+</span><span class='line'>Current version of pixman: 0.24.4
+</span><span class='line'>        Before reporting problems, check http://wiki.x.org
+</span><span class='line'>        to make sure that you have the latest version.
+</span><span class='line'>Markers: (--) probed, (**) from config file, (==) default setting,
+</span><span class='line'>        (++) from command line, (!!) notice, (II) informational,
+</span><span class='line'>        (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+</span><span class='line'>(==) Log file: "/var/log/Xorg.0.log", Time: Fri Aug  2 00:11:15 2013
+</span><span class='line'>(==) Using system config directory "/usr/share/X11/xorg.conf.d"
+</span><span class='line'>(EE) open /dev/fb0: No such file or directory
+</span><span class='line'>(EE) vmware(0): Device is not screen object capable.
+</span><span class='line'>^Cxinit: connection to X server lost
+</span><span class='line'>
+</span><span class='line'>waiting for X server to shut down .... ddxSigGiveUp: Closing log
+</span><span class='line'>Server terminated successfully (0). Closing log file.
+</span><span class='line'>.
+</span><span class='line'>xinit: unexpected signal 2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ctrl+C退出。</p>
+
+<hr />
+
+<p>只是不能直接由X-Window切换回CMD，只能够执行命令reboot进行返回：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~$ sudo reboot -h 0
+</span><span class='line'>[sudo] password for hduser: 
+</span><span class='line'>
+</span><span class='line'>Broadcast message from hduser@ubuntu
+</span><span class='line'>        (/dev/pts/0) at 0:56 ...
+</span><span class='line'>
+</span><span class='line'>The system is going down for reboot NOW!</span></code></pre></td></tr></table></div></figure>
+
+
+<p>EOF.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/18/how-to-use-markdown-03/">Markdown常用语法、格式简介 - 03</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-18T21:12:03-07:00" pubdate data-updated="true">Jun 18<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>加粗</p>
+
+<p><em>粗体1</em>
+<strong>粗体2</strong>
+<strong><em>粗体3</em></strong></p>
+
+<p>标题</p>
+
+<h1>标题1</h1>
+
+<h2>标题2</h2>
+
+<h3>标题3</h3>
+
+<p>黑体</p>
+
+<p><b>黑体</b></p>
+
+<p>斜体</p>
+
+<p><em>斜体</em></p>
+
+<p>分割线</p>
+
+<hr />
+
+<p>列表</p>
+
+<ul>
+<li>列表项目1</li>
+<li>列表项目2</li>
+<li>列表项目3</li>
+</ul>
+
+
+<p>单行代码</p>
+
+<p><code>这里是单行代码</code></p>
+
+<p>多行代码</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>或者rb，
+</span><span class='line'>或者HTML
+</span><span class='line'>  空格二
+</span><span class='line'>      空格四
+</span><span class='line'>  结束</span></code></pre></td></tr></table></div></figure>
+
+
+<p>引用</p>
+
+<blockquote><p>引用内容，分别显示；
+无空行第二引用，附于第一段；</p>
+
+<p>换行，则新行。</p></blockquote>
+
+<hr />
+
+<p>源代码格式</p>
+
+<hr />
+
+<p>加粗</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>*粗体1*
+</span><span class='line'>**粗体2**
+</span><span class='line'>**粗体3**</span></code></pre></td></tr></table></div></figure>
+
+
+<p>标题</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#标题1#
+</span><span class='line'>##标题2##</span></code></pre></td></tr></table></div></figure>
+
+
+<p>有序编号显示</p>
+
+<ol>
+<li>第一行</li>
+<li>第二行</li>
+<li>第三行</li>
+<li>第四行 (行前的数字其实不起作用)</li>
+</ol>
+
+
+<p>嵌套编号</p>
+
+<ol>
+<li>Dog
+
+<ol>
+<li>German Shepherd</li>
+<li>Belgian Shepherd
+
+<ol>
+<li>Malinois</li>
+<li>Groenendael</li>
+<li>Tervuren</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Cat
+
+<ol>
+<li>Siberian</li>
+<li>Siamese</li>
+</ol>
+</li>
+</ol>
+
+
+<p>规则就是：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;b&gt;Advanced lists: Nesting&lt;/b&gt;   
+</span><span class='line'>
+</span><span class='line'>To put other Markdown blocks in a list; just indent four spaces for each nesting level.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>//TODO ， 这篇文章研究 <a href="http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html">http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html</a></p>
+
+<h1>双行分隔符</h1>
+
+<h2>单行分隔符</h2>
+
+<p>图片嵌入(比文字超链多了惊叹号)</p>
+
+<p><img src="https://github.com/icersummer" alt="screen shot" /></p>
+
+<h2>使用单行分隔符的Code Sample</h2>
+
+<p>The file <a href="http://icersummer.github.io"><code>HELLOWORLD.JAVA</code></a> is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。</p>
+
+<p>四个空格可以构造缩进、包围效果、并且无需换行：</p>
+
+<pre><code>123467
+这个世界
+http://github.com/icersummer
+nowthat
+</code></pre>
+
+<blockquote><p>这是一个引用。</p></blockquote>
+
+<p>下面引用中无序列表：</p>
+
+<blockquote><p>有趣的现象：</p>
+
+<ul>
+<li><p>列表1</p></li>
+<li><p>comment list</p></li>
+<li><p>comment list 002</p></li>
+</ul>
+
+
+<p>More details.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/12/how-to-setup-go-agent/">How to Setup Goagent in Chrome and Firefox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-12T13:09:03-07:00" pubdate data-updated="true">Jun 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>如何部署和使用goagent，以Windows为例：</p>
+
+<p>&mdash;申请Google Appengine并创建appid。
+&mdash;下载goagent最新版 <a href="https://code.google.com/p/goagent/">https://code.google.com/p/goagent/</a>
+&mdash;修改local\proxy.ini中的[gae]下的appid=你的appid(多appid请用|隔开)
+&mdash;双击server\uploader.bat(Mac/Linux上传方法请见FAQ)，上传成功后即可使用了(地址127.0.0.1:8087)
+&mdash;chrome请安装SwitchySharp插件，然后导入这个设置<a href="https://goagent.googlecode.com/files/SwitchyOptions.bak%EF%BC%8C%E6%88%96%E5%A4%87%E4%BB%BD%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">https://goagent.googlecode.com/files/SwitchyOptions.bak%EF%BC%8C%E6%88%96%E5%A4%87%E4%BB%BD%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80</a>
+firefox请安装FoxyProxy，Firefox需要导入证书，方法请见FAQ</p>
+
+<p>碰到的问题：
+1. 不知道怎么回事，我的本机Chrome不能在store中安装SwitchySharp插件，看不到add this plugin按钮，总是出现链向Chrome下载页面的超链。
+2. Firefox，安装FoxyProxy，设置如下：</p>
+
+<pre><code>1.新建代理服务器：127.0.0.1:8087；
+2.选择工作模式：为全部URLs启用代理服务器“127.0.0.1:8087”。
+</code></pre>
+
+<p>参考列表：</p>
+
+<ol>
+<li>Goagent官网地址: Goagent(<a href="https://code.google.com/p/goagent/">https://code.google.com/p/goagent/</a>), 有时需要https、或者越墙访问。</li>
+<li>GoAgent图文设置教程： <a href="http://tieba.baidu.com/p/1953354996">http://tieba.baidu.com/p/1953354996</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/12/what-is-raspberry-pi/">树莓派是什么东西</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-12T12:09:03-07:00" pubdate data-updated="true">Jun 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ul>
+<li>category：电脑, 科技</li>
+<li>tags：树莓派, Raspberry Pi</li>
+</ul>
+
+
+<p>树莓派（英语：Raspberry Pi），是一款基于Linux系统的只有一张信用卡大小的单板机计算机。它由英国的树莓派基金会所开发，目的是以低价硬件及自由软件刺激在学校的基本的电脑科学教育。</p>
+
+<p>树莓派的生产是通过有生产许可的两家公司：Element 14/Premier Farnell和RS Components。这两家公司都在网上出售树莓派。</p>
+
+<p>树莓派配备一枚700MHz博通出产的ARM架构BCM2835处理器，256MB内存（B型已升级到512MB内存），使用SD卡当作储存媒体，且拥有一个Ethernet，两个USB接口，以及HDMI(支持声音输出)和RCA端子输出支援。Raspberry Pi只有一张信用卡大小，体积大概是一个火柴盒大小，可以执行像雷神之锤III竞技场的游戏和进行1080p影片的播放。操作系统采用开源的Linux系统，比如Debian、ArchLinux，自带的Iceweasel、KOffice等软件能够满足基本的网络浏览，文字处理以及计算机学习的需要，分A,B两种型号，其中售价分别是A型25美元，B型35美元。基金会从2012年2月29日开始接受B型的订货。</p>
+
+<p>树莓派基金会提供了基于ARM的Debian和Arch Linux的发行版供大众下载。还计划提供支持 Python 作为主要编程语言, 支持BBC BASIC, (通过 RISC OS 映像或者Linux的&#8221;Brandy Basic&#8221;克隆), C， 和 Perl等编程语言.</p>
+
+<p>参考列表：
+链接1 ：<a href="http://zh.wikipedia.org/zh-cn/Raspberry_Pi">http://zh.wikipedia.org/zh-cn/Raspberry_Pi</a>
+链接2 ：<a href="http://www.ifanr.com/86103">http://www.ifanr.com/86103</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/06/blog-template-new/">题目-title</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-06T12:09:03-07:00" pubdate data-updated="true">Jun 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>新的模版，增加了两段文字， category、tags，同时这两段文字也出现在index.json中，便于阅读、查阅。</p>
+
+<p>===</p>
+
+<p>代码展示：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">print</span> <span class="s">&quot;hello, world.&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>模版正文开始</p>
+
+<h1>正文题目</h1>
+
+<ul>
+<li>category：吐槽</li>
+<li>tags：life</li>
+</ul>
+
+
+<hr />
+
+<p>正文在继续，文章第一行。</p>
+
+<p>通过空行来换行，这是新的一行。</p>
+
+<p>第三段，在SNS里看到了你的动态：</p>
+
+<blockquote><p>你说你爱了不不该爱的人，你的人生充满伤痕。</p></blockquote>
+
+<p>下一段，收到某人的短信：</p>
+
+<blockquote><p>重要：新创建应用需要通过审核必须使用OAuth2.0和新版接口。 新版接口迁移指南 新版接口文档 OAuth2.0开发指南。微博基础数据接口 (Rest API)。获取下行数据集(timeline)接口： statuses/public_timeline 获取最新的公共微博消息；    statuses/friends_timeline 获取当前登录用户及其所关注用户的最新微博消息 (别名: statuses/home_timeline)；    statuses/user_timeline 获取用户发布的微博消息列表；    statuses/mentions 获取@当前用户的微博列表；    statuses/comments_timeline 获取当前用户发送及收到的评论列表；    statuses/comments_by_me 获取当前用户发出的评论；；    statuses/comments_to_me 获取当前用户收到的评论
+第二个大于号
+第三个大于号</p>
+
+<p>多个大于号并不会换行，而是自动关联到了一起。</p></blockquote>
+
+<p>如果在段落中插入一段Flash MV，可以放出吗：</p>
+
+<p style="text-align:center"><embed src="http://www.xiami.com/widget/0_374459/singlePlayer.swf" type="application/x-shockwave-flash" width="257" height="33" wmode="transparent"></embed></p>
+
+
+<p>分析Flash代码：应该是能够在Git Pages中显现，而不能在Github中浏览时显现。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/06/01/Git-Tips/">GitTips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-01T17:09:03-07:00" pubdate data-updated="true">Jun 1<span>st</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>收集整理Git小技巧、资料。</h1>
+
+<hr />
+
+<h3>入门书籍</h3>
+
+<ul>
+<li>Pro Git 中文版 &ndash; [Link] (<a href="http://progit.org/book/zh/">http://progit.org/book/zh/</a>)</li>
+</ul>
+
+
+<hr />
+
+<h3>在线教程</h3>
+
+<ul>
+<li>Git分支模型 &ndash; <a href="http://www.juvenxu.com/2010/11/28/a-successful-git-branching-model/">Link</a></li>
+<li>Git rebase/merge 合并操作演示  &ndash; <a href="http://ihower.tw/blog/archives/6704/">Link</a></li>
+<li>Git常用命令导图  &ndash; <a href="http://pic002.cnblogs.com/img/1-2-3/201007/2010072023345292.png">Link</a></li>
+<li>Git简易指南  &ndash; <a href="http://rogerdudler.github.com/git-guide/index.zh.html">Link</a></li>
+<li>Git分支管理策略  &ndash; <a href="http://www.ruanyifeng.com/blog/2012/07/git.html">Link</a></li>
+<li>Git视频教程  &ndash; <a href="http://happycasts.net/episodes?tag_id=2">Link</a></li>
+</ul>
+
+
+<hr />
+
+<h3>相关资源</h3>
+
+<ul>
+<li>githug： 一个 Ruby gem包，可以边玩游戏边学Git，安装如下：
+  <code>gem install github</code></li>
+<li><p>GitGuys.com &ndash; <a href="http://www.gitguys.com/">Link</a></p></li>
+<li><p>Set Up Git &ndash; 来自官网的说明 Bootcamp (link, <a href="https://help.github.com/articles/set-up-git">https://help.github.com/articles/set-up-git</a>)</p></li>
+</ul>
+
+
+<h3>使用中碰到的问题、解决方法将陆续添加。</h3>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/30/back-to-Eclipse-and-install-EGit/">Back to Eclipse and Install EGit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-30T12:09:03-07:00" pubdate data-updated="true">May 30<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>打算切换我的IDE从SSTS到Eclipse了，因为在Eclipse官网首页看到了它的Featured Eclipse Project &ndash; EGit。</p>
+
+<p>而且，一直觉得，SSTS更新速度不够快，而Eclipse紧跟潮流。</p>
+
+<p>连现在Eclipse MarketPlace SSTS都没有。不会是因为我的IDE太古老了吧，anyway，我要换回使用Pure Eclipse了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/30/Eclipse-color-themes/">Eclipse Color Themes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-30T02:09:03-07:00" pubdate data-updated="true">May 30<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>新近使用的Eclipse Theme 插件，</p>
+
+<p>来源于 <a href="http://eclipsecolorthemes.org/">Eclipse Color Themes org</a></p>
+
+<p><a href="http://eclipsecolorthemes.org/">http://eclipsecolorthemes.org/</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/15/java-difference-in-equal-sign-and-equals-method/">Java, Difference in == and Equals</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-15T02:09:03-07:00" pubdate data-updated="true">May 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>从DB读取字段tmp，它是个空值(&ldquo;&rdquo;)， 但是在应用(tmp!=null &amp;&amp; tmp!=&ldquo;&rdquo;)时总是返回true，而且可以得到 tmp.length() = 1；但是在测试中发现 tmp.equals(&ldquo;&rdquo;)和 &ldquo;&rdquo;==&ldquo;&rdquo; 都能够正常的返回true；</p>
+
+<p>需要从本质上学习一下2个问题：
+1. equals 和 == 的异同、用在哪里；
+2. string(空值、非空值)值比较可以使用==吗？</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/14/read-git-article-123/">阅读Git权威指南&#8211;样章一二三章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-14T02:09:03-07:00" pubdate data-updated="true">May 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://ts4.mm.bing.net/th?id=H.4525792752435275&amp;pid=1.7" title="pic title" alt="Heading pic" /></p>
+
+<p>今天读了<a href="https://google.com/icersummer" title="title vjia">Git权威指南</a>，前3篇，来自ChinaPub的样章，对Git有了粗浅了解。</p>
+
+<p><em>第1篇：初识Git</em></p>
+
+<ul>
+<li><p>第1章： 版本控制的前世和今生
+主要对比了CVS、SVN、Git的异同，并且大书了Git的可用性、易用性。</p></li>
+<li><p>第2章： 爱上Git的理由
+列举了Git的一些闪亮特性，并且通过Git和SVN的对照看到Git的神奇和强大，包括每日工作备份、异地协同工作、现场版本控制。</p></li>
+<li><p>第3章： Git的安装和使用
+介绍主要安装步骤，Git在各主流平台：Linux、Mac OS X、Windows。</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/5/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/3/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/test-and-come-on-post/">Test and Come on Post</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/another-post-to-poc/">Another Post to POC</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Vincent J -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

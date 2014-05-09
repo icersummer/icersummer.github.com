@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Python | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python学习的资源]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/25/python-leanring-resources/"/>
+    <updated>2013-07-25T21:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/25/python-leanring-resources</id>
+    <content type="html"><![CDATA[<ul>
+<li><em>啄木鸟社区</em> [link, <a href="http://woodpecker.org.cn/">http://woodpecker.org.cn/</a>]</li>
+</ul>
+
+
+<p>(里面内容分为：
+&ndash; Wiki
+&ndash; Planet
+&ndash; 简明Python 2.3教程
+&ndash; 简明Python 3教程
+&ndash; Dive Into Python中文版
+&ndash; Dive Into Python 3中文版
+)</p>
+
+<ul>
+<li>《深入Python3》 [link, <a href="http://woodpecker.org.cn/diveintopython3/index.html">http://woodpecker.org.cn/diveintopython3/index.html</a>]</li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

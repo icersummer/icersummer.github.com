@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: BAE | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/bae/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[在百度BAE中安装Wordpress]]></title>
+    <link href="http://icersummer.github.io/blog/2013/08/06/build-webapp-in-bae/"/>
+    <updated>2013-08-06T13:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/08/06/build-webapp-in-bae</id>
+    <content type="html"><![CDATA[<p><img src="/images/BAE.jpg" alt="BAE" /></p>
+
+<p>1) 参考文章，<a href="http://blog.tzvb.com/nr/2013/05/10/109">如何在百度BAE安装discuz论坛之全方位解析（图解）</a>。</p>
+
+<p>2) 在参考文章中描述的是如何安装BAE版Discuz，目前打算安装Wordpress。移步到<a href="http://blog.tzvb.com/nr/2013/05/08/87">百度BAE安装（WP）WordPress博客详细图文教程</a>进行安装WP。</p>
+
+<p>3) 安装完成，访问<a href="http://phpplay.duapp.com">http://phpplay.duapp.com</a> 总是报错“建立数据库连接时出错”；参考<a href="http://blog.gimhoy.com/archives/bae-database-and-page-navi.html">这里</a>，导入了wpback.sql。继续报错。</p>
+
+<p><a href="http://mawenjian.net/p/994.html">http://mawenjian.net/p/994.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>

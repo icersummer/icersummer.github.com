@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://icersummer.github.io/sitemap.xml 

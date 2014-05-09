@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Chrome | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/chrome/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome Developer Tool调试技巧]]></title>
+    <link href="http://icersummer.github.io/blog/2013/09/09/debug-with-chrome-devtools/"/>
+    <updated>2013-09-09T21:19:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/09/09/debug-with-chrome-devtools</id>
+    <content type="html"><![CDATA[<h2>使用CDT进行调试</h2>
+
+<ol>
+<li><p>Beautify Javascript</p></li>
+<li><p>查看元素绑定了哪些事件</p></li>
+<li><p>AJax时中断</p></li>
+<li><p>页面事件中断</p></li>
+<li><p>JavaScript异常时中断</p></li>
+<li><p>DOM Level 3 Event事件中断</p></li>
+<li><p>所有文件中搜索、查找</p></li>
+<li><p>CommandLine API</p></li>
+<li><p>实时修改JS代码生效</p></li>
+<li><p>Console中执行的代码可断点</p></li>
+</ol>
+
+
+<h2>参考链接：</h2>
+
+<ol>
+<li><p>UED <a href="http://ued.taobao.com/blog/2012/06/debug-with-chrome-dev-tool/">http://ued.taobao.com/blog/2012/06/debug-with-chrome-dev-tool/</a></p></li>
+<li><p>Google Developers <a href="https://developers.google.com/chrome-developer-tools/">https://developers.google.com/chrome-developer-tools/</a></p></li>
+<li><p>Link <a href="http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html">http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html</a></p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-01-27T00:22:32-08:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Different_way_to_reverse_java_to_uml]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/17/different-way-to-reverse-java-to-uml/"/>
+    <updated>2013-07-17T21:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/17/different-way-to-reverse-java-to-uml</id>
+    <content type="html"><![CDATA[<h2>different_way_to_reverse_java_to_uml.md</h2>
+
+<p>常用的几种方式</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java, Difference in == and Equals]]></title>
+    <link href="http://icersummer.github.io/blog/2013/05/15/java-difference-in-equal-sign-and-equals-method/"/>
+    <updated>2013-05-15T02:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/05/15/java-difference-in-equal-sign-and-equals-method</id>
+    <content type="html"><![CDATA[<p>从DB读取字段tmp，它是个空值(&ldquo;&rdquo;)， 但是在应用(tmp!=null &amp;&amp; tmp!=&ldquo;&rdquo;)时总是返回true，而且可以得到 tmp.length() = 1；但是在测试中发现 tmp.equals(&ldquo;&rdquo;)和 &ldquo;&rdquo;==&ldquo;&rdquo; 都能够正常的返回true；</p>
+
+<p>需要从本质上学习一下2个问题：
+1. equals 和 == 的异同、用在哪里；
+2. string(空值、非空值)值比较可以使用==吗？</p>
+]]></content>
+  </entry>
+  
+</feed>
