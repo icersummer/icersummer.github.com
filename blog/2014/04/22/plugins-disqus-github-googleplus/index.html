@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>2013-08-07-falimiar-with-markdown - Coder Blog VJIA</title>
+  <title>OCTOPress增加Disqus评论 - Coder Blog VJIA</title>
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="更加的熟练使用Markdown 一个Markdown的在线编辑网站， Online Markdown Editor 这里面包含了实时预览已经书写的Markdown文本-Preview、解释后的HTML-HTML Output、通用的Markdown教程-Syntax Guide。 &hellip;">
+  <meta name="description" content="OCTOPress增加Disqus评论 今日步骤： 1-使用WinSCP链接UbuntuSolr image，传输已更新数据。 传输之后 1.1-更新blog页面 788 rake generate
+789 rake deploy 1.2-checkin、push更改到source分支 792 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown">
+  <link rel="canonical" href="http://icersummer.github.io/blog/2014/04/22/plugins-disqus-github-googleplus">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Coder Blog VJIA" type="application/atom+xml">
@@ -68,7 +69,7 @@
   
   <header>
     
-      <h1 class="entry-title">2013-08-07-falimiar-with-markdown</h1>
+      <h1 class="entry-title">OCTOPress增加Disqus评论</h1>
     
     
       <p class="meta">
@@ -84,7 +85,7 @@
   
 
 
-<time datetime="2013-08-07T20:09:03-07:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
+<time datetime="2014-04-22T15:56:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://icersummer.github.io">Comments</a>
@@ -94,20 +95,63 @@
   </header>
 
 
-<div class="entry-content"><h2>更加的熟练使用Markdown</h2>
+<div class="entry-content"><h2>OCTOPress增加Disqus评论</h2>
 
-<ul>
-<li>一个Markdown的在线编辑网站， <a href="http://www.ctrlshift.net/project/markdowneditor/">Online Markdown Editor</a></li>
-</ul>
+<p>今日步骤：</p>
 
+<h2>1-使用WinSCP链接UbuntuSolr image，传输已更新数据。</h2>
 
-<p>这里面包含了实时预览已经书写的Markdown文本-Preview、解释后的HTML-HTML Output、通用的Markdown教程-Syntax Guide。</p>
+<p>传输之后</p>
 
-<ul>
-<li><p>Markdown入门指南 <a href="http://jianshu.io/p/1e402922ee32">link</a></p></li>
-<li><p>Windowns下的Markdown工具，两款不错，<a href="http://www.markdownpad.com/">MarkdownPad</a>和<a href="http://code52.org/DownmarkerWPF/">MarkPad</a>，正在使用MarkdownPad。</p></li>
-</ul>
+<p>1.1-更新blog页面</p>
 
+<pre><code>788  rake generate
+789  rake deploy
+</code></pre>
+
+<p>1.2-checkin、push更改到source分支</p>
+
+<pre><code>  792  cd source/  
+  798  git add .
+  799  git commit -m 'new entry'
+  800* git commit -a
+  801  git commit -m 'new entry'
+  803  git push origin source
+</code></pre>
+
+<h2>2-添加Disqus功能</h2>
+
+<p>非常简单，在文件_config.yml中，修改Disqus short name：</p>
+
+<pre><code>disqus_short_name: vjgithubblog #注意这里中间一定有一个空格
+disqus_show_comment_count: false
+</code></pre>
+
+<p>这里的disqus short name可以在<a href="https://vjgithubblog.disqus.com/admin/settings/universalcode/">这里</a>申请。</p>
+
+<p>3-同時Octopress還提供了很多第三方插件，很容易配置並支持</p>
+
+<blockquote><p>These third party integrations are already set up for you. Simply fill in the configurations and they&rsquo;ll be added to your site.</p>
+
+<pre><code>Github - List your github repositories in the sidebar
+Twitter - Add a button for sharing of posts and pages on Twitter
+Google Plus One - Setup sharing for posts and pages on Google's plus one network.
+Pinboard - Share your recent Pinboard bookmarks in the sidebar.
+Delicious - Share your recent Delicious bookmarks in the sidebar.
+Disqus Comments - Add your disqus short name to enable disqus comments on your site.
+Google Analytics - Add your tracking id to enable Google Analytics tracking for your site.
+Facebook - Add a Facebook like button
+</code></pre></blockquote>
+
+<p>4-添加了Github repository显示：</p>
+
+<p><code>github_user: yourGithubName</code></p>
+
+<p><code>github_show_profile_link: true</code></p>
+
+<p>5-添加了googlePlus链接：</p>
+
+<p><code>googleplus_user: 11509823689222118830</code> #这里的数字是点击自己的Google Plus Profile时显示的一串数字，不是GMail账户名。</p>
 </div>
 
 
@@ -130,12 +174,12 @@
   
 
 
-<time datetime="2013-08-07T20:09:03-07:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
+<time datetime="2014-04-22T15:56:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/markdown/'>Markdown</a>, <a class='category' href='/blog/categories/oldblog/'>oldblog</a>
+    <a class='category' href='/blog/categories/disqus/'>disqus</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
   
 </span>
 
@@ -144,7 +188,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown/" data-via="vincentJia" data-counturl="http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icersummer.github.io/blog/2014/04/22/plugins-disqus-github-googleplus/" data-via="vincentJia" data-counturl="http://icersummer.github.io/blog/2014/04/22/plugins-disqus-github-googleplus/" >Tweet</a>
   
   
   
@@ -153,10 +197,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/06/build-webapp-in-bae/" title="Previous Post: 在百度BAE中安装Wordpress">&laquo; 在百度BAE中安装Wordpress</a>
+        <a class="basic-alignment left" href="/blog/2014/04/22/core-java-refcardz/" title="Previous Post: A good Refcardz of Core Java on DZone">&laquo; A good Refcardz of Core Java on DZone</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/08/07/readings-review-yearly/" title="Next Post: 每年度阅读回顾">每年度阅读回顾 &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/04/22/rtsp-protocol/" title="Next Post: RTSP命令">RTSP命令 &raquo;</a>
       
     </p>
   </footer>
@@ -260,8 +304,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown/';
-        var disqus_url = 'http://icersummer.github.io/blog/2013/08/07/falimiar-with-markdown/';
+        var disqus_identifier = 'http://icersummer.github.io/blog/2014/04/22/plugins-disqus-github-googleplus/';
+        var disqus_url = 'http://icersummer.github.io/blog/2014/04/22/plugins-disqus-github-googleplus/';
         var disqus_script = 'embed.js';
       
     (function () {

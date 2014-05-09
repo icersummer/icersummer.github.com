@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="~$ git clone git://github.com/imathis/octopress.git hellosummer_blog git push origin branchName
-git remote add -t master -f origin https://github.com &hellip;">
+  <meta name="description" content="错误信息： ORA-28000
+Error: ORA-28000: the account is locked Cause: The user has entered wrong password consequently for maximum number of times specified &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +66,60 @@ git remote add -t master -f origin https://github.com &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-02T21:12:03-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
+        
+           | <a href="/blog/2014/04/02/oracle-the-account-is-locked/#disqus_thread"
+             data-disqus-identifier="http://icersummer.github.io/blog/2014/04/02/oracle-the-account-is-locked/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>错误信息：</p>
+
+<blockquote><p>ORA-28000
+Error: ORA-28000: the account is locked</p>
+
+<p>Cause: The user has entered wrong password consequently for maximum number of times specified by the user&rsquo;s profile parameter FAILED_LOGIN_ATTEMPTS, or the database administrator has locked the account.</p>
+
+<p>Action: Wait for PASSWORD_LOCK_TIME or contact the database administrator</p></blockquote>
+
+<p>解决办法：</p>
+
+<blockquote><p>To unlock an user manually:
+ALTER USER username ACCOUNT UNLOCK;</p>
+
+<p>to change his password:
+alter user username identified by new_password;</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -705,55 +759,6 @@ There is a file called: Bookmarks.bak.  The sad part that i can not simply renam
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/10/26/linux-commands/">Linux常用命令</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-26T21:22:03-07:00" pubdate data-updated="true">Oct 26<span>th</span>, 2013</time>
-        
-           | <a href="/blog/2013/10/26/linux-commands/#disqus_thread"
-             data-disqus-identifier="http://icersummer.github.io/blog/2013/10/26/linux-commands/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>查找</p>
-
-<p>vjia@ubuntu:~/hadoop-0.20.2-cdh3u6$ find . -name &lsquo;<em>jar</em>&rsquo;</p>
-
-<p>参考链接：<a href="http://www.ruanyifeng.com/blog/2009/10/5_ways_to_search_for_files_using_the_terminal.html">http://www.ruanyifeng.com/blog/2009/10/5_ways_to_search_for_files_using_the_terminal.html</a></p>
-
-<p>查看系统版本、CPU、Memory信息：</p>
-
-<p>$ cat /proc/ (tab)</p>
-
-<p>$ cat /proc/cpuinfo</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -787,7 +792,7 @@ There is a file called: Bookmarks.bak.  The sad part that i can not simply renam
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a>
+        <a href="/blog/2014/04/22/plugins-disqus-github-googleplus/">OCTOPress增加Disqus评论</a>
       </li>
     
   </ul>
