@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Centos | Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/blog/categories/centos/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-04-15T02:40:44-07:00</updated>
+  <updated>2014-05-08T20:08:22-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -12,6 +12,151 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[读写Blob对象-Oracle版]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/22/read-write-blob-data/"/>
+    <updated>2014-04-22T13:26:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/22/read-write-blob-data</id>
+    <content type="html"><![CDATA[<p>在JDBC中如何Insert/Retrieve BLOB对象呢？</p>
+
+<p>示例代码如下：</p>
+
+<p>```</p>
+
+<pre><code>private static void testWriteReadObjectInBlob() {
+    try {
+        // table blob_test : create table blob_test(id number, test blob);
+        System.out.println("@testWriteReadObjectInBlob:");
+        conn.setAutoCommit(false);
+        Statement stmt = conn.createStatement();
+        String id = "" + 6;
+        System.out.println("current id : " + id);
+        String sql1 = "insert into blob_test(id, test) values ([id], empty_blob())".replace("[id]", id);
+        stmt.executeUpdate(sql1);
+        String sql2 = "select test from blob_test where id=[id] for update".replace("[id]", id);
+        ResultSet rs = stmt.executeQuery(sql2);
+        Object master = any_of_my_class_object;//TODO
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(master);
+        byte[] data = bos.toByteArray();
+        while(rs.next()) {
+            oracle.sql.BLOB blob = (oracle.sql.BLOB)rs.getBlob("test");
+            OutputStream outStream = blob.getBinaryOutputStream();
+            outStream.write(data, 0, data.length);
+            outStream.flush();
+            outStream.close();
+        }
+        conn.commit();
+
+        //read out
+        String sql3 = "select * from blob_test where id=[id]".replace("[id]", id);
+        rs = stmt.executeQuery(sql3);
+        while(rs.next()) {
+            byte[] byteBuffer = rs.getBytes("test");
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteBuffer);
+            ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+            Object obj = objectInputStream.readObject();
+            System.out.println("--------------------");
+            System.out.println(obj);
+            System.out.println("--------------------");
+            System.out.println(obj.getClass().getName());
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }   
+}
+</code></pre>
+
+<p>```</p>
+
+<p>参考链接：</p>
+
+<ol>
+<li>Inserting BLOB data through JDBC <a href="http://www.go4expert.com/forums/inserting-blob-data-jdbc-t866/">link</a>;</li>
+<li>I get good answer in this SOF post <a href="http://stackoverflow.com/questions/8348427/how-to-write-update-oracle-blob-in-a-reliable-way">link</a>;</li>
+<li>洛显臃肿的多种BLOB读值方式：Store Precedure、DBMS_LOB、Oracle Blob：<a href="http://blog.csdn.net/yanghongchang_/article/details/7644115">link</a></li>
+<li>Reading a blob from MySQL <a href="http://stackoverflow.com/questions/14610011/reading-a-blob-from-mysql-with-java">link</a>;</li>
+</ol>
+
+
+<p>另note：</p>
+
+<ol>
+<li>Oracle中blob类型为blob；</li>
+<li>SqlServer中blob类型为image。</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Class.getName() 的返回值说明]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/18/class-getname-method/"/>
+    <updated>2014-04-18T21:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/18/class-getname-method</id>
+    <content type="html"><![CDATA[<p>refer url: <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Class.html#getName%28%29">link</a></p>
+
+<p> Examples:</p>
+
+<pre><code> String.class.getName()
+     returns "java.lang.String"
+ byte.class.getName()
+     returns "byte"
+ (new Object[3]).getClass().getName()
+     returns "[Ljava.lang.Object;"
+ (new int[3][4][5][6][7][8][9]).getClass().getName()
+     returns "[[[[[[[I"
+</code></pre>
+
+<p>在我的代码中出现如下信息：</p>
+
+<pre><code>obj : [B@34be51e8
+classname : [B
+</code></pre>
+
+<p>a single [ means an array of</p>
+
+<p>L followed by a fully qualified class name (e.g. java/lang/Object) is the class name terminated by semicolon ;</p>
+
+<p>so [Ljava.lang.object; means Object[]</p>
+
+<p>class [B</p>
+
+<p>class [Lcom.sun.mail.imap.IMAPMessage;</p>
+
+<p>class [C</p>
+
+<p>class [I</p>
+
+<p>class [Ljava.lang.Object;</p>
+
+<p>[B is array of primitive byte</p>
+
+<p>[C is array of primitive char</p>
+
+<p>[I is array of primitive int</p>
+
+<p>[Lx is array of type x</p>
+
+<p>Here is the entire list: <a href="http://stackoverflow.com/questions/1040868/java-syntax-and-meaning-behind-b1ef9157-binary-address">link on SOF</a></p>
+
+<pre><code>B - byte
+C - char
+D - double
+F - float
+I - int
+J - long
+Lfully-qualified-class; - between an L and a ; is the full class name, using / as the delimiter between packages (for example, Ljava/lang/String;)
+S - short
+Z - boolean
+[ - one [ for every dimension of the array
+(argument types)return-type - method signature, such as (I)V, with the additional pseudo-type of V for void method
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SCP命令的使用]]></title>

@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>正则表达式 - Coder Blog VJIA</title>
+  <meta name="author" content="Vincent J">
+
+  
+  <meta name="description" content="^cell\d : ^[1-9]\d+$ ^：表示匹配起始位置 \d+: 0-9的数字，个数为任意个 $: 匹配末尾 . : any character [abc] : any of the characters a,b,or c (same as a|b|c) [abc[hij]]: any &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icersummer.github.io/blog/2014/04/22/regex-intro">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coder Blog VJIA" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coder Blog VJIA</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:icersummer.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">正则表达式</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-22T17:46:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>^cell\d  :</p>
+
+<p>^[1-9]\d+$</p>
+
+<p>^：表示匹配起始位置</p>
+
+<p>\d+: 0-9的数字，个数为任意个</p>
+
+<p>$: 匹配末尾</p>
+
+<p>. : any character</p>
+
+<p>[abc] : any of the characters a,b,or c (same as a|b|c)</p>
+
+<p>[abc[hij]]: any of a,b,c,h,j,j (same as a|b|c|h|i|j) (union)</p>
+
+<p>[a-z&amp;&amp;[hij]]: either h,I, or j (insersection)</p>
+
+<p>\s : a whitespace character (space, tab, newline, form feed, carriage return)</p>
+
+<p>\S : a non-whitespace character ([^\s])</p>
+
+<p>\d : a numberic digit [0-9]</p>
+
+<p>\D : a non-digit [0-9]</p>
+
+<p>\w : a word character [a-zA-Z_0-9]</p>
+
+<p>\W : a non-word chacter [^\w]</p>
+
+<p>正则表达式的百度百科详细解释<a href="http://baike.baidu.com/view/94238.htm">link</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent J</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-22T17:46:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>java</a>, <a class='category' href='/blog/categories/regex/'>regex</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icersummer.github.io/blog/2014/04/22/regex-intro/" data-via="" data-counturl="http://icersummer.github.io/blog/2014/04/22/regex-intro/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/" title="Previous Post: TiddlyWiki简介">&laquo; TiddlyWiki简介</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/" title="Next Post: [转载]为什么要写Blog？">[转载]为什么要写Blog？ &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/">[转载]为什么要写Blog？</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/regex-intro/">正则表达式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Vincent J -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

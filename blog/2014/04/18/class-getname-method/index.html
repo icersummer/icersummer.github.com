@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Class.getName() 的返回值说明 - Coder Blog VJIA</title>
+  <meta name="author" content="Vincent J">
+
+  
+  <meta name="description" content="refer url: link Examples: String.class.getName() returns "java.lang.String" byte.class.getName() returns "byte" (new Object[3]).getClass().getName() &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icersummer.github.io/blog/2014/04/18/class-getname-method">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Coder Blog VJIA" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Coder Blog VJIA</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:icersummer.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Class.getName() 的返回值说明</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-18T21:12:03-07:00" pubdate data-updated="true">Apr 18<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>refer url: <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Class.html#getName%28%29">link</a></p>
+
+<p> Examples:</p>
+
+<pre><code> String.class.getName()
+     returns "java.lang.String"
+ byte.class.getName()
+     returns "byte"
+ (new Object[3]).getClass().getName()
+     returns "[Ljava.lang.Object;"
+ (new int[3][4][5][6][7][8][9]).getClass().getName()
+     returns "[[[[[[[I"
+</code></pre>
+
+<p>在我的代码中出现如下信息：</p>
+
+<pre><code>obj : [B@34be51e8
+classname : [B
+</code></pre>
+
+<p>a single [ means an array of</p>
+
+<p>L followed by a fully qualified class name (e.g. java/lang/Object) is the class name terminated by semicolon ;</p>
+
+<p>so [Ljava.lang.object; means Object[]</p>
+
+<p>class [B</p>
+
+<p>class [Lcom.sun.mail.imap.IMAPMessage;</p>
+
+<p>class [C</p>
+
+<p>class [I</p>
+
+<p>class [Ljava.lang.Object;</p>
+
+<p>[B is array of primitive byte</p>
+
+<p>[C is array of primitive char</p>
+
+<p>[I is array of primitive int</p>
+
+<p>[Lx is array of type x</p>
+
+<p>Here is the entire list: <a href="http://stackoverflow.com/questions/1040868/java-syntax-and-meaning-behind-b1ef9157-binary-address">link on SOF</a></p>
+
+<pre><code>B - byte
+C - char
+D - double
+F - float
+I - int
+J - long
+Lfully-qualified-class; - between an L and a ; is the full class name, using / as the delimiter between packages (for example, Ljava/lang/String;)
+S - short
+Z - boolean
+[ - one [ for every dimension of the array
+(argument types)return-type - method signature, such as (I)V, with the additional pseudo-type of V for void method
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent J</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-18T21:12:03-07:00" pubdate data-updated="true">Apr 18<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/centos/'>centos</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/scp/'>scp</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icersummer.github.io/blog/2014/04/18/class-getname-method/" data-via="" data-counturl="http://icersummer.github.io/blog/2014/04/18/class-getname-method/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/04/15/usage-of-scp/" title="Previous Post: SCP命令的使用">&laquo; SCP命令的使用</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/22/read-write-blob-data/" title="Next Post: 读写Blob对象-Oracle版">读写Blob对象-Oracle版 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/">[转载]为什么要写Blog？</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/regex-intro/">正则表达式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Vincent J -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

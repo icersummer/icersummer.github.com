@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-04-15T02:40:44-07:00</updated>
+  <updated>2014-05-08T20:08:22-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -14,26 +14,56 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Different_way_to_reverse_java_to_uml]]></title>
-    <link href="http://icersummer.github.io/blog/2013/07/17/different-way-to-reverse-java-to-uml/"/>
-    <updated>2013-07-17T21:09:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/07/17/different-way-to-reverse-java-to-uml</id>
-    <content type="html"><![CDATA[<h2>different_way_to_reverse_java_to_uml.md</h2>
+    <title type="html"><![CDATA[正则表达式]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/22/regex-intro/"/>
+    <updated>2014-04-22T17:46:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/22/regex-intro</id>
+    <content type="html"><![CDATA[<p>^cell\d  :</p>
 
-<p>常用的几种方式</p>
+<p>^[1-9]\d+$</p>
+
+<p>^：表示匹配起始位置</p>
+
+<p>\d+: 0-9的数字，个数为任意个</p>
+
+<p>$: 匹配末尾</p>
+
+<p>. : any character</p>
+
+<p>[abc] : any of the characters a,b,or c (same as a|b|c)</p>
+
+<p>[abc[hij]]: any of a,b,c,h,j,j (same as a|b|c|h|i|j) (union)</p>
+
+<p>[a-z&amp;&amp;[hij]]: either h,I, or j (insersection)</p>
+
+<p>\s : a whitespace character (space, tab, newline, form feed, carriage return)</p>
+
+<p>\S : a non-whitespace character ([^\s])</p>
+
+<p>\d : a numberic digit [0-9]</p>
+
+<p>\D : a non-digit [0-9]</p>
+
+<p>\w : a word character [a-zA-Z_0-9]</p>
+
+<p>\W : a non-word chacter [^\w]</p>
+
+<p>正则表达式的百度百科详细解释<a href="http://baike.baidu.com/view/94238.htm">link</a></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Java, Difference in == and Equals]]></title>
-    <link href="http://icersummer.github.io/blog/2013/05/15/java-difference-in-equal-sign-and-equals-method/"/>
-    <updated>2013-05-15T02:09:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/05/15/java-difference-in-equal-sign-and-equals-method</id>
-    <content type="html"><![CDATA[<p>从DB读取字段tmp，它是个空值(&ldquo;&rdquo;)， 但是在应用(tmp!=null &amp;&amp; tmp!=&ldquo;&rdquo;)时总是返回true，而且可以得到 tmp.length() = 1；但是在测试中发现 tmp.equals(&ldquo;&rdquo;)和 &ldquo;&rdquo;==&ldquo;&rdquo; 都能够正常的返回true；</p>
+    <title type="html"><![CDATA[A Good Refcardz of Core Java on DZone]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/22/core-java-refcardz/"/>
+    <updated>2014-04-22T14:53:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/22/core-java-refcardz</id>
+    <content type="html"><![CDATA[<h1>Core Java</h1>
 
-<p>需要从本质上学习一下2个问题：
-1. equals 和 == 的异同、用在哪里；
-2. string(空值、非空值)值比较可以使用==吗？</p>
+<h2>The Essential Java Cheat Sheet</h2>
+
+<blockquote><p>The Core Java Technology is the foundation of Java Platform of JSE. It is utilized in all classes of Java programming, from desktop to Java Enterprise Edition. This DZone Refcard gives you an overview of key aspects of the Java language and cheat sheets on the core library (formatted output, collections, regular expressions, logging, properties) as well as the most commonly used tools (javac, java, jar). In addition, this Refcard reviews Java Keywords, Standard Java Packages, Character Escape Sequences, Collections and Common Algorithms, Regular Expressions, JAR Files and more.</p></blockquote>
+
+<p>The <a href="http://refcardz.dzone.com/refcardz/core-java?uid=1223903&amp;nid=5305&amp;token=12239030218175f8dc8b6">hyperlink</a>.</p>
 ]]></content>
   </entry>
   

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Regex | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/regex/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-05-08T20:08:22-07:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[正则表达式]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/22/regex-intro/"/>
+    <updated>2014-04-22T17:46:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/22/regex-intro</id>
+    <content type="html"><![CDATA[<p>^cell\d  :</p>
+
+<p>^[1-9]\d+$</p>
+
+<p>^：表示匹配起始位置</p>
+
+<p>\d+: 0-9的数字，个数为任意个</p>
+
+<p>$: 匹配末尾</p>
+
+<p>. : any character</p>
+
+<p>[abc] : any of the characters a,b,or c (same as a|b|c)</p>
+
+<p>[abc[hij]]: any of a,b,c,h,j,j (same as a|b|c|h|i|j) (union)</p>
+
+<p>[a-z&amp;&amp;[hij]]: either h,I, or j (insersection)</p>
+
+<p>\s : a whitespace character (space, tab, newline, form feed, carriage return)</p>
+
+<p>\S : a non-whitespace character ([^\s])</p>
+
+<p>\d : a numberic digit [0-9]</p>
+
+<p>\D : a non-digit [0-9]</p>
+
+<p>\w : a word character [a-zA-Z_0-9]</p>
+
+<p>\W : a non-word chacter [^\w]</p>
+
+<p>正则表达式的百度百科详细解释<a href="http://baike.baidu.com/view/94238.htm">link</a></p>
+]]></content>
+  </entry>
+  
+</feed>

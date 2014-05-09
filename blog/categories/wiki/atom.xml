@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Wiki | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/wiki/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-05-08T20:08:22-07:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[TiddlyWiki简介]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/22/tiddlywiki-for-single-page-wiki/"/>
+    <updated>2014-04-22T17:12:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/22/tiddlywiki-for-single-page-wiki</id>
+    <content type="html"><![CDATA[<p>之前cxc曾经问过我，有没有比较好的wiki展示页面或系统，能够脱离Server运行，而且内容组织良好。</p>
+
+<p>当时是基于JS实现了一个单页面，但是其内容编辑的话，还是要在源代码中编辑，比如加入新段落-BR，或-P tag，个人感觉很马虎，不满意。</p>
+
+<p>现在发现一个比较不错的wiki单页面系统，可用性、易用性都很好-<a href="http://tiddlywiki.com/">TiddlyWiki</a>.</p>
+
+<p>具体使用方法可以参考<a href="http://tiddlywiki.com/">官网</a>，现在最新版是Release 5.0.10-beta.</p>
+]]></content>
+  </entry>
+  
+</feed>

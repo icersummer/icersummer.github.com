@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="复制文件 SCP命令用于在Linux间拷贝文件，（可以在拷贝过程中重命名） scp [可选参数] file_source file_target 从本地复制到远程： scp local_file remote_username@remote_ip:remote_folder scp &hellip;">
+  <meta name="description" content="为什么要写Blog？ 来自：阮一峰的博客 日期：2006年12月22日 到今年12月为止，我写Blog已经满3年了，一共写了接近600篇，平均每2天写一篇。今后应该还会继续写下去。 3年前，我开始写的时候，并没有想过自己会坚持这么久。3年中，也遇见过几次有人问我&#8221;为什么要写Blog &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,526 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/">[转载]为什么要写Blog？</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-29T16:59:03-07:00" pubdate data-updated="true">Apr 29<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>为什么要写Blog？</h1>
+
+<p>来自：<a href="http://www.ruanyifeng.com/blog/2006/12/why_i_keep_blogging.html">阮一峰的博客</a></p>
+
+<p>日期：2006年12月22日</p>
+
+<p>到今年12月为止，我写Blog已经满3年了，一共写了接近600篇，平均每2天写一篇。今后应该还会继续写下去。</p>
+
+<p>3年前，我开始写的时候，并没有想过自己会坚持这么久。3年中，也遇见过几次有人问我&#8221;为什么要写Blog？&#8221;</p>
+
+<p>是啊，为什么要写Blog？毕竟这里没有人支付稿酬，也看不出有任何明显的物质性收益。</p>
+
+<p>Darren Rowse在他的<a href="http://www.problogger.net/archives/2006/12/06/7-reasons-why-personal-blogs-rock/">Blog</a>上，讲到了7个理由，我觉得说得很好。</p>
+
+<p><strong>1. 学会写作Blog的技巧（teach you the skills of blogging）</strong></p>
+
+<p>没有人天生会写Blog，我刚开始的时候也不知道该怎么写。但是，经过不断的尝试，现在我知道怎么可以写出受欢迎的文章。</p>
+
+<p><strong>2. 熟悉Blog工具（familiarize you with the tools of blogging）</strong></p>
+
+<p>写作Blog，可以选择自己搭建平台，也可以选择网上的免费Blog提供商。我曾经试用过不少Blog软件，最后才选择了现在的Moveable Type，这本身也是一个学习过程。</p>
+
+<p><strong>3. 便于更好地安排时间（help you work out how much time you have）</strong></p>
+
+<p>写作Blog花费的时间，要比大家想象的多，甚至也比我自己想象的多。但是，另一方面，每天我们又有很多时间被无谓地浪费了。坚持写作Blog的过程，也是进行更好的时间安排的过程。</p>
+
+<p><strong>4. 便于你了解自己是否可以长期做一件喜欢的事情（help you work out if you can sustain blogging for the long term）</strong></p>
+
+<p>很多人都有自己的爱好，但是只有当你享受到这种爱好时，你才会长期坚持下去。写作Blog可以帮助你体验到这种感觉。</p>
+
+<p><strong>5. 便于体验Blog文化（give you a taste of blogging &lsquo;culture&#8217;）</strong></p>
+
+<p>Blog的世界有一种无形的礼仪、风格和用语。熟悉它们，会使你更好地表达自己和理解他人。</p>
+
+<p><strong>6. 便于你形成和了解自我（help you define a niche）</strong></p>
+
+<p>长期写作Blog最大的好处之一就是，写着写着，你的自我会变得越来越清晰。你最终会明白自己是一个什么样的人，以及自己热爱的又是什么东西。</p>
+
+<p><strong>7. 帮助你找到读者（help you find a readership）</strong></p>
+
+<p>与他人交流是生命最大的乐趣之一。写作Blog可以帮助我们更好地做到这一点。</p>
+
+<p>如果你觉得你想说的东西不适宜让他人知道，你可以在自己的电脑里写，不用放到网上。这样除了上面第7点以外，其他6点的好处也还是适用的。</p>
+
+<p>总之，正是因为以上7个理由，所以我强烈建议，每一个朋友都应该有一个自己的Blog，尝试将自己的生活和想法记录下来，留下一些印记。</p>
+
+<p>（完）</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/22/regex-intro/">正则表达式</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-22T17:46:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>^cell\d  :</p>
+
+<p>^[1-9]\d+$</p>
+
+<p>^：表示匹配起始位置</p>
+
+<p>\d+: 0-9的数字，个数为任意个</p>
+
+<p>$: 匹配末尾</p>
+
+<p>. : any character</p>
+
+<p>[abc] : any of the characters a,b,or c (same as a|b|c)</p>
+
+<p>[abc[hij]]: any of a,b,c,h,j,j (same as a|b|c|h|i|j) (union)</p>
+
+<p>[a-z&amp;&amp;[hij]]: either h,I, or j (insersection)</p>
+
+<p>\s : a whitespace character (space, tab, newline, form feed, carriage return)</p>
+
+<p>\S : a non-whitespace character ([^\s])</p>
+
+<p>\d : a numberic digit [0-9]</p>
+
+<p>\D : a non-digit [0-9]</p>
+
+<p>\w : a word character [a-zA-Z_0-9]</p>
+
+<p>\W : a non-word chacter [^\w]</p>
+
+<p>正则表达式的百度百科详细解释<a href="http://baike.baidu.com/view/94238.htm">link</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-22T17:12:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>之前cxc曾经问过我，有没有比较好的wiki展示页面或系统，能够脱离Server运行，而且内容组织良好。</p>
+
+<p>当时是基于JS实现了一个单页面，但是其内容编辑的话，还是要在源代码中编辑，比如加入新段落-BR，或-P tag，个人感觉很马虎，不满意。</p>
+
+<p>现在发现一个比较不错的wiki单页面系统，可用性、易用性都很好-<a href="http://tiddlywiki.com/">TiddlyWiki</a>.</p>
+
+<p>具体使用方法可以参考<a href="http://tiddlywiki.com/">官网</a>，现在最新版是Release 5.0.10-beta.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-22T15:56:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>RTSP命令的Java实现</h2>
+
+<p>以前所做项目中涉及到视频编解码，其中实现了RTSP协议，</p>
+
+<p>参考一下链接研究它：</p>
+
+<ol>
+<li><a href="http://blog.csdn.net/xyz_lmn/article/details/6055179">rtsp网络协议的java实现 </a></li>
+<li><a href="http://blog.csdn.net/feidragon319/archive/2007/08/14/1742357.aspx">RTSP简单命令</a></li>
+<li><a href="http://hi.baidu.com/ssyuan/item/128bc7d624a77a876dce3fc5">RTSP客户端的java实现</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-22T14:53:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Core Java</h1>
+
+<h2>The Essential Java Cheat Sheet</h2>
+
+<blockquote><p>The Core Java Technology is the foundation of Java Platform of JSE. It is utilized in all classes of Java programming, from desktop to Java Enterprise Edition. This DZone Refcard gives you an overview of key aspects of the Java language and cheat sheets on the core library (formatted output, collections, regular expressions, logging, properties) as well as the most commonly used tools (javac, java, jar). In addition, this Refcard reviews Java Keywords, Standard Java Packages, Character Escape Sequences, Collections and Common Algorithms, Regular Expressions, JAR Files and more.</p></blockquote>
+
+<p>The <a href="http://refcardz.dzone.com/refcardz/core-java?uid=1223903&amp;nid=5305&amp;token=12239030218175f8dc8b6">hyperlink</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/22/read-write-blob-data/">读写Blob对象-Oracle版</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-22T13:26:03-07:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在JDBC中如何Insert/Retrieve BLOB对象呢？</p>
+
+<p>示例代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>  private static void testWriteReadObjectInBlob() {
+</span><span class='line'>      try {
+</span><span class='line'>          // table blob_test : create table blob_test(id number, test blob);
+</span><span class='line'>          System.out.println("@testWriteReadObjectInBlob:");
+</span><span class='line'>          conn.setAutoCommit(false);
+</span><span class='line'>          Statement stmt = conn.createStatement();
+</span><span class='line'>          String id = "" + 6;
+</span><span class='line'>          System.out.println("current id : " + id);
+</span><span class='line'>          String sql1 = "insert into blob_test(id, test) values ([id], empty_blob())".replace("[id]", id);
+</span><span class='line'>          stmt.executeUpdate(sql1);
+</span><span class='line'>          String sql2 = "select test from blob_test where id=[id] for update".replace("[id]", id);
+</span><span class='line'>          ResultSet rs = stmt.executeQuery(sql2);
+</span><span class='line'>          Object master = any_of_my_class_object;//TODO
+</span><span class='line'>          ByteArrayOutputStream bos = new ByteArrayOutputStream();
+</span><span class='line'>          ObjectOutputStream oos = new ObjectOutputStream(bos);
+</span><span class='line'>          oos.writeObject(master);
+</span><span class='line'>          byte[] data = bos.toByteArray();
+</span><span class='line'>          while(rs.next()) {
+</span><span class='line'>              oracle.sql.BLOB blob = (oracle.sql.BLOB)rs.getBlob("test");
+</span><span class='line'>              OutputStream outStream = blob.getBinaryOutputStream();
+</span><span class='line'>              outStream.write(data, 0, data.length);
+</span><span class='line'>              outStream.flush();
+</span><span class='line'>              outStream.close();
+</span><span class='line'>          }
+</span><span class='line'>          conn.commit();
+</span><span class='line'>          
+</span><span class='line'>          //read out
+</span><span class='line'>          String sql3 = "select * from blob_test where id=[id]".replace("[id]", id);
+</span><span class='line'>          rs = stmt.executeQuery(sql3);
+</span><span class='line'>          while(rs.next()) {
+</span><span class='line'>              byte[] byteBuffer = rs.getBytes("test");
+</span><span class='line'>              ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteBuffer);
+</span><span class='line'>              ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+</span><span class='line'>              Object obj = objectInputStream.readObject();
+</span><span class='line'>              System.out.println("--------------------");
+</span><span class='line'>              System.out.println(obj);
+</span><span class='line'>              System.out.println("--------------------");
+</span><span class='line'>              System.out.println(obj.getClass().getName());
+</span><span class='line'>          }
+</span><span class='line'>          
+</span><span class='line'>      } catch (Exception e) {
+</span><span class='line'>          e.printStackTrace();
+</span><span class='line'>      }   
+</span><span class='line'>  }</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考链接：</p>
+
+<ol>
+<li>Inserting BLOB data through JDBC <a href="http://www.go4expert.com/forums/inserting-blob-data-jdbc-t866/">link</a>;</li>
+<li>I get good answer in this SOF post <a href="http://stackoverflow.com/questions/8348427/how-to-write-update-oracle-blob-in-a-reliable-way">link</a>;</li>
+<li>洛显臃肿的多种BLOB读值方式：Store Precedure、DBMS_LOB、Oracle Blob：<a href="http://blog.csdn.net/yanghongchang_/article/details/7644115">link</a></li>
+<li>Reading a blob from MySQL <a href="http://stackoverflow.com/questions/14610011/reading-a-blob-from-mysql-with-java">link</a>;</li>
+</ol>
+
+
+<p>另note：</p>
+
+<ol>
+<li>Oracle中blob类型为blob；</li>
+<li>SqlServer中blob类型为image。</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/04/18/class-getname-method/">Class.getName() 的返回值说明</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-18T21:12:03-07:00" pubdate data-updated="true">Apr 18<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>refer url: <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Class.html#getName%28%29">link</a></p>
+
+<p> Examples:</p>
+
+<pre><code> String.class.getName()
+     returns "java.lang.String"
+ byte.class.getName()
+     returns "byte"
+ (new Object[3]).getClass().getName()
+     returns "[Ljava.lang.Object;"
+ (new int[3][4][5][6][7][8][9]).getClass().getName()
+     returns "[[[[[[[I"
+</code></pre>
+
+<p>在我的代码中出现如下信息：</p>
+
+<pre><code>obj : [B@34be51e8
+classname : [B
+</code></pre>
+
+<p>a single [ means an array of</p>
+
+<p>L followed by a fully qualified class name (e.g. java/lang/Object) is the class name terminated by semicolon ;</p>
+
+<p>so [Ljava.lang.object; means Object[]</p>
+
+<p>class [B</p>
+
+<p>class [Lcom.sun.mail.imap.IMAPMessage;</p>
+
+<p>class [C</p>
+
+<p>class [I</p>
+
+<p>class [Ljava.lang.Object;</p>
+
+<p>[B is array of primitive byte</p>
+
+<p>[C is array of primitive char</p>
+
+<p>[I is array of primitive int</p>
+
+<p>[Lx is array of type x</p>
+
+<p>Here is the entire list: <a href="http://stackoverflow.com/questions/1040868/java-syntax-and-meaning-behind-b1ef9157-binary-address">link on SOF</a></p>
+
+<pre><code>B - byte
+C - char
+D - double
+F - float
+I - int
+J - long
+Lfully-qualified-class; - between an L and a ; is the full class name, using / as the delimiter between packages (for example, Ljava/lang/String;)
+S - short
+Z - boolean
+[ - one [ for every dimension of the array
+(argument types)return-type - method signature, such as (I)V, with the additional pseudo-type of V for void method
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -277,595 +797,6 @@ alter user username identified by new_password;</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-02T21:12:03-07:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>~$ git clone git://github.com/imathis/octopress.git hellosummer_blog</p>
-
-<p>git push origin branchName
-git remote add -t master -f origin <a href="https://github.com/hellosummer/hellosummer.github.com.git">https://github.com/hellosummer/hellosummer.github.com.git</a>
-$git remote add origin git@github:YourGithubID/work.git</p>
-
-<p>git checkout -b feature_x
-git push origin <branch></p>
-
-<p>不同情况的提交：</p>
-
-<p>1.checkout新项目，修改，提交
-//在当前目录下建立solrLearning目录，并克隆成功solrLearning项目
-$ git clone git://github.com/icersummer/solrLearning.git solrLearning
-//如下命令checkin成功
-$ git push <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a> master
-Username for &lsquo;<a href="https://github.com">https://github.com</a>&rsquo;:
-Password for &lsquo;<a href="https://icersummer@github.com">https://icersummer@github.com</a>&rsquo;:
-To <a href="https://github.com/icersummer/solrLearning.git">https://github.com/icersummer/solrLearning.git</a>
-   dcfaaac..16d9c7e  master &ndash;> master</p>
-
-<p>2.已存在的checkout的项目，拉取最新，修改，提交
-git pull</p>
-
-<p>3.建立分支，修改，提交</p>
-
-<p>4.已存在分支，拉取最新，修改，提交</p>
-
-<p>5.合并其他分支到Master分支
-git merge <branch></p>
-
-<p>6.回滚本地未提交改动
-git checkout &mdash; <filename></p>
-
-<p>7.覆盖本地所有改动与提交
-git fetch origin</p>
-
-<p>实用小贴士</p>
-
-<p>内建的图形化 git：
-gitk
-彩色的 git 输出：
-git config color.ui true
-显示历史记录时，每个提交的信息只显示一行：
-git config format.pretty oneline
-交互式添加文件到暂存区：
-git add -i</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-10T21:12:03-07:00" pubdate data-updated="true">Mar 10<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>导出数据： exp myadmin/myadmin@myinstace
-(data store on c:\backup.dmp)</p>
-
-<p>导入数据：
-sqlplus / as sysdba;
-(问题TBD: 为什么有的命令行可以运行并登录sqlplus / as sysdba; 而有的机器却报错，而且只能通过输入用户名密码的方式登录如：sqlplus system/password as sysdba; 区别和设置在哪里。)
-create user vjtest identified by vjtest;
-grant dba to vjtest;</p>
-
-<p>imp fromuser myadmin touser vjtest file=c:\backup.dmp
-(在提问中输入用户名、密码：vjtest, vjtest)</p>
-
-<p>同一用户的话使用：imp fromuser myadmin touser myadmin file=c:\backup.dmp</p>
-
-<p>加粗</p>
-
-<p><em>粗体1</em>
-<strong>粗体2</strong>
-<strong><em>粗体3</em></strong></p>
-
-<p>标题</p>
-
-<h1>标题1</h1>
-
-<h2>标题2</h2>
-
-<h3>标题3</h3>
-
-<p>黑体</p>
-
-<p><b>黑体</b></p>
-
-<p>斜体</p>
-
-<p><em>斜体</em></p>
-
-<p>分割线</p>
-
-<hr />
-
-<p>列表</p>
-
-<ul>
-<li>列表项目1</li>
-<li>列表项目2</li>
-<li>列表项目3</li>
-</ul>
-
-
-<p>单行代码</p>
-
-<p><code>这里是单行代码</code></p>
-
-<p>多行代码</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>或者rb，
-</span><span class='line'>或者HTML
-</span><span class='line'>  空格二
-</span><span class='line'>      空格四
-</span><span class='line'>  结束</span></code></pre></td></tr></table></div></figure>
-
-
-<p>引用</p>
-
-<blockquote><p>引用内容，分别显示；
-无空行第二引用，附于第一段；</p>
-
-<p>换行，则新行。</p></blockquote>
-
-<hr />
-
-<p>源代码格式</p>
-
-<hr />
-
-<p>加粗</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>*粗体1*
-</span><span class='line'>**粗体2**
-</span><span class='line'>**粗体3**</span></code></pre></td></tr></table></div></figure>
-
-
-<p>标题</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#标题1#
-</span><span class='line'>##标题2##</span></code></pre></td></tr></table></div></figure>
-
-
-<p>有序编号显示</p>
-
-<ol>
-<li>第一行</li>
-<li>第二行</li>
-<li>第三行</li>
-<li>第四行 (行前的数字其实不起作用)</li>
-</ol>
-
-
-<p>嵌套编号</p>
-
-<ol>
-<li>Dog
-
-<ol>
-<li>German Shepherd</li>
-<li>Belgian Shepherd
-
-<ol>
-<li>Malinois</li>
-<li>Groenendael</li>
-<li>Tervuren</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Cat
-
-<ol>
-<li>Siberian</li>
-<li>Siamese</li>
-</ol>
-</li>
-</ol>
-
-
-<p>规则就是：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;b&gt;Advanced lists: Nesting&lt;/b&gt;   
-</span><span class='line'>
-</span><span class='line'>To put other Markdown blocks in a list; just indent four spaces for each nesting level.</span></code></pre></td></tr></table></div></figure>
-
-
-<p>//TODO ， 这篇文章研究 <a href="http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html">http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html</a></p>
-
-<h1>双行分隔符</h1>
-
-<h2>单行分隔符</h2>
-
-<p>图片嵌入(比文字超链多了惊叹号)</p>
-
-<p><img src="https://github.com/icersummer" alt="screen shot" /></p>
-
-<h2>使用单行分隔符的Code Sample</h2>
-
-<p>The file <a href="http://icersummer.github.io"><code>HELLOWORLD.JAVA</code></a> is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。</p>
-
-<p>四个空格可以构造缩进、包围效果、并且无需换行：</p>
-
-<pre><code>123467
-这个世界
-http://github.com/icersummer
-nowthat
-</code></pre>
-
-<blockquote><p>这是一个引用。</p></blockquote>
-
-<p>下面引用中无序列表：</p>
-
-<blockquote><p>有趣的现象：</p>
-
-<ul>
-<li><p>列表1</p></li>
-<li><p>comment list</p></li>
-<li><p>comment list 002</p></li>
-</ul>
-
-
-<p>More details.</p></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/27/how-to-find-the-lost-chrome-bookmarks/">How to Find the Lost Chrome Bookmarks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-27T00:20:38-08:00" pubdate data-updated="true">Jan 27<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>how to find the lost Chrome bookmarks</p>
-
-<hr />
-
-<p>I don&rsquo;t know why, but one day when I open my Chrome, all the bookmarks gone. I&rsquo;m still signed in with my gmail account. I believe these bookmarks are stored locally. The last bak file I can find is 5 month ago.</p>
-
-<p>I find a way to find a possible backup via <a href="http://productforums.google.com/forum/#!topic/chrome/EUMCNrG8J1M">Google search</a>;</p>
-
-<blockquote><p>I found the backup version of my bookmark but it is 15 days old. Atleast I found a place there Google Chrome keeps a backup copy but it is located in some obscure folder directory.
-C:\Users\NAME\AppData\Local\Google\Chrome\User Data\Default
-There is a file called: Bookmarks.bak.  The sad part that i can not simply rename this file to Bookmarks aand for chrome to be back in business. One has to locate a JSON parser to parse through this JSON file into a html file for Chrome to ingest the html bookmark. I am looking around for a JSON parser into HTML then ingest this new html file into my PC chrome browser.</p></blockquote>
-
-<p>Folder in my local is D:\Users\$name\AppData\Local\Google\Chrome\User Data\Default</p>
-
-<p>You can find the file Bookmarks.bak with JSON format.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/23/reset-centos-root-password/">Reset Centos Root Password</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-23T01:43:47-08:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>root和一般用户密码忘记</p>
-
-<p>重置步骤</p>
-
-<ol>
-<li><p>重置root
-<a href="http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-root-passwd.html">http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-root-passwd.html</a></p></li>
-<li><p>重置普通
-<a href="http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-forgot-user.html">http://www.centos.org/docs/4/html/rhel-sbs-en-4/s1-q-and-a-forgot-user.html</a></p></li>
-</ol>
-
-
-<p>参看截图：</p>
-
-<p>step1.png</p>
-
-<p>step2.png</p>
-
-<p>step3.png</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/22/test-and-come-on-post/">Test and Come on Post</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-22T01:33:38-08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The relationship of ExtJS, GWT  and SenCha. The detail information info can be found at  Wiki page.</p>
-
-<p>On 15 June 2010, the merge of Ext JS with JQTouch and Rapha?l was announced[7] forming a new organisation called Sencha Inc. Ext JS continues to be available as a main product on the new Sencha website[8] together with Sencha Touch, Sencha GWT (now Sencha GXT), Sencha Architect, Sencha Animator and Ext core.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/22/another-post-to-poc/">Another Post to POC</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-22T01:13:45-08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>ok</p>
-
-<p>not ok</p>
-
-<p>hello world</p>
-
-<p>show me your code</p>
-
-<ul>
-<li>w</li>
-<li>ss</li>
-<li>tu</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/11/22/a-first-blog-in-octopress/">A First Blog in Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-22T01:09:03-08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Merge pull request #1400 from axiac/fixed-titlecase-usage</p>
-
-<p>November 17, 2013</p>
-
-<p>?</p>
-
-<p>plugins</p>
-
-<p>Merge pull request #1397 from IQAndreas/cleanup-date</p>
-
-<p>November 18, 2013</p>
-
-<p>?</p>
-
-<p>sass</p>
-
-<p>vj commit</p>
-
-<p>November 22, 2013</p>
-
-<p>?</p>
-
-<p>source</p>
-
-<p>vj commit</p>
-
-<p>November 22, 2013</p>
-
-<p>?</p>
-
-<p>.editorconfig</p>
-
-<p>Add EditorConfig file for Ruby files</p>
-
-<p>February 26, 2012</p>
-
-<p>?</p>
-
-<p>.gitattributes</p>
-
-<p>Added .gitattributes file to keep CRLF&rsquo;s out of the codebase.</p>
-
-<p>March 05, 2013</p>
-
-<p>?</p>
-
-<p>.gitignore</p>
-
-<p>added node_modules to gitignore</p>
-
-<p>September 27, 2011</p>
-
-<p>?</p>
-
-<p>.powrc</p>
-
-<p>Adding .powrc to allow RVM to work when POW is updated to version 0.4¡­</p>
-
-<p>June 08, 2012</p>
-
-<p>?</p>
-
-<p>.slugignore</p>
-
-<p>added slugignore to help with heroku deployment</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -881,23 +812,23 @@ There is a file called: Bookmarks.bak.  The sad part that i can not simply renam
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/15/usage-of-scp/">SCP命令的使用</a>
+        <a href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/">[转载]为什么要写Blog？</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/08/use-superputty-to-replace-putty/">使用带有TAB功能的superPutty代替putty</a>
+        <a href="/blog/2014/04/22/regex-intro/">正则表达式</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a>
+        <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a>
+        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a>
+        <a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a>
       </li>
     
   </ul>

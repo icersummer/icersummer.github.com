@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Oracle | Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/blog/categories/oracle/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-04-15T02:40:44-07:00</updated>
+  <updated>2014-05-08T20:08:22-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -111,170 +111,60 @@ grant dba to vjtest;</p>
 
 <p>同一用户的话使用：imp fromuser myadmin touser myadmin file=c:\backup.dmp</p>
 
-<p>加粗</p>
+<p>added in Apr.16th</p>
 
-<p><em>粗体1</em>
-<strong>粗体2</strong>
-<strong><em>粗体3</em></strong></p>
-
-<p>标题</p>
-
-<h1>标题1</h1>
-
-<h2>标题2</h2>
-
-<h3>标题3</h3>
-
-<p>黑体</p>
-
-<p><b>黑体</b></p>
-
-<p>斜体</p>
-
-<p><em>斜体</em></p>
-
-<p>分割线</p>
-
-<hr />
-
-<p>列表</p>
-
-<ul>
-<li>列表项目1</li>
-<li>列表项目2</li>
-<li>列表项目3</li>
-</ul>
-
-
-<p>单行代码</p>
-
-<p><code>这里是单行代码</code></p>
-
-<p>多行代码</p>
+<p>执行报错：</p>
 
 <p>```
-或者rb，
-或者HTML
-  空格二</p>
+D:\Users\vjia>imp system/syspwd fromuser=itadmin touser=testdb file=c:\data_dmp.dmp full=y</p>
 
-<pre><code>  空格四
-</code></pre>
+<p>Import: Release 11.2.0.1.0 &ndash; Production on Wed Apr 16 12:33:35 2014</p>
 
-<p>  结束
+<p>Copyright &copy; 1982, 2009, Oracle and/or its affiliates.  All rights reserved.</p>
+
+<p>IMP-00058: ORACLE error 12560 encountered
+ORA-12560: TNS:protocol adapter error
+IMP-00000: Import terminated unsuccessfully
 ```</p>
 
-<p>引用</p>
+<p>错误原因在于：</p>
 
-<blockquote><p>引用内容，分别显示；
-无空行第二引用，附于第一段；</p>
-
-<p>换行，则新行。</p></blockquote>
-
-<hr />
-
-<p>源代码格式</p>
-
-<hr />
-
-<p>加粗</p>
+<p>(参考这里)[<a href="http://www.orafaq.com/forum/t/175836/">http://www.orafaq.com/forum/t/175836/</a>]</p>
 
 <p><code>
-*粗体1*
-**粗体2**
-**粗体3**
+ORA-12560: TNS:protocol adapter error
+The database is local to the machine you try to execute this command and your ORACLE_SID is not set.
+ORA-12154: TNS:could not resolve the connect identifier specified
+The database is remote from the machine you try to execute this command and your tnsname.ora does not know the entry you gave (orclimpl)
+In first case, set ORACLE_SID; in latter one, add the entry in your tnsnames.ora (and check there is a listener on database server).
 </code></p>
 
-<p>标题</p>
-
-<p>```</p>
-
-<h1>标题1</h1>
-
-<h2>标题2</h2>
-
-<p>```</p>
-
-<p>有序编号显示</p>
-
-<ol>
-<li>第一行</li>
-<li>第二行</li>
-<li>第三行</li>
-<li>第四行 (行前的数字其实不起作用)</li>
-</ol>
-
-
-<p>嵌套编号</p>
-
-<ol>
-<li>Dog
-
-<ol>
-<li>German Shepherd</li>
-<li>Belgian Shepherd
-
-<ol>
-<li>Malinois</li>
-<li>Groenendael</li>
-<li>Tervuren</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Cat
-
-<ol>
-<li>Siberian</li>
-<li>Siamese</li>
-</ol>
-</li>
-</ol>
-
-
-<p>规则就是：</p>
+<p>解决方法就是：设置Oracle SID后再试</p>
 
 <p>```
-<b>Advanced lists: Nesting</b></p>
+D:\Users\vjia>set ORACLE_SID=scottfeb</p>
 
-<p>To put other Markdown blocks in a list; just indent four spaces for each nesting level.
+<p>D:\Users\vjia>imp system/syspwd fromuser=itadmin touser=testdb file=c:\data_dmp.dmp full=y</p>
+
+<p>Import: Release 11.2.0.1.0 &ndash; Production on Wed Apr 16 13:30:10 2014</p>
+
+<p>Copyright &copy; 1982, 2009, Oracle and/or its affiliates.  All rights reserved.</p>
+
+<p>Connected to: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 &ndash; 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options</p>
+
+<p>Export file created by EXPORT:V11.02.00 via conventional path</p>
+
+<p>Warning: the objects were exported by ITADMIN, not by you</p>
+
+<p>import done in WE8MSWIN1252 character set and UTF8 NCHAR character set
+import server uses AL32UTF8 character set (possible charset conversion)
+. importing ITADMIN&rsquo;s objects into TESTDB
+. . importing table                         &ldquo;TEAM&rdquo;       2789 rows imported
+. . importing table                        &ldquo;TEAMD&rdquo;          0 rows imported
+About to enable constraints&hellip;
+Import terminated successfully with warnings.
 ```</p>
-
-<p>//TODO ， 这篇文章研究 <a href="http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html">http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html</a></p>
-
-<h1>双行分隔符</h1>
-
-<h2>单行分隔符</h2>
-
-<p>图片嵌入(比文字超链多了惊叹号)</p>
-
-<p><img src="https://github.com/icersummer" alt="screen shot" /></p>
-
-<h2>使用单行分隔符的Code Sample</h2>
-
-<p>The file <a href="http://icersummer.github.io"><code>HELLOWORLD.JAVA</code></a> is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。</p>
-
-<p>四个空格可以构造缩进、包围效果、并且无需换行：</p>
-
-<pre><code>123467
-这个世界
-http://github.com/icersummer
-nowthat
-</code></pre>
-
-<blockquote><p>这是一个引用。</p></blockquote>
-
-<p>下面引用中无序列表：</p>
-
-<blockquote><p>有趣的现象：</p>
-
-<ul>
-<li><p>列表1</p></li>
-<li><p>comment list</p></li>
-<li><p>comment list 002</p></li>
-</ul>
-
-
-<p>More details.</p></blockquote>
 ]]></content>
   </entry>
   

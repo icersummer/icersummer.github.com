@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Video | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/video/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-05-08T20:08:22-07:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RTSP命令]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/22/rtsp-protocol/"/>
+    <updated>2014-04-22T15:56:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/22/rtsp-protocol</id>
+    <content type="html"><![CDATA[<h2>RTSP命令的Java实现</h2>
+
+<p>以前所做项目中涉及到视频编解码，其中实现了RTSP协议，</p>
+
+<p>参考一下链接研究它：</p>
+
+<ol>
+<li><a href="http://blog.csdn.net/xyz_lmn/article/details/6055179">rtsp网络协议的java实现 </a></li>
+<li><a href="http://blog.csdn.net/feidragon319/archive/2007/08/14/1742357.aspx">RTSP简单命令</a></li>
+<li><a href="http://hi.baidu.com/ssyuan/item/128bc7d624a77a876dce3fc5">RTSP客户端的java实现</a></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

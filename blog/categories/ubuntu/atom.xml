@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ubuntu | Coder Blog VJIA]]></title>
   <link href="http://icersummer.github.io/blog/categories/ubuntu/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-04-15T02:40:44-07:00</updated>
+  <updated>2014-05-08T20:08:22-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -14,46 +14,531 @@
 
   
   <entry>
-    <title type="html"><![CDATA[SCP命令的使用]]></title>
-    <link href="http://icersummer.github.io/blog/2014/04/15/usage-of-scp/"/>
-    <updated>2014-04-15T21:12:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2014/04/15/usage-of-scp</id>
-    <content type="html"><![CDATA[<p><strong>复制文件</strong></p>
+    <title type="html"><![CDATA[[Ubuntu] 怎样修改计算机名字]]></title>
+    <link href="http://icersummer.github.io/blog/2013/11/06/how-to-change-ubuntu-hostname/"/>
+    <updated>2013-11-06T20:25:03-08:00</updated>
+    <id>http://icersummer.github.io/blog/2013/11/06/how-to-change-ubuntu-hostname</id>
+    <content type="html"><![CDATA[<p>按下 Ctrl &ndash; Alt &ndash; T 组合键，打开终端。 当终端打开，输入下列命令，使用gedit编辑hostname文件</p>
 
-<p>SCP命令用于在Linux间拷贝文件，（可以在拷贝过程中重命名）</p>
+<p>sudo gedit /etc/hostname</p>
 
-<p>scp [可选参数] file_source file_target</p>
+<p>接下来，无论旧的计算机名字是什么，换一个新的吧。例如，如果你想要你的计算机名字为“RDOMNU”，先删除文件内容，输入 RDOMNU，然后保存文件。</p>
 
-<p>从本地复制到远程：</p>
+<p>然后，再输入下列命令来打开hosts文件</p>
 
-<p>scp local_file remote_username@remote_ip:remote_folder</p>
+<p>sudo gedit /etc/hosts</p>
 
-<p>scp local_file remote_username@remote_ip:remote_folder</p>
+<p>更改第二行箭头标记位置的值，使它与你刚才输入的计算机名字相符，完成后保存文件。</p>
 
-<p>scp local_file remote_ip:remote_folder</p>
+<p><img src="../images/ubuntu-hostname.png" alt="Ubunbu hosts" /></p>
 
-<p>scp local_file remote_ip:remote_file</p>
+<p>重启，显示新的名字。</p>
 
-<p>用法示例：</p>
+<p><code>$ sudo reboot -h 0</code></p>
 
-<p>user1 in centos, user2 in ubuntu</p>
+<p>参考链接：</p>
 
-<p>copy file1 from centos to ubuntu</p>
+<ul>
+<li><p><a href="http://linux.cn/thread/11846/1/1/">http://linux.cn/thread/11846/1/1/</a></p></li>
+<li><p><a href="http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/">http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/</a></p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[查看Ubuntu系统是否64位]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/13/command-to-see-ubuntu-64-or-32/"/>
+    <updated>2013-07-13T21:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/13/command-to-see-ubuntu-64-or-32</id>
+    <content type="html"><![CDATA[<ul>
+<li>1.$uname -a</li>
+</ul>
+
+
+<p>如果有x86_64就是64位的，没有就是32位的</p>
 
 <p><code>
-$scp /home/user1/downloads/file1 user2@ubuntu_ip:/home/user2/
-type in the password of user2
+vincent@ubuntu:~$ uname -a
+Linux ubuntu 3.2.0-23-generic-pae #36-Ubuntu SMP Tue Apr 10 22:19:09 UTC 2012 i686 i686 i386 GNU/Linux
 </code></p>
 
-<p><strong>复制目录</strong></p>
+<ul>
+<li>2.$ uname -m</li>
+</ul>
 
-<p>scp -r local_folder remote_username@remote_ip:remote_folder</p>
 
-<p><strong>从远程复制到本地</strong></p>
+<p>x86_64</p>
 
-<p>scp remote_user@remote_ip:remote_file locale_file_path</p>
+<p><code>
+vincent@ubuntu:~$ uname -m
+i686
+</code></p>
 
-<p>scp -r remote_user@remote_ip:remote_folder locale_folder_path</p>
+<ul>
+<li>3.$ arch</li>
+</ul>
+
+
+<p>x86_64</p>
+
+<p><code>
+vincent@ubuntu:~$ arch
+i686
+</code></p>
+
+<ul>
+<li>4.$file /bin/cat</li>
+</ul>
+
+
+<p>/bin/cat: ELF 64-bit LSB executable, AMD x86-64, version 1 (SYSV), for GNU/Linux 2.4.0, dynamically linked (uses shared libs), stripped</p>
+
+<p><code>
+vincent@ubuntu:~$ file /bin/cat
+/bin/cat: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0x9e7f078dcc2d3dae02f578a1390debea06a26b74, stripped
+</code></p>
+
+<ul>
+<li>5.查看cpu是多少位的</li>
+</ul>
+
+
+<p>more /proc/cpuinfo</p>
+
+<p><code>
+vincent@ubuntu:~$ more /proc/cpuinfo
+processor       : 0
+vendor_id       : GenuineIntel
+cpu family      : 6
+model           : 44
+model name      : Intel(R) Xeon(R) CPU           E5606  @ 2.13GHz
+stepping        : 2
+microcode       : 0x10
+cpu MHz         : 2128.070
+cache size      : 8192 KB
+fdiv_bug        : no
+hlt_bug         : no
+f00f_bug        : no
+coma_bug        : no
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 11
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss nx rdt
+scp constant_tsc up pebs bts xtopology tsc_reliable aperfmperf pni pclmulqdq ssse3 sse4_1 sse4_2 popcnt aes hypervisor arat epb dts
+bogomips        : 4256.14
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 40 bits physical, 48 bits virtual
+power management:
+</code></p>
+
+<ul>
+<li>6.file /sbin/init</li>
+</ul>
+
+
+<p>/sbin/init: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV),</p>
+
+<p><code>
+vincent@ubuntu:~$ file /sbin/init
+/sbin/init: ELF 32-bit LSB shared object, Intel 80386, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.24, BuildID[sha1]=0x0ec7a63bbdb983cd488002f4cb87cdc0de5596f8, stripped
+</code></p>
+
+<p>EOF.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[2013-07-11-putty_to_connect_to_ubuntu_vm]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/11/putty_to_connect_to_ubuntu_vm/"/>
+    <updated>2013-07-11T13:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/11/putty_to_connect_to_ubuntu_vm</id>
+    <content type="html"><![CDATA[<h2>Putty连接VM中的Ubuntu问题及解决</h2>
+
+<p>问题：</p>
+
+<p>VMWare中安装了Ubuntu，通过配置使其命令行模式启动；启动后通过$ifconfig获得其IP，通过Putty中设置IP、Port 22 访问报错，错误信息“不会出现登录界面，几秒钟后弹出窗口-Network error : Connection Refused”.</p>
+
+<p>解决：</p>
+
+<ol>
+<li>可能没有开启ssh-server服务：</li>
+</ol>
+
+
+<p>命令$ sudo apt-get install openssh-server</p>
+
+<p>安装成功；之后还是之前同样的错误、不能Putty连接；</p>
+
+<ol>
+<li>安装openssh-client，但是Ubuntu缺省已经安装了openssh-client。</li>
+</ol>
+
+
+<p>$sudo apt-get insall openssh-client</p>
+
+<ol>
+<li>确认sshserver已经启动：</li>
+</ol>
+
+
+<p>$ps -e | grep ssh</p>
+
+<p>如果没有看到ssh，则手动启动 $sudo /etc/init.d/ssh start (or $sudo service ssh start)</p>
+
+<ol>
+<li>Putty依旧不能访问</li>
+</ol>
+
+
+<p>关闭windows7防火墙，全部关闭，应该是windows禁止了通过22端口访问；可以连接成功。</p>
+
+<ol>
+<li>VM Ubuntu端口改变问题</li>
+</ol>
+
+
+<p>配置成功后，通过Putty连接没有问题，但是发现每过一段时间，就回出现连接丢失的现象；几次三番后，发现其IP在动态改变；解决办法是在VM Setting中修改Network Adapter方式，NAT &ndash;> Bridged。</p>
+
+<p>（NAT: Used to share the host&rsquo;s IP address; Bridged: Connected directly to the physical network）</p>
+
+<ol>
+<li>其它说明</li>
+</ol>
+
+
+<p>ssh-server配置文件位于/etc/ssh/sshd_config文件，可以修改ssh的服务端口，默认是22,；修改后重启ssh服务： $sudo /etc/init.d/ssh restart</p>
+
+<ol>
+<li>遗留问题</li>
+</ol>
+
+
+<p>只能通过IP+Port的方式访问，如何才能通过hostname访问呢？</p>
+
+<ol>
+<li>JDK下载，通过curl</li>
+</ol>
+
+
+<p>8.1 安装 curl：$sudo apt-get curl</p>
+
+<p>8.2 how to download Oracle JDK without browser: [<a href="https://gist.github.com/hgomez/4697585">https://gist.github.com/hgomez/4697585</a>]</p>
+
+<p>8.3 使用SecureCRT所带SFTP上传JDK至Ubuntu，版本jdk-7u25-linux-i586.tar.gz
+<code>
+vincent@ubuntu:~$ tar -xf jdk-7u25-linux-i586.tar.gz
+vincent@ubuntu:~$ ls
+Desktop    examples.desktop            Music     Templates
+Documents  jdk1.7.0_25                 Pictures  Videos
+Downloads  jdk-7u25-linux-i586.tar.gz  Public
+vincent@ubuntu:~$ cd jdk1.7.0_25/
+vincent@ubuntu:~/jdk1.7.0_25$ cd bin
+vincent@ubuntu:~/jdk1.7.0_25/bin$ ./java -version
+java version "1.7.0_25"
+Java(TM) SE Runtime Environment (build 1.7.0_25-b15)
+Java HotSpot(TM) Client VM (build 23.25-b01, mixed mode)
+</code>
+配置JDK variables
+```
+vincent@ubuntu:~$ vi .bashrc</p>
+
+<h1>export my own variables</h1>
+
+<p>JAVA_HOME=/home/vincent/jdk1.7.0_25
+export JAVA_HOME
+PATH=$PATH:$JAVA_HOME/bin
+export PATH</p>
+
+<p>vincent@ubuntu:~$ source .bashrc
+vincent@ubuntu:~$ java -version
+java version &ldquo;1.7.0_25&rdquo;
+Java&trade; SE Runtime Environment (build 1.7.0_25-b15)
+Java HotSpot&trade; Client VM (build 23.25-b01, mixed mode)
+```</p>
+
+<ol>
+<li>安装Hadoop</li>
+</ol>
+
+
+<p>9.1 [下载地址, <a href="http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-2.0.5-alpha/">http://mirror.cogentco.com/pub/apache/hadoop/common/hadoop-2.0.5-alpha/</a>]</p>
+
+<p>9.2 Setting up a Single Node Cluster, follow <B>Running Hadoop on Ubuntu Linux (Single-Node Cluster)</B> [<a href="http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/">http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/</a>]</p>
+
+<blockquote><p> The main goal of this tutorial is to get a simple Hadoop installation up and running so that you can play around with the software and learn more about it.</p></blockquote>
+
+<p>9.3 添加Hadoop专用user
+<code>``
+vincent@ubuntu:~$ sudo addgroup hadoop
+[sudo] password for vincent:
+Adding group</code>hadoop' (GID 1001) &hellip;
+Done.
+vincent@ubuntu:~$ sudo adduser &mdash;ingroup hadoop hduser
+Adding user <code>hduser' ...
+Adding new user</code>hduser' (1001) with group <code>hadoop' ...
+Creating home directory</code>/home/hduser' &hellip;
+Copying files from `/etc/skel' &hellip;
+Enter new UNIX password:
+Retype new UNIX password:
+Sorry, passwords do not match
+passwd: Authentication token manipulation error
+passwd: password unchanged
+Try again? [y/N] y
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for hduser
+Enter the new value, or press ENTER for the default</p>
+
+<pre><code>    Full Name []: hadoop user
+    Room Number []: 
+    Work Phone []: 
+    Home Phone []: 
+    Other []: 
+</code></pre>
+
+<p>Is the information correct? [Y/n] y
+```</p>
+
+<p>9.4 需要设置SSH远程自动登录，需要其他机器直接访问Hadoop node，configure it to allow SSH public key authentication. 参考[Ubuntu Guide, <a href="http://ubuntuguide.org/wiki/Ubuntu_Raring">http://ubuntuguide.org/wiki/Ubuntu_Raring</a>]</p>
+
+<ul>
+<li>(这个时候，考虑，是不是之前使用user vincent配置了Java环境变量是不是不对、应该配置为全局变量？ 后面再看。)</li>
+</ul>
+
+
+<p>```
+hduser@ubuntu:~$ ssh-keygen -t rsa -P &ldquo;&rdquo;
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/hduser/.ssh/id_rsa):
+Created directory &lsquo;/home/hduser/.ssh&rsquo;.
+Your identification has been saved in /home/hduser/.ssh/id_rsa.
+Your public key has been saved in /home/hduser/.ssh/id_rsa.pub.
+The key fingerprint is:
+9f:28:f3:80:ae:6c:64:d6:78:74:74:67:fa:21:91:f3 hduser@ubuntu
+The key&rsquo;s randomart image is:
++&mdash;[ RSA 2048]&mdash;&mdash;+
+|         .       |
+|      . = o      |
+|     . . B       |
+|    . . o E      |
+|   + .  So .     |
+|  = o.   o..     |
+| + .. + . o      |
+| &hellip;   =         |
+| .o..   .        |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+
+hduser@ubuntu:~$ ll
+hduser@ubuntu:~$ cat .ssh/id_rsa.pub >> .ssh/authorized_keys</p>
+
+<p>//测试是否可以无密码登录
+hduser@ubuntu:~/.ssh$ ssh localhost
+The authenticity of host &lsquo;localhost (127.0.0.1)&rsquo; can&rsquo;t be established.
+ECDSA key fingerprint is 47:6b:7b:a6:e4:80:38:96:f9:9c:a3:58:48:f4:51:82.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &lsquo;localhost&rsquo; (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic-pae i686)</p>
+
+<ul>
+<li>Documentation:  <a href="https://help.ubuntu.com/">https://help.ubuntu.com/</a></li>
+</ul>
+
+
+<p>Last login: Wed Jul 31 01:38:45 2013 from gjia2d.ptcnet.ptc.com
+hduser@ubuntu:~$
+```</p>
+
+<p>9.5 开始安装配置Hadoop</p>
+
+<ul>
+<li>配置Hadoop user hduser 加入sudo权限中（需要这一步么？todo……）</li>
+</ul>
+
+
+<p>```
+vincent@ubuntu:/etc$ cd /etc/
+vincent@ubuntu:/etc$ ll sudo*
+-r&mdash;r&mdash;&mdash;&ndash; 1 root root  767 Jul 31 02:17 sudoers</p>
+
+<p>sudoers.d:
+total 20
+drwxr-xr-x   2 root root  4096 Apr 23  2012 ./
+drwxr-xr-x 127 root root 12288 Jul 31 02:17 ../
+-r&mdash;r&mdash;&mdash;&ndash;   1 root root   753 Jan 31  2012 README
+vincent@ubuntu:/etc$ sudo vi sudoers</p>
+
+<p>// add sudo users
+hduser ALL=(ALL) ALL
+// sudoers文件的修改立即生效
+```</p>
+
+<ul>
+<li>添加Hadoop相关变量设置到hduser的$HOME/.bashrc</li>
+</ul>
+
+
+<p>```
+// vj, add Hadoop Variables
+hduser@ubuntu:~$ vi .bashrc</p>
+
+<p>HADOOP_HOME=/home/hduser/hadoop-2.0.5-alpha
+export HADOOP_HOME
+JAVA_HOME=/home/vincent/jdk1.7.0_25
+export JAVA_HOME</p>
+
+<p>//Some convenient aliases and functions for running Hadoop-related commands
+unalias fs &amp;> /dev/null
+alias fs=&ldquo;hadoop fs&rdquo;
+unalias hls &amp;> /dev/null
+alias hls=&ldquo;fs -ls&rdquo;</p>
+
+<p>PATH=$PATH:$HADOOP_HOME/bin
+export PATH</p>
+
+<p>hduser@ubuntu:~$ hadoop version
+Hadoop 2.0.5-alpha
+Subversion <a href="http://svn.apache.org/repos/asf/hadoop/common">http://svn.apache.org/repos/asf/hadoop/common</a> -r 1488459
+Compiled by jenkins on 2013-06-01T04:05Z
+From source with checksum c8f4bd45ac25c31b815f311b32ef17
+This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar
+```</p>
+
+<ul>
+<li>配置并运行起Hadoop，请看<a href="./2013-08-01-single-node-setup-of-hadoop.md">下一篇 &ndash; Single-Node setup of Hadoop</a></li>
+</ul>
+
+
+<p>TODO：</p>
+
+<ul>
+<li>当前时间显示是PDT时区(Wed Jul 31 01:46:14 PDT 2013)，如何配置显示东八区时间？</li>
+</ul>
+
+
+<p>补充资料：</p>
+
+<ul>
+<li><p>Ubuntu Environment Variables (link, <a href="https://help.ubuntu.com/community/EnvironmentVariables">https://help.ubuntu.com/community/EnvironmentVariables</a>)</p></li>
+<li><h3>What&rsquo;s Hadoop Distributed File System (HDFS)</h3></li>
+</ul>
+
+
+<blockquote><p>The Hadoop Distributed File System (HDFS) is a distributed file system designed to run on commodity hardware. It has many similarities with existing distributed file systems. However, the differences from other distributed file systems are significant. HDFS is highly fault-tolerant and is designed to be deployed on low-cost hardware. HDFS provides high throughput access to application data and is suitable for applications that have large data sets. HDFS relaxes a few POSIX requirements to enable streaming access to file system data. HDFS was originally built as infrastructure for the Apache Nutch web search engine project. HDFS is part of the Apache Hadoop project, which is part of the Apache Lucene project.</p>
+
+<p><I><B>The Hadoop Distributed File System: Architecture and Design</B> &ndash; <a href="http://hadoop.apache.org/hdfs/docs/current/hdfs_design.html">hadoop.apache.org/hdfs/docs/…</a></I></p></blockquote>
+
+<p>The following picture gives an overview of the most important HDFS components.</p>
+
+<p><img src="../images/HDFS-Architecture.gif" title="Optional title" alt="HDFS Architecture" /></p>
+
+<p>EOF.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu CommandLine]]></title>
+    <link href="http://icersummer.github.io/blog/2013/07/10/configure-ubuntu-to-cmdline/"/>
+    <updated>2013-07-10T13:09:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2013/07/10/configure-ubuntu-to-cmdline</id>
+    <content type="html"><![CDATA[<hr />
+
+<p><strong>X-Window模式</strong></p>
+
+<p>使用VM安装Ubuntu，如果使用X-window启动方式，会占用过多内存，而且操作方式并不是很方便，所以修改配置，使其可以启动直接进入命令行模式。</p>
+
+<p>可以通过X-window登陆后，运行如下命令如下：</p>
+
+<p>&lsquo;&rsquo;&lsquo;
+$sudo gedit /etc/default/grub</p>
+
+<p>&mdash;修改行
+$GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;quiet splash"为</p>
+
+<p>$GRUB_CMDLINE_LINUX_DEFAULT=&ldquo;quiet splash text&rdquo;</p>
+
+<p>$sudo update-grub</p>
+
+<p>$sudo reboot
+&lsquo;&rsquo;'</p>
+
+<hr />
+
+<p><strong>CMD启动X-Window</strong></p>
+
+<p>命令行方式登录进入系统后，可以通过$startx命令进入图形界面</p>
+
+<ul>
+<li><p>在系统终端（比如VMWare中）执行$startx，系统直接启动图形界面；</p></li>
+<li><p>在Terminal端（如Putty或SecureCRT）中执行$startx，则系统终端会启动图形界面，而SecureCRT端则只有类log输出：</p></li>
+</ul>
+
+
+<p>```
+hduser@ubuntu:~$ startx
+xauth:  file /home/hduser/.Xauthority does not exist</p>
+
+<p>X: user not authorized to run the X server, aborting.
+sudo startx
+xinit: giving up
+xinit: unable to connect to X server: No such file or directory
+xinit: server error
+hduser@ubuntu:~$ sudo startx
+[sudo] password for hduser:</p>
+
+<p>X.Org X Server 1.11.3
+Release Date: 2011-12-16
+X Protocol Version 11, Revision 0
+Build Operating System: Linux 2.6.24-29-server i686 Ubuntu
+Current Operating System: Linux ubuntu 3.2.0-23-generic-pae #36-Ubuntu SMP Tue Apr 10 22:19:09 UTC 2012 i686
+Kernel command line: BOOT_IMAGE=/boot/vmlinuz-3.2.0-23-generic-pae root=UUID=4594ceba-abdf-430c-9f6e-910d0ad98e52 ro quiet splash text
+Build Date: 04 April 2012  11:58:38PM
+xorg-server 2:1.11.4-0ubuntu10 (For technical support please see <a href="http://www.ubuntu.com/support">http://www.ubuntu.com/support</a>)
+Current version of pixman: 0.24.4</p>
+
+<pre><code>    Before reporting problems, check http://wiki.x.org
+    to make sure that you have the latest version.
+</code></pre>
+
+<p>Markers: (&mdash;) probed, (**) from config file, (==) default setting,</p>
+
+<pre><code>    (++) from command line, (!!) notice, (II) informational,
+    (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+</code></pre>
+
+<p>(==) Log file: &ldquo;/var/log/Xorg.0.log&rdquo;, Time: Fri Aug  2 00:11:15 2013
+(==) Using system config directory &ldquo;/usr/share/X11/xorg.conf.d&rdquo;
+(EE) open /dev/fb0: No such file or directory
+(EE) vmware(0): Device is not screen object capable.
+^Cxinit: connection to X server lost</p>
+
+<p>waiting for X server to shut down &hellip;. ddxSigGiveUp: Closing log
+Server terminated successfully (0). Closing log file.
+.
+xinit: unexpected signal 2
+```</p>
+
+<p>Ctrl+C退出。</p>
+
+<hr />
+
+<p>只是不能直接由X-Window切换回CMD，只能够执行命令reboot进行返回：</p>
+
+<p>```
+hduser@ubuntu:~$ sudo reboot -h 0
+[sudo] password for hduser:</p>
+
+<p>Broadcast message from hduser@ubuntu</p>
+
+<pre><code>    (/dev/pts/0) at 0:56 ...
+</code></pre>
+
+<p>The system is going down for reboot NOW!
+```</p>
+
+<p>EOF.</p>
 ]]></content>
   </entry>
   

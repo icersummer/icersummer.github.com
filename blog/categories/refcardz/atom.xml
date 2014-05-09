@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Refcardz | Coder Blog VJIA]]></title>
+  <link href="http://icersummer.github.io/blog/categories/refcardz/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-05-08T20:08:22-07:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[A Good Refcardz of Core Java on DZone]]></title>
+    <link href="http://icersummer.github.io/blog/2014/04/22/core-java-refcardz/"/>
+    <updated>2014-04-22T14:53:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/04/22/core-java-refcardz</id>
+    <content type="html"><![CDATA[<h1>Core Java</h1>
+
+<h2>The Essential Java Cheat Sheet</h2>
+
+<blockquote><p>The Core Java Technology is the foundation of Java Platform of JSE. It is utilized in all classes of Java programming, from desktop to Java Enterprise Edition. This DZone Refcard gives you an overview of key aspects of the Java language and cheat sheets on the core library (formatted output, collections, regular expressions, logging, properties) as well as the most commonly used tools (javac, java, jar). In addition, this Refcard reviews Java Keywords, Standard Java Packages, Character Escape Sequences, Collections and Common Algorithms, Regular Expressions, JAR Files and more.</p></blockquote>
+
+<p>The <a href="http://refcardz.dzone.com/refcardz/core-java?uid=1223903&amp;nid=5305&amp;token=12239030218175f8dc8b6">hyperlink</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

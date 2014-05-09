@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="对linux的学习和使用，可以按照公司分为3个阶段吧，分别是D公司、B公司、P公司阶段。 D公司阶段 凭借大学时代入手的【鸟哥的LINUX私房菜-基础学习篇】，初步掌握了如何使用；同时组内的OCP &ndash; X同学对于linux、UNIX、solaris都是相当熟悉，于是有机会进步了一些。 &hellip;">
+  <meta name="description" content="从DB读取字段tmp，它是个空值(&ldquo;&rdquo;)， 但是在应用(tmp!=null &amp;&amp; tmp!=&ldquo;&rdquo;)时总是返回true，而且可以得到 tmp.length() = 1；但是在测试中发现 tmp.equals(&ldquo;&rdquo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,304 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/15/java-difference-in-equal-sign-and-equals-method/">Java, Difference in == and Equals</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-15T02:09:03-07:00" pubdate data-updated="true">May 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>从DB读取字段tmp，它是个空值(&ldquo;&rdquo;)， 但是在应用(tmp!=null &amp;&amp; tmp!=&ldquo;&rdquo;)时总是返回true，而且可以得到 tmp.length() = 1；但是在测试中发现 tmp.equals(&ldquo;&rdquo;)和 &ldquo;&rdquo;==&ldquo;&rdquo; 都能够正常的返回true；</p>
+
+<p>需要从本质上学习一下2个问题：
+1. equals 和 == 的异同、用在哪里；
+2. string(空值、非空值)值比较可以使用==吗？</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/14/read-git-article-123/">阅读Git权威指南&#8211;样章一二三章</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-14T02:09:03-07:00" pubdate data-updated="true">May 14<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://ts4.mm.bing.net/th?id=H.4525792752435275&amp;pid=1.7" title="pic title" alt="Heading pic" /></p>
+
+<p>今天读了<a href="https://google.com/icersummer" title="title vjia">Git权威指南</a>，前3篇，来自ChinaPub的样章，对Git有了粗浅了解。</p>
+
+<p><em>第1篇：初识Git</em></p>
+
+<ul>
+<li><p>第1章： 版本控制的前世和今生
+主要对比了CVS、SVN、Git的异同，并且大书了Git的可用性、易用性。</p></li>
+<li><p>第2章： 爱上Git的理由
+列举了Git的一些闪亮特性，并且通过Git和SVN的对照看到Git的神奇和强大，包括每日工作备份、异地协同工作、现场版本控制。</p></li>
+<li><p>第3章： Git的安装和使用
+介绍主要安装步骤，Git在各主流平台：Linux、Mac OS X、Windows。</p></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/13/try-to-write-blog-in-day/">博客书写的频度</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-13T02:09:03-07:00" pubdate data-updated="true">May 13<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>主题、频度、质量……</p>
+
+<p>建立起了不同的博客后，怎么保证不间断的书写呢？不知道怎么会有那么多的琐事，不能够安下心来写作；看书也那么浮躁，有些是真的是无法控制，该整理的东西整理起来吧，</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/08/the-benefit-to-write-blog/">书写博客的好处</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-08T02:09:03-07:00" pubdate data-updated="true">May 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>列举一下关于写博客的好处：</p>
+
+<ol>
+<li>即便没有读者，你也要写博客 <a href="http://blog.jobbole.com/38258/">linkA</a></li>
+<li>开发者拒绝写技术博客的常见理由 <a href="http://blog.jobbole.com/18251/">linkB</a></li>
+<li>敏捷的写博客 <a href="http://blog.jobbole.com/38203/">linkC</a></li>
+<li>On Writing &ndash; why entrepreneurs should write. <a href="http://spencerfry.com/on-writing">linkD</a></li>
+<li>Break into Silicon Valley with a blog. <a href="http://nathanmarz.com/blog/break-into-silicon-valley-with-a-blog-1.html">linkE</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/07/the-way-to-build-the-blog/">博客建立记录</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-07T12:09:03-07:00" pubdate data-updated="true">May 7<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>由上个礼拜有了使用GitHub建立自己博客的想法，开始参考<a href="http://lvkun.github.io/#!2012-01-29-write-blog-on-github">已有博客</a>进行创建。</p>
+
+<p>首先是建立一个极简的博客写作、更新至master、博客页面展示流程，参看<a href="http://lvkun.github.io/#!2012-01-29-write-blog-on-github">此处</a>的博客，总体感觉简洁、易于管理，对于样式可以自己创建，自由度大，但同时也是不能重用已有的类似wordpress的整体方案。缺点在于页面是使用JS动态生成，对于搜索引擎、页面静态化可能有影响。</p>
+
+<p>然后看到一些通过otcopress建立的博客，样式、风格挺喜欢，基于Jelly建立；但是同时它需要ruby环境，有一套已经成熟的流程。在耗费了3天时间建立otcopress博客、走通create、update、display流程后，忽然感觉自己是不是有些本末倒置。ruby自己不熟悉，在现阶段自己的想法是开始使用Github博客记录想法、养成习惯，如果精力分散到不相关的地方（也许是自己的方法不对，没有找到最优途径），可能就偏离了自己的预设。</p>
+
+<p>所以，还是回归简单，先使用JS style的GitHub blog <a href="http://icersummer.github.io/">我的博客</a>。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/25/process-to-build-blog/">Process to Build Blog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-25T02:09:03-07:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本博地址: <a href="#!2013-04-25-process-to-build-blog">本博地址</a></p>
+
+<p>具体内容：<a href="#!"> TODO </a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/04/25/naming-convention-in-blog/">Name Convention Blog in Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-25T02:09:03-07:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本博地址: <a href="#!2013-04-25-naming-convention-in-blog">本博地址</a></p>
+
+<p>命名：YYYY-MM-DD-BLOG-NAME</p>
+
+<h3>基本格式</h3>
+
+<p>使用<a href="http://daringfireball.net/projects/markdown/">Markdown</a>，具体语法参考<a href="http://daringfireball.net/projects/markdown/dingus">Dingus</a>。
+空行换行。</p>
+
+<p>新行。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -138,23 +436,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/15/usage-of-scp/">SCP命令的使用</a>
+        <a href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/">[转载]为什么要写Blog？</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/08/use-superputty-to-replace-putty/">使用带有TAB功能的superPutty代替putty</a>
+        <a href="/blog/2014/04/22/regex-intro/">正则表达式</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a>
+        <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a>
+        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a>
+        <a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a>
       </li>
     
   </ul>

@@ -9,7 +9,12 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="粉笔网 Fenby.com 在线编程，Android知识视频http://www.fenby.com/learn/courseExercises/31 C语言基础http://www.fenby.com/learn/courseUnits/-3 Android http://developer. &hellip;">
+  <meta name="description" content="查询表结构基本信息 1
+2
+3
+4
+5
+select * from user_tables; select * from user_tab_comments; select * from user_tables t, user_tab_comments c where t.table_name &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +70,654 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/23/oracle-commands/">Oracle命令集合</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-23T21:23:03-07:00" pubdate data-updated="true">Oct 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ol>
+<li>查询表结构基本信息</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>select * from user_tables;
+</span><span class='line'>
+</span><span class='line'>select * from user_tab_comments;
+</span><span class='line'>
+</span><span class='line'>select * from user_tables t, user_tab_comments c where t.table_name = c.table_name and t.table_name = 'INDEXSTATUS';</span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>查询表的所有列及其属性</li>
+</ol>
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>select t.COLUMN_NAME,
+</span><span class='line'> 
+</span><span class='line'>       t.DATA_TYPE,
+</span><span class='line'> 
+</span><span class='line'>       t.DATA_LENGTH,
+</span><span class='line'> 
+</span><span class='line'>       t.DATA_PRECISION,
+</span><span class='line'> 
+</span><span class='line'>       t.NULLABLE,
+</span><span class='line'> 
+</span><span class='line'>       t.COLUMN_ID,
+</span><span class='line'> 
+</span><span class='line'>       c.COMMENTS
+</span><span class='line'> 
+</span><span class='line'>  from user_tab_columns t, user_col_comments c
+</span><span class='line'> 
+</span><span class='line'> where t.table_name = c.table_name
+</span><span class='line'> 
+</span><span class='line'>   and t.column_name = c.column_name
+</span><span class='line'> 
+</span><span class='line'>   and t.table_name = '表名'
+</span><span class='line'> 
+</span><span class='line'>   order by t.COLUMN_ID ;</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3  . 查找表的主键（包括名称，构成列）</p>
+
+<p>select cu.*,c.DATA_TYPE</p>
+
+<p>  from user_cons_columns cu, user_constraints au,user_tab_columns c</p>
+
+<p> where cu.constraint_name = au.constraint_name</p>
+
+<p>   and c.COLUMN_NAME = cu.column_name</p>
+
+<p>   and c.TABLE_NAME = cu.table_name</p>
+
+<p>   and au.constraint_type = &lsquo;P&rsquo;</p>
+
+<p>   and au.table_name = &lsquo;表名&rsquo;</p>
+
+<p>4 . 查找表的所有索引（包括索引名，类型，构成列）</p>
+
+<p>select t.*, i.index_type</p>
+
+<p>  from user_ind_columns t, user_indexes i</p>
+
+<p> where t.index_name = i.index_name</p>
+
+<p>   and t.table_name = i.table_name</p>
+
+<p>   and t.table_name = &lsquo;表名&rsquo;</p>
+
+<p>5.查找表的唯一性约束（包括名称，构成列）</p>
+
+<p>select column_name</p>
+
+<p>  from user_cons_columns cu, user_constraints au</p>
+
+<p> where cu.constraint_name = au.constraint_name</p>
+
+<p>   and au.constraint_type = &lsquo;U&rsquo;</p>
+
+<p>   and au.table_name = &lsquo;表名&rsquo;</p>
+
+<ol>
+<li>查找表的外键（包括名称，引用表的表名和对应的键名，下面是分成多步查询）</li>
+</ol>
+
+
+<p>select *</p>
+
+<p>  from user_constraints c</p>
+
+<p> where c.constraint_type = &lsquo;R&rsquo;</p>
+
+<p>   and c.table_name = &lsquo;表名&rsquo;</p>
+
+<ol>
+<li>查询外键约束的列名</li>
+</ol>
+
+
+<p>select * from user_cons_columns cl where cl.constraint_name = &lsquo;外键名称&rsquo;</p>
+
+<p>8.查询引用表的键的列名</p>
+
+<p>select * from user_cons_columns cl where cl.constraint_name = &lsquo;外键引用表的键名&rsquo;</p>
+
+<p>参考来源：Linux公社网站(www.linuxidc.com)  <a href="http://www.linuxidc.com/Linux/2012-02/54944.htm">http://www.linuxidc.com/Linux/2012-02/54944.htm</a></p>
+
+<p>获取某张表上建立的Trigger</p>
+
+<p>select * from all_triggers where table_name = upper(&lsquo;tableName&rsquo;);</p>
+
+<p>若在SQLPLUS下创建Procedure、Function，需要在末尾或者SQL文件末尾加入&#8217;/&lsquo;，如下：
+CREATE FUNCTION GETEMPSALARY (EMPNUMBER IN INTEGER) RETURN INTEGER
+IS
+DECLARE
+EMPSALARY INTEGER;
+BEGIN
+SELECT SAL INTO EMPSALARY FROM EMP WHERE EMP.EMPNO = EMPNUMBER;
+RETURN EMPSALARY;
+END GETEMPSALARY;
+/
+You need to add a slash (/) at the end of the create procedure/package/function statements.</p>
+
+<p>在Procedure中这样写是不行的：
+DBMS_OUTPUT.PUT_LINE(half || &lsquo; lines of Seaonal Log &amp; Costsheet inserted.&rsquo;); &mdash; &amp; is a meaning symbol
+其中的&amp;符号和is单词都会被解析，它们都是Oracle关键字。</p>
+
+<p>更改system用户密码
+1. sqlplus / as sysdba;
+2. alter user system identified by admin;</p>
+
+<p>Oracle中查处相关表的索引、主键、约束：
+&mdash;get index
+select * from user_indexes where TABLE_NAME = UPPER(&lsquo;table_name&rsquo;)
+select * from all_indexes where TABLE_NAME = UPPER(&lsquo;lcsSeasonalChangeLog&rsquo;);
+TODO: user_indexes, all_indexes 什么区别？
+&mdash;get PK, Constraints
+select * from all_constraints where TABLE_NAME = UPPER(&lsquo;tbl_name&rsquo;);</p>
+
+<p>外一篇：
+SQLServer下根据已存在表创建新表：
+select * into my_table from exist_table;
+若表已存在：
+insert into my_table select * from exist_table;
+参考：<a href="http://www.w3schools.com/sql/sql_select_into.asp">http://www.w3schools.com/sql/sql_select_into.asp</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/10/09/how-to-use-markdown-04/">根据其他资料完成的MD格式</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-09T21:21:03-07:00" pubdate data-updated="true">Oct 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>为什么人无聊的时候就容易犯困？这个问题牵扯到睡眠机制的问题。现在科学关于睡眠发生的机制还有很多不清楚的地方，目前的研究发现：正常情况下睡眠是生物钟和一种叫腺苷的神经递质引起的。生物钟会在夜间促进大脑里的松果体释放褪黑素，褪黑素对睡眠的产生和维持都起着重要作用；腺苷可以抑制神经活动，它会在白天的活动中慢慢积累，积累到一定程度就会引发睡意。</p>
+
+<h2>翻译人员列表-这里是表格形式展示</h2>
+
+<hr />
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> 章节   </th>
+<th> 翻译 </th>
+<th> 进度 </th>
+<th> 校对 </th>
+<th> 进度 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td> 第一章 </td>
+<td> 黎明 </td>
+<td> 已成 </td>
+<td> 德华 </td>
+<td> 进行 |</td>
+</tr>
+<tr>
+<td></td>
+<td> 第二章 </td>
+<td> 徐克 </td>
+<td> 进行 </td>
+<td> 已成 </td>
+<td> 已成 |</td>
+</tr>
+<tr>
+<td></td>
+<td> 第三章 </td>
+<td> 徐铮 </td>
+<td> 已成 </td>
+<td> 已成 </td>
+<td> 已成 |</td>
+</tr>
+<tr>
+<td></td>
+<td> 第四章 </td>
+<td> 密码 </td>
+<td> 已成 </td>
+<td> 已成 </td>
+<td> 已成 |</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>翻译注意事项</h2>
+
+<hr />
+
+<ul>
+<li>下载项目文件
+
+<ul>
+<li>git下载：<code>git clone https://github.com</code>；</li>
+<li>压缩包下载：<a href="https://github.com">https://github.com</a> ；</li>
+</ul>
+</li>
+<li>修改文件</li>
+<li>保留文件
+
+<ul>
+<li>缩进保留；</li>
+<li>空白行保留；</li>
+<li>引号特殊符号，如<code>两个符合的效果</code>；</li>
+<li>复杂的格式；</li>
+</ul>
+</li>
+<li>不需翻译</li>
+<li>章节名称</li>
+<li>专有名词</li>
+</ul>
+
+
+<h2>进度安排</h2>
+
+<hr />
+
+<ul>
+<li>6月-8月：xx；</li>
+<li>9月：yy；</li>
+<li>10月：zz；</li>
+<li>11月：vv。</li>
+</ul>
+
+
+<h2>校对事项</h2>
+
+<ul>
+<li>组队校对；</li>
+<li>按步骤校对：
+
+<ul>
+<li>第一遍xx；</li>
+<li>第二遍yy；</li>
+<li>第三遍zz。</li>
+</ul>
+</li>
+<li>其他问题</li>
+</ul>
+
+
+<h2>参考</h2>
+
+<p>Link <a href="https://github.com/bigwiv/Biopython-cn/blob/master/README.md">https://github.com/bigwiv/Biopython-cn/blob/master/README.md</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/09/debug-with-chrome-devtools/">Chrome Developer Tool调试技巧</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-09T21:19:03-07:00" pubdate data-updated="true">Sep 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>使用CDT进行调试</h2>
+
+<ol>
+<li><p>Beautify Javascript</p></li>
+<li><p>查看元素绑定了哪些事件</p></li>
+<li><p>AJax时中断</p></li>
+<li><p>页面事件中断</p></li>
+<li><p>JavaScript异常时中断</p></li>
+<li><p>DOM Level 3 Event事件中断</p></li>
+<li><p>所有文件中搜索、查找</p></li>
+<li><p>CommandLine API</p></li>
+<li><p>实时修改JS代码生效</p></li>
+<li><p>Console中执行的代码可断点</p></li>
+</ol>
+
+
+<h2>参考链接：</h2>
+
+<ol>
+<li><p>UED <a href="http://ued.taobao.com/blog/2012/06/debug-with-chrome-dev-tool/">http://ued.taobao.com/blog/2012/06/debug-with-chrome-dev-tool/</a></p></li>
+<li><p>Google Developers <a href="https://developers.google.com/chrome-developer-tools/">https://developers.google.com/chrome-developer-tools/</a></p></li>
+<li><p>Link <a href="http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html">http://www.cnblogs.com/wukenaihe/archive/2013/01/27/javascript%E8%B0%83%E8%AF%95.html</a></p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/09/open-api/">开源免费API</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-09T21:17:03-07:00" pubdate data-updated="true">Sep 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>天气预报</h2>
+
+<p>国家气象局提供的天气预报接口</p>
+
+<p>接口地址：</p>
+
+<p><a href="http://www.weather.com.cn/data/sk/101010100.html">http://www.weather.com.cn/data/sk/101010100.html</a></p>
+
+<p><a href="http://www.weather.com.cn/data/cityinfo/101010100.html">http://www.weather.com.cn/data/cityinfo/101010100.html</a></p>
+
+<p><a href="http://m.weather.com.cn/data/101010100.html">http://m.weather.com.cn/data/101010100.html</a></p>
+
+<p><a href="http://mobile.51cto.com/hot-409995.htm">http://mobile.51cto.com/hot-409995.htm</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/09/change-country-in-apple-account/">如何为Apple ID更改归属国家（地区）</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-09T21:16:03-07:00" pubdate data-updated="true">Sep 9<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>如何为Apple ID更改归属国家（地区）</h2>
+
+<p><a href="http://iphone.tgbus.com/tutorial/use/201204/20120425153011_2.shtml">http://iphone.tgbus.com/tutorial/use/201204/20120425153011_2.shtml</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/06/marco-vba-in-excel/">VBA/Marco in Excel</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-06T21:15:03-07:00" pubdate data-updated="true">Sep 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>示例1</h2>
+
+<p>有一列数据1、2、3、6、6、8，把等于6的单元格用红色标出</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Sub Macro1()
+</span><span class='line'>'
+</span><span class='line'>' Macro1 Macro
+</span><span class='line'>'
+</span><span class='line'>
+</span><span class='line'>'
+</span><span class='line'>    ' add
+</span><span class='line'>    For x = 1 To Range("A65536").End(xlUp).Row '
+</span><span class='line'>        If Cells(x, 1) = 2180880 Then '
+</span><span class='line'>            Cells(x, 1).Interior.ColorIndex = 3
+</span><span class='line'>        End If
+</span><span class='line'>        
+</span><span class='line'>    Next x    
+</span><span class='line'>    
+</span><span class='line'>    'With Selection.Interior
+</span><span class='line'>    '    .Pattern = xlSolid
+</span><span class='line'>    '    .PatternColorIndex = xlAutomatic
+</span><span class='line'>    '    .Color = 65535
+</span><span class='line'>    '    .TintAndShade = 0
+</span><span class='line'>    '    .PatternTintAndShade = 0
+</span><span class='line'>    'End With
+</span><span class='line'>End Sub
+</span><span class='line'></span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/06/set-up-svn-server/">使用VisualSVN建立SVN Server</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-06T21:13:03-07:00" pubdate data-updated="true">Sep 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>安装windows版</h2>
+
+<ol>
+<li><p>运行exe后，设定作为server端存储使用的目录是F:\localSVNServer.</p></li>
+<li><p>启动VisualSVN Server Manager；</p></li>
+<li><p>create new repository &ndash; rep001, 则其访问目录就是<a href="https://YOUR_IP_ADDRESS/svn/rep001/;">https://YOUR_IP_ADDRESS/svn/rep001/;</a></p></li>
+<li><p>首先需要创建用户，否则会有警告信息：</p></li>
+</ol>
+
+
+<p><img src="../images/no_user_warning_svn_server.png" alt="warning no user" /></p>
+
+<p>创建user：admin@admin</p>
+
+<ol>
+<li><p>检出<a href="https://YOUR_IP_ADDRESS/svn/rep001/branches%E7%9B%AE%E5%BD%95%E3%80%82">https://YOUR_IP_ADDRESS/svn/rep001/branches%E7%9B%AE%E5%BD%95%E3%80%82</a></p></li>
+<li><p>在没有将VisualSVN Server注册为windows service之前，在需要checkin/checkout时，需要手动启动VisualSVN Server Manager。</p></li>
+</ol>
+
+
+<p><img src="../images/visualsvn_server_manager.png" alt="VisualSVN Server Manager running status" /></p>
+
+<p>7- 在不经配置的情况下，提交代码时不会强制输入comment。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -237,755 +890,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/07/falimiar-with-markdown/">2013-08-07-falimiar-with-markdown</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-07T20:09:03-07:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>更加的熟练使用Markdown</h2>
-
-<ul>
-<li>一个Markdown的在线编辑网站， <a href="http://www.ctrlshift.net/project/markdowneditor/">Online Markdown Editor</a></li>
-</ul>
-
-
-<p>这里面包含了实时预览已经书写的Markdown文本-Preview、解释后的HTML-HTML Output、通用的Markdown教程-Syntax Guide。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/06/build-webapp-in-bae/">在百度BAE中安装Wordpress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-06T13:09:03-07:00" pubdate data-updated="true">Aug 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/BAE.jpg" alt="BAE" /></p>
-
-<p>1) 参考文章，<a href="http://blog.tzvb.com/nr/2013/05/10/109">如何在百度BAE安装discuz论坛之全方位解析（图解）</a>。</p>
-
-<p>2) 在参考文章中描述的是如何安装BAE版Discuz，目前打算安装Wordpress。移步到<a href="http://blog.tzvb.com/nr/2013/05/08/87">百度BAE安装（WP）WordPress博客详细图文教程</a>进行安装WP。</p>
-
-<p>3) 安装完成，访问<a href="http://phpplay.duapp.com">http://phpplay.duapp.com</a> 总是报错“建立数据库连接时出错”；参考<a href="http://blog.gimhoy.com/archives/bae-database-and-page-navi.html">这里</a>，导入了wpback.sql。继续报错。</p>
-
-<p><a href="http://mawenjian.net/p/994.html">http://mawenjian.net/p/994.html</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/01/single-node-setup-of-hadoop/">Single-Node Setup of Hadoop</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-01T21:20:03-07:00" pubdate data-updated="true">Aug 1<span>st</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>1) 配置hadoop-env.sh</h2>
-
-<p>走到这一步时，是参照<a href="http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/">Michael-noll.com上的内容</a>，但是需要配置$HADOOP_HOME/conf/hadoop-env.sh了，我不清楚他在写此篇博客时是基于Hadoop哪个版本，但是在我当前版本-2.0.5-alpha，并没有此目录；所以以下内容和记录转向参考<a href="http://raseshmori.wordpress.com/2012/09/23/install-hadoop-2-0-1-yarn-nextgen/">Install Hadoop 2.0.1-alpha Yarn Next-Gen</a>.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/etc/hadoop$ hadoop version
-</span><span class='line'>Hadoop 2.0.5-alpha
-</span><span class='line'>Subversion http://svn.apache.org/repos/asf/hadoop/common -r 1488459
-</span><span class='line'>Compiled by jenkins on 2013-06-01T04:05Z
-</span><span class='line'>From source with checksum c8f4bd45ac25c31b815f311b32ef17
-</span><span class='line'>This command was run using /home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>2) 需要安装Tarball么，先不安装，待定。</h2>
-
-<h2>3) 配置环境变量</h2>
-
-<p>.bashrc:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// configure follow raseshmori.wordpress.com
-</span><span class='line'>HADOOP_MAPRED_HOME=$HADOOP_HOME
-</span><span class='line'>export HADOOP_MAPRED_HOME
-</span><span class='line'>
-</span><span class='line'>HADOOP_COMMON_HOME=$HADOOP_HOME
-</span><span class='line'>export HADOOP_COMMON_HOME
-</span><span class='line'>
-</span><span class='line'>HADOOP_HDFS_HOME=$HADOOP_HOME
-</span><span class='line'>export HADOOP_HDFS_HOME
-</span><span class='line'>
-</span><span class='line'>HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
-</span><span class='line'>export HADOOP_HDFS_HOME</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>4) 创建2个目录，用于存储namenode和datanode的数据</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~$ pwd
-</span><span class='line'>/home/hduser
-</span><span class='line'>hduser@ubuntu:~$ ls
-</span><span class='line'>bak.of.bashrc  examples.desktop  hadoop-2.0.5-alpha  hadoop-2.0.5-alpha.tar.gz
-</span><span class='line'>hduser@ubuntu:~$ mkdir hadoop_data
-</span><span class='line'>hduser@ubuntu:~$ cd hadoop_data/
-</span><span class='line'>hduser@ubuntu:~/hadoop_data$ ls
-</span><span class='line'>hduser@ubuntu:~/hadoop_data$ mkdir hdfs
-</span><span class='line'>hduser@ubuntu:~/hadoop_data$ cd hdfs/
-</span><span class='line'>hduser@ubuntu:~/hadoop_data/hdfs$ mkdir namenode
-</span><span class='line'>hduser@ubuntu:~/hadoop_data/hdfs$ mkdir datanode
-</span><span class='line'>hduser@ubuntu:~/hadoop_data/hdfs$ pwd
-</span><span class='line'>/home/hduser/hadoop_data/hdfs</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>5) 设置Properties在Config文件中：</h2>
-
-<ul>
-<li>yarn-site.xml ($HADOOP_HOME/etc/hadoop)</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// Site specifc YARN configuration properties
-</span><span class='line'>&lt;property&gt;
-</span><span class='line'>  &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
-</span><span class='line'>  &lt;value&gt;mapreduce.shuffle&lt;/value&gt;
-</span><span class='line'>&lt;/property&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;property&gt;
-</span><span class='line'>  &lt;name&gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&lt;/name&gt;
-</span><span class='line'>  &lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;
-</span><span class='line'>&lt;/property&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>core-site.xml ($HADOOP_HOME/etc/hadoop)</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;configuration&gt;
-</span><span class='line'>
-</span><span class='line'> &lt;property&gt;
-</span><span class='line'>    &lt;name&gt;fs.default.name&lt;/name&gt;
-</span><span class='line'>    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
-</span><span class='line'> &lt;/property&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;/configuration&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>hdfs-site.xml</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;configuration&gt;
-</span><span class='line'>
-</span><span class='line'> &lt;property&gt;
-</span><span class='line'>    &lt;name&gt;dfs.replication&lt;/name&gt;
-</span><span class='line'>    &lt;value&gt;1&lt;/value&gt;
-</span><span class='line'> &lt;/property&gt;
-</span><span class='line'>
-</span><span class='line'> &lt;property&gt;
-</span><span class='line'>   &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
-</span><span class='line'>   &lt;value&gt;file:/home/hduser/hadoop_data/hdfs/namenode&lt;/value&gt;
-</span><span class='line'> &lt;/property&gt;
-</span><span class='line'>
-</span><span class='line'> &lt;property&gt;
-</span><span class='line'>   &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
-</span><span class='line'>   &lt;value&gt;file:/home/hduser/hadoop_data/hdfs/datanode&lt;/value&gt;
-</span><span class='line'> &lt;/property&gt;
-</span><span class='line'>&lt;/configuration&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<ul>
-<li>mapred-site.xml</li>
-</ul>
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;configuration&gt;
-</span><span class='line'> &lt;property&gt;
-</span><span class='line'>   &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
-</span><span class='line'>   &lt;value&gt;yarn&lt;/value&gt;
-</span><span class='line'> &lt;/property&gt;
-</span><span class='line'>&lt;/configuration&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>6) 格式化namenode</h2>
-
-<blockquote><p>This step is needed only for the first time. Doing it every time will result in loss of content on HDFS.</p>
-
-<blockquote><p>注意1 > 1.1注意 > 1.2注意</p></blockquote></blockquote>
-
-<p><code>hduser@ubuntu:~/hadoop-2.0.5-alpha/bin$ ./hadoop namenode -format</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/bin$ ./hadoop namenode -format
-</span><span class='line'>DEPRECATED: Use of this script to execute hdfs command is deprecated.
-</span><span class='line'>Instead use the hdfs command for it.
-</span><span class='line'>
-</span><span class='line'>13/07/31 20:42:11 INFO namenode.NameNode: STARTUP_MSG: 
-</span><span class='line'>/************************************************************
-</span><span class='line'>STARTUP_MSG: Starting NameNode
-</span><span class='line'>STARTUP_MSG:   host = ubuntu/127.0.1.1
-</span><span class='line'>STARTUP_MSG:   args = [-format]
-</span><span class='line'>STARTUP_MSG:   version = 2.0.5-alpha
-</span><span class='line'>STARTUP_MSG:   classpath = /home/hduser/hadoop-2.0.5-alpha/etc/hadoop:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-configuration-1.6.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jettison-1.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/snappy-java-1.0.3.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jackson-mapper-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-cli-1.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jsp-api-2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-beanutils-core-1.8.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jaxb-impl-2.2.3-1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-httpclient-3.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/xmlenc-0.52.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/guava-11.0.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/protobuf-java-2.4.0a.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-el-1.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jetty-6.1.26.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jets3t-0.6.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-beanutils-1.7.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/asm-3.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/zookeeper-3.4.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-digester-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/avro-1.5.3.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jersey-server-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jasper-compiler-5.5.23.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jackson-core-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-math-2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/activation-1.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-lang-2.5.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-collections-3.2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/paranamer-2.3.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/servlet-api-2.5.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jsch-0.1.42.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-io-2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jersey-core-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-logging-1.1.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/slf4j-log4j12-1.6.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-net-3.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jsr305-1.3.9.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/log4j-1.2.17.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jackson-xc-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/hadoop-auth-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jetty-util-6.1.26.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jaxb-api-2.2.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jersey-json-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jackson-jaxrs-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/stax-api-1.0.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/commons-codec-1.4.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/hadoop-annotations-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/kfs-0.3.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/jasper-runtime-5.5.23.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/lib/slf4j-api-1.6.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/common/hadoop-common-2.0.5-alpha-tests.jar:/home/hduser/hadoop-2.0.5-alpha/contrib/capacity-scheduler/*.jar:/home/hduser/hadoop-2.0.5-alpha/contrib/capacity-scheduler/*.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jackson-mapper-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/commons-cli-1.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jsp-api-2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/xmlenc-0.52.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/guava-11.0.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/protobuf-java-2.4.0a.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/commons-el-1.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jetty-6.1.26.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/asm-3.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jersey-server-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jackson-core-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/commons-daemon-1.0.13.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/commons-lang-2.5.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/servlet-api-2.5.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/commons-io-2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jersey-core-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/commons-logging-1.1.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jsr305-1.3.9.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/log4j-1.2.17.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jetty-util-6.1.26.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/commons-codec-1.4.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/lib/jasper-runtime-5.5.23.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/hadoop-hdfs-2.0.5-alpha-tests.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/hdfs/hadoop-hdfs-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/snappy-java-1.0.3.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/jackson-mapper-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/guice-servlet-3.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/aopalliance-1.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/protobuf-java-2.4.0a.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/netty-3.5.11.Final.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/asm-3.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/avro-1.5.3.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/junit-4.8.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/jersey-server-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/jackson-core-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/paranamer-2.3.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/commons-io-2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/jersey-core-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/log4j-1.2.17.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/jersey-guice-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/guice-3.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/javax.inject-1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/lib/hadoop-annotations-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-server-nodemanager-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-client-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-site-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-server-tests-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-api-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-server-common-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-common-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-applications-unmanaged-am-launcher-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-server-web-proxy-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-server-resourcemanager-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/yarn/hadoop-yarn-applications-distributedshell-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/snappy-java-1.0.3.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/jackson-mapper-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/guice-servlet-3.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/aopalliance-1.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/protobuf-java-2.4.0a.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/netty-3.5.11.Final.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/asm-3.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/avro-1.5.3.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/junit-4.8.2.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/jersey-server-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/jackson-core-asl-1.8.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/paranamer-2.3.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/commons-io-2.1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/jersey-core-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/log4j-1.2.17.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/jersey-guice-1.8.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/guice-3.0.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/javax.inject-1.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/lib/hadoop-annotations-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-plugins-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.0.5-alpha-tests.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-shuffle-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-hs-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-app-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-jobclient-2.0.5-alpha.jar:/home/hduser/hadoop-2.0.5-alpha/share/hadoop/mapreduce/hadoop-mapreduce-client-common-2.0.5-alpha.jar
-</span><span class='line'>STARTUP_MSG:   build = http://svn.apache.org/repos/asf/hadoop/common -r 1488459; compiled by 'jenkins' on 2013-06-01T04:05Z
-</span><span class='line'>STARTUP_MSG:   java = 1.7.0_25
-</span><span class='line'>************************************************************/
-</span><span class='line'>Formatting using clusterid: CID-dcd1e06d-a0f7-450c-b5c8-9f81f40e0114
-</span><span class='line'>13/07/31 20:42:12 INFO util.HostsFileReader: Refreshing hosts (include/exclude) list
-</span><span class='line'>13/07/31 20:42:12 INFO blockmanagement.DatanodeManager: dfs.block.invalidate.limit=1000
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: dfs.block.access.token.enable=false
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: defaultReplication         = 1
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: maxReplication             = 512
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: minReplication             = 1
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: maxReplicationStreams      = 2
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: shouldCheckForEnoughRacks  = false
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: replicationRecheckInterval = 3000
-</span><span class='line'>13/07/31 20:42:13 INFO blockmanagement.BlockManager: encryptDataTransfer        = false
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: fsOwner             = hduser (auth:SIMPLE)
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: supergroup          = supergroup
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: isPermissionEnabled = true
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: HA Enabled: false
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: Append Enabled: true
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.NameNode: Caching file names occuring more than 10 times
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: dfs.namenode.safemode.threshold-pct = 0.9990000128746033
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: dfs.namenode.safemode.min.datanodes = 0
-</span><span class='line'>13/07/31 20:42:13 INFO namenode.FSNamesystem: dfs.namenode.safemode.extension     = 30000
-</span><span class='line'>Re-format filesystem in Storage Directory /home/hduser/hadoop_data/hdfs/namenode ? (Y or N) y
-</span><span class='line'>13/07/31 20:42:19 INFO common.Storage: Storage directory /home/hduser/hadoop_data/hdfs/namenode has been successfully formatted.
-</span><span class='line'>13/07/31 20:42:19 INFO namenode.FSImage: Saving image file /home/hduser/hadoop_data/hdfs/namenode/current/fsimage.ckpt_0000000000000000000 using no compression
-</span><span class='line'>13/07/31 20:42:19 INFO namenode.FSImage: Image file of size 121 saved in 0 seconds.
-</span><span class='line'>13/07/31 20:42:19 INFO namenode.NNStorageRetentionManager: Going to retain 1 images with txid &gt;= 0
-</span><span class='line'>13/07/31 20:42:19 INFO util.ExitUtil: Exiting with status 0
-</span><span class='line'>13/07/31 20:42:19 INFO namenode.NameNode: SHUTDOWN_MSG: 
-</span><span class='line'>/************************************************************
-</span><span class='line'>SHUTDOWN_MSG: Shutting down NameNode at ubuntu/127.0.1.1
-</span><span class='line'>************************************************************/</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>7) start HDFS processes</h2>
-
-<p><em>Name node</em></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ ./hadoop-daemon
-</span><span class='line'>hadoop-daemon.sh   hadoop-daemons.sh  
-</span><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ ./hadoop-daemon.sh  start namenode
-</span><span class='line'>starting namenode, logging to /home/hduser/hadoop-2.0.5-alpha/logs/hadoop-hduser-namenode-ubuntu.out
-</span><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ jps
-</span><span class='line'>The program 'jps' can be found in the following packages:
-</span><span class='line'> * openjdk-6-jdk
-</span><span class='line'> * openjdk-7-jdk
-</span><span class='line'>Ask your administrator to install one of them
-</span><span class='line'>// 不清楚jps命令是什么，但是这里应该对安装没有影响，已经安装了Oracle JDK 1.7</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>Data node</em></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/sbin$ ./hadoop-daemon.sh start datanode
-</span><span class='line'>starting datanode, logging to /home/hduser/hadoop-2.0.5-alpha/logs/hadoop-hduser-datanode-ubuntu.out</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>8) start Hadoop Map-Reduce Processes</h2>
-
-<p><em>Resource Manager</em></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha$ sbin/yarn-daemon.sh start resourcemanager
-</span><span class='line'>starting resourcemanager, logging to /home/hduser/hadoop-2.0.5-alpha/logs/yarn-hduser-resourcemanager-ubuntu.out</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>Node Manager</em></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha$ sbin/yarn-daemon.sh start nodemanager
-</span><span class='line'>starting nodemanager, logging to /home/hduser/hadoop-2.0.5-alpha/logs/yarn-hduser-nodemanager-ubuntu.out</span></code></pre></td></tr></table></div></figure>
-
-
-<p><em>Job History Server</em></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha$ sbin/mr-jobhistory-daemon.sh start historyserver
-</span><span class='line'>starting historyserver, logging to /home/hduser/hadoop-2.0.5-alpha/logs/mapred-hduser-historyserver-ubuntu.out</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>9) 运行一个简单/经典的字符统计示例，来验证安装是否成功</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha$ mkdir in
-</span><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha$ cat &gt; in/file    //这个命令不错
-</span><span class='line'>This is one line
-</span><span class='line'>This is another one</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Add this directory to HDFS:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha$ bin/hadoop dfs -copyFromLocal in /in
-</span><span class='line'>DEPRECATED: Use of this script to execute hdfs command is deprecated.
-</span><span class='line'>Instead use the hdfs command for it.
-</span><span class='line'>// note: dfs命令已经被弃用，应用fs命令，见[fs replace dfs](http://stackoverflow.com/questions/11715082/why-is-it-keep-showing-deprecated-error-when-running-hadoop-or-dfs-command)
-</span><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha$ ./bin/hadoop fs -copyFromLocal in /in</span></code></pre></td></tr></table></div></figure>
-
-
-<p>运行share目录中提供的wordcount示例：</p>
-
-<p><code>hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.0.5-alpha.jar wordcount /in /out3</code></p>
-
-<p>to continue&hellip;</p>
-
-<h2>10) 运行<em>netstat</em>命令，查看是否Hadoop监听在已经配置的端口</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$ sudo netstat -plten | grep java
-</span><span class='line'>[sudo] password for hduser: 
-</span><span class='line'>tcp        0      0 0.0.0.0:19888           0.0.0.0:*               LISTEN      1001       33451       6931/java       
-</span><span class='line'>tcp        0      0 0.0.0.0:50070           0.0.0.0:*               LISTEN      1001       31961       6436/java       
-</span><span class='line'>tcp        0      0 0.0.0.0:50010           0.0.0.0:*               LISTEN      1001       32345       6510/java       
-</span><span class='line'>tcp        0      0 0.0.0.0:50075           0.0.0.0:*               LISTEN      1001       32352       6510/java       
-</span><span class='line'>tcp        0      0 0.0.0.0:10020           0.0.0.0:*               LISTEN      1001       33459       6931/java       
-</span><span class='line'>tcp        0      0 0.0.0.0:50020           0.0.0.0:*               LISTEN      1001       32358       6510/java       
-</span><span class='line'>tcp        0      0 127.0.0.1:9000          0.0.0.0:*               LISTEN      1001       31785       6436/java       
-</span><span class='line'>tcp6       0      0 :::8042                 :::*                    LISTEN      1001       33369       6825/java       
-</span><span class='line'>tcp6       0      0 :::8080                 :::*                    LISTEN      1001       33367       6825/java       
-</span><span class='line'>tcp6       0      0 :::8088                 :::*                    LISTEN      1001       32771       6594/java       
-</span><span class='line'>tcp6       0      0 :::8030                 :::*                    LISTEN      1001       32823       6594/java       
-</span><span class='line'>tcp6       0      0 :::8031                 :::*                    LISTEN      1001       32779       6594/java       
-</span><span class='line'>tcp6       0      0 :::8032                 :::*                    LISTEN      1001       32831       6594/java       
-</span><span class='line'>tcp6       0      0 :::8033                 :::*                    LISTEN      1001       32843       6594/java       
-</span><span class='line'>tcp6       0      0 :::8040                 :::*                    LISTEN      1001       33363       6825/java       
-</span><span class='line'>tcp6       0      0 :::37896                :::*                    LISTEN      1001       33353       6825/java       
-</span><span class='line'>hduser@ubuntu:~/hadoop-2.0.5-alpha/logs$</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>11) Web界面</h2>
-
-<ul>
-<li>查看HDFS及其health信息</li>
-</ul>
-
-
-<p><a href="http://132.253.222.240:50070">http://132.253.222.240:50070</a> 或者 <a href="http://132.253.222.240:50070/dfshealth.jsp">http://132.253.222.240:50070/dfshealth.jsp</a></p>
-
-<ul>
-<li>查看Hadoop All Applications：</li>
-</ul>
-
-
-<p><a href="http://132.253.222.240:8088">http://132.253.222.240:8088</a> 或者 <a href="http://132.253.222.240:8088/cluster">http://132.253.222.240:8088/cluster</a></p>
-
-<p>(这里的IP请使用localhost或者自己的对应IP，我所使用的是Ubuntu CMD)</p>
-
-<h4>待解问题：</h4>
-
-<ul>
-<li><p>what&rsquo;s YARN ?</p></li>
-<li><p>what&rsquo;s jps ?</p></li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/25/python-leanring-resources/">Python学习的资源</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-25T21:09:03-07:00" pubdate data-updated="true">Jul 25<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li><em>啄木鸟社区</em> [link, <a href="http://woodpecker.org.cn/">http://woodpecker.org.cn/</a>]</li>
-</ul>
-
-
-<p>(里面内容分为：
-&ndash; Wiki
-&ndash; Planet
-&ndash; 简明Python 2.3教程
-&ndash; 简明Python 3教程
-&ndash; Dive Into Python中文版
-&ndash; Dive Into Python 3中文版
-)</p>
-
-<ul>
-<li>《深入Python3》 [link, <a href="http://woodpecker.org.cn/diveintopython3/index.html">http://woodpecker.org.cn/diveintopython3/index.html</a>]</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/19/how-to-do-perfermance-tuning/">如何做好性能测试/调优</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-19T21:09:03-07:00" pubdate data-updated="true">Jul 19<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>性能调优，需要了解的知识点和面包括：</p>
-
-<ul>
-<li>Java</li>
-<li>数据库</li>
-<li>网络</li>
-<li>通讯机制</li>
-<li>Apache</li>
-<li>Tomcat</li>
-<li>JVM</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/18/learn-git-online/">在线学习GIT</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-18T21:09:03-07:00" pubdate data-updated="true">Jul 18<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>Try-Git 10 分钟教程 [<a href="http://try.github.io/wrap_up">http://try.github.io/wrap_up</a>]</li>
-<li>Git Real at Code School &ndash; Level 1 [<a href="http://gitreal.codeschool.com/levels/1">http://gitreal.codeschool.com/levels/1</a>]</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/17/my-eclipse-plugins/">My Eclipse Plugins</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-17T23:09:03-07:00" pubdate data-updated="true">Jul 17<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&mdash;filename: 2013_07_17_my_eclipse_plugins.md</p>
-
-<h2>My Eclipse Plugins</h2>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1003,23 +907,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/15/usage-of-scp/">SCP命令的使用</a>
+        <a href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/">[转载]为什么要写Blog？</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/08/use-superputty-to-replace-putty/">使用带有TAB功能的superPutty代替putty</a>
+        <a href="/blog/2014/04/22/regex-intro/">正则表达式</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a>
+        <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a>
+        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a>
+        <a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a>
       </li>
     
   </ul>

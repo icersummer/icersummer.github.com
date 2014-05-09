@@ -108,173 +108,99 @@ grant dba to vjtest;</p>
 
 <p>同一用户的话使用：imp fromuser myadmin touser myadmin file=c:\backup.dmp</p>
 
-<p>加粗</p>
+<p>added in Apr.16th</p>
 
-<p><em>粗体1</em>
-<strong>粗体2</strong>
-<strong><em>粗体3</em></strong></p>
-
-<p>标题</p>
-
-<h1>标题1</h1>
-
-<h2>标题2</h2>
-
-<h3>标题3</h3>
-
-<p>黑体</p>
-
-<p><b>黑体</b></p>
-
-<p>斜体</p>
-
-<p><em>斜体</em></p>
-
-<p>分割线</p>
-
-<hr />
-
-<p>列表</p>
-
-<ul>
-<li>列表项目1</li>
-<li>列表项目2</li>
-<li>列表项目3</li>
-</ul>
-
-
-<p>单行代码</p>
-
-<p><code>这里是单行代码</code></p>
-
-<p>多行代码</p>
+<p>执行报错：</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>或者rb，
-</span><span class='line'>或者HTML
-</span><span class='line'>  空格二
-</span><span class='line'>      空格四
-</span><span class='line'>  结束</span></code></pre></td></tr></table></div></figure>
-
-
-<p>引用</p>
-
-<blockquote><p>引用内容，分别显示；
-无空行第二引用，附于第一段；</p>
-
-<p>换行，则新行。</p></blockquote>
-
-<hr />
-
-<p>源代码格式</p>
-
-<hr />
-
-<p>加粗</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>*粗体1*
-</span><span class='line'>**粗体2**
-</span><span class='line'>**粗体3**</span></code></pre></td></tr></table></div></figure>
-
-
-<p>标题</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#标题1#
-</span><span class='line'>##标题2##</span></code></pre></td></tr></table></div></figure>
-
-
-<p>有序编号显示</p>
-
-<ol>
-<li>第一行</li>
-<li>第二行</li>
-<li>第三行</li>
-<li>第四行 (行前的数字其实不起作用)</li>
-</ol>
-
-
-<p>嵌套编号</p>
-
-<ol>
-<li>Dog
-
-<ol>
-<li>German Shepherd</li>
-<li>Belgian Shepherd
-
-<ol>
-<li>Malinois</li>
-<li>Groenendael</li>
-<li>Tervuren</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Cat
-
-<ol>
-<li>Siberian</li>
-<li>Siamese</li>
-</ol>
-</li>
-</ol>
-
-
-<p>规则就是：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;b&gt;Advanced lists: Nesting&lt;/b&gt;   
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>D:\Users\vjia&gt;imp system/syspwd fromuser=itadmin touser=testdb file=c:\data_dmp.dmp full=y
 </span><span class='line'>
-</span><span class='line'>To put other Markdown blocks in a list; just indent four spaces for each nesting level.</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>Import: Release 11.2.0.1.0 - Production on Wed Apr 16 12:33:35 2014
+</span><span class='line'>
+</span><span class='line'>Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>IMP-00058: ORACLE error 12560 encountered
+</span><span class='line'>ORA-12560: TNS:protocol adapter error
+</span><span class='line'>IMP-00000: Import terminated unsuccessfully</span></code></pre></td></tr></table></div></figure>
 
 
-<p>//TODO ， 这篇文章研究 <a href="http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html">http://www.macdrifter.com/2012/04/writing-in-markdown-lists.html</a></p>
+<p>错误原因在于：</p>
 
-<h1>双行分隔符</h1>
+<p>(参考这里)[<a href="http://www.orafaq.com/forum/t/175836/">http://www.orafaq.com/forum/t/175836/</a>]</p>
 
-<h2>单行分隔符</h2>
-
-<p>图片嵌入(比文字超链多了惊叹号)</p>
-
-<p><img src="https://github.com/icersummer" alt="screen shot" /></p>
-
-<h2>使用单行分隔符的Code Sample</h2>
-
-<p>The file <a href="http://icersummer.github.io"><code>HELLOWORLD.JAVA</code></a> is created by example in Sep.2nd. 注意这里的Helloworld所被包围的效果。</p>
-
-<p>四个空格可以构造缩进、包围效果、并且无需换行：</p>
-
-<pre><code>123467
-这个世界
-http://github.com/icersummer
-nowthat
-</code></pre>
-
-<blockquote><p>这是一个引用。</p></blockquote>
-
-<p>下面引用中无序列表：</p>
-
-<blockquote><p>有趣的现象：</p>
-
-<ul>
-<li><p>列表1</p></li>
-<li><p>comment list</p></li>
-<li><p>comment list 002</p></li>
-</ul>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ORA-12560: TNS:protocol adapter error
+</span><span class='line'>The database is local to the machine you try to execute this command and your ORACLE_SID is not set.
+</span><span class='line'>ORA-12154: TNS:could not resolve the connect identifier specified
+</span><span class='line'>The database is remote from the machine you try to execute this command and your tnsname.ora does not know the entry you gave (orclimpl)
+</span><span class='line'>In first case, set ORACLE_SID; in latter one, add the entry in your tnsnames.ora (and check there is a listener on database server).</span></code></pre></td></tr></table></div></figure>
 
 
-<p>More details.</p></blockquote>
+<p>解决方法就是：设置Oracle SID后再试</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>D:\Users\vjia&gt;set ORACLE_SID=scottfeb
+</span><span class='line'>
+</span><span class='line'>D:\Users\vjia&gt;imp system/syspwd fromuser=itadmin touser=testdb file=c:\data_dmp.dmp full=y
+</span><span class='line'>
+</span><span class='line'>Import: Release 11.2.0.1.0 - Production on Wed Apr 16 13:30:10 2014
+</span><span class='line'>
+</span><span class='line'>Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Connected to: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+</span><span class='line'>With the Partitioning, OLAP, Data Mining and Real Application Testing options
+</span><span class='line'>
+</span><span class='line'>Export file created by EXPORT:V11.02.00 via conventional path
+</span><span class='line'>
+</span><span class='line'>Warning: the objects were exported by ITADMIN, not by you
+</span><span class='line'>
+</span><span class='line'>import done in WE8MSWIN1252 character set and UTF8 NCHAR character set
+</span><span class='line'>import server uses AL32UTF8 character set (possible charset conversion)
+</span><span class='line'>. importing ITADMIN's objects into TESTDB
+</span><span class='line'>. . importing table                         "TEAM"       2789 rows imported
+</span><span class='line'>. . importing table                      "TEAMD"          0 rows imported
+</span><span class='line'>About to enable constraints...
+</span><span class='line'>Import terminated successfully with warnings.</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
 
 
@@ -338,23 +264,23 @@ nowthat
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/04/15/usage-of-scp/">SCP命令的使用</a>
+        <a href="/blog/2014/04/29/7-reasons-why-personal-blogs-rock/">[转载]为什么要写Blog？</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/08/use-superputty-to-replace-putty/">使用带有TAB功能的superPutty代替putty</a>
+        <a href="/blog/2014/04/22/regex-intro/">正则表达式</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/oracle-the-account-is-locked/">解锁Oracle账号</a>
+        <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/04/02/create-project-solr-ui/">创建Solr UI应用</a>
+        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2014/03/10/how-to-import-export-data-on-oracle/">导入、导出Oracle数据</a>
+        <a href="/blog/2014/04/22/core-java-refcardz/">A Good Refcardz of Core Java on DZone</a>
       </li>
     
   </ul>
