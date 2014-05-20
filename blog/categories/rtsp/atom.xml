@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Rtsp | Coder Blog VJIA]]></title>
+  <title><![CDATA[Category: Rtsp | VJia - Software Development]]></title>
   <link href="http://icersummer.github.io/blog/categories/rtsp/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-05-08T21:01:41-07:00</updated>
+  <updated>2014-05-20T03:22:33-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
