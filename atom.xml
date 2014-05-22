@@ -4,7 +4,7 @@
   <title><![CDATA[VJia - Software Development]]></title>
   <link href="http://icersummer.github.io/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-05-20T03:22:33-07:00</updated>
+  <updated>2014-05-22T02:20:36-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -12,6 +12,634 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Solr Tutorial]]></title>
+    <link href="http://icersummer.github.io/blog/2014/05/22/solr-tutorial/"/>
+    <updated>2014-05-22T18:15:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/05/22/solr-tutorial</id>
+    <content type="html"><![CDATA[<h1>Solr Tutorial</h1>
+
+<p>The origin site is this blog: <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">Solr Tutorial</a></p>
+
+<h2>Solr Tutorial</h2>
+
+<p>I recently had the need to search a large amount of online auction data. I had access to the data associated with a large number of online auctions, similar to auctions on eBay. I needed to quickly find auctions whose title and description match a given set of search terms. My solution was to use <a href="http://en.wikipedia.org/wiki/Apache_Solr">Solr</a>, an open source search application/platform.  This post describes the steps I carried out to set-up Solr, and the difficulties encountered along the way. The post covers Solr 4.6.</p>
+
+<p>The decision to use Solr was based on the need for a fast and customisable mechanism to search for auctions. Initially, MySQL&rsquo;s <a href="http://dev.mysql.com/doc/refman/5.0/en/fulltext-search.html">fulltext search</a> was used. This was slow, inflexible and had a number of issues such as not recognising numbers or common words.</p>
+
+<h3>Overview of SOlr Operation</h3>
+
+<p>Solr behaves in many ways like a web server such as Apache: once started, Solr uses the data in its installation directory to serve responses to client requests. The major difference is that Solr is serving search results (in XML, JSON or other formats) as opposed to web pages. The Solr installation is completely standalone: the Solr directory contains everything needed to start and run the server, including a Java Servlet container and all the application data. Solr is controlled using configuration files. Four files in particular play an important role:<strong>solr.xml, solrconfig.xml, schema.xml</strong> and <strong>solr-data-config.xml</strong> [schema.xml and solr-data-config.xml can have custom names].</p>
+
+<h3>Starting Solr</h3>
+
+<p>To start Solr in its default state, navigate to:</p>
+
+<pre><code>**apache-solr-X.X.X/example/**
+</code></pre>
+
+<p>and run:</p>
+
+<pre><code>**java -jar start.jar **
+</code></pre>
+
+<p>This starts up the server and sets Solr to use the default home directory, <em>./solr</em>.</p>
+
+<p>When making your own Solr instance, it is a good idea to start by copying the default Solr directory, name it as you wish, and start working with this new Solr instance. Assuming I call my Solr directory <code>AuctionSearch</code>, to start Solr after making the new directory, run:
+java -jar start.jar -Dsolr.solr.home=AuctionSearch  After running this command, you can browse to <a href="http://localhost:8983/solr/">http://localhost:8983/solr/</a> to view the administration user interface. The default Solr instance doesn&rsquo;t have any documents indexed (or it might have just one), so there wont be much to tinker with until more documents are added. Before adding documents, however, some configuration will probably be needed.</p>
+
+<h3>Configuring Solr</h3>
+
+<p>Configuring Solr is not typically done once- instead a cycle of configuring and testing is carried out. Even months after I initially set up Solr to work for my application, I am still tweaking it as I learn more about Solr and learn more about my data. Despite this cyclic nature, the configuration of Solr will be described here in a linear fashion. However, jumping between sections is encouraged. In turn, the following will be discussed:</p>
+
+<pre><code>- solr.xml Solr cores
+- schema.xml Document structure
+- solrconfig.xml Request handlers
+</code></pre>
+
+<p>When configuring Solr, it is helpful to have a picture of the Solr home directory structure, and to know where all the configuration files are located. The image below shows important configuration files within the example Solr directory.
+<img src="http://2.bp.blogspot.com/-zWmWPHKrmYA/URBOUoCYOLI/AAAAAAAAA8M/px33YlR5gCg/s1600/croppedLargeFontSolrDirectoryStructure.jpg" alt="Solr Home Directory Structure" /></p>
+
+<h3>SOlr Cores</h3>
+
+<p>A Solr core manages a single <em>index</em>. An index is the set of all data used to store information about documents to be searched. Each index can have only one document schema associated with it (only one document format can be stored). Using multiple cores allows a single Solr instance (single server, single administration web page) to manage multiple indexes. A use case (context: auction website) for this might be having one core for indexing auction data and another for indexing information on users. Each core will have its own core directory. Cores are configured in <em>solr.xml</em>. An example solr.xml:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!-- persistent=&quot;true&quot; allows the web interface to make lasting changes to Solr. --&gt;</span>
+</span><span class='line'><span class="nt">&lt;solr</span> <span class="na">persistent=</span><span class="s">&quot;true&quot;</span> <span class="na">sharedlib=</span><span class="s">&quot;lib&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;cores</span> <span class="na">adminpath=</span><span class="s">&quot;/admin/cores&quot;</span> <span class="na">host=</span><span class="s">&quot;${host:}&quot;</span> <span class="na">hostcontext=</span><span class="s">&quot;${hostContext:}&quot;</span> <span class="na">hostport=</span><span class="s">&quot;${jetty.port:}&quot;</span> <span class="na">zkclienttimeout=</span><span class="s">&quot;${zkClientTimeout:15000}&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;core</span> <span class="na">default=</span><span class="s">&quot;true&quot;</span> <span class="na">instancedir=</span><span class="s">&quot;auctions&quot;</span> <span class="na">name=</span><span class="s">&quot;auctions&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/core&gt;&lt;/cores&gt;</span>
+</span><span class='line'><span class="nt">&lt;/solr&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Usually, the default <em>solr.xml</em> is sufficient. You may want to change the core names and core directory names. <a href="http://lucidworks.lucidimagination.com/display/solr/Configuring+solr.xml">Further details</a> on configuring <em>solr.xml</em>.</p>
+
+<p>In Solr 4.3 and above, <em>solr.xml</em> has a <a href="https://cwiki.apache.org/confluence/display/solr/Format+of+solr.xml">new purpose and a new format</a>. In Solr 5.0 and above, the older format will not be supported.</p>
+
+<h3>Schema</h3>
+
+<p>A Solr schema describes the basic unit of information: a <em>document</em>. Each Solr core has a single schema, and thus, indexes only one &lsquo;form&rsquo; of document. A document is composed of multiple <em>fields</em>.  Each field has a <em>type</em>. This type is defined in the schema and specifies the underlying Java class that is created when the field is indexed. The type also specifies the text analysis (processing/digestion) that is carried out when the field is indexed. An example document and a section of the corresponding <em>schema.xml</em> is shown below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;doc&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;auction_id&quot;</span><span class="nt">&gt;</span>54432834<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>Dell M2012 24&quot; IPS Monitor<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;category&quot;</span><span class="nt">&gt;</span>monitors<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;current_bid&quot;</span><span class="nt">&gt;</span>279.95<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;end_date&quot;</span><span class="nt">&gt;</span>2013-01-06T09:26:04.18Z<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>IPS<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature&quot;</span><span class="nt">&gt;</span>Swivel<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;/doc&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;schema</span> <span class="na">name=</span><span class="s">&quot;example&quot;</span> <span class="na">version=</span><span class="s">&quot;1.5&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;fields&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;_version_&quot;</span> <span class="na">type=</span><span class="s">&quot;long&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;auction_id&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">type=</span><span class="s">&quot;text_en&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;category&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;current_bid&quot;</span> <span class="na">type=</span><span class="s">&quot;currency&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;end_date&quot;</span> <span class="na">type=</span><span class="s">&quot;date&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;false&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fields&gt;</span>
+</span><span class='line'><span class="nt">&lt;uniqueKey&gt;</span>auction_id<span class="nt">&lt;/uniqueKey&gt;</span>
+</span><span class='line'><span class="nt">&lt;types&gt;</span>
+</span><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;string&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.StrField&quot;</span> <span class="na">sortMissingLast=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;date&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TrieDateField&quot;</span> <span class="na">precisionStep=</span><span class="s">&quot;0&quot;</span> <span class="na">positionIncrementGap=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;long&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TrieLongField&quot;</span> <span class="na">precisionStep=</span><span class="s">&quot;0&quot;</span> <span class="na">positionIncrementGap=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;text_en&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TextField&quot;</span> <span class="na">positionIncrementGap=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="c">&lt;!-- lots of details --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fieldType&gt;</span>
+</span><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;currency&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.CurrencyField&quot;</span> <span class="na">precisionStep=</span><span class="s">&quot;8&quot;</span> <span class="na">defaultCurrency=</span><span class="s">&quot;USD&quot;</span> <span class="na">currencyConfig=</span><span class="s">&quot;currency.xml&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/types&gt;</span>
+</span><span class='line'><span class="nt">&lt;/schema&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The components of schema.xml will now be described.</p>
+
+<h3>Fields</h3>
+
+<p>A field describes a piece of information within a document. It controls aspects of the indexing process such as what Java type is used to represent the data, whether the data is stored, whether the field is required in every document etc. There are two types of special fields: <strong>copyField</strong> and <strong>dynamicField</strong> (not to be confused with the type parameter such as type=&ldquo;string&rdquo;).</p>
+
+<p><strong>copyField</strong></p>
+
+<p>Copy fields allow you to index a field in more than one way. A field is copied allowing different field types, such as <em>text_en</em> or <em>string</em> to be applied to the single piece of information.</p>
+
+<p><strong>dynamicField</strong></p>
+
+<p>Dynamic fields are, in a way, an inverse to copying fields; they allow you to process multiple fields in the same way. Their most useful feature is their ability to match document fields with pattern matching. A common usage of dynamic fields is to catch all fields in a document which should not be indexed. This is required, as when fields are indexed, all document fields must be processed, or an error is thrown.</p>
+
+<p>An example of using copy and dynamic fields is show below:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;schema</span> <span class="na">name=</span><span class="s">&quot;example&quot;</span> <span class="na">version=</span><span class="s">&quot;1.5&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;fields&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span> <span class="na">type=</span><span class="s">&quot;text_en&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;category&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;true&quot;</span> <span class="na">required=</span><span class="s">&quot;false&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;allText&quot;</span> <span class="na">type=</span><span class="s">&quot;text_en&quot;</span> <span class="na">indexed=</span><span class="s">&quot;true&quot;</span> <span class="na">stored=</span><span class="s">&quot;false&quot;</span> <span class="na">required=</span><span class="s">&quot;true&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fields&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;title&quot;</span> <span class="na">dest=</span><span class="s">&quot;allText&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;category&quot;</span> <span class="na">dest=</span><span class="s">&quot;allText&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;copyField</span> <span class="na">source=</span><span class="s">&quot;feature&quot;</span> <span class="na">dest=</span><span class="s">&quot;allText&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;dynamicField</span> <span class="na">name=</span><span class="s">&quot;*&quot;</span> <span class="na">type=</span><span class="s">&quot;ignored&quot;</span> <span class="na">multiValued=</span><span class="s">&quot;true&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/schema&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Analysers, Tokenisers and Filters</h3>
+
+<p><strong>Analyser</strong></p>
+
+<p>An analyzer converts the text of a field and modifies it to form the text that is indexed. Analyzers are made up of one or more tokenizer and/or filter. Seeing as analyzers are constructed from filters and tokenizers in an adhoc manor, they don&rsquo;t really have a name; they will just be identified by the <em>fieldType</em> where they are defined.</p>
+
+<p><strong>Tokenizer</strong></p>
+
+<p>A tokenizer breaks up a stream of text into units, called tokens. For example, the text: &ldquo;Please like my blog&rdquo;, might be passed through a filter to produce the 4 tokens: (Please, like, my, blog) or using another type of tokenizer: (p, l, e, a, s, e, l, i, k, e, m, y, b, l, o, g).</p>
+
+<p><strong>Filter</strong></p>
+
+<p>Filters take in tokens, transform them, and output the transformed tokens (they can modify or discard them). A example: a filter which converts all text to lowercase.</p>
+
+<p>A useful note: analyzers can operate both at index time and at query time. In other words, they transform both the documents that are indexed and the search terms that are used by a user.</p>
+
+<p>A reasonably complex analyzer is shown below. It is defined in the example Solr <em>schema.xml</em> file for the fieldType <em>text_en</em>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;fieldType</span> <span class="na">name=</span><span class="s">&quot;text_en&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.TextField&quot;</span> <span class="na">positionIncrementGap=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;index&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.StandardTokenizerFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.StopFilterFactory&quot;</span>
+</span><span class='line'><span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span>
+</span><span class='line'><span class="na">words=</span><span class="s">&quot;lang/stopwords_en.txt&quot;</span>
+</span><span class='line'><span class="na">enablePositionIncrements=</span><span class="s">&quot;true&quot;</span>
+</span><span class='line'><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.LowerCaseFilterFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.EnglishPossessiveFilterFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.KeywordMarkerFilterFactory&quot;</span> <span class="na">protected=</span><span class="s">&quot;protwords.txt&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.PorterStemFilterFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/analyzer&gt;</span>
+</span><span class='line'><span class="nt">&lt;analyzer</span> <span class="na">type=</span><span class="s">&quot;query&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;tokenizer</span> <span class="na">class=</span><span class="s">&quot;solr.StandardTokenizerFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.SynonymFilterFactory&quot;</span> <span class="na">synonyms=</span><span class="s">&quot;synonyms.txt&quot;</span> <span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span> <span class="na">expand=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.StopFilterFactory&quot;</span>
+</span><span class='line'><span class="na">ignoreCase=</span><span class="s">&quot;true&quot;</span>
+</span><span class='line'><span class="na">words=</span><span class="s">&quot;lang/stopwords_en.txt&quot;</span>
+</span><span class='line'><span class="na">enablePositionIncrements=</span><span class="s">&quot;true&quot;</span>
+</span><span class='line'><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.LowerCaseFilterFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.EnglishPossessiveFilterFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.KeywordMarkerFilterFactory&quot;</span> <span class="na">protected=</span><span class="s">&quot;protwords.txt&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;filter</span> <span class="na">class=</span><span class="s">&quot;solr.PorterStemFilterFactory&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/analyzer&gt;</span>
+</span><span class='line'><span class="nt">&lt;/fieldType&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Schema Snares</h3>
+
+<p><strong>Multivalued Fields</strong></p>
+
+<p>Multivalued refers to the possibility of their being two values for present in the same document for a single field. For example, for the document shown below, there is always only one title. An example of a multivalued field is the feature field, this can have many values in a single document. What is important to realise when using multivalued fields, is that the data gets flattened. If an auction has 2 features, then the two features get flattened such that the relationship between the name and the value of the feature is lost.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!-- What an auction might look like in its original XML form: --&gt;</span>
+</span><span class='line'><span class="nt">&lt;auction&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>Desktop PC<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;feature&gt;</span>
+</span><span class='line'><span class="nt">&lt;name&gt;</span>RAM<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'><span class="nt">&lt;value&gt;</span>16 GB<span class="nt">&lt;/value&gt;</span>
+</span><span class='line'><span class="nt">&lt;/feature&gt;</span>
+</span><span class='line'><span class="nt">&lt;feature&gt;</span>
+</span><span class='line'><span class="nt">&lt;name&gt;</span>CPU Frequency<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'><span class="nt">&lt;value&gt;</span>4.5 GHz<span class="nt">&lt;/value&gt;</span>
+</span><span class='line'><span class="nt">&lt;/feature&gt;</span>
+</span><span class='line'><span class="nt">&lt;/auction&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- What an auction would look like as a Solr document: --&gt;</span>
+</span><span class='line'><span class="nt">&lt;doc&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>Desktop PC<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature_name&quot;</span><span class="nt">&gt;</span>RAM<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature_value&quot;</span><span class="nt">&gt;</span>16 GB<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature_name&quot;</span><span class="nt">&gt;</span>CPU Frequency<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature_value&quot;</span><span class="nt">&gt;</span>4.5 GHz<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;/doc&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- The *effect* of multivalued field flattening: --&gt;</span>
+</span><span class='line'><span class="nt">&lt;doc&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>Desktop PC<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature_name&quot;</span><span class="nt">&gt;</span>RAM CPU Frequency<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;feature_value&quot;</span><span class="nt">&gt;</span>16 GB 4.5 GHz<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;/doc&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By observing the way the data is indexed, it is clear that the relationship between the name and value pairs is lost. In other words, one to many relationships cannot be maintained by Solr in a single index (the is an exotic method of using multiple indexes and multiple cores). From a relational database point of view, Solr flattens all data into a single &lsquo;table&rsquo;.</p>
+
+<h3>PolyFields</h3>
+
+<p>A ployfield, such as the <em>Currency</em> field, is a field that requires more than one value to be stored when it is indexed. The currency field needs to store both the amount of money and the currency of the money. Polyfields <strong>must</strong> have <em>stored=true</em>, or errors will result.</p>
+
+<h3>solrconfig.xml</h3>
+
+<p><em>solrconfig.xml</em> is used to configure many aspects of Solr&rsquo;s operation, for example, it is used to configure:</p>
+
+<pre><code>- request handlers
+- listeners (listen for requests sent to handlers)
+- admin interface
+- replication and duplication
+</code></pre>
+
+<p>Typically, the only changes that need to be made to <em>solrconfig.xml</em> are to add or alter search and index request handlers. These two examples will be covered in the Indexing and Searching sections respectively.</p>
+
+<h3>Indexing Data</h3>
+
+<p>There are two ways I have used to add documents to an index: posting XML to a request handler or importing it from a database. All the data I index is also stored in a database. I initially carry out a data import from a database to catch up on the database from an empty state. Once this import is finished, new documents are added to the index by sending the documents in XML form to Solr via HTTP post.</p>
+
+<h3>Importing from a Database</h3>
+
+<p>Importing data from a database in carried out using the <a href="http://wiki.apache.org/solr/DataImportHandler%20Data%20Import%20Handler">Data Import Handler</a> (DIH). To use the DIH, a configuration file must be created to direct the conversion. In addition to the configuration file, a request handler must be specified in <em>solrconfig.xml</em> for the DIH. The details of writing the configuration file is given in the above link.</p>
+
+<h3>Posting XML</h3>
+
+<p>Once Solr has indexed the entire database, new documents are added by posting them to a Solr request handler. <a href="https://wiki.apache.org/solr/Solrj">SolrJ</a>, a Java API for Solr, is used to do the posting. Solr comes with a simple request handler for adding documents by posting XML. It is defined in solrconfig.xml as follows:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!-- in solrconfig.xml --&gt;</span>
+</span><span class='line'><span class="nt">&lt;requestHandler</span> <span class="na">name=</span><span class="s">&quot;/update&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.UpdateRequestHandler&quot;</span> <span class="nt">/&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thus, by sending XML to the URL <a href="http://localhost:8983/solr/coreName/update,">http://localhost:8983/solr/coreName/update,</a> Solr will add the document to the index. Unfortunately, in most situations, if you already have XML data which you want to index, it probably wont exist in the format that Solr expects. For example, compare the following:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="c">&lt;!-- original XML format: --&gt;</span>
+</span><span class='line'><span class="nt">&lt;auction&gt;</span>
+</span><span class='line'><span class="nt">&lt;auction_id&gt;</span>54432834<span class="nt">&lt;/auction_id&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>Dell M2012 24&quot; IPS Monitor<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;category&gt;</span>monitors<span class="nt">&lt;/category&gt;</span>
+</span><span class='line'><span class="nt">&lt;current_bid&gt;</span>279.95<span class="nt">&lt;/current_bid&gt;</span>
+</span><span class='line'><span class="nt">&lt;/auction&gt;</span>
+</span><span class='line'><span class="c">&lt;!-- The format Solr requires: --&gt;</span>
+</span><span class='line'><span class="nt">&lt;doc&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;auction_id&quot;</span><span class="nt">&gt;</span>54432834<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;title&quot;</span><span class="nt">&gt;</span>Dell M2012 24&quot; IPS Monitor<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;category&quot;</span><span class="nt">&gt;</span>monitors<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;field</span> <span class="na">name=</span><span class="s">&quot;current_bid&quot;</span><span class="nt">&gt;</span>279.95<span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;/doc&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Thus, there is a need to convert the original XML into the form which Solr expects. There are two ways to do this conversion:</p>
+
+<ul>
+<li>In Java: JAXP API can be used to carry out the conversion. This will require writing custom code to do the conversion. Alternatively, if your data exists as Java classes, you can index those through SolrJ, which has a persistence mechanism allowing Java objects to be indexed directly.</li>
+<li>Use XSLT: Configure the Solr request handler to transform the posted XML using a specified XSLT before trying to index the document. An XSLT file to transform an XML document (with root XML element &lsquo;Auction&rsquo;) is shown below:</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- the 2.0 version of xsl reqires a custom processor to be used. Saxon9he is used, and is</span>
+</span><span class='line'><span class="c">located in Jetty&#39;s ext/ folder. This library requires Jetty to be started like so:</span>
+</span><span class='line'><span class="c">java -Djavax.xml.transform.TransformerFactory=net.sf.saxon.TransformerFactoryImpl -jar start.jar</span>
+</span><span class='line'><span class="c">--&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:stylesheet</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span>
+</span><span class='line'><span class="na">xmlns:xsl=</span><span class="s">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span>
+</span><span class='line'><span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+</span><span class='line'><span class="na">xmlns:fn=</span><span class="s">&quot;http://www.w3.org/2005/xpath-functions&quot;</span>
+</span><span class='line'><span class="na">xmlns:xdt=</span><span class="s">&quot;http://www.w3.org/2005/xpath-datatypes&quot;</span>
+</span><span class='line'><span class="na">xmlns:err=</span><span class="s">&quot;http://www.w3.org/2005/xqt-errors&quot;</span>
+</span><span class='line'><span class="na">xmlns:tm=</span><span class="s">&quot;http://api.trademe.co.nz/v1&quot;</span>
+</span><span class='line'><span class="na">exclude-result-prefixes=</span><span class="s">&quot;xs xdt err fn tm&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;xsl:output</span> <span class="na">method=</span><span class="s">&quot;xml&quot;</span> <span class="na">indent=</span><span class="s">&quot;yes&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- &#39;Auction&quot; is the root XML element --&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:template</span> <span class="na">match=</span><span class="s">&quot;tm:Auction&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;add&gt;&lt;doc&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:for-each</span> <span class="na">select=</span><span class="s">&quot;//text()/.. intersect child::*&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;field&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;name()&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xsl:attribute&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xsl:for-each&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;xsl:for-each</span> <span class="na">select=</span><span class="s">&quot;//text()/.. except child::*&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;field&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:attribute</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;../name()&quot;</span><span class="nt">/&gt;</span>_<span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;name()&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xsl:attribute&gt;</span>
+</span><span class='line'><span class="nt">&lt;xsl:value-of</span> <span class="na">select=</span><span class="s">&quot;.&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/field&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xsl:for-each&gt;</span>
+</span><span class='line'><span class="nt">&lt;/doc&gt;&lt;/add&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xsl:template&gt;</span>
+</span><span class='line'><span class="nt">&lt;/xsl:stylesheet&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Indexing Snares</h3>
+
+<p><strong>Letter Case in the DIH Configuration File</strong></p>
+
+<p>Table and row names in the DIH configuration file are tediously case-sensitive-ish. Some places the case doesn&rsquo;t matter, and other places it does. Where it does matter, the table and row names must be in the exact same form as in the database. Also, case must be internally consistent within the configuration file for most name usages.</p>
+
+<p><strong>Missing Fields in Posted XML and DIH Mapping Everything to the Ignore Field</strong></p>
+
+<p>These two seemingly unrelated issues are linked by the presence of a dynamic field in schema.xml. When posting XML data, all fields defined in the schema file must be present in the XML file being posted. If there are fields in the XML document which are not used in the index, errors are throw when posting the XML. The way around this is to create a catch-all field: this schema field catches all fields in the document which have not been mapped to another field. This workaround, however, interferes with the operation of the DIH. The DIH, annoyingly, maps nearly all fields to the catch-all field. This may have something to do with the nice feature of the DIH which allows you to leave out every mapping from row->field if the row and field have the same name. Leaving out these mappings, however, seems to cause all fields to map to the catch-all ignore field. My current hack involves changing the schema.xml file every time I want to import documents using the DIH.</p>
+
+<h3>Searching</h3>
+
+<p>Search requests are carried out by request handlers which parse and process searches. A good way to describe search handlers is through an example. The following is a search request handler I use:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'> <span class="nt">&lt;requestHandler</span> <span class="na">name=</span><span class="s">&quot;/broadQuery&quot;</span> <span class="na">class=</span><span class="s">&quot;solr.SearchHandler&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;lst</span> <span class="na">name=</span><span class="s">&quot;defaults&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;defType&quot;</span><span class="nt">&gt;</span>edismax<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- The search parser to use. --&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;wt&quot;</span><span class="nt">&gt;</span>xml<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- Output type. --&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;fl&quot;</span><span class="nt">&gt;</span>auction_id title<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- The fields to list in the search response --&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;qf&quot;</span><span class="nt">&gt;</span>Title^2 Feature<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- The fields (and their weightings) to search in.--&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;rows&quot;</span><span class="nt">&gt;</span>100<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- The number of results to return. --&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;pf&quot;</span><span class="nt">&gt;</span>Title^4 Feature^2<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- Phrase field (and their weightings). Fields to search for closely located matches. --&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;ps&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- Phrase slop. How many tokens apart must words be to be able to qualify as a phrase--&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;echoParams&quot;</span><span class="nt">&gt;</span>all<span class="nt">&lt;/str&gt;</span> <span class="c">&lt;!-- Print the search settings in the search results. Just a handy feature --&gt;</span>
+</span><span class='line'><span class="nt">&lt;str</span> <span class="na">name=</span><span class="s">&quot;mm&quot;</span><span class="nt">&gt;</span>3<span class="ni">&amp;lt;</span>-1 5<span class="ni">&amp;lt;</span>-2 6<span class="ni">&amp;lt;</span>-40%<span class="nt">&lt;/str&gt;</span>
+</span><span class='line'><span class="c">&lt;!-- 3&gt;-1 5&gt;-2 6&gt;-40% Means: If there are 1-3 search terms, they are all required to</span>
+</span><span class='line'><span class="c">&lt;!-- match. If there are 4-5 search terms, then (all - 1) must match.</span>
+</span><span class='line'><span class="c">If there are 5-6 search terms, then (all -2) must match</span>
+</span><span class='line'><span class="c">If there are &gt;6 search terms, then (all - 40%) must match. --&gt;</span>
+</span><span class='line'><span class="nt">&lt;/lst&gt;</span>
+</span><span class='line'><span class="nt">&lt;/requestHandler&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>All these parameters can be specified at query time also; defining them within the request handler definition simply specifies defaults. To use this search handler I would navigate/send request to:</p>
+
+<p><a href="http://localhost:8983/solr/auctions/broadQuery?q=dell+monitor+IPS">http://localhost:8983/solr/auctions/broadQuery?q=dell+monitor+IPS</a></p>
+
+<p> [Assuming that &lsquo;auctions&rsquo; is the name of your Solr core, and Solr is hosted on localhost]</p>
+
+<p> While most of the search handler&rsquo;s configuration can be understood from the comments, defType, pf, ps and mm might need further explanation:</p>
+
+<p>defType</p>
+
+<p>defType specifies the search parser to use. There are a number of popular search parsers including <a href="http://lucidworks.lucidimagination.com/display/solr/The+Standard+Query+Parser%20Lucene">Standard Search</a>,  <a href="http://lucidworks.lucidimagination.com/display/solr/The+DisMax+Query+Parser">DisMax</a> and <a href="http://lucidworks.lucidimagination.com/display/solr/The+Extended+DisMax+Query+Parser">eDisMax</a>. eDismax combines the features of both the Standard Search and DisMax; eDisMax supports the full query syntax of the Lucene Standard Query, but is far more tolerant of syntax errors. eDismax seems like the obvious choice in most circumstances.</p>
+
+<p>pf</p>
+
+<p>pf (phase fields) specifies what fields should be checked for having matching &lsquo;phrases&rsquo;. If matching terms are close enough together, then they can be considered a phrase. A result with a matching phrase will score higher than one with no matching phase. You can also specify a weighting: a field weighting will control the effect of a match on the match&rsquo;s score. For example, a phrase found in the title will score higher that one found in feature.</p>
+
+<p>ps</p>
+
+<p>ps (phrase slop) specifies how many terms can be in-between two matching terms and still allow the matching terms to be considered a matching phrase.</p>
+
+<h3>Searching from Java</h3>
+
+<p>Searching can be carried out from Java with the use of <a href="https://wiki.apache.org/solr/Solrj">SolrJ</a>. The gist below shows a very simple method utilizing SolrJ:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>public class SimpleSolrSearch {
+</span><span class='line'>private String solrUrl = &quot;http://192.168.1.103:8983/solr/auctions&quot;;
+</span><span class='line'>private SolrServer server;
+</span><span class='line'>public SimpleSolrSearch() {
+</span><span class='line'>server = new HttpSolrServer(solrUrl);
+</span><span class='line'>}
+</span><span class='line'>public Collection<span class="nt">&lt;Integer&gt;</span> search(String searchTerms, String category, BigDecimal maxBidAmount) throws SolrServerException {
+</span><span class='line'>SolrQuery query = new SolrQuery();
+</span><span class='line'>String categoryFilter = &quot;category:\&quot;&quot; + category + &quot;\&quot;&quot;;
+</span><span class='line'>query.addFilterQuery(categoryFilter);
+</span><span class='line'>query.addFilterQuery(&quot;current_bid:[1 TO &quot; + maxBidAmount.doubleValue() + &quot;]&quot;);
+</span><span class='line'>query.setQuery(searchTerms);
+</span><span class='line'>
+</span><span class='line'>QueryResponse response = server.query(query);
+</span><span class='line'>SolrDocumentList documentList = response.getResults();
+</span><span class='line'>List<span class="nt">&lt;Integer&gt;</span> auctionIds = new ArrayList<span class="err">&lt;</span>&gt;();
+</span><span class='line'>for(SolrDocument doc : documentList) {
+</span><span class='line'>int listingId = Integer.parseInt((String)doc.getFirstValue(&quot;auction_id&quot;));
+</span><span class='line'>auctionIds.add(listingId);
+</span><span class='line'>}
+</span><span class='line'>return auctionIds;
+</span><span class='line'>}
+</span><span class='line'>}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Further Reading</h3>
+
+<p>I have briefly covered many common tasked carried out when using Solr. There are many more features: search faceting, search clustering, distributed searches and index replication to name a few. There are many comprehensive sources available. Some useful sources I would suggest:
+&ndash; <a href="http://lucidworks.lucidimagination.com/display/solr/Apache+Solr+Reference+Guide">Lucid Works&#8217; Solr Reference Guide</a>
+&ndash; <a href="http://www.amazon.com/gp/product/1782161325/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1782161325&amp;linkCode=as2&amp;tag=kevidoraprog-20">Apache Solr 4 Cookbook</a>
+&ndash; <a href="http://www.amazon.com/gp/product/1933988177/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1933988177&amp;linkCode=as2&amp;tag=kevidoraprog-20">Lucene in Action, 2nd Edition</a>   (if you want to go to a lower level than Solr)
+&ndash; <a href="http://www.amazon.com/gp/product/0596802277/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596802277&amp;linkCode=as2&amp;tag=kevidoraprog-20">Search Patterns</a>   (from a data mining perspective)
+&ndash; <a href="http://www.amazon.com/gp/product/1935182854/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1935182854&amp;linkCode=as2&amp;tag=kevidoraprog-20">Tika in Action</a>     (if you want to index and search documents such as PDFs)</p>
+
+<p>The blog&rsquo;s source is : <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html</a></p>
+
+<hr />
+
+<p>Over.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OCTOPress增加Disqus评论]]></title>
@@ -895,15 +1523,6 @@ There is a file called: Bookmarks.bak.  The sad part that i can not simply renam
 <li><p><a href="http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/">http://www.liberiangeek.net/2013/10/daily-ubuntu-tips-change-computer-name/</a></p></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Eclipse Plugins]]></title>
-    <link href="http://icersummer.github.io/blog/2013/11/01/eclipse-plugins/"/>
-    <updated>2013-11-01T21:24:03-07:00</updated>
-    <id>http://icersummer.github.io/blog/2013/11/01/eclipse-plugins</id>
-    <content type="html"><![CDATA[<p>今天从Eclipse Marketplace直接搜索、安装了Subversion、JadClipse。</p>
 ]]></content>
   </entry>
   

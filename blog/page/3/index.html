@@ -9,7 +9,8 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="查找 vjia@ubuntu:~/hadoop-0.20.2-cdh3u6$ find . -name &lsquo;jar&rsquo; 参考链接：http://www.ruanyifeng.com/blog/2009/10/ &hellip;">
+  <meta name="description" content="今天从Eclipse Marketplace直接搜索、安装了Subversion、JadClipse。
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,45 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/01/eclipse-plugins/">Eclipse Plugins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-01T21:24:03-07:00" pubdate data-updated="true">Nov 1<span>st</span>, 2013</time>
+        
+           | <a href="/blog/2013/11/01/eclipse-plugins/#disqus_thread"
+             data-disqus-identifier="http://icersummer.github.io/blog/2013/11/01/eclipse-plugins/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天从Eclipse Marketplace直接搜索、安装了Subversion、JadClipse。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -829,71 +869,6 @@ insert into my_table select * from exist_table;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/26/uninstall-oracle-manually/">手动卸载Oracle</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-26T21:11:03-07:00" pubdate data-updated="true">Aug 26<span>th</span>, 2013</time>
-        
-           | <a href="/blog/2013/08/26/uninstall-oracle-manually/#disqus_thread"
-             data-disqus-identifier="http://icersummer.github.io/blog/2013/08/26/uninstall-oracle-manually/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>直接使用安装完成后的Oracle自带的Uninstallation程序，也是可以部分完成我们所需的卸载功能，但是终究还是会遗留一部分需要手工参与的步骤。</p>
-
-<p>而我今天所面临的问题是：2块硬盘，在上个礼拜其中一块硬盘罢工，幸好不是系统盘，免去了我要重装系统的麻烦；但麻烦的是损坏的F盘也是Oracle 11g所在磁盘，导致Oracle中服务及应用都不可使用。</p>
-
-<p>虽然我手动将Oracle原有目录及文件（F:\app\user_name&#8230;）拷贝了回去到原位置，但Oracle已然不能使用。尝试了2种方式去重装，没有成功：</p>
-
-<ul>
-<li><p>运行Uninstallation，中止；</p></li>
-<li><p>运行installation，企图覆盖原有程序，中止。</p></li>
-</ul>
-
-
-<p>看到有些文章，说可以通过手动删除Oracle注册表项操作，但是不太想通过此种方式，但是在看到stackoverflow上一篇帖子后，处于对他们的信任，还是使用这种方式：</p>
-
-<h3>Six-Step Process</h3>
-
-<ol>
-<li><p><strong>Delete the Oracle services</strong>: In the registry, go to \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services and delete everything that starts with &ldquo;Oracle&rdquo;</p></li>
-<li><p><strong>Remove other Oracle stuff from the registry</strong>: Go to \HKEY_LOCAL_MACHINE\SOFTWARE\ and delete the key ORACLE</p></li>
-<li><p><strong>Reboot</strong></p></li>
-<li><p><strong>Delete all the Oracle software</strong> from the directories where you installed it</p></li>
-<li><p><strong>Delete the Oracle software inventory</strong>: Delete the directory C:\Program Files\Oracle. You must do this no matter where you installed your Oracle software &ndash; the Oracle installer automatically writes information here.</p></li>
-<li><p><strong>Delete all shortcuts</strong> from your Start menu.</p></li>
-</ol>
-
-
-<p>参考链接： <a href="http://stackoverflow.com/questions/83967/how-do-i-do-a-manual-uninstall-of-oracle">How do I a manual uninstall of Oracle</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -911,6 +886,10 @@ insert into my_table select * from exist_table;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/22/solr-tutorial/">Solr Tutorial</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/09/plugins-disqus-github-googleplus/">OCTOPress增加Disqus评论</a>
       </li>
     
@@ -924,10 +903,6 @@ insert into my_table select * from exist_table;
     
       <li class="post">
         <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
       </li>
     
   </ul>

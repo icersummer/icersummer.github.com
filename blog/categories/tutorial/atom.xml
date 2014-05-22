@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tutorial | VJia - Software Development]]></title>
+  <link href="http://icersummer.github.io/blog/categories/tutorial/atom.xml" rel="self"/>
+  <link href="http://icersummer.github.io/"/>
+  <updated>2014-05-22T02:20:36-07:00</updated>
+  <id>http://icersummer.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent J]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Solr Tutorial]]></title>
+    <link href="http://icersummer.github.io/blog/2014/05/22/solr-tutorial/"/>
+    <updated>2014-05-22T18:15:03-07:00</updated>
+    <id>http://icersummer.github.io/blog/2014/05/22/solr-tutorial</id>
+    <content type="html"><![CDATA[<h1>Solr Tutorial</h1>
+
+<p>The origin site is this blog: <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">Solr Tutorial</a></p>
+
+<h2>Solr Tutorial</h2>
+
+<p>I recently had the need to search a large amount of online auction data. I had access to the data associated with a large number of online auctions, similar to auctions on eBay. I needed to quickly find auctions whose title and description match a given set of search terms. My solution was to use <a href="http://en.wikipedia.org/wiki/Apache_Solr">Solr</a>, an open source search application/platform.  This post describes the steps I carried out to set-up Solr, and the difficulties encountered along the way. The post covers Solr 4.6.</p>
+
+<p>The decision to use Solr was based on the need for a fast and customisable mechanism to search for auctions. Initially, MySQL&rsquo;s <a href="http://dev.mysql.com/doc/refman/5.0/en/fulltext-search.html">fulltext search</a> was used. This was slow, inflexible and had a number of issues such as not recognising numbers or common words.</p>
+
+<h3>Overview of SOlr Operation</h3>
+
+<p>Solr behaves in many ways like a web server such as Apache: once started, Solr uses the data in its installation directory to serve responses to client requests. The major difference is that Solr is serving search results (in XML, JSON or other formats) as opposed to web pages. The Solr installation is completely standalone: the Solr directory contains everything needed to start and run the server, including a Java Servlet container and all the application data. Solr is controlled using configuration files. Four files in particular play an important role:<strong>solr.xml, solrconfig.xml, schema.xml</strong> and <strong>solr-data-config.xml</strong> [schema.xml and solr-data-config.xml can have custom names].</p>
+
+<h3>Starting Solr</h3>
+
+<p>To start Solr in its default state, navigate to:</p>
+
+<pre><code>**apache-solr-X.X.X/example/**
+</code></pre>
+
+<p>and run:</p>
+
+<pre><code>**java -jar start.jar **
+</code></pre>
+
+<p>This starts up the server and sets Solr to use the default home directory, <em>./solr</em>.</p>
+
+<p>When making your own Solr instance, it is a good idea to start by copying the default Solr directory, name it as you wish, and start working with this new Solr instance. Assuming I call my Solr directory <code>AuctionSearch</code>, to start Solr after making the new directory, run:
+java -jar start.jar -Dsolr.solr.home=AuctionSearch  After running this command, you can browse to <a href="http://localhost:8983/solr/">http://localhost:8983/solr/</a> to view the administration user interface. The default Solr instance doesn&rsquo;t have any documents indexed (or it might have just one), so there wont be much to tinker with until more documents are added. Before adding documents, however, some configuration will probably be needed.</p>
+
+<h3>Configuring Solr</h3>
+
+<p>Configuring Solr is not typically done once- instead a cycle of configuring and testing is carried out. Even months after I initially set up Solr to work for my application, I am still tweaking it as I learn more about Solr and learn more about my data. Despite this cyclic nature, the configuration of Solr will be described here in a linear fashion. However, jumping between sections is encouraged. In turn, the following will be discussed:</p>
+
+<pre><code>- solr.xml Solr cores
+- schema.xml Document structure
+- solrconfig.xml Request handlers
+</code></pre>
+
+<p>When configuring Solr, it is helpful to have a picture of the Solr home directory structure, and to know where all the configuration files are located. The image below shows important configuration files within the example Solr directory.
+<img src="http://2.bp.blogspot.com/-zWmWPHKrmYA/URBOUoCYOLI/AAAAAAAAA8M/px33YlR5gCg/s1600/croppedLargeFontSolrDirectoryStructure.jpg" alt="Solr Home Directory Structure" /></p>
+
+<h3>SOlr Cores</h3>
+
+<p>A Solr core manages a single <em>index</em>. An index is the set of all data used to store information about documents to be searched. Each index can have only one document schema associated with it (only one document format can be stored). Using multiple cores allows a single Solr instance (single server, single administration web page) to manage multiple indexes. A use case (context: auction website) for this might be having one core for indexing auction data and another for indexing information on users. Each core will have its own core directory. Cores are configured in <em>solr.xml</em>. An example solr.xml:</p>
+
+<p>```xml</p>
+
+<!-- persistent="true" allows the web interface to make lasting changes to Solr. -->
+
+
+<p><solr persistent="true" sharedlib="lib">
+<cores adminpath="/admin/cores" host="${host:}" hostcontext="${hostContext:}" hostport="${jetty.port:}" zkclienttimeout="${zkClientTimeout:15000}">
+<core default="true" instancedir="auctions" name="auctions">
+</core></cores>
+</solr>
+```</p>
+
+<p>Usually, the default <em>solr.xml</em> is sufficient. You may want to change the core names and core directory names. <a href="http://lucidworks.lucidimagination.com/display/solr/Configuring+solr.xml">Further details</a> on configuring <em>solr.xml</em>.</p>
+
+<p>In Solr 4.3 and above, <em>solr.xml</em> has a <a href="https://cwiki.apache.org/confluence/display/solr/Format+of+solr.xml">new purpose and a new format</a>. In Solr 5.0 and above, the older format will not be supported.</p>
+
+<h3>Schema</h3>
+
+<p>A Solr schema describes the basic unit of information: a <em>document</em>. Each Solr core has a single schema, and thus, indexes only one &lsquo;form&rsquo; of document. A document is composed of multiple <em>fields</em>.  Each field has a <em>type</em>. This type is defined in the schema and specifies the underlying Java class that is created when the field is indexed. The type also specifies the text analysis (processing/digestion) that is carried out when the field is indexed. An example document and a section of the corresponding <em>schema.xml</em> is shown below.</p>
+
+<p><code>xml
+&lt;doc&gt;
+&lt;field name="auction_id"&gt;54432834&lt;/field&gt;
+&lt;field name="title"&gt;Dell M2012 24" IPS Monitor&lt;/field&gt;
+&lt;field name="category"&gt;monitors&lt;/field&gt;
+&lt;field name="current_bid"&gt;279.95&lt;/field&gt;
+&lt;field name="end_date"&gt;2013-01-06T09:26:04.18Z&lt;/field&gt;
+&lt;field name="feature"&gt;IPS&lt;/field&gt;
+&lt;field name="feature"&gt;Swivel&lt;/field&gt;
+&lt;/doc&gt;
+</code></p>
+
+<p>```xml
+<schema name="example" version="1.5">
+<fields>
+<field name="_version_" type="long" indexed="true" stored="true" required="true"/>
+<field name="auction_id" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+<field name="title" type="text_en" indexed="true" stored="true" required="true" multiValued="false" />
+<field name="category" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+<field name="current_bid" type="currency" indexed="true" stored="true" required="true" multiValued="false" />
+<field name="end_date" type="date" indexed="true" stored="true" required="true" multiValued="false" />
+<field name="feature" type="string" indexed="true" stored="true" required="false" multiValued="true" />
+</fields>
+<uniqueKey>auction_id</uniqueKey>
+<types>
+<fieldType name="string" class="solr.StrField" sortMissingLast="true" />
+<fieldType name="date" class="solr.TrieDateField" precisionStep="0" positionIncrementGap="0"/>
+<fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+<fieldType name="text_en" class="solr.TextField" positionIncrementGap="100"></p>
+
+<!-- lots of details -->
+
+
+<p></fieldType>
+<fieldType name="currency" class="solr.CurrencyField" precisionStep="8" defaultCurrency="USD" currencyConfig="currency.xml" />
+</types>
+</schema>
+```</p>
+
+<p>The components of schema.xml will now be described.</p>
+
+<h3>Fields</h3>
+
+<p>A field describes a piece of information within a document. It controls aspects of the indexing process such as what Java type is used to represent the data, whether the data is stored, whether the field is required in every document etc. There are two types of special fields: <strong>copyField</strong> and <strong>dynamicField</strong> (not to be confused with the type parameter such as type=&ldquo;string&rdquo;).</p>
+
+<p><strong>copyField</strong></p>
+
+<p>Copy fields allow you to index a field in more than one way. A field is copied allowing different field types, such as <em>text_en</em> or <em>string</em> to be applied to the single piece of information.</p>
+
+<p><strong>dynamicField</strong></p>
+
+<p>Dynamic fields are, in a way, an inverse to copying fields; they allow you to process multiple fields in the same way. Their most useful feature is their ability to match document fields with pattern matching. A common usage of dynamic fields is to catch all fields in a document which should not be indexed. This is required, as when fields are indexed, all document fields must be processed, or an error is thrown.</p>
+
+<p>An example of using copy and dynamic fields is show below:</p>
+
+<p><code>xml
+&lt;schema name="example" version="1.5"&gt;
+&lt;fields&gt;
+&lt;field name="title" type="text_en" indexed="true" stored="true" required="true" multiValued="false" /&gt;
+&lt;field name="category" type="string" indexed="true" stored="true" required="true" multiValued="false" /&gt;
+&lt;field name="feature" type="string" indexed="true" stored="true" required="false" multiValued="true" /&gt;
+&lt;field name="allText" type="text_en" indexed="true" stored="false" required="true" multiValued="true" /&gt;
+&lt;/fields&gt;
+&lt;copyField source="title" dest="allText" /&gt;
+&lt;copyField source="category" dest="allText" /&gt;
+&lt;copyField source="feature" dest="allText" /&gt;
+&lt;dynamicField name="*" type="ignored" multiValued="true" /&gt;
+&lt;/schema&gt;
+</code></p>
+
+<h3>Analysers, Tokenisers and Filters</h3>
+
+<p><strong>Analyser</strong></p>
+
+<p>An analyzer converts the text of a field and modifies it to form the text that is indexed. Analyzers are made up of one or more tokenizer and/or filter. Seeing as analyzers are constructed from filters and tokenizers in an adhoc manor, they don&rsquo;t really have a name; they will just be identified by the <em>fieldType</em> where they are defined.</p>
+
+<p><strong>Tokenizer</strong></p>
+
+<p>A tokenizer breaks up a stream of text into units, called tokens. For example, the text: &ldquo;Please like my blog&rdquo;, might be passed through a filter to produce the 4 tokens: (Please, like, my, blog) or using another type of tokenizer: (p, l, e, a, s, e, l, i, k, e, m, y, b, l, o, g).</p>
+
+<p><strong>Filter</strong></p>
+
+<p>Filters take in tokens, transform them, and output the transformed tokens (they can modify or discard them). A example: a filter which converts all text to lowercase.</p>
+
+<p>A useful note: analyzers can operate both at index time and at query time. In other words, they transform both the documents that are indexed and the search terms that are used by a user.</p>
+
+<p>A reasonably complex analyzer is shown below. It is defined in the example Solr <em>schema.xml</em> file for the fieldType <em>text_en</em>:</p>
+
+<p><code>xml
+&lt;fieldType name="text_en" class="solr.TextField" positionIncrementGap="100"&gt;
+&lt;analyzer type="index"&gt;
+&lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
+&lt;filter class="solr.StopFilterFactory"
+ignoreCase="true"
+words="lang/stopwords_en.txt"
+enablePositionIncrements="true"
+/&gt;
+&lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+&lt;filter class="solr.EnglishPossessiveFilterFactory"/&gt;
+&lt;filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/&gt;
+&lt;filter class="solr.PorterStemFilterFactory"/&gt;
+&lt;/analyzer&gt;
+&lt;analyzer type="query"&gt;
+&lt;tokenizer class="solr.StandardTokenizerFactory"/&gt;
+&lt;filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/&gt;
+&lt;filter class="solr.StopFilterFactory"
+ignoreCase="true"
+words="lang/stopwords_en.txt"
+enablePositionIncrements="true"
+/&gt;
+&lt;filter class="solr.LowerCaseFilterFactory"/&gt;
+&lt;filter class="solr.EnglishPossessiveFilterFactory"/&gt;
+&lt;filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/&gt;
+&lt;filter class="solr.PorterStemFilterFactory"/&gt;
+&lt;/analyzer&gt;
+&lt;/fieldType&gt;
+</code></p>
+
+<h3>Schema Snares</h3>
+
+<p><strong>Multivalued Fields</strong></p>
+
+<p>Multivalued refers to the possibility of their being two values for present in the same document for a single field. For example, for the document shown below, there is always only one title. An example of a multivalued field is the feature field, this can have many values in a single document. What is important to realise when using multivalued fields, is that the data gets flattened. If an auction has 2 features, then the two features get flattened such that the relationship between the name and the value of the feature is lost.</p>
+
+<p>```xml</p>
+
+<!-- What an auction might look like in its original XML form: -->
+
+
+<p><auction>
+<title>Desktop PC</title>
+<feature>
+<name>RAM</name>
+<value>16 GB</value>
+</feature>
+<feature>
+<name>CPU Frequency</name>
+<value>4.5 GHz</value>
+</feature>
+</auction></p>
+
+<!-- What an auction would look like as a Solr document: -->
+
+
+<p><doc>
+<field name="title">Desktop PC</field>
+<field name="feature_name">RAM</field>
+<field name="feature_value">16 GB</field>
+<field name="feature_name">CPU Frequency</field>
+<field name="feature_value">4.5 GHz</field>
+</doc></p>
+
+<!-- The *effect* of multivalued field flattening: -->
+
+
+<p><doc>
+<field name="title">Desktop PC</field>
+<field name="feature_name">RAM CPU Frequency</field>
+<field name="feature_value">16 GB 4.5 GHz</field>
+</doc>
+```
+By observing the way the data is indexed, it is clear that the relationship between the name and value pairs is lost. In other words, one to many relationships cannot be maintained by Solr in a single index (the is an exotic method of using multiple indexes and multiple cores). From a relational database point of view, Solr flattens all data into a single &lsquo;table&rsquo;.</p>
+
+<h3>PolyFields</h3>
+
+<p>A ployfield, such as the <em>Currency</em> field, is a field that requires more than one value to be stored when it is indexed. The currency field needs to store both the amount of money and the currency of the money. Polyfields <strong>must</strong> have <em>stored=true</em>, or errors will result.</p>
+
+<h3>solrconfig.xml</h3>
+
+<p><em>solrconfig.xml</em> is used to configure many aspects of Solr&rsquo;s operation, for example, it is used to configure:</p>
+
+<pre><code>- request handlers
+- listeners (listen for requests sent to handlers)
+- admin interface
+- replication and duplication
+</code></pre>
+
+<p>Typically, the only changes that need to be made to <em>solrconfig.xml</em> are to add or alter search and index request handlers. These two examples will be covered in the Indexing and Searching sections respectively.</p>
+
+<h3>Indexing Data</h3>
+
+<p>There are two ways I have used to add documents to an index: posting XML to a request handler or importing it from a database. All the data I index is also stored in a database. I initially carry out a data import from a database to catch up on the database from an empty state. Once this import is finished, new documents are added to the index by sending the documents in XML form to Solr via HTTP post.</p>
+
+<h3>Importing from a Database</h3>
+
+<p>Importing data from a database in carried out using the <a href="http://wiki.apache.org/solr/DataImportHandler%20Data%20Import%20Handler">Data Import Handler</a> (DIH). To use the DIH, a configuration file must be created to direct the conversion. In addition to the configuration file, a request handler must be specified in <em>solrconfig.xml</em> for the DIH. The details of writing the configuration file is given in the above link.</p>
+
+<h3>Posting XML</h3>
+
+<p>Once Solr has indexed the entire database, new documents are added by posting them to a Solr request handler. <a href="https://wiki.apache.org/solr/Solrj">SolrJ</a>, a Java API for Solr, is used to do the posting. Solr comes with a simple request handler for adding documents by posting XML. It is defined in solrconfig.xml as follows:</p>
+
+<p>```xml</p>
+
+<!-- in solrconfig.xml -->
+
+
+<p><requestHandler name="/update" class="solr.UpdateRequestHandler" />
+```</p>
+
+<p>Thus, by sending XML to the URL <a href="http://localhost:8983/solr/coreName/update,">http://localhost:8983/solr/coreName/update,</a> Solr will add the document to the index. Unfortunately, in most situations, if you already have XML data which you want to index, it probably wont exist in the format that Solr expects. For example, compare the following:</p>
+
+<p>```xml</p>
+
+<!-- original XML format: -->
+
+
+<p><auction>
+&lt;auction_id>54432834&lt;/auction_id>
+<title>Dell M2012 24" IPS Monitor</title>
+<category>monitors</category>
+&lt;current_bid>279.95&lt;/current_bid>
+</auction></p>
+
+<!-- The format Solr requires: -->
+
+
+<p><doc>
+<field name="auction_id">54432834</field>
+<field name="title">Dell M2012 24" IPS Monitor</field>
+<field name="category">monitors</field>
+<field name="current_bid">279.95</field>
+</doc>
+```</p>
+
+<p>Thus, there is a need to convert the original XML into the form which Solr expects. There are two ways to do this conversion:</p>
+
+<ul>
+<li>In Java: JAXP API can be used to carry out the conversion. This will require writing custom code to do the conversion. Alternatively, if your data exists as Java classes, you can index those through SolrJ, which has a persistence mechanism allowing Java objects to be indexed directly.</li>
+<li>Use XSLT: Configure the Solr request handler to transform the posted XML using a specified XSLT before trying to index the document. An XSLT file to transform an XML document (with root XML element &lsquo;Auction&rsquo;) is shown below:</li>
+</ul>
+
+
+<p>```xml
+&lt;?xml version=&ldquo;1.0&rdquo; encoding=&ldquo;UTF-8&rdquo; ?></p>
+
+<!-- the 2.0 version of xsl reqires a custom processor to be used. Saxon9he is used, and is
+located in Jetty's ext/ folder. This library requires Jetty to be started like so:
+java -Djavax.xml.transform.TransformerFactory=net.sf.saxon.TransformerFactoryImpl -jar start.jar
+-->
+
+
+<p>&lt;xsl:stylesheet version=&ldquo;2.0&rdquo;
+xmlns:xsl=&ldquo;<a href="http://www.w3.org/1999/XSL/Transform">http://www.w3.org/1999/XSL/Transform</a>&rdquo;
+xmlns:xs=&ldquo;<a href="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</a>&rdquo;
+xmlns:fn=&ldquo;<a href="http://www.w3.org/2005/xpath-functions">http://www.w3.org/2005/xpath-functions</a>&rdquo;
+xmlns:xdt=&ldquo;<a href="http://www.w3.org/2005/xpath-datatypes">http://www.w3.org/2005/xpath-datatypes</a>&rdquo;
+xmlns:err=&ldquo;<a href="http://www.w3.org/2005/xqt-errors">http://www.w3.org/2005/xqt-errors</a>&rdquo;
+xmlns:tm=&ldquo;<a href="http://api.trademe.co.nz/v1">http://api.trademe.co.nz/v1</a>&rdquo;
+exclude-result-prefixes=&ldquo;xs xdt err fn tm&rdquo;></p>
+
+<p>&lt;xsl:output method=&ldquo;xml&rdquo; indent=&ldquo;yes&rdquo;/></p>
+
+<!-- 'Auction" is the root XML element -->
+
+
+<p>&lt;xsl:template match=&ldquo;tm:Auction&rdquo;>
+<add><doc>
+&lt;xsl:for-each select=&ldquo;//text()/.. intersect child::*&rdquo;>
+<field>
+&lt;xsl:attribute name=&ldquo;name&rdquo;>
+&lt;xsl:value-of select=&ldquo;name()&rdquo;/>
+&lt;/xsl:attribute>
+&lt;xsl:value-of select=&ldquo;.&rdquo;/>
+</field>
+&lt;/xsl:for-each></p>
+
+<p>&lt;xsl:for-each select=&ldquo;//text()/.. except child::*&rdquo;>
+<field>
+&lt;xsl:attribute name=&ldquo;name&rdquo;>
+&lt;xsl:value-of select=&ldquo;../name()&rdquo;/>_&lt;xsl:value-of select=&ldquo;name()&rdquo;/>
+&lt;/xsl:attribute>
+&lt;xsl:value-of select=&ldquo;.&rdquo;/>
+</field>
+&lt;/xsl:for-each>
+</doc></add>
+&lt;/xsl:template>
+&lt;/xsl:stylesheet>
+```</p>
+
+<h3>Indexing Snares</h3>
+
+<p><strong>Letter Case in the DIH Configuration File</strong></p>
+
+<p>Table and row names in the DIH configuration file are tediously case-sensitive-ish. Some places the case doesn&rsquo;t matter, and other places it does. Where it does matter, the table and row names must be in the exact same form as in the database. Also, case must be internally consistent within the configuration file for most name usages.</p>
+
+<p><strong>Missing Fields in Posted XML and DIH Mapping Everything to the Ignore Field</strong></p>
+
+<p>These two seemingly unrelated issues are linked by the presence of a dynamic field in schema.xml. When posting XML data, all fields defined in the schema file must be present in the XML file being posted. If there are fields in the XML document which are not used in the index, errors are throw when posting the XML. The way around this is to create a catch-all field: this schema field catches all fields in the document which have not been mapped to another field. This workaround, however, interferes with the operation of the DIH. The DIH, annoyingly, maps nearly all fields to the catch-all field. This may have something to do with the nice feature of the DIH which allows you to leave out every mapping from row->field if the row and field have the same name. Leaving out these mappings, however, seems to cause all fields to map to the catch-all ignore field. My current hack involves changing the schema.xml file every time I want to import documents using the DIH.</p>
+
+<h3>Searching</h3>
+
+<p>Search requests are carried out by request handlers which parse and process searches. A good way to describe search handlers is through an example. The following is a search request handler I use:</p>
+
+<p>```xml
+ <requestHandler name="/broadQuery" class="solr.SearchHandler">
+<lst name="defaults">
+<str name="defType">edismax</str> <!-- The search parser to use. -->
+<str name="wt">xml</str> <!-- Output type. -->
+<str name="fl">auction_id title</str> <!-- The fields to list in the search response -->
+<str name="qf">Title<sup>2</sup> Feature</str> <!-- The fields (and their weightings) to search in.-->
+<str name="rows">100</str> <!-- The number of results to return. -->
+<str name="pf">Title<sup>4</sup> Feature<sup>2</sup></str> <!-- Phrase field (and their weightings). Fields to search for closely located matches. -->
+<str name="ps">0</str> <!-- Phrase slop. How many tokens apart must words be to be able to qualify as a phrase-->
+<str name="echoParams">all</str> <!-- Print the search settings in the search results. Just a handy feature -->
+<str name="mm">3&lt;-1 5&lt;-2 6&lt;-40%</str></p>
+
+<!-- 3>-1 5>-2 6>-40% Means: If there are 1-3 search terms, they are all required to
+<!-- match. If there are 4-5 search terms, then (all - 1) must match.
+If there are 5-6 search terms, then (all -2) must match
+If there are >6 search terms, then (all - 40%) must match. -->
+
+
+<p></lst>
+</requestHandler>
+```
+All these parameters can be specified at query time also; defining them within the request handler definition simply specifies defaults. To use this search handler I would navigate/send request to:</p>
+
+<p><a href="http://localhost:8983/solr/auctions/broadQuery?q=dell+monitor+IPS">http://localhost:8983/solr/auctions/broadQuery?q=dell+monitor+IPS</a></p>
+
+<p> [Assuming that &lsquo;auctions&rsquo; is the name of your Solr core, and Solr is hosted on localhost]</p>
+
+<p> While most of the search handler&rsquo;s configuration can be understood from the comments, defType, pf, ps and mm might need further explanation:</p>
+
+<p>defType</p>
+
+<p>defType specifies the search parser to use. There are a number of popular search parsers including <a href="http://lucidworks.lucidimagination.com/display/solr/The+Standard+Query+Parser%20Lucene">Standard Search</a>,  <a href="http://lucidworks.lucidimagination.com/display/solr/The+DisMax+Query+Parser">DisMax</a> and <a href="http://lucidworks.lucidimagination.com/display/solr/The+Extended+DisMax+Query+Parser">eDisMax</a>. eDismax combines the features of both the Standard Search and DisMax; eDisMax supports the full query syntax of the Lucene Standard Query, but is far more tolerant of syntax errors. eDismax seems like the obvious choice in most circumstances.</p>
+
+<p>pf</p>
+
+<p>pf (phase fields) specifies what fields should be checked for having matching &lsquo;phrases&rsquo;. If matching terms are close enough together, then they can be considered a phrase. A result with a matching phrase will score higher than one with no matching phase. You can also specify a weighting: a field weighting will control the effect of a match on the match&rsquo;s score. For example, a phrase found in the title will score higher that one found in feature.</p>
+
+<p>ps</p>
+
+<p>ps (phrase slop) specifies how many terms can be in-between two matching terms and still allow the matching terms to be considered a matching phrase.</p>
+
+<h3>Searching from Java</h3>
+
+<p>Searching can be carried out from Java with the use of <a href="https://wiki.apache.org/solr/Solrj">SolrJ</a>. The gist below shows a very simple method utilizing SolrJ:</p>
+
+<p>```
+public class SimpleSolrSearch {
+private String solrUrl = &ldquo;<a href="http://192.168.1.103:8983/solr/auctions">http://192.168.1.103:8983/solr/auctions</a>&rdquo;;
+private SolrServer server;
+public SimpleSolrSearch() {
+server = new HttpSolrServer(solrUrl);
+}
+public Collection<Integer> search(String searchTerms, String category, BigDecimal maxBidAmount) throws SolrServerException {
+SolrQuery query = new SolrQuery();
+String categoryFilter = &ldquo;category:\&rdquo;&ldquo; + category + &rdquo;\&ldquo;&rdquo;;
+query.addFilterQuery(categoryFilter);
+query.addFilterQuery(&ldquo;current_bid:[1 TO &rdquo; + maxBidAmount.doubleValue() + &ldquo;]&rdquo;);
+query.setQuery(searchTerms);</p>
+
+<p>QueryResponse response = server.query(query);
+SolrDocumentList documentList = response.getResults();
+List<Integer> auctionIds = new ArrayList&lt;>();
+for(SolrDocument doc : documentList) {
+int listingId = Integer.parseInt((String)doc.getFirstValue(&ldquo;auction_id&rdquo;));
+auctionIds.add(listingId);
+}
+return auctionIds;
+}
+}
+```</p>
+
+<h3>Further Reading</h3>
+
+<p>I have briefly covered many common tasked carried out when using Solr. There are many more features: search faceting, search clustering, distributed searches and index replication to name a few. There are many comprehensive sources available. Some useful sources I would suggest:
+&ndash; <a href="http://lucidworks.lucidimagination.com/display/solr/Apache+Solr+Reference+Guide">Lucid Works' Solr Reference Guide</a>
+&ndash; <a href="http://www.amazon.com/gp/product/1782161325/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1782161325&amp;linkCode=as2&amp;tag=kevidoraprog-20">Apache Solr 4 Cookbook</a>
+&ndash; <a href="http://www.amazon.com/gp/product/1933988177/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1933988177&amp;linkCode=as2&amp;tag=kevidoraprog-20">Lucene in Action, 2nd Edition</a>   (if you want to go to a lower level than Solr)
+&ndash; <a href="http://www.amazon.com/gp/product/0596802277/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596802277&amp;linkCode=as2&amp;tag=kevidoraprog-20">Search Patterns</a>   (from a data mining perspective)
+&ndash; <a href="http://www.amazon.com/gp/product/1935182854/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1935182854&amp;linkCode=as2&amp;tag=kevidoraprog-20">Tika in Action</a>     (if you want to index and search documents such as PDFs)</p>
+
+<p>The blog&rsquo;s source is : <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html</a></p>
+
+<hr />
+
+<p>Over.</p>
+]]></content>
+  </entry>
+  
+</feed>

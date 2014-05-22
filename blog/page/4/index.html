@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent J">
 
   
-  <meta name="description" content="每年度阅读回顾 在网络上一个空间中，看到了Amazon的CTO，Werner Vogels在他的[博客][1]中，列出了2012年读过的书籍和文章，这是一个Back to Basics的系列。 其他一些别人推荐或读过的书籍有： &lt;Linux/Unix设计思想> by Mike Gancarz &hellip;">
+  <meta name="description" content="直接使用安装完成后的Oracle自带的Uninstallation程序，也是可以部分完成我们所需的卸载功能，但是终究还是会遗留一部分需要手工参与的步骤。 而我今天所面临的问题是：2块硬盘，在上个礼拜其中一块硬盘罢工，幸好不是系统盘，免去了我要重装系统的麻烦；但麻烦的是损坏的F盘也是Oracle &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/26/uninstall-oracle-manually/">手动卸载Oracle</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-26T21:11:03-07:00" pubdate data-updated="true">Aug 26<span>th</span>, 2013</time>
+        
+           | <a href="/blog/2013/08/26/uninstall-oracle-manually/#disqus_thread"
+             data-disqus-identifier="http://icersummer.github.io/blog/2013/08/26/uninstall-oracle-manually/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>直接使用安装完成后的Oracle自带的Uninstallation程序，也是可以部分完成我们所需的卸载功能，但是终究还是会遗留一部分需要手工参与的步骤。</p>
+
+<p>而我今天所面临的问题是：2块硬盘，在上个礼拜其中一块硬盘罢工，幸好不是系统盘，免去了我要重装系统的麻烦；但麻烦的是损坏的F盘也是Oracle 11g所在磁盘，导致Oracle中服务及应用都不可使用。</p>
+
+<p>虽然我手动将Oracle原有目录及文件（F:\app\user_name&#8230;）拷贝了回去到原位置，但Oracle已然不能使用。尝试了2种方式去重装，没有成功：</p>
+
+<ul>
+<li><p>运行Uninstallation，中止；</p></li>
+<li><p>运行installation，企图覆盖原有程序，中止。</p></li>
+</ul>
+
+
+<p>看到有些文章，说可以通过手动删除Oracle注册表项操作，但是不太想通过此种方式，但是在看到stackoverflow上一篇帖子后，处于对他们的信任，还是使用这种方式：</p>
+
+<h3>Six-Step Process</h3>
+
+<ol>
+<li><p><strong>Delete the Oracle services</strong>: In the registry, go to \HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services and delete everything that starts with &ldquo;Oracle&rdquo;</p></li>
+<li><p><strong>Remove other Oracle stuff from the registry</strong>: Go to \HKEY_LOCAL_MACHINE\SOFTWARE\ and delete the key ORACLE</p></li>
+<li><p><strong>Reboot</strong></p></li>
+<li><p><strong>Delete all the Oracle software</strong> from the directories where you installed it</p></li>
+<li><p><strong>Delete the Oracle software inventory</strong>: Delete the directory C:\Program Files\Oracle. You must do this no matter where you installed your Oracle software &ndash; the Oracle installer automatically writes information here.</p></li>
+<li><p><strong>Delete all shortcuts</strong> from your Start menu.</p></li>
+</ol>
+
+
+<p>参考链接： <a href="http://stackoverflow.com/questions/83967/how-do-i-do-a-manual-uninstall-of-oracle">How do I a manual uninstall of Oracle</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -953,51 +1018,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/07/16/list-of-china-movie-name-abroad/">国内电影 外名列表</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-16T21:09:03-07:00" pubdate data-updated="true">Jul 16<span>th</span>, 2013</time>
-        
-           | <a href="/blog/2013/07/16/list-of-china-movie-name-abroad/#disqus_thread"
-             data-disqus-identifier="http://icersummer.github.io/blog/2013/07/16/list-of-china-movie-name-abroad/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li>英雄本色 &ndash; A Better Tomorrow</li>
-<li>国产凌凌漆 &ndash; From Beijing with Love</li>
-<li>活着 &ndash; To Live</li>
-<li>TBD</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -1015,6 +1035,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/22/solr-tutorial/">Solr Tutorial</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/09/plugins-disqus-github-googleplus/">OCTOPress增加Disqus评论</a>
       </li>
     
@@ -1028,10 +1052,6 @@
     
       <li class="post">
         <a href="/blog/2014/04/22/tiddlywiki-for-single-page-wiki/">TiddlyWiki简介</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/04/22/rtsp-protocol/">RTSP命令</a>
       </li>
     
   </ul>
