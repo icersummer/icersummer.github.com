@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tutorial | VJia - Software Development]]></title>
   <link href="http://icersummer.github.io/blog/categories/tutorial/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-05-22T02:20:36-07:00</updated>
+  <updated>2014-05-22T02:31:39-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -18,9 +18,7 @@
     <link href="http://icersummer.github.io/blog/2014/05/22/solr-tutorial/"/>
     <updated>2014-05-22T18:15:03-07:00</updated>
     <id>http://icersummer.github.io/blog/2014/05/22/solr-tutorial</id>
-    <content type="html"><![CDATA[<h1>Solr Tutorial</h1>
-
-<p>The origin site is this blog: <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">Solr Tutorial</a></p>
+    <content type="html"><![CDATA[<p>The origin site is this blog: <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">Solr Tutorial</a></p>
 
 <h2>Solr Tutorial</h2>
 
@@ -46,20 +44,23 @@
 
 <p>This starts up the server and sets Solr to use the default home directory, <em>./solr</em>.</p>
 
-<p>When making your own Solr instance, it is a good idea to start by copying the default Solr directory, name it as you wish, and start working with this new Solr instance. Assuming I call my Solr directory <code>AuctionSearch</code>, to start Solr after making the new directory, run:
-java -jar start.jar -Dsolr.solr.home=AuctionSearch  After running this command, you can browse to <a href="http://localhost:8983/solr/">http://localhost:8983/solr/</a> to view the administration user interface. The default Solr instance doesn&rsquo;t have any documents indexed (or it might have just one), so there wont be much to tinker with until more documents are added. Before adding documents, however, some configuration will probably be needed.</p>
+<p>When making your own Solr instance, it is a good idea to start by copying the default Solr directory, name it as you wish, and start working with this new Solr instance. Assuming I call my Solr directory <code>AuctionSearch</code>, to start Solr after making the new directory, run:</p>
+
+<pre><code>java -jar start.jar -Dsolr.solr.home=AuctionSearch  
+</code></pre>
+
+<p>After running this command, you can browse to <a href="http://localhost:8983/solr/">http://localhost:8983/solr/</a> to view the administration user interface. The default Solr instance doesn&rsquo;t have any documents indexed (or it might have just one), so there wont be much to tinker with until more documents are added. Before adding documents, however, some configuration will probably be needed.</p>
 
 <h3>Configuring Solr</h3>
 
-<p>Configuring Solr is not typically done once- instead a cycle of configuring and testing is carried out. Even months after I initially set up Solr to work for my application, I am still tweaking it as I learn more about Solr and learn more about my data. Despite this cyclic nature, the configuration of Solr will be described here in a linear fashion. However, jumping between sections is encouraged. In turn, the following will be discussed:</p>
+<p>Configuring Solr is not typically done once- instead a cycle of configuring and testing is carried out. Even months after I initially set up Solr to work for my application, I am still tweaking it as I learn more about Solr and learn more about my data. Despite this cyclic nature, the configuration of Solr will be described here in a linear fashion. However, jumping between sections is encouraged. In turn, the following will be discussed:
+&ndash; solr.xml Solr cores
+&ndash; schema.xml Document structure
+&ndash; solrconfig.xml Request handlers</p>
 
-<pre><code>- solr.xml Solr cores
-- schema.xml Document structure
-- solrconfig.xml Request handlers
-</code></pre>
+<p>When configuring Solr, it is helpful to have a picture of the Solr home directory structure, and to know where all the configuration files are located. The image below shows important configuration files within the example Solr directory.</p>
 
-<p>When configuring Solr, it is helpful to have a picture of the Solr home directory structure, and to know where all the configuration files are located. The image below shows important configuration files within the example Solr directory.
-<img src="http://2.bp.blogspot.com/-zWmWPHKrmYA/URBOUoCYOLI/AAAAAAAAA8M/px33YlR5gCg/s1600/croppedLargeFontSolrDirectoryStructure.jpg" alt="Solr Home Directory Structure" /></p>
+<p><img src="http://2.bp.blogspot.com/-zWmWPHKrmYA/URBOUoCYOLI/AAAAAAAAA8M/px33YlR5gCg/s1600/croppedLargeFontSolrDirectoryStructure.jpg" alt="Solr Home Directory Structure" /></p>
 
 <h3>SOlr Cores</h3>
 
