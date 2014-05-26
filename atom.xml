@@ -4,7 +4,7 @@
   <title><![CDATA[VJia - Software Development]]></title>
   <link href="http://icersummer.github.io/atom.xml" rel="self"/>
   <link href="http://icersummer.github.io/"/>
-  <updated>2014-05-22T02:31:39-07:00</updated>
+  <updated>2014-05-25T18:44:26-07:00</updated>
   <id>http://icersummer.github.io/</id>
   <author>
     <name><![CDATA[Vincent J]]></name>
@@ -348,13 +348,11 @@
 
 <h3>solrconfig.xml</h3>
 
-<p><em>solrconfig.xml</em> is used to configure many aspects of Solr&rsquo;s operation, for example, it is used to configure:</p>
-
-<pre><code>- request handlers
-- listeners (listen for requests sent to handlers)
-- admin interface
-- replication and duplication
-</code></pre>
+<p><em>solrconfig.xml</em> is used to configure many aspects of Solr&rsquo;s operation, for example, it is used to configure:
+&ndash; request handlers
+&ndash; listeners (listen for requests sent to handlers)
+&ndash; admin interface
+&ndash; replication and duplication</p>
 
 <p>Typically, the only changes that need to be made to <em>solrconfig.xml</em> are to add or alter search and index request handlers. These two examples will be covered in the Indexing and Searching sections respectively.</p>
 
@@ -560,15 +558,15 @@
 
 <p> While most of the search handler&rsquo;s configuration can be understood from the comments, defType, pf, ps and mm might need further explanation:</p>
 
-<p>defType</p>
+<p><strong>defType</strong></p>
 
 <p>defType specifies the search parser to use. There are a number of popular search parsers including <a href="http://lucidworks.lucidimagination.com/display/solr/The+Standard+Query+Parser%20Lucene">Standard Search</a>,  <a href="http://lucidworks.lucidimagination.com/display/solr/The+DisMax+Query+Parser">DisMax</a> and <a href="http://lucidworks.lucidimagination.com/display/solr/The+Extended+DisMax+Query+Parser">eDisMax</a>. eDismax combines the features of both the Standard Search and DisMax; eDisMax supports the full query syntax of the Lucene Standard Query, but is far more tolerant of syntax errors. eDismax seems like the obvious choice in most circumstances.</p>
 
-<p>pf</p>
+<p><strong>pf</strong></p>
 
 <p>pf (phase fields) specifies what fields should be checked for having matching &lsquo;phrases&rsquo;. If matching terms are close enough together, then they can be considered a phrase. A result with a matching phrase will score higher than one with no matching phase. You can also specify a weighting: a field weighting will control the effect of a match on the match&rsquo;s score. For example, a phrase found in the title will score higher that one found in feature.</p>
 
-<p>ps</p>
+<p><strong>ps</strong></p>
 
 <p>ps (phrase slop) specifies how many terms can be in-between two matching terms and still allow the matching terms to be considered a matching phrase.</p>
 
@@ -627,18 +625,22 @@
 
 <h3>Further Reading</h3>
 
-<p>I have briefly covered many common tasked carried out when using Solr. There are many more features: search faceting, search clustering, distributed searches and index replication to name a few. There are many comprehensive sources available. Some useful sources I would suggest:
-&ndash; <a href="http://lucidworks.lucidimagination.com/display/solr/Apache+Solr+Reference+Guide">Lucid Works&#8217; Solr Reference Guide</a>
-&ndash; <a href="http://www.amazon.com/gp/product/1782161325/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1782161325&amp;linkCode=as2&amp;tag=kevidoraprog-20">Apache Solr 4 Cookbook</a>
-&ndash; <a href="http://www.amazon.com/gp/product/1933988177/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1933988177&amp;linkCode=as2&amp;tag=kevidoraprog-20">Lucene in Action, 2nd Edition</a>   (if you want to go to a lower level than Solr)
-&ndash; <a href="http://www.amazon.com/gp/product/0596802277/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596802277&amp;linkCode=as2&amp;tag=kevidoraprog-20">Search Patterns</a>   (from a data mining perspective)
-&ndash; <a href="http://www.amazon.com/gp/product/1935182854/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1935182854&amp;linkCode=as2&amp;tag=kevidoraprog-20">Tika in Action</a>     (if you want to index and search documents such as PDFs)</p>
+<p>I have briefly covered many common tasked carried out when using Solr. There are many more features: search faceting, search clustering, distributed searches and index replication to name a few. There are many comprehensive sources available. Some useful sources I would suggest:</p>
 
-<p>The blog&rsquo;s source is : <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html</a></p>
+<ul>
+<li><a href="http://lucidworks.lucidimagination.com/display/solr/Apache+Solr+Reference+Guide">Lucid Works&#8217; Solr Reference Guide</a></li>
+<li><a href="http://www.amazon.com/gp/product/1782161325/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1782161325&amp;linkCode=as2&amp;tag=kevidoraprog-20">Apache Solr 4 Cookbook</a></li>
+<li><a href="http://www.amazon.com/gp/product/1933988177/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1933988177&amp;linkCode=as2&amp;tag=kevidoraprog-20">Lucene in Action, 2nd Edition</a>   (if you want to go to a lower level than Solr)</li>
+<li><a href="http://www.amazon.com/gp/product/0596802277/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596802277&amp;linkCode=as2&amp;tag=kevidoraprog-20">Search Patterns</a>   (from a data mining perspective)</li>
+<li><a href="http://www.amazon.com/gp/product/1935182854/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=1935182854&amp;linkCode=as2&amp;tag=kevidoraprog-20">Tika in Action</a>     (if you want to index and search documents such as PDFs)</li>
+</ul>
+
 
 <hr />
 
 <p>Over.</p>
+
+<p>The blog&rsquo;s source is : <a href="http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html">http://kevindoran1.blogspot.com/2013/02/solr-tutorial.html</a></p>
 ]]></content>
   </entry>
   
