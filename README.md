@@ -7,4 +7,7 @@ Learn more , visit [3Fcode.com](http://3fcode.com)
 
 It's a new day now.
 
+Q: how to re-setup my octopress site structure? I can't remember the old days' path.
+A: TO BE DONE.
+
 
